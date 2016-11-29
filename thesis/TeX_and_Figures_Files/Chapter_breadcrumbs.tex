@@ -1,0 +1,206 @@
+\section{A trail of breadcrumbs about finding killer words}
+RECYCLE(
+For convenience, we will generally refer to a ``sub-box" simply as a ``box."
+)
+
+Here we outline some hints which might be useful
+in transforming a problem statement similar to the one which inspired this effort
+into what could eventually be published as the proof of a theorem.
+
+It's easy to construct a process which would in theory eventually lead to a solution;
+the difficulty is in ensuring an answer within a practical amount of time and effort.
+
+The first steps are in manipulating the problem statement into an efficiently-addressible form.
+In this category for this proof were:
+\begin{itemize}
+  \ritem{i)} realization that the tightness of error estimates would govern success or failure.
+  \ritem{ii)} an initial leap to the idea of a self-contained proof using an affine interval calculus.
+DETAIL(
+incorporate the round-off error into the remainder term.  
+The main reason for this additional complexity is to get
+more accuracy in our calculation of AffApproxes, 
+which allows us to analyze substantially fewer boxes.
+Further, the individual computations are faster.
+)
+
+DETAIL(
+a killerword which eliminates a point $x\in {\cal W}_i$ eliminates all of ${\cal W}_i.$  
+The computational object we constructed to carry out these Taylor approximations is called an {\it AffApprox}.
+In the parameter space ${\cal W},$ all functions analyzed via Taylor
+approximations in this way are built up from the
+operations $ +,\ -,\ \times, \  /,\ \sqrt{}_{\phantom{|}} .$  We prove combination
+formulas for these operations, which show how the Taylor approximations
+(including the remainder term) change when one of these operations is
+applied to two AffApproxes.   This is carried out in Chapter 6. 
+)
+
+  \ritem{iii)} Found a way to tighten error bounds by changing the parameterization to avoid using $\exp$ and $\log$.
+DETAIL(
+This problem can be  avoided slickly by exponentiating the preliminary parameter space ${\cal P}$ to get the parameter space ${\cal W}$ (the
+definition of ${\cal W}$ is given in Definition 1.22).   Lemmas 1.24 and 1.25 then demonstrate
+that while working in ${\cal W}$ one need only
+understand the basic arithmetic operations $+, -, \times, /, \sqrt{}$.
+The machine implementation of these basic operations is governed by the IEEE standard IEEE-754 (see [IEEE]).
+)
+\end{itemize}
+
+The next step was to gather some preliminary data which could support a back-of-the-envelope
+estimate of the projected time to complete the first search. Here, we:
+\begin{itemize}
+  \ritem{i)} Wrote a first draft of the affine calculus implementing (only) the operations required.
+  \ritem{ii)} Wrote a first draft of the word search algorithm.
+  \ritem{iii)} Began experiments with random locations, shrinking region size until the word search found a word which eliminated the entire region.
+  \ritem{iv)} Divided the total volume of the compact parameter space by the volume : time ratio to get a crude estimate of the time to complete.
+\end{itemize}
+
+Next, the planned algorithm is tested against the estimate, and iteratively sharpened,
+measuring progress against the logarithm of the ratio of (maximum reasonable time to complete) to (current projected time to complete).
+\begin{itemize}
+ \ritem{i)} Moved from geometric combinations into easier-to-manipulate word representation.
+ \ritem{ii)} Discovered and expolited the fact that the box center calculus was many times faster than entire box calculus.
+ \ritem{iii)} Embraced the concept of sharing the results of the word search across several regions.
+\end{itemize}
+
+Eventually, the estimated time to complete became somewhat reasonable;
+and after a few last exteraneous small improvements, it was time to switch gears, increasing the difficulty of the attempted tasks.
+
+The first algorithm which was intended to have a chance to finish did not much resemble the final algorithm. It employed depth-first search, a seed-fill type algorithm to spread useful killerwords to adjacent regions and thereby to wherever they were needed; and a region subdivision algorithm which was variable-aspect, intended to adapt to the needs of the killerwords in play.
+
+DETAIL(
+At that stage, it became evident that the search process, as 
+opposed to the subdivision process, 
+was consuming nearly all of the computation time, and so the second 
+version iterated over regions in breadth-first order, and, once it 
+found a killerword, tried to use that word on all adjacent regions.
+)
+
+To test this first algorithm, it was asked to fill in increasingly-large fractions of parameter space. In doing so, we discovered that we'd been mildly lucky with the first random probes: some regions of parameter space are much harder than others. We kept track of these difficult regions, and used them to test potential improvements.
+
+The second algorithm was a complete rewrite of the first. It employed depth-first search, and within a single program run it kept and retried all killerwords used.
+
+The second algorithm proved good enough to attempt a comprehensive search. Within a day or two, however, it quickly emerged that the search was "exploding", greatly exceeding its computational estimates. After temporarily halting the search, we discovered the predominance of "impossible relators" in the log files related to unsolved regions, and adjusted the theory include a new special case to take these out of consideration.
+
+The second algorithm was in fact good enough to unearth Vol3 (which was known to be in parameter space at the time the search began). So far so good! However, the estimated time to finish started growing and growing, until the estimate exceeded our maximum patience for letting the search finish. Time to stop computing and start thinking again.
+
+ORIGINALSTORY(
+Rather than blindly selecting words in first-in-first-out order, 
+the algorithm can
+rank the words under consideration based on a heuristic estimate of 
+the likelihood of their being useful (a word is {\it useful} if it is a prefix of a killerword).  
+We note first that short words tend to be better than 
+long words, as they have fewer steps and less error.
+Second, we note that words 
+with a large translation distance are given a bad ranking, for two reasons: 
+they will need more generators appended before they get back to the 
+small translation distance which is needed for a contradiction, and
+ computations with those words introduce more error per step than 
+computations with closer words.  
+
+This approach was an improvement, but was not finding enough killerwords in the regions 
+around $X_3$ and $X_4$.  Further investigation showed that the 
+algorithm was getting stuck on an identity: once it found an identity, 
+it would consider only words which started with that identity, and 
+ignored all of the other words.  To fix this problem, a ``diversity" 
+heuristic was introduced, to give special consideration to unlikely but 
+unusual words.
+)
+
+DETAIL(
+The third stage of the revision process reduced the number of boxes by attempting all found 
+killerwords in a large region (about a thousand boxes) on all boxes 
+in the region.  It did not  do any searching, since it was provided with a 
+list of killerwords known to work.
+)
+
+At this point, several tools were thrown at the problem. We plotted the unsolved boxes in the ndview high-dimensional viewer in geomview (thereby discovering the complex conjugate symmetry that halved the size of parameter space); we ran profiles (discovering that complex affine arithmetic is far slower than we expected). we looked at representative error logs (discovering that our heuristics about box size were mostly irrelevant, since 90\% of the time the nonlinear error was turning out unbounded). And, eventually, we discovered that our word search algorithm was a pile of junk, effectively no better than a brute-force search.
+
+Fixing this last opportunity for improvement gave us hope that the search could complete, and in time it did.  Back to the blackboard, as the search had unearthed the exceptional regions, and it took considerable effort to find the arguments required to work around them.
+
+It was only when we started writing the first drafts of the manuscript that we discovered the last error: A mistake in the error bounds in one of the calculations. Fixing the code and rerunning the verification was an easy matter, but patching the parts of the proof tree that we had mistakenly believed to be solved took several more weeks of computer effort.
+
+ORIGINALSTORY(
+The final version was created when the bugs in evaluation were 
+brought to light, and the existing killerword tree was found to be insufficient.  
+It used the list of killerwords used for the entire tree, and some 
+statistics about the number of subdivisions required in order for a 
+given word to kill a particular box, and evaluated each word on each box.  Whenever 
+a word was evaluated, a kind of triage was used to determine 
+whether that word was likely to kill the box in question, likely to kill 
+any of its $n^{\rm th}$ generation descendants, or unlikely to kill any 
+descendants of the box; the answer to that heuristic either allowed more 
+detailed evaluation (with the error term included), deferred further 
+evaluation until the box had been subdivided $n$ more times, or 
+excluded that word from further consideration on any descendant of 
+the box.  With these heuristics, this program wound up evaluating on 
+average about 10 of the roughly 13200 words per box, and was able to 
+construct the tree consisting of the decomposition into sub-boxes with associated conditions/killerwords.
+)
+
+In the hindsight of these and other experiences, there are several hints that I'd offer to the brave soul who attempts another ambitious computer-assisted proof:
+\begin{itemize}
+  \ritem{i)} Isolate the proof verification code from the proof finding code.
+DETAIL(
+We mention that the bugs, complexity, and 
+frequent changes in the search programs are irrelevant to the 
+accuracy of the verification.  In fact, we shielded the verification 
+programs from internal issues related to the searching programs.  
+Given a putative decomposition of the parameter space into 
+sub-boxes with associated conditions/killerwords the program {\it verify} 
+simply checks whether this decomposition with conditions/ 
+killerwords works. 
+)
+RIGOR(
+Finally, there is the issue of rigor.
+The main difficulty in making the plan work rigorously is that, in computer calculations, we need to account for the difference
+between the result of an operation and its approximate computed value.
+The accumulated errors can become significant when performing
+many operations, such as when using a 43-letter 
+word.  A substantial portion of this paper is devoted to addressing
+the  issue of rigor.  See also Preview 1.35.
+)
+
+  \ritem{XX)} Don't be afraid to manually intervene while heuristics are being developed.
+DETAIL(
+there was considerable human input 
+to tell the search about particularly difficult killerwords, or to tweak 
+its search parameters (length, and weightings in the heuristic).
+)
+  \ritem{ii)} pay close attention to projected time-to-completion and stats which might predict it.
+  \ritem{iii)} whenever possible, use geometry to meet in middle
+  \ritem{iv)} emulate Ramanujan (attack risk first)
+  \ritem{v)} plan on complete rewrite for proof checking, with K.I.S.S. data passing.
+  \ritem{vi)} gather + use stats about calculus to learn which heuristics to use for pruning search tree
+\end{itemize}
+
+In addition, for an application of the method within the context of rigoous enumeration
+of small $3$-manifolds:
+\begin{itemize}
+  \ritem{i)} word library
+Keep track of all best killerwords
+(those which are included in the current smallest known killertree),
+and reuse them wherever possible.
+  \ritem{ii)} corner trick
+When deciding whether or not to use a word,
+First calculate whether or not the word kills the center of the box and each of its first
+dimension count ancestors.
+If in some case it doesn't, word can't kill the box,
+as each of those centers is in the box.
+This guard to the much more time-consuming box calculation can be made very fast by 
+combining preorder tree traversal, short-circuit evaluation, and lazy evaluation.
+  \ritem{iii)} Use breadth-first search at a high level, and depth-first search at the detail level.
+breadth-first search allows embarrasingly parallelism,
+facilitates a top-down understanding of overall progress,
+and maximizes the effectiveness of the word library.
+depth-first search facilitates allows explotation of local concerns, e.g., the corner trick.
+  \ritem{iv)} lazy + depth- or breadth- stratified word search
+DETAIL(
+To prevent the search from running forever, it is 
+temporarily abandoned after some number of steps, and re-done 
+with twice as many steps every time the number of descendant boxes 
+doubles.  This way, the search could run forever, but only if
+the subdivision process runs forever. 
+)
+\end{itemize}
+
+
+ENDMARKER

@@ -1,0 +1,430 @@
+\section{AffApproxes with round-off error}
+ 
+In Section 6, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
+these calculations.  
+
+\demo{Conventions {\rm 8.1}}
+An AffApprox $x$ is a five-tuple
+$(x.f; x.f_0,x.f_1,x.f_2; x.{\rm err})$
+consisting of four complex numbers $(x.f, x.f_0,x.f_1, x.f_2)$ and one real number $x.{\rm err}.$  In Section 6, the
+real number was denoted $x.e,$ but it seems preferable to use $x.{\rm err}$ here.  Recall (Definition 6.4)
+that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in {\bf C}^3 : |z_k| \le 1 \
+{\rm for} \ k \in \{0,1,2\}\}$ to ${\bf C}$ that are $x.{\rm err}$-well-approximated by the affine function
+$x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
+\enddemo
+
+{\it Remark} 8.2.
+A review of Definition 7.2 (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
+
+One approach to round-off error for AffApproxes would be to replace the four complex numbers in the definition of AffApprox by four AComplex numbers complete with their round-off errors, and similarly for the one real number.  We will not do this because it would necessitate keeping track of five separate round-off-error terms when we do AffApprox calculations.
+
+Instead, we will 
+replace the four complex numbers by four XComplexes and push all the round-off error into the $.{\rm err}$ term.  
+Thus, the definition of AffApprox remains 
+essentially the same as in Section 6.
+We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\rm err}$ term of the final AffApprox.
+
+\demo{Conventions {\rm 8.3}}
+i)  In what follows, we will use Basic Properties 7.0 and Lemmas 7.0 and 7.1.  Also, the propositions in Section 6
+will be utilized;  as such, the numbering of the propositions is the same in Sections 6 and 8 (for example,
+Proposition 6.7 corresponds to Proposition 8.7).  
+\vglue4pt
+ii)  Some notational simplifications will be introduced: ${\rm dist}(x)$ before Proposition 8.6, $ax$ before Propositions 8.8, 8.9, 8.11
+(the middle usage of $ax$ differs slightly from the other two), and $ay$ before Propositions 8.8, 8.9.
+\vglue4pt
+iii)  We will try to keep our notation fairly consistent with that of the computer programs {\it verify} and {\it corona} and this will produce some mildly peculiar notation.  In particular, in the operations pertaining to Propositions 8.2 and beyond, the resultant AffApproxes will be denoted $(r\_f.z; r\_f_1.z, r\_f_2.z, 
+r\_f_3.z;\break r\_{\rm error})$
+where the first four terms are XComplexes and the last term is a double (technically, $r\_f.z$ is the XComplex part of the AComplex  $r\_f$ and similarly for the $r\_f_k.z$ terms).  One break with the notation of the programs though is that AffApproxes are called (in the programs) ACJ's, which stands for ``Approximate Complex 1-Jets."
+\vglue4pt
+iv) The propositions that follow include in their statements the definitions of the various operations on AffApproxes (see Remark
+6.6iii)).
+\vglue4pt
+v)  We remind the reader (see Section 7.4) that all machine operations act on machine numbers, and that the 
+various variables appearing in the propositions are assumed to be doubles.
+\enddemo
+
+$-X$:
+
+\nonumproclaim{Proposition 8.1}
+If $x$ is an AffApprox 
+then $S(-x) = -(S(x))$ where
+$$-x \equiv (-x.f; -x.f_0,-x.f_1,-x.f_2; x.{\rm err}).$$ \endproclaim
+
+
+$X+Y$:
+We analyze the addition of the  {\rm AffApproxes} 
+ $x = (x.f; x.f_0,x.f_1,\break x.f_2; x.{\rm err})$  and 
+$y = (y.f; y.f_0,y.f_1,y.f_2; y.{\rm err}).$  To get the first term in $x+y$ we add the XComplex numbers $x.f$ and $y.f;$ which
+produce the AComplex number $r\_f = x.f + y.f$ (see Proposition 7.4), and then we pluck off the XComplex part,
+which we denote $r\_f.z.$  The round-off error part $r\_f.e$ will be foisted into the overall error term $r\_{\rm error}$
+for $x+y.$ Similarly for the next three terms in $x + y.$
+
+Abstractly, the overall error term $r\_{\rm error}$ comes from adding the round-off error contributions $r\_f.e,\  r\_f_0.e,\  r\_f_1.e, 
+\ r\_f_2.e$ and the AffApprox error contributions $x.{\rm err},\  y.{\rm err}$.  Of course, we have to produce a machine version.
+
+\nonumproclaim{Proposition 8.2} If $x$ and $y$ are 
+{\rm AffApproxes, }
+then $S(x + y) \supseteq S(x) + S(y)${\rm ,} where
+$$x + y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f &=& x.f + y.f,\\
+r\_f_k &=& x.f_k + y.f_k,\\
+r\_{\rm error}& =& (1 + 3EPS)\\
+&&\otimes\ ((x.{\rm err} \oplus y.{\rm err}) \oplus ((r\_f.e \oplus
+r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
+\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+The error is given by 
+\begin{eqnarray*}
+&&\hskip-24pt (x.{\rm err} + y.{\rm err})  +\ ((r\_f.e + r\_f_0.e) + (r\_f_1.e + r\_f_2.e))\\
+&\le& (1+EPS/2) (x.{\rm err} \oplus
+y.{\rm err}) \\
+&&+\ (1+EPS/2)((r\_f.e \oplus r\_f_0.e) + (r\_f_1.e \oplus r\_f_2.e))\\
+&\le& (1+EPS/2)^3 ((x.{\rm err} \oplus
+y.{\rm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e)))\\
+&\le& (1 + 3EPS) \otimes ((x.{\rm
+err} \oplus y.{\rm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
+\end{eqnarray*}
+ To get the last line
+we used Lemma 7.1. \enddemo
+
+$X - Y$:
+
+\nonumproclaim{Proposition 8.3:} If $x$ and $y$ are {\rm AffApproxes,} then $S(x - y) \supseteq S(x) - S(y)${\rm ,}
+ where
+$$x - y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f& =& x.f - y.f,\\
+r\_f_k &= &x.f_k - y.f_k,\\
+r\_{\rm error} &=& (1 + 3EPS)\\
+&& \otimes\ ((x.{\rm err} \oplus y.{\rm err}) \oplus ((r\_f.e
+\oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
+\end{eqnarray*}
+\endproclaim
+
+$X + D$: 
+Here, we add the AffApprox $x = (x.f; x.f_0,x.f_1,x.f_2; x.{\rm err})$  to the double $y$.  The only terms that change are the first and the last.
+
+\nonumproclaim{Proposition 8.4}\hskip-8pt If $x$ is an 
+{\rm AffApprox}  and $y$ is a double{\rm ,} 
+then $S(x + y)\break \supseteq S(x) + S(y)${\rm ,} where
+$$x + y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f& =& x.f + y,\\
+r\_f_k &=& x.f_k,\\
+r\_{\rm error}& = &(1 + EPS) \otimes (x.{\rm err} \oplus r\_f.e).\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+The error is given by 
+$$x.{\rm err} + r\_f.e \le (1 + EPS) \otimes (x.{\rm err} \oplus r\_f.e)$$
+by Lemma 7.0. \enddemo
+
+$X - D$:
+\nonumproclaim{Proposition 8.5}\hskip-8pt If $x$ is an 
+{\rm AffApprox}  and $y$ is a double{\rm ,}
+then $S(x - y) \break\supseteq S(x) - S(y)${\rm ,} where
+$$x - y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f &= &x.f - y,\\
+r\_f_k &=& x.f_k,\\
+r\_{\rm error}& =& (1 + EPS) \otimes (x.{\rm err} \oplus r\_f.e).\end{eqnarray*}
+\endproclaim
+
+$X \times Y$: 
+We multiply the AffApproxes $x$ and $y$ while pushing all error into the $.{\rm err}$ term.
+
+We will use the functions (see Formulas 7.0 and 7.1, at the end of Section~7) ${\rm absUB}= (1 + 2EPS) \otimes
+{\rm hypot}_o(x.re,x.im)$ and 
+${\rm absLB}(x) = (1 - 2EPS) \otimes {\rm hypot}_o(x.re,x.im)$.
+
+When $x$ is an AffApprox, we define ${\rm dist}(x)$ to be $$(1 + 2EPS) \otimes ({\rm absUB}(x.f_0) \oplus ({\rm absUB}(x.f_1) \oplus {\rm absUB}(x.f_2))).$$  This is the machine representation of the sum of the absolute values of the linear terms in the AffApprox $x$ 
+(the proof is straightforward).
+
+\nonumproclaim{Proposition 8.6} If $x$ and $y$ are 
+{\rm AffApproxes,}
+then $S(x \times y) \supseteq S(x) \times S(y)${\rm ,} where
+$$x \times y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f &=& x.f \times y.f,\\
+r\_f_k &=& x.f \times y.f_k + x.f_k \times y.f,\\
+r\_{\rm error} &=& 
+(1 + 3EPS) \otimes (A \oplus (B \oplus C)),\end{eqnarray*}
+and
+\begin{eqnarray*}
+A &=& ({\rm dist}(x) \oplus x.{\rm err})\otimes ({\rm dist}(y) \oplus y.{\rm err}),
+\\
+B& =& {\rm absUB}(x.f) \otimes
+y.{\rm err} \oplus {\rm absUB}(y.f) \otimes x.{\rm err},\\
+C& =& (r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus
+r\_f_2.e).\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+We add the non-round-off error term for $x \times y$ to the various round-off error terms that accumulated.
+\begin{eqnarray*}
+&&\hskip-48pt (({\rm dist}(x) + x.{\rm err}) \times\ ({\rm dist}(y) + y.{\rm err})) +
+ (({\rm absUB}(x.f) \times y.{\rm err} 
+\\
+&& +\ 
+{\rm absUB}(y.f) \times x.{\rm err}) +
+ (r\_f.e + r\_f_0.e) + (r\_f_1.e + r\_f_2.e))
+\\
+&\le& 
+(1+EPS/2)^3[({\rm dist}(x) \oplus x.{\rm err})\otimes ({\rm dist}(y) \oplus y.{\rm err})]\\
+&& +\
+ (1+EPS/2)^2\{({\rm absUB}(x.f) \otimes y.{\rm err} 
+\\
+& &\oplus\ 
+{\rm absUB}(y.f) \otimes x.{\rm err}) +
+((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))\}
+\\
+&\le& (1+EPS/2)^3 A + (1+EPS/2)^3 (B \oplus C) \\
+&\le& (1+3EPS) \otimes (A \oplus (B \oplus C) ). \\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+
+$X \times D$: 
+
+\nonumproclaim{Proposition 8.7} \hskip-8pt If $x$ is an 
+AffApprox  and $y$ is a double{\rm ,} 
+then $S(x \times y)\break \supseteq S(x) \times S(y)${\rm ,} where
+$$x \times y = (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f& =& x.f \times y,\\
+r\_f_k &=& x.f_k \times y,\\
+r\_{\rm error} &=& (1+3EPS)\\
+&& \otimes\ ( (x.{\rm err} \otimes |y|) \oplus
+( (r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e)) ).
+\end{eqnarray*}
+\endproclaim
+
+$X/Y$: 
+For convenience, let  $ax = {\rm absUB}(x.f),\ ay = {\rm absLB}(y.f).$ 
+ 
+\nonumproclaim{Proposition 8.8} If $x$ and $y$ are 
+{\rm AffApproxes}  with $D > 0$ {\rm (}\/see below{\rm ),} then
+$S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+$$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+\begin{eqnarray*}
+r\_f &=& x.f / y.f,
+\\
+r\_f_k& =& (x.f_k \times y.f - x.f \times y.f_k)/ (y.f \times y.f),\\
+r.{\rm error} & =& (1 + 3EPS) \otimes (
+((1 + 3EPS) \otimes A \ominus (1 - 3EPS) \otimes B )\oplus C ),\end{eqnarray*}
+and
+\begin{eqnarray*}
+A &=& (ax \oplus ({\rm dist}(x) \oplus x.{\rm err})) \oslash D,\\
+B &=& (ax \oslash ay \oplus {\rm dist}(x) \oslash ay)
+\oplus  (({\rm dist}(y) \otimes ax) \oslash (ay \otimes ay)),\\
+C &=& (r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus
+r\_f_2.e),\\
+D &=& ay \ominus (1 + EPS) \otimes ({\rm dist}(y) \oplus y.{\rm err}).
+\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+As usual, we add the round-off errors to the old AffApprox error, 
+taking into account round-off error, working on it bit by bit.
+\begin{eqnarray*}
+ &&\hskip-16pt (ax + {\rm dist}(x) + x.{\rm err})/(ay - ({\rm dist}(y) + y.{\rm err}))\\
+&&  \le (1 + EPS/2)^2 \\
+&&\quad \times \ (ax \oplus ({\rm dist}(x)
+\oplus x.{\rm err}))/
+         (ay - (1 + EPS) \otimes ({\rm dist}(y) \oplus y.{\rm err}))\\
+&&  \le (1 + EPS/2)^2 (ax \oplus ({\rm dist}(x) \oplus
+x.{\rm err}))/
+         \Big(\left({1 \over 1 + EPS/2}\right) \\
+&&\quad\times \ (ay \ominus (1 + EPS) \otimes ({\rm dist}(y) \oplus y.{\rm err}))\Big)\\
+&& \le (1 + EPS/2)^4 (ax
+\oplus ({\rm dist}(x) \oplus x.{\rm err}))\\
+&&\quad \oslash
+         (ay \ominus (1 + EPS) \otimes ({\rm dist}(y) \oplus y.{\rm err}))\\
+&& \le   (1 + 3EPS) \otimes A.
+\end{eqnarray*}
+
+The next term, being subtracted, requires opposite inequalities.
+\begin{eqnarray*}
+&&(ax/ay + {\rm dist}(x)/ay) + {\rm dist}(y) \times ax / (ay \times ay)\\
+&&\quad \ge (1-EPS/2)(ax \oslash ay + {\rm
+dist}(x)
+\oslash ay) \\
+&&\qquad +  (1-EPS/2) ({\rm dist}(y) \otimes ax )/ ({1 \over 1 - EPS/2})(ay \otimes ay)\\
+&&\quad \ge ((1-EPS/2)^4 ((ax
+\oslash ay \oplus {\rm dist}(x) \oslash ay) \oplus  (({\rm dist}(y) \otimes ax) \oslash (ay \otimes ay)))\\
+&&\quad \ge (1 +
+EPS/2)(1 - 3EPS) (B)  \ge (1 - 3EPS) \otimes B.\end{eqnarray*}
+
+Finally, we do the round-off terms 
+$$((r\_f.e + r\_f_0.e) + (r\_f_1.e + r\_f_2.e)) \le (1 + EPS/2)^2 C $$
+and we put these three pieces together:
+\begin{eqnarray*}
+&&
+(ax + {\rm dist}(x) + x.{\rm err})/(ay - ({\rm dist}(y) + y.{\rm err}))
+\\
+&&\qquad  - 
+((ax/ay + {\rm dist}(x)/ay) + {\rm dist}(y) \times ax / (ay \times ay))\\
+&&\qquad
++ ((r\_f.e + r\_f_0.e) + (r\_f_1.e + r\_f_2.e))
+\\
+&&\quad \le 
+(1 + 3EPS) \otimes A - (1 - 3EPS) \otimes B + (1 + EPS/2)^2 C\\
+&&\quad \le (1+EPS/2)^2 (
+((1 + 3EPS) \otimes A \ominus (1 - 3EPS) \otimes B)
+ + C
+) \\
+&&\quad \le (1+3EPS) \otimes (
+((1 + 3EPS) \otimes A \ominus (1 - 3EPS) \otimes B)
+ \oplus C
+) . \\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+
+$D/X$:
+We   divide a double $x$ by an AffApprox $y$.
+For convenience, let $ax = |x|,\ ay = {\rm absLB}(y.f).\ $  Having done division out in the previous proposition, we will skip the proof of Proposition 8.9.  See the {\it Annals}
+web site for the proof.
+
+\nonumproclaim{Proposition 8.9} If $x$ is a double and $y$ is an 
+{\rm AffApprox}  with $D > 0$ {\rm (}\/see below{\rm ),}
+ then $S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+$$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error})$$
+with
+ \begin{eqnarray*}
+r\_f&\hskip-8pt =\hskip-8pt& x / y.f,\\
+r\_f_k&\hskip-8pt =\hskip-8pt& -(x \times y.f_k)/ (y.f \times y.f),\\
+r\_{\rm error}&\hskip-8pt =\hskip-8pt& (1+3EPS) \otimes ( 
+((1 + 2EPS) \otimes (ax  \oslash D) \ominus (1 - 3EPS) \otimes B)
+\oplus C),\\
+ B&\hskip-8pt =\hskip-8pt& ax \oslash ay  \oplus ({\rm dist}(y) \otimes ax \oslash (ay \otimes ay)),\\
+C& \hskip-8pt=\hskip-8pt& (r\_f.e \oplus r\_f_0.e)
+\oplus (r\_f_1.e \oplus r\_f_2.e),\\
+D &\hskip-8pt=\hskip-8pt& ay \ominus (1 + EPS) \otimes ({\rm dist}(y) \oplus y.{\rm err}).
+\end{eqnarray*}
+\endproclaim
+
+$X/D$:
+We   divide an AffApprox $x$ by a nonzero double $y$ (the computer will object if $y = 0$).  The proof is easy  and
+so we delete it.
+
+\nonumproclaim{Proposition 8.10} 
+If $x$ is an {\rm AffApprox}  and $y$ is a nonzero double{\rm ,} then
+$S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+$$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\rm error}),$$
+with
+\begin{eqnarray*}
+r\_f &\hskip-8pt=\hskip-8pt& x.f / y\\
+r\_f_k &\hskip-8pt=\hskip-8pt& x.f_k / y\\
+r\_{\rm error} &\hskip-8pt = \hskip-8pt&
+(1+3EPS) \otimes ( 
+(x.{\rm err}\oslash |y|)
+\oplus 
+[(r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e)]
+                                               ).\end{eqnarray*}
+\endproclaim
+
+$\sqrt X$: 
+Here, $x$ is an AffApprox and we let $ax = {\rm absUB}(x.f)$.  There are two cases to consider depending on whether or not
+$D = ax \ominus (1 + EPS) \otimes ({\rm dist}(x) \oplus x.{\rm err})$ is or is not greater than zero.
+
+\nonumproclaim{Proposition 8.11{\rm a}} If $x$ is an {\rm AffApprox}
+and
+$ D = ax \ominus (1 + EPS) \otimes ({\rm dist}(x) \oplus x.{\rm err})$ is not greater than zero{\rm ,} then 
+$S(\sqrt x) \supseteq \sqrt {S(x)}${\rm ,} where
+we use the crude overestimate $$\sqrt x \equiv \left(0;0,0,0;(1 + 2EPS) \otimes
+\root o \of {(ax \oplus (x\,{\rm dist} \oplus x.{\rm err}))} \right).$$
+\endproclaim
+
+\demo{Proof}
+\begin{eqnarray*}\sqrt {ax + x\,{\rm dist} + x.{\rm err}}&\le &(1 + EPS/2) \sqrt { (ax \oplus (x\,{\rm dist} \oplus x.{\rm err}))}\\
+&\le  &(1 + 2EPS) \otimes \root o \of { (ax \oplus (x\,{\rm dist} \oplus x.{\rm err}))}.
+\\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+
+\nonumproclaim{Proposition 8.11{\rm b}} If 
+$x$  is an {\rm AffApprox} and
+$ D = ax \ominus (1 + EPS) \otimes ({\rm dist}(x) \oplus x.{\rm err})$ is greater than zero{\rm ,}
+then $S(\sqrt x) \supseteq \sqrt {S(x)}${\rm ,} where
+ $$\sqrt{x} \equiv (r\_f.z; r\_f_0.z,r\_f_1.z,r\_f_2.z; r\_{\rm error})$$ 
+with
+\begin{eqnarray*}
+r\_f& = &\sqrt {x.f},\\
+t &=& r\_f + r\_f,\\
+r\_f_k& = &{\rm AComplex} (x.f_k.re,x.f_k.im;0) / t.
+\end{eqnarray*}
+{\rm (}\/Simply put{\rm ,} $r\_f_k = x.f_k / (2\sqrt{x.f})$. The reason we have to fuss to define $r\_f_k$ is
+ because
+$\sqrt{x.f}$ is an {\rm AComplex.)}
+\begin{eqnarray*}
+  r\_{\rm error}& \hskip-8pt =\hskip-8pt &
+(1+3EPS)\\ &\hskip-8pt\hskip-8pt& \otimes\hskip-1pt \left\{\hskip-1pt
+(1+EPS) \otimes \root o \of {ax}\ominus
+(1 - 3EPS) \otimes [{\rm dist}(x)\oslash(2 \times \root o \of {ax})
+\oplus \root o \of {D} ]\right\}
+\\
+&\hskip-8pt\hskip-8pt&  \oplus  
+((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))
+.\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+Let us work on the pieces.
+$$\sqrt {ax} \le (1 + EPS) \otimes \root o \of {ax}.$$
+
+Next,
+\begin{eqnarray*}
+&&{\rm dist}(x)/(2 \sqrt {ax}) + \sqrt {ax - ({\rm dist}(x) + x.{\rm err})}\\
+&&\quad 
+\ge  (1 - EPS/2)^2 {\rm dist}(x) \oslash (2 \root o \of {ax}) 
+\\
+&&\qquad + (1 - EPS/2)^{1/2}\sqrt {ax \ominus (1+EPS) \otimes ({\rm dist}(x) \oplus x.{\rm err})}
+                                              \\
+&&\quad \ge(1 - EPS/2)^3 \left[{\rm dist}(x) \oslash (2 \root o \of {ax}) \oplus \root o \of {D}\
+\right]\\
+&&\quad \ge (1 + EPS/2) (1 - 3EPS) \left[{\rm dist}(x) \oslash (2 \root o \of {ax}) \oplus \root o \of {D}\ \right]\\
+&&\quad \ge (1 -
+3EPS) \otimes \left[{\rm dist}(x) \oslash (2 \root o \of {ax}) \oplus \root o \of {D}\ \right].
+\end{eqnarray*}
+
+Adding in the usual term, we get as our error bound
+\begin{eqnarray*}
+&&\sqrt {ax} - ({\rm dist}(x)/(2 \sqrt {ax}) + \sqrt {ax - ({\rm dist}(x) + x.{\rm err})}\ )\\
+&&\qquad+\ ((r\_f.e + r\_f_0.e) + (r\_f_1.e + r\_f_2.e))\\
+&&\quad \le (1 + EPS) \otimes \root o \of {ax} 
+- (1 - 3EPS) \otimes [{\rm dist}(x) \oslash (2 \root o \of {ax}) \oplus 
+\root o \of {D}\ ]
+\\
+&&\qquad+\ (1 + EPS/2)^2 ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))
+      \\
+&&\quad \le (1 + EPS/2)^3 \big(\{(1 + EPS) \otimes \root o \of {ax} \\
+&&\qquad 
+\ominus\ (1 - 3EPS) \otimes [{\rm dist}(x) \oslash (2 \root o \of {ax}) \oplus \root o \of {D}\ ]\}
+\\
+&&\qquad \oplus\ ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))\big)
+ \\
+&&\quad \le (1 + 3EPS) \otimes (
+\{(1 + EPS) \otimes \root o \of {ax} 
+\\
+&&\qquad\ominus\ (1 - 3EPS) \otimes [{\rm dist}(x) \oslash (2 \root o \of {ax})\oplus \root o \of {D}\ ]\}
+\\
+&&\qquad \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))
+                                                ).\\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+
+
+

@@ -1,0 +1,123 @@
+\def\Arccosh{{\rm Arccosh}}
+\advance\sectioncount by -1
+\section{Introduction}
+
+This paper documents a rigorous computer-assisted procedure for analyzing 
+hyperbolic $3$-manifolds.
+
+The first two applications of this procedure was published as part of [GMT],
+as Propositions 1.28 and 2.8. The proof of Proposition 1.28 is reproduced here
+with only minor changes, including most of Section 1 and the entirety of Sections 2 through 5.
+This document introduces techniques useful for "finding killerwords" in Section 6,
+and in so doing borrows from material that was originally published as remarks
+in [GMT].
+
+k
+that every hyperbolic $3$-manifold has a non-coalescible insulator family,
+and therefore that homotopy hyperbolic $3$-manifolds are hyperbolic. Formally
+
+Informally, the result was first published as Conjecture 1.31 of [GMT],
+and recently become theorem:
+
+\proclaim{Theorem} Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
+a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
+$M$ is isometric to one of $N_0, \cdots, N_6$, where:
+\begin{itemize}
+\ritem{i)} $N_0$ is Vol3.
+\ritem{ii)} $N_1$ is FIXME.
+\ritem{iii)} $N_2$ is FIXME.
+\ritem{iv)} $N_3$ is FIXME.
+\ritem{v)} $N_4$ is FIXME.
+\ritem{vi)} $N_5$ is FIXME.
+\ritem{vii)} $N_6$ is FIXME.
+\end{itemize}
+\endproclaim
+\demo{Proof}
+Let $X_0, \cdots, X_6$ denote the exceptional regions of Theorem 2.XX,
+with $N_i$ the corresponding conjectural manifold.
+[GMT] showed that $N_0$=Vol3 is the unique manifold in the region
+and [JR] showed that Vol3 covered no 3-manifold.
+[JR] also proved that $N_5$ and $N_6$ are isometric.
+[CLLMR] and [L] identify a manifold in each region
+and [CLLMR] show that these manifolds are the unique ones in its region.
+[CLLMR] show that $N_1$, $N_5$ and $N_6$ cover no manifold.
+In [GT] the proof is completed by showing that $N_3$ covers no manifold
+and each of $N_2$ and $N_4$ 2-fold cover manifolds,
+however the quotients are all non exceptional,
+i.e. each shortest geodesic has a $log(3)/2$ tube.
+\enddemo
+
+Other applications of the procedure:
+
+Theorem [G]  (Smale conjecture of hyperbolic 3-manifolds)
+If N is a closed hyperbolic 3-manifold,
+then the natural inclusion $Isom(N)\to Diff(N)$ is a homotopy equivalence.
+
+The proof made essential use of the fact that a shortest geodesic of a closed hyperbolic 3-manifold satisfies the insulator condition [GMT]
+
+Theorem [GMM], [Mi] The Week's manifold is the
+unique closed orientable hyperbolic 3-manifold of minimal volume.
+
+This result relies on 
+
+Theorem  [ACS] Suppose that M is a closed, orientable hyperbolic 3Ðmanifold,
+and that C is a shortest geodesic in M.
+Set N D drillC .M/. If $tuberad(C) \ge .log 3/2$ then
+volN < 3:0177 volM.
+
+This is based on a result of [ADST], that makes essential use of Perelman's [Pe] monotonicty result, a key element of his proof of geometrization and the log(3)/2 theorem of [GMT].  Theorem C is used to prove other results such as 
+
+Theorem [ACS] Suppose that M is a closed, orientable, hyperbolic
+3Ðmanifold such that $vol(M)\le 1.22$.
+Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.
+
+(The statement is sharpened slightly to take into account [GT])
+
+Theorem [LM] Let M be a compact orientable 3-manifold with boundary a
+torus, and with interior admitting a complete finite-volume hyperbolic structure.
+Then the number of exceptional slopes on M is at most 10.
+
+This result, known as the Gordon conjecture, relies on rigorous computer assistance using the AffApprox technology.
+
+Finally, the procedure is currently in use by Gabai, Thurston, and Yarmola
+to rigorously analyze small orientable cusped hyperbolic $3$-manifolds,
+and to rigorously analyze small non-orientable closed hyperbolic $3$-manifolds.
+
+* ORGANIZATION
+This paper is organized as follows.  
+
+In Section 1 we introduce [GMT]'s Proposition 1.28 as Theorem 2.XX, and sketch its proof.
+
+In Section 2 we provide a formal statement and proof of Theorem 2.XX.
+
+INCREMENTSECTIONNUMBER(
+In Sections 2 through 5 we address the computer-related aspects of the 
+proof.   In Section 2, the method for describing the decomposition of the 
+parameter space ${\cal W}$ into sub-regions is given, and the conditions 
+used to eliminate all but seven of the sub-regions are discussed.  Near the 
+end of this chapter, the first part of a detailed example is given.  Eliminating 
+a sub-region requires that a certain function is shown to be bounded 
+appropriately over the entire sub-region.  This is carried out by using a 
+first-order Taylor approximation of the function together with a 
+remainder 
+bound.  Our computer version of such a Taylor approximation with remainder bound 
+is called an {\it AffApprox} and in Section 3, the relevant theory is 
+developed.  At this point, the detailed example of Section 2 can be 
+completed.
+
+In Sections 4 and 5, round-off error analysis appropriate to our 
+set-up is introduced.  Specifically, in Section 5, round-off error is 
+incorporated 
+into the {\it AffApprox} formulas introduced in Section 3.  The proofs here 
+require an analysis of round-off error for complex numbers, which is carried 
+out in Section 4.
+)
+
+In Section 7 we WORDSMITH(breadcrumbs about finding killerwords).
+
+Finally, in Section 8, we present an updated version of
+the code used to check that the proof is valid,
+with self-contained copies of the proofs required for the reader check its own validity.
+
+{\it Acknowledgements}.
+FIXME

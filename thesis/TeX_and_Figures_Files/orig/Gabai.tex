@@ -1,0 +1,113 @@
+\documentstyle{amltd}
+\begin{document}
+\annalsline{157}{2003}
+\received{September 6, 1996}
+\revised{September 29, 2000}
+\startingpage{335}
+
+\def\bye{\end{document}}
+ \font\tenrm=cmr10
+\input BoxedEps.Tex %for mac
+\SetTexturesEPSFSpecial %for mac
+%\input boxedeps.tex % unix
+%\SetepsfEPSFSpecial % unix
+\HideDisplacementBoxes
+\def\figin#1#2{
+$$
+ {\BoxedEPSF{#1.eps scaled
+#2}%
+}%
+$$
+\noindent}
+%--------------- Author macros ---------------
+%for Bbb in amstex
+\catcode`\@=11
+\font\twelvemsb=msbm10 scaled 1100
+\font\tenmsb=msbm10
+%\font\ninemsb=msbm7 scaled 1100%msbm9
+\font\ninemsb=msbm10 scaled 800
+\newfam\msbfam
+\textfont\msbfam=\twelvemsb  \scriptfont\msbfam=\ninemsb
+  \scriptscriptfont\msbfam=\ninemsb
+\def\msb@{\hexnumber@\msbfam}
+\def\Bbb{\relax\ifmmode\let\next\Bbb@\else
+ \def\next{\errmessage{Use \string\Bbb\space only in math
+mode}}\fi\next}
+\def\Bbb@#1{{\Bbb@@{#1}}}
+\def\Bbb@@#1{\fam\msbfam#1}
+\catcode`\@=12
+
+
+ \catcode`\@=11
+\font\twelveeuf=eufm10 scaled 1100
+\font\teneuf=eufm10
+\font\nineeuf=eufm7 scaled 1100%eufm9
+\newfam\euffam
+\textfont\euffam=\twelveeuf  \scriptfont\euffam=\teneuf
+  \scriptscriptfont\euffam=\nineeuf
+\def\euf@{\hexnumber@\euffam}
+\def\frak{\relax\ifmmode\let\next\frak@\else
+ \def\next{\errmessage{Use \string\frak\space only in math
+mode}}\fi\next}
+\def\frak@#1{{\frak@@{#1}}}
+\def\frak@@#1{\fam\euffam#1}
+\catcode`\@=12
+%-------------- Author entries --------------------
+
+\title{} %Article title
+\shorttitle{} % Shortened version for headline title
+
+%% \acknowledgements{}
+%\author{}
+%\twoauthors{}{}
+%\authors{}% Separate each author with a comma and a space.
+\institutions{
+{\eightpoint {\it E-mail address\/}:
+}}
+%-------------- Article Text--------------------
+
+%\intro %(Optional, Introduction)
+
+\font\titr=cmr10 scaled 1800
+\font\shortr=cmr8
+%--------------- Author macros ---------------
+\def\ritem#1{\item[{\rm #1}]}
+%-------------- Author entries --------------------
+\vglue-1.5in
+\title{Homotopy hyperbolic {\titr 3}-manifolds\\ are hyperbolic} %Article title
+\def\titleheadline#1{\def\one{#1}\ifx\one\empty\else
+\gdef\thetitle{{\frenchspacing%
+\let\\ \relax%\eightsc\uppercase{#1}
+{#1}}}\fi}
+\newif\ifshort
+\def\shortname#1{\global\shorttrue\xdef
+\theauthors{{\eightsc\uppercase{#1}}}}
+\let\shorttitle\titleheadline
+\shorttitle{ \eightsc\uppercase{Homotopy hyperbolic} {\shortr 3}-\uppercase{manifolds}} % Shortened version for
+%headline title
+%\acknowledgements{}
+ \twoauthors{David Gabai, G. Robert Meyerhoff,}{Nathaniel Thurston}
+ \institutions{California Institute of Technology, Pasadena, Ca\\
+{\eightpoint {\it Current address\/}}: Princeton University, Princeton, NJ\\
+{\eightpoint {\it E-mail address\/}: gabai@math.princeton.edu}\\
+\vglue6pt
+Boston College, Chestnut Hill, MA\\
+{\eightpoint {\it E-mail address\/}: robert.meyerhoff@bc.edu}\\
+\vglue6pt
+Predictive Networks, Cambridge, MA\\
+{\eightpoint {\it E-mail address\/}: nthurston@predictivenetworks.com}
+}
+%-------------- Article Text--------------------
+%\intro %(Optional, Introduction)
+\input Chapter_0.tex
+ \input Chapter_1.tex
+\input Chapter_2.tex
+ \input Chapter_3.tex
+ \input Chapter_4.tex
+ \input Chapter_5.tex
+ \input Chapter_6.tex
+ \input Chapter_7.tex
+ \input Chapter_8.tex
+ \input Appendix.tex
+\input References.tex
+\bye

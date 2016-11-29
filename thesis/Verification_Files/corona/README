@@ -1,0 +1,4 @@
+This directory contains the fudging program, the data used by the program to
+rule out the seven exceptional regions, and the output produced by the program.
+It is organized in exactly the same way as the verify program,
+except that the test_float program and output aren't included.

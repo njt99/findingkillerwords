@@ -1,0 +1,10 @@
+explain why: realization that tightness of error bounds controls success or failure.
+
+explain why: beccause we want to keep errors as tight as possible,
+we want better than interval arithmetic.
+
+explain why: 1-d taylor rather than 2-D taylor.
+
+explain why: circles for epsilon bounds.
+:w
+

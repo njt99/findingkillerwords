@@ -1,0 +1,33 @@
+Intro
+
+1. Math setup.
+  Log(3)/2 theorem. (proposition 1.28)
+  
+  parameter space = compact region of C^3
+  2x mapping from parameter space -> GL(2,C)
+  2x mapping from GL(2,C) -> R (retrieves two of the coordinates)
+
+  identities
+  impossible identities
+  
+  reduce to PSL(2,C) inequalities
+    length (complex)
+    distance (complex)
+
+2. CS setup.
+  Rigorous verification.
+
+3. {PSL(2,_)@,}AffApprox calculus.
+
+4. Finding Killer Words.
+  finding killer words in the presence of identities.
+
+5. Appendices
+  * programs
+  * detailed affapprox proofs
+
+
+
+
+---
+homotopy of brain function

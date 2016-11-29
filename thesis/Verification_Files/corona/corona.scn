@@ -1,0 +1,137 @@
+\I\X68:\.{ACJ.C }\X
+\I\X66:\.{ACJ.h }\X
+\I\X67:\.{ACJ.inline }\X
+\I\X72:\.{Codes.C }\X
+\I\X71:\.{Codes.h }\X
+\I\X65:\.{Complex.C }\X
+\I\X63:\.{Complex.h }\X
+\I\X64:\.{Complex.inline }\X
+\I\X9:Declaration of floating-point functions\X
+\U61.
+\I\X10:Definition of floating-point functions\X
+\U62.
+\I\X28:Definition of \PB{${-}\|x$} for \PB{\&{ACJ} \|x}\X
+\U67.
+\I\X45:Definition of \PB{${-}\|x$} for \PB{\&{XComplex} \|x}\X
+\U64.
+\I\X27:Definition of \PB{\&{ACJ}}\X
+\U66.
+\I\X44:Definition of \PB{\&{AComplex}}\X
+\U63.
+\I\X8:Definition of \PB{\.{EPS}} and \PB{\.{HALFEPS}}\X
+\U61.
+\I\X7:Definition of \PB{\.{MAXDEPTH}}\X
+\U73.
+\I\X18:Definition of \PB{\&{SL2ACJ}}\X
+\U69.
+\I\X43:Definition of \PB{\&{XComplex}}\X
+\U63.
+\I\X40:Definition of \PB{\\{absLB}(\|x)} for \PB{\&{ACJ} \|x}\X
+\U67.
+\I\X60:Definition of \PB{\\{absLB}(\|x)} for \PB{\&{XComplex} \|x}\X
+\U64.
+\I\X39:Definition of \PB{\\{absUB}(\|x)} for \PB{\&{ACJ} \|x}\X
+\U67.
+\I\X59:Definition of \PB{\\{absUB}(\|x)} for \PB{\&{XComplex} \|x}\X
+\U64.
+\I\X26:Definition of \PB{$\\{closeGenerator}(\|x,\|z)$} for \PB{\&{ACJ} %
+\|x${},{}$ \|z}\X
+\U70.
+\I\X15:Definition of \PB{\\{covers\_hole}}\X
+\U72.
+\I\X13:Definition of \PB{\\{evaluateWord}}\X
+\U72.
+\I\X16:Definition of \PB{\\{horizon}}\X
+\U72.
+\I\X5:Definition of \PB{\\{inequalityFor}}\X
+\U73.
+\I\X11:Definition of \PB{\\{inequalityHolds}}\X
+\U72.
+\I\X20:Definition of \PB{\\{inverse}(\|x)} for \PB{\&{SL2ACJ} \|x}\X
+\U70.
+\I\X17:Definition of \PB{\\{larger\_angle}}\X
+\U72.
+\I\X22:Definition of \PB{\\{length}(\|x)} for \PB{\&{SL2ACJ} \|x}\X
+\U70.
+\I\X6:Definition of \PB{\\{main}}\X
+\U73.
+\I\X24:Definition of \PB{\\{notFPower}(\|x)} for \PB{\&{SL2ACJ} \|x}\X
+\U70.
+\I\X23:Definition of \PB{\\{notIdentity}(\|x)} for \PB{\&{SL2ACJ} \|x}\X
+\U70.
+\I\X21:Definition of \PB{\\{orthodist}(\|x)} for \PB{\&{SL2ACJ} \|x}\X
+\U70.
+\I\X25:Definition of \PB{\\{shortGenerator}(\|z)} for \PB{\&{ACJ} \|z}\X
+\U70.
+\I\X41:Definition of \PB{\\{size}(\|x)} for \PB{\&{ACJ} \|x}\X
+\U67.
+\I\X38:Definition of \PB{\\{sqrt}(\|x)} for \PB{\&{ACJ} \|x}\X
+\U68.
+\I\X58:Definition of \PB{\\{sqrt}(\|x)} for \PB{\&{XComplex} \|x}\X
+\U65.
+\I\X4:Definition of \PB{\\{verify}}\X
+\U73.
+\I\X14:Definition of \PB{\\{wordImpliesCommuting}}\X
+\U72.
+\I\X33:Definition of \PB{$\|x*\|y$} for \PB{\&{ACJ} \|x${},{}$ \|y}\X
+\U68.
+\I\X34:Definition of \PB{$\|x*\|y$} for \PB{\&{ACJ} \|x} and \PB{\&{double} %
+\|y}\X
+\U67.
+\I\X19:Definition of \PB{$\|x*\|y$} for \PB{\&{SL2ACJ} \|x${},{}$ \|y}\X
+\U70.
+\I\X54:Definition of \PB{$\|x*\|y$} for \PB{\&{XComplex} \|x${},{}$ \|y}\X
+\U64.
+\I\X52:Definition of \PB{$\|x*\|y$} for \PB{\&{XComplex} \|x} and \PB{%
+\&{double} \|y}\X
+\U64.
+\I\X29:Definition of \PB{$\|x+\|y$} for \PB{\&{ACJ} \|x${},{}$ \|y}\X
+\U67.
+\I\X31:Definition of \PB{$\|x+\|y$} for \PB{\&{ACJ} \|x} and \PB{\&{double} %
+\|y}\X
+\U67.
+\I\X50:Definition of \PB{$\|x+\|y$} for \PB{\&{AComplex} \|x${},{}$ \|y}\X
+\U64.
+\I\X48:Definition of \PB{$\|x+\|y$} for \PB{\&{XComplex} \|x${},{}$ \|y}\X
+\U64.
+\I\X46:Definition of \PB{$\|x+\|y$} for \PB{\&{XComplex} \|x} and \PB{%
+\&{double} \|y}\X
+\U64.
+\I\X30:Definition of \PB{$\|x-\|y$} for \PB{\&{ACJ} \|x${},{}$ \|y}\X
+\U67.
+\I\X32:Definition of \PB{$\|x-\|y$} for \PB{\&{ACJ} \|x} and \PB{\&{double} %
+\|y}\X
+\U67.
+\I\X51:Definition of \PB{$\|x-\|y$} for \PB{\&{AComplex} \|x${},{}$ \|y}\X
+\U64.
+\I\X49:Definition of \PB{$\|x-\|y$} for \PB{\&{XComplex} \|x${},{}$ \|y}\X
+\U64.
+\I\X47:Definition of \PB{$\|x-\|y$} for \PB{\&{XComplex} \|x} and \PB{%
+\&{double} \|y}\X
+\U64.
+\I\X35:Definition of \PB{$\|x/\|y$} for \PB{\&{ACJ} \|x${},{}$ \|y}\X
+\U68.
+\I\X37:Definition of \PB{$\|x/\|y$} for \PB{\&{ACJ} \|x} and \PB{\&{double} %
+\|y}\X
+\U67.
+\I\X57:Definition of \PB{$\|x/\|y$} for \PB{\&{AComplex} \|x${},{}$ \|y}\X
+\U65.
+\I\X56:Definition of \PB{$\|x/\|y$} for \PB{\&{XComplex} \|x${},{}$ \|y}\X
+\U65.
+\I\X53:Definition of \PB{$\|x/\|y$} for \PB{\&{XComplex} \|x} and \PB{%
+\&{double} \|y}\X
+\U64.
+\I\X36:Definition of \PB{$\|x/\|y$} for \PB{\&{double} \|x} and \PB{\&{ACJ} %
+\|y}\X
+\U68.
+\I\X55:Definition of \PB{$\|x/\|y$} for \PB{\&{double} \|x} and \PB{%
+\&{XComplex} \|y}\X
+\U65.
+\I\X12:Find \PB{\\{pos}} and \PB{\\{size}} of \PB{$\\{where},\\{depth}$}\X
+\Us11\ET15.
+\I\X70:\.{SL2ACJ.C }\X
+\I\X69:\.{SL2ACJ.h }\X
+\I\X62:\.{roundoff.c }\X
+\I\X61:\.{roundoff.h }\X
+\I\X73:\.{verify.C }\X
+
