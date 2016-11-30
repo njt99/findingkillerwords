@@ -1,8 +1,0 @@
-until 11: work on list items in breadcrumbs section.
-11-12: andrew reads breadcrumbs / njt revises intro.
-
-p1 computer code.
-  conditionlist
-  refine
-  verify
-

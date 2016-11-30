@@ -1,0 +1,5 @@
+yarmola: explain why: realization that tightness of error bounds controls success or failure.
+yarmola: explain why: beccause we want to keep errors as tight as possible,
+yarmola: explain why: we want better than interval arithmetic.
+yarmola: explain why: 1-d taylor rather than 2-D taylor.
+yarmola: explain why: circles for epsilon bounds.
