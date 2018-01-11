@@ -1,21 +1,49 @@
 \section{A trail of breadcrumbs about finding killer words}
-RECYCLE(
-For convenience, we will generally refer to a ``sub-box" simply as a ``box."
-)
 
-Here we outline some hints which might be useful
-in transforming a problem statement similar to the one which inspired this effort
-into what could eventually be published as the proof of a theorem.
+Here we outline some hints in the hope that they will provide insight into
+how one might reasonably construct a similar proof.
 
-It's easy to construct a process which would in theory eventually lead to a solution;
-the difficulty is in ensuring an answer within a practical amount of time and effort.
+To begin, the existence of an algorithm which could in theory eventually finish should be obvious.
+What's not quite as obvious are how to address time scales involved.
+When the author first came across the problem, at a talk by Meyerhoff at the Geometry Center,
+it was shown to be amenable to computation, with a method that - if allowed to run - would have
+required the more compute power than the world had, for longer than the universe would last.
+In the end, counting all of the false starts,
+arriving at a proof required several CPU-years of then-state-of-the-art machines
+(the "NP" part of the problem), while checking the proof required about a CPU-month (the "P" part).
 
-The first steps are in manipulating the problem statement into an efficiently-addressible form.
+The questions that were (or - in hindsight - should have been)
+always in mind during the months of proof construction:
+\begin{itemize}
+  \ritem{i} "How much time do you plan to devote to the effort?"
+  \ritem{ii} "How much computer time could you reasonably devote to brute-force calculation?"
+  \ritem{iii} "What are upper bounds on the compute time reduction
+              a successful realization of an idea should yield?"
+  \ritem{iv} "What are the most critical factors controlling run time?"
+  \ritem{v} "What are the current optimistic and pessimistic estimates for time to completion?"
+  \ritem{vi} "How can I gather better insight about the biggest uncertainties about run time remaining?"
+  \ritem{vii} "How do the ideas I choose to pursue now impact the flexibility
+               to pursue other ideas in future?"
+To be sure, there is other effort as well;
+in particular, the thrill of actually doing pure math and finding new insight
+can make the whole effort intellectually rewarding,
+above and beyond the reward a successfully completed project brings.
+
+In approaching a problem of this nature, the initial approach is all about
+mathematical thought experiments,
+the goal of which is to arrive at a decision
+that one or several computational pathways
+have a chance of success
+of - at minimum - "above reasonable doubt"
+of being the most efficient way
+of making - at minimum - "significant progress"
+toward a complete solution to the original problem.
+
 In this category for this proof were:
 \begin{itemize}
-  \ritem{i)} realization that the tightness of error estimates would govern success or failure.
-  \ritem{ii)} an initial leap to the idea of a self-contained proof using an affine interval calculus.
-DETAIL(
+  \ritem{i} early realization that the tightness of error estimates would govern success or failure.
+  \ritem{ii} an initial leap to the idea of a self-contained proof using an affine interval calculus.
+
 incorporate the round-off error into the remainder term.  
 The main reason for this additional complexity is to get
 more accuracy in our calculation of AffApproxes, 
