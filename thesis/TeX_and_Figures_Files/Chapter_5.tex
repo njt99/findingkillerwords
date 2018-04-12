@@ -1,393 +1,650 @@
- 
-\section{Conditions and sub-boxes}
-  
-In this section we expand on some topics mentioned briefly in Section 1.  As such, it would be useful to look again at
-FIXME(Definitions 1.8, 1.12, and 1.22, and Remark 1.9),
-where ${\cal P}$, ${\cal T}$ and their partners (under exponentiation)
-${\cal W}$, ${\cal S}$ are introduced, and at
-FIXME(Definition 1.18)
- where the notion of a killerword is introduced (the
-definition is phrased in terms of ${\cal P}$, but the definition also makes sense for ${\cal W}$).  Note that working with
-the region
-${\cal P}$ is intuitively appealing, but working with the box ${\cal W}$ is vastly superior computationally (see Remark
-1.21).
+\section{Complex numbers with round-off error}
 
-FIXME(Theorem 0.2),
-hence
-FIXME(Theorem 0.1), follows from
-FIXME(Propositions 1.28, 2.8, 3.1, and 3.2).
-  The computational aspects of the proofs of each of these propositions are similar.  We will focus on
-FIXME(Proposition 1.28)
- here.
-Its proof   amounts to decomposing 
- ${\cal W}$ into a collection of sub-boxes of two types:
+
+{\it Remark} 7.1.
+The theoretical method for proving Theorem 0.2 has been implemented via the computer program {\it verify}, which is available, together with the relevant data sets, at the {\it Annals} web site.  To make this computer-aided proof rigorous, we needed to deal with round-off error in calculations.  
+
+One approach to round-off error would be to use interval arithmetic packages to carry out all calculations with floating-point machine numbers, or to generate our own version of these packages.  
+However, it appears that this approach
+would be much too slow given the size of our collection of sub-boxes and conditions/killerwords.  
+
+To solve this problem of speed, we implement round-off error at a higher level of programing.  That is, we incorporate round-off error directly
+ into\break AffApproxes,  which makes our error calculations more accurate, thereby avoiding much subdivision of
+sub-boxes. This necessitates that we incorporate round-off error directly into complex numbers as well. 
+In this section we show how to do standard operations on complex numbers while keeping track of round-off error.
+In the next section we work with  AffApproxes.
+
+\demo{Definition {\rm 7.2}}
+There are two types of complex numbers to consider: 
+
 \begin{itemize}
-\item[1)]   The 11 sub-boxes which comprise the 
-exceptional boxes $X_0, X_1, \ldots, X_6.$ 
+\item[1)]  An {\it XComplex} $x = (x.{\rm re}, x.{\rm im})$ corresponds to a complex number that is represented exactly; it
+simply consists of a real part and an imaginary part.
 
-\item[2)]   Sub-boxes each of which has an associated {\it condition} that will describe how to kill that entire sub-box,
-perhaps with the help of a killerword.  To {\it kill} a sub-box means to show that 
-${\cal S} - \bigcup_{n = 0,\dots, 6} X_n$ has no point in the sub-box. 
+\item[2)]  An {\it AComplex} $x = (x.{\rm re}, x.{\rm im}; x.e)$ corresponds to an ``interval'' that contains the complex number in
+question.  Thus, it consists of an XComplex and a floating-point number representing the error.  In particular, the AComplex
+$x$ represents the set $S(x)$ of complex numbers\break 
+$\{w\ :\ |w - (x.{\rm re} + i (x.{\rm im}))| \le x.e\}$.  Note that $S(x)$ is also defined
+for an XComplex if we conceptualize an XComplex as an AComplex with
+$x.e = 0.$
 \end{itemize}
-\noindent The set-up for efficiently describing these sub-boxes will be given in Construction 5.3. 
- 
 
-We now list the conditions used to kill the nonexceptional sub-boxes.  There are two types of conditions: the trivial and
-the interesting.  The trivial conditions kill sub-boxes in ${\cal W}$ since the sub-boxes in question miss 
-$\exp({\cal P}).$  The interesting conditions are where the real work is done, and they require a killerword in $f, w,
-f^{-1}, w^{-1}$ to work their magic (see
-FIXME(Remark 1.17)
-).
+\enddemo
 
-To be consistent with the computer program {\it verify} we use the following notation: $L^{\prime} = z_0 + i z_3$,
-$D^{\prime} = z_1 + i z_4,$ and $R^{\prime} = z_2 + i z_5.$  Here $(L^{\prime}, D^{\prime}, R^{\prime}) \in {\cal W}$ and
-$L^{\prime} = \exp(L) = \exp(l+it),\   D^{\prime} = \exp(D) = \exp(d+ib),\  
-R^{\prime} = \exp(R) = \exp(r+ia).$
-\vglue10pt
- {{\bf The trivial conditions  
-FIXME(5.1)
-}}.
-\vglue6pt
-{\it Condition} `s' ({\it short}):  Tests that all points in the sub-box have $|z_0 + i z_3| < 1.10274.$  This ensures that  
-$$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| < 1.10274 < \exp(0.0978),$$  and
-FIXME(Definition 1.12)
- tells us that we are
-outside of $\exp({\cal P}).$
-\vglue6pt
-{\it Condition} `l' ({\it long}): Tests that all points in the sub-box have $|z_0 + i z_3| > 3.63201.$  This ensures that  
-$$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| > 3.63201 > \exp(1.289785)$$ and we are outside of $\exp({\cal P}).$  
-\vglue6pt
-{\it Condition} `n' ({\it near}): Tests that all points in the sub-box have $|z_1 + i z_4|\break < 1.$  This ensures that 
-$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4| <1= \exp(0)$$ and we are outside of $\exp({\cal P}).$
-\vglue6pt
-{\it Condition} `f' ({\it far}): Tests that all points in the sub-box have $|z_1 + i z_4| > 3.$  This ensures that 
-$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4|  > 3= \exp(\ln 3)$$ and we are outside of $\exp({\cal P}).$  
-\eject
+{\it Remark} 7.3.
+In general,  our operations  act on XComplexes and produce AComplexes, or they act on AComplexes and produce
+ AComplexes.  In one case, the unary minus, an XComplex goes to an XComplex.  
+In the calculations that follow the effect on the error is the whole point.
 
-{\it Condition} `w' ({\it whirle  big}): Tests that all points in the sub-box have $|z_2 + i z_5|^2 > |z_0 + i z_3| $  This
-ensures that $$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  > \sqrt{|z_0 + i z_3|} =  \sqrt {\exp(l)} = \exp(l/2)$$ and
-we are outside of $\exp({\cal P}).$  
-\vglue6pt
-{\it Condition} `W' ({\it whirle  small}): Tests that all points in the sub-box have $|z_2 + i z_5| < 1. $  This ensures that
-$$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are outside of $\exp({\cal P}).$
+\demo{Conventions and standards {\rm 7.4}}
+We begin, by writing down our basic rules, which follow easily from the IEEE-754 standard for machine arithmetic (see [IEEE]).
+(Actually,  the ``hypot" function $h(a,b)$, which computes by elaborate chicanery $\sqrt{a^2 + b^2},$ is not part of the IEEE-754 standard, but  satisfies the appropriate standard according to the documentation provided (see [K1]).)  The operations here are on
+double-precision floating-point real numbers (``doubles") and we denote a true operation by the usual symbol and the associated machine operation by the same symbol in a circle, with two exceptions: a machine square root $\sqrt a$ is denoted $\root o \of a$ and the machine version of the hypot function is denoted $h_\circ$.  Perhaps a third exception is our occasional notation of true multiplication by the absence of a symbol.  
 
+There is a finite set of numbers (sometimes called ``machine numbers") which are representable on the computer.  With
+technicalities ignored,    a nonzero floating-point number is represented by a fixed number of bits of which
+the first determines the sign of the number, the next $m$ represent the exponent, and the remaining $n$ represent the
+mantissa of the number.  Because our nonzero numbers start with a 1, that means the $n$ mantissa bits actually represent
+the next
+$n$ binary digits after the 1.  That is, the mantissa is actually $1.b_1b_2b_3...b_{n}.$   The IEEE-754 standard calls for
+64-bit doubles with $m = 11$ and $n = 52.$  We define $EPS$ to be $2^{-n},$ in which case $EPS/2$ is $2^{-(n + 1)}.$  
+
+The IEEE-754 standard states that the result of an operation
+ is always the closest representable number to the true solution (as long as we are in the bounds of representable
+numbers).  For example, for machine numbers $a$ and~$b$, we have $a \oplus b = m(a+b)$ where $m$ is the function which
+takes the machine value of its argument (when it lies in the range of representable numbers).  Thus, properties of the type
+$$|(a + b) - (a \oplus b)| \leq (EPS/2) |a + b|$$
+follow immediately from the IEEE-754 standard, as long as we do not {\it underflow} or {\it overflow} outside of the range of representable numbers. 
+Specifically, underflow occurs when the result of an operation is smaller in absolute value than $2^{-1022}$,
+ and overflow occurs when the result of an operation is larger in absolute value than roughly $2^{1024}$
+ (see [IEEE, \S 7]).
+
+We further note that the formula 
+$$|(a + b) - (a \oplus b)| \leq (EPS/2) |a \oplus b|$$
+follows because the true answer has ``exponent" which is less than or equal to the exponent of the machine answer.  We reiterate, that in both cases, $a$ and $b$ are assumed to be machine numbers.
+
+Of course, a machine operation such as $\oplus$ must act on doubles, while a ``true" operation such as $+$ can act on reals (which includes doubles).  In this chapter, long strings of inequalities will be used to prove the various propositions, and care was taken to ensure that machine operations act on machine numbers.  In particular, the various variables appearing in the propositions are assumed to be doubles. The IEEE-754 standard provides for conversions from decimal to binary (within the appropriate range, conversion is to the nearest representable number) and from binary to decimal.  However, these are rarely used in this paper, although a trivial class of exceptions is provided by the decimal numbers in the conditions of
+Section 5.
+
+When calculations underflow or overflow outside of the range of representable numbers, we require that the computer inform us if either exception has occurred.  
+
+As in Section 6, we now break with the usual numbering convention.  Note that the above comments provide a proof of the
+following properties.
 \vglue12pt
- {{\bf The interesting conditions 
-FIXME(5.2)
-}}.
+
+ {\bf Basic Properties 7.0 (assuming no underflow and no overflow)}.
 \vglue6pt
-{\it Condition}  `L': This condition comes equipped with a killerword $k$ in\break $f, w, f^{-1}, w^{-1},$ and tests that all
-points in the sub-box have $|\exp({\rm length}(k))| <  |L^{\prime}| = |\exp(L)|,$ where ${\rm length}(k)$ means the length
-of the isometry determined by $k.$   This, of course, contradicts the fact that $L$ is the length of the shortest geodesic.
 
-It is easy to carry out the test $|\exp({\rm length}(k))| <  |L^{\prime}|$ because
-Lemma 1.25a) can be used.
-Note that in {\it verify} the function which computes $\exp({\rm length})$ is called {\it length}.  
-
-Of course, Condition `L' also checks that the isometry corresponding to the word $k$ is not the identity.
-\vglue6pt
-{\it Condition}   `O':   This condition comes equipped with a killerword 
-$k$ in $f, w, f^{-1}, w^{-1},$ and tests that all points in the sub-box have 
-$$|\exp({\rm distance}(k(B_{(0,\infty)}),
-B_{(0,\infty)}))| <  |D^{\prime}| = |\exp(D)|.$$    (Recall that 
-$B_{(0;\infty)}$ denotes the oriented geodesic $\{(0,0,z): 0< z < \infty \}$,
-with negative endpoint $(0,0,0).$)
-This, of course, contradicts the ``nearest" condition.
-
-It is easy to carry out the test $|\exp({\rm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))| <  |D^{\prime}|$ because
-Lemma 1.25b) can be used. Note that in {\it verify} the function which computes the quantity
-$\exp({\rm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))$ is called {\it orthodist}.  
-
-Also, Condition `O' checks that the isometry corresponding to the word $k$ does not take the axis of $f$ to itself.
-\vglue6pt
-{\it Condition}   `2':  This is just the `L' condition without the ``not-the-identity" check, but with the additional
-proviso that the killerword $k$ is of the form $f^p w^q.$ This ensures that $k$ is not the identity, because for $k$ to be
-the identity $f$ and $w$ would have to have the same axis, which contradicts the fact that $d$ can be taken to be
-greater than or equal to $l/4.$
-\eject
-
-{\it Condition}  `conjugate':  There is one other condition that is used to eliminate points in ${\cal W}.$  Following
-FIXME(Definition 1.12)
- (and 
-FIXME(Lemma 1.13)
-) we eliminate all boxes with $0 < t \le \pi.$  Of course, after exponentiating $L = l+it,$
-this corresponds to eliminating all boxes with $z_3 > 0.$ Specifically, we toss all sub-boxes of ${\cal W}$ whose fourth
-entry is a 1. This condition does not appear in {\it verify} because it is applied ``outside" of these
-programs, as described in Construction 
-FIXME(5.3).
-\vglue6pt
- {\it Construction} 5.3: 
-We now give the method for describing the roughly 930 million sub-boxes that the initial box ${\cal W}$ is subdivided into.
-
-All sub-boxes are obtained by subdivision of a previous sub-box along a real
-hyper-plane midway between parallel faces of the sub-box before
-subdivision.  Of course, these midway planes are of the form $x_i = $ a
-constant.   We use $0$'s and $1$'s to describe which half of a subdivided
-sub-box to take\break ($0$ corresponds to lesser $x_i$ values).  For example, 0
-describes 
-the sub-box $${\cal W} \cap \{(x_0,x_1,x_2,x_3,x_4,x_5): x_0 \le 0 \},$$ 
-$010$ describes the sub-box 
-$$W \cap \{(x_0,x_1,x_2,x_3,\break x_4,x_5) : x_0 \le 0,\ x_1 \ge 0,\ x_2 \le 0 \},$$
-and so on.
-
-In this way, we get a one-to-one correspondence
-between strings and sub-boxes.
-If $s$ is a string of $0$'s and $1$'s, then let $Z(s)$ denote
-the sub-box corresponding to $s$.
-The range of values for the $i^{\rm th}$ coordinate in the sub-box $Z(s)$ is related
-to the binary fraction $0.s_{i}s_{i+6}\ldots s_{i+6k}$.
-The two sub-boxes gotten from
-subdividing $Z(s)$ are $Z(s0)$ and $Z(s1)$.
-
-The directions of subdivision cycle among the various coordinate axes:
-the $n^{\rm th}$ subdivision is across the $(n \bmod 6)^{\rm th}$ axis.
-The dimensions of the top-level box ${\cal W}$ were chosen so that subdivision
-is always done across the longest dimension of the box,
-and so that all of the sub-boxes are similar.  
-The dimensions of ${\cal W}$ have the beneficial effect of making the sub-boxes as ``round" as possible, hence making the Taylor approximation calculations efficient and fast.
-This explains the factor of $2^{(5-i)/6}$ in Definition 
-FIXME(1.22)
-.
-
-To kill a sub-box $Z(s)$, the checker program has two (recursive) options:
-use a condition and, if necessary, an associated killerword  to kill $Z(s)$ directly, or first kill $Z(s0)$ and then kill $Z(s1)$.
-At this point, it may seem as if the second option is not necessary,
-because surely a condition which kills two halves also kills the whole.
-The answer to this has been hinted at in 
-FIXME(Remarks 1.17 and 1.35)
- where
-it is noted that our evaluation of a function arising
-from a killerword  is via first-order Taylor
-approximation, complete with remainder/error term.
-(Note that the remainder/error term incorporates bounds on
-both the theoretical error arising from using a first-order Taylor
-approximation to approximate a function, and the accumulated
-round-off error; see 
-FIXME(Sections 6, 7,  and 8)
-.)
-Even if a killerword could theoretically kill off a sub-box,
-it is quite possible that our
-first-order Taylor approximation approach would not be
-able to prove this 
-because its remainder/error term is too large.
-However, if we subdivide the sub-box, then the first-order
-Taylor approximations on the two halves should be more accurate.  
-Thus,
-we want to have the recursive subdivision option at our
-disposal.
-Note that because the checker program does in fact do such 
-recursive subdivisions, the actual number of sub-boxes in the
-ultimate subdivision is larger (perhaps substantially larger)
-than the 930 million sub-boxes of the initial data tree.
-
-It is also possible that the checker program will employ
-neither of the two options described in the previous
-paragraph, and will instead employ  
-a third option: do not kill $Z(s)$, and instead
-mark $s$ as omitted.
-Any omitted sub-boxes are checked with another instance
-of the checker program,
-unless the sub-box is one of the 11 exceptional
-sub-boxes (which produce the seven exceptional boxes after joining abutters).
-Note that according to the definition of ``kill" given at the beginning of this section, the exceptional boxes are
-automatically killed.   
-
-Thus, a typical output from {\it verify} would be 
+In the formulas that follow, $a$,$b$, and $A$ are machine numbers and
+$1 + k \times EPS = 1 \oplus (k \otimes EPS)$ when $k$ is an integer which is not huge in absolute value (that is, 
+smaller than roughly $2^{50}$).  Thus, within the appropriate range,  $1 + k \times EPS$ is a machine number.  Similarly,
+$2^k
+\times A = 2^k \otimes A$ when $k$ is an integer and  $2^k \otimes A$ neither underflows nor overflows.
 \begin{eqnarray*}
-&&{\rm verified} 000000111101111111 \\
-&&\qquad\qquad\quad- 
-\{ 0000001111011111110 \ \ 000000111101111111110 \} .
+|(a + b) - (a \oplus b)| &\leq& (EPS/2) |a + b|,\\
+|(a + b) - (a \oplus b)|&\leq& (EPS/2) |a \oplus b|,\\
+|(a - b) - (a \ominus b)| &\leq& (EPS/2) |a - b|,\\
+|(a - b) - (a \ominus b)|&\leq& (EPS/2) |a \ominus b|,\\
+|(a \times b) - (a \otimes b)| &\leq& (EPS/2) |a \times b|,\\
+|(a \times b) - (a \otimes b)| &\leq&(EPS/2) |a \otimes b|,\\
+|(a / b) - (a \oslash b)| &\leq& (EPS/2) |a / b|,\\
+|(a / b) - (a \oslash b)| &\leq& (EPS/2) |a \oslash b|,\\
+|\sqrt a - \root o \of a| &\leq& (EPS/2) |\sqrt a|,\\
+|\sqrt a - \root o \of a|  &\leq&  (EPS/2) |\root o \of a|,\\
+|h(a,b) - h_\circ(a,b)| &\leq& (EPS) |h(a,b)|,\\
+|h(a,b) - h_\circ(a,b)| &\leq&   (EPS) |h_\circ(a,b)|.
 \end{eqnarray*}
-which means that the sub-box $Z(000000111101111111)$ was killed except for its sub-boxes
-$Z(0000001111011111110)$  and $Z(000000111101111111110).$  The output 
-\begin{eqnarray*}
-&&{\rm verified} 0000001111011111110 - \{\ \}.\\
-\noalign{\noindent and}
-&&{\rm verified} 000000111101111111110 - \{\ \}.
-\end{eqnarray*} shows that these sub-boxes were subsequently killed as well, and thus the entire sub-box
-$Z(000000111101111111)$ has been killed. 
-
-
-Instead of immediately working on killing the top-level box, we subdivide in the six co-ordinate directions to get the 64 sub-boxes $$Z(000000),Z(000001),Z(000010),Z(000011),\ldots, Z(111111).$$ 
-\noindent We then throw out
-the ones with fourth co-ordinate equal to 1 (see condition `conjugate'), leaving  the 32 sub-boxes
-$$Z(000000),Z(000001),Z(000010),Z(000011),\ldots, Z(111011).$$  \noindent We then use {\it verify} to kill these.
-\eject
-
-The choices in {\it verify} are made for it by a sequence
-of integers given as input.  The sequence of integers containing the directions for killing $Z(000000)$ is contained in the file data/000000 (actually, data/000000.d).
-In such a sequence, 
-$0$ tells {\it verify} to subdivide the present box (by $x_i = c$),  to position itself on the ``left-hand" box ($x_i \le c$)
-created by that subdivision, and to read in the next integer in the sequence. A  positive integer $n$ tells {\it verify} to
-kill directly the sub-box it is positioned at, using the condition (and killerword, if necessary) on line $n$ in the
-``conditionlist" file,  and then to position itself at the ``next" natural sub-box.  Now,
-$-1$ tells {\it verify} to omit the sub-box, and mark it as skipped
-(the sequence of integers used in killing the skipped box $Z(s)$ is contained in a file data/s).
-
-
-The checker program {\it verify}, its inputs, and the list of conditions
-are available from the {\it Annals of Mathematics} web site.
-\vglue7pt
-FIXME({\it Example} 5.4.)
-To illustrate the checking process in action, this is a (non-representative)
-example, which shows how the sub-box $Z(s)$ (minus a hole) is killed,
-where
-\begin{eqnarray*}
-&&s=0010001100011101110011110001011111111011111\\
-&&\hskip2in 00111001111000001111011110111. 
-\end{eqnarray*}
-
-The input associated with this sub-box is
-$$(0, 0, 0, 1929, 12304, 0, 0, 7, 0, 1965, 0, 1929, 1929, 1996, -1),$$
-which causes the program to kill $Z(s)$ in the following fashion:
-{\noindent\obeylines
-\def\>{\hskip 0.05in}
- kill $Z(s)$:
-\>kill $Z(s0)$:
-\>\>kill $Z(s00)$:
-\>\>\>kill $Z(s000)$ with condition 1929 = ``L(FwFWFWfWFWFwFwfww)''
-\>\>\>kill $Z(s001)$ with condition 12304 = ``L(FwfWFFWFwFwfwfWfwfw)''
-\>\>kill $Z(s01)$:
-\>\>\>kill $Z(s010)$:
-\>\>\>\>kill $Z(s0100)$ with condition 7 = ``L(w)''
-\>\>\>\>kill $Z(s0101)$:
-\>\>\>\>\>kill $Z(s01010)$ with condition 1965 = ``L(fwFwFWFFWFwFwfwww)''
-\>\>\>\>\>kill $Z(s01011)$:
-\>\>\>\>\>\>kill $Z(s010110)$ with condition 1929
-\>\>\>\>\>\>kill $Z(s010111)$ with condition 1929
-\>\>\>kill $Z(s011)$ with condition 1996 = ``L(FwFwFWFWfWFWFwFwfww)''
-\>omit $Z(s1)$
-\noindent as shown in 
-FIXME(Figure 5.1).
-}
 
  
- \centerline{\BoxedEPSF{fig5.1.eps scaled 1250}}
-
- \begin{quote}{
-FIXME(Figure 5.1)
-.  Six levels of subdivision, in two projections,
- with all the trimmings.}
- \end{quote}
-
-$Z(s1)$ is ignored, so the checker would indicate this omission
-in its report.  In fact, $Z(s1)$ is one of the 11 exceptional sub-boxes (seven boxes after joining abutters), specifically
-$X_{5a},$ hence killed automatically.
-
-The use of condition ``L(w)'' so deep in the tree is unusual.
-In this case, it is because the manifold in the exceptional sub-box
-has ${\rm length}(f) = {\rm length}(w)$, so that the program will frequently
-come to places where it can bound ${\rm length}(f) > {\rm length}(w)$ nearby.
-
-The sequence $\ 0, 1929, 1929\ $ in the 
-input for $Z(s)$ tells the checker to
-subdivide $Z(s01011)$, and then use the condition 1929
-on both halves to kill   them separately, 
-thereby killing $Z(s01011)$.
-As mentioned above,
-the reason for carrying out this  subdivision 
-is that the remainder/error bound in the calculation
- for $Z(s01011)$ using condition 1929 was not good enough
-to prove that the sub-box is killed directly. 
- 
- 
-
-
-In the input for $Z(s)$ we could have
-replaced 
- $\ 0, 1929, 1929\ $ with 1929 alone
-and then the checker
-program itself would be smart enough to carry out
-the subdivision after 1929 failed to kill the sub-box
-$Z(s01011).$
-This recursive subdivision tool is quite useful when dealing with the 
-remainder/error term---if a killerword barely misses killing off a sub-box, then recursively subdivide the sub-box and
-use the same killerword on the pieces until it succeeds.   We note that the theoretical error arising from using a
-first-order Taylor approximation is likely to be significantly improved by subdivision, whereas the
-round-off error is relatively unaffected because the killerword
-used is unchanged (hence the number of mathematical operations
-performed is unchanged).
-
-The binary numbers used by the computer require too much space to print.
-In the example calculation which follows, we instead use decimal 
-representations (although we print fewer digits than could
-be gotten from the 53 binary digits used for the actual calculations).
-
-The sub-box $Z(s01011)$ is the region where 
-$$\left(\begin{array}{c} 
--1.381589027741\ldots  \le  {\rm Re}(L')  \le  -1.379848991182\ldots\cr
--1.378124546093\ldots  \le  {\rm Re}(D')  \le  -1.376574349753\ldots\cr
-0.999893182771\ldots  \le {\rm Re}(R')  \le  1.001274250703\ldots\cr
--2.535837191243\ldots  \le  {\rm Im}(L')  \le  -2.534606799593\ldots\cr
-\phantom{-}2.535404997792\ldots  \le  {\rm Im}(D')  \le  -2.534308843448\ldots\cr
--0.001953125000\ldots  \le  {\rm Im}(R')  \le  0.000000000000\ldots\phantom{-}\cr
-\end{array}\right)$$
-
-
-At this point, we would like to compute $$f,\ w,\ g = f^{-1}wf^{-1}w^{-1}f^{-1}w^{-1}fw^{-1}f^{-1}w^{-1}f^{-1}wf^{-1}wfww, \ {\rm length}(g),$$ 
-\noindent 
-and so on.  
-However, these items take on values over an entire sub-box and thus are computed via AffApproxes (first-order Taylor
-approximations with remainder/error bounds), which are not formally defined until the next section.  We
-complete
-FIXME(Example 5.4)
- at the end of 
-FIXME(Section 6).
-
-\vglue9pt 
-FIXME({\it Remark} 5.5)
-.  For those planning on looking at the program {\it verify}
-we now tie in the above description of its workings to a portion of the actual code in the program.  We note that the CWeb version of {\it verify} is extensively documented, and is organized so that the most important details are presented first.
-
-If the executable version of {\it verify} is called {\it verify} and we are in the correct place with respect to the location of the data, then a typical UNIX command line would be 
-$$
-\hbox{\tt zcat data/000000.gz | verify 000000 > output000000} 
-$$
-This would run {\it verify} at the node 000000, and, when needed, would pipe in the unzipped data from \hbox{\tt
-data/000000.gz}.  This unzipped data contains the tree decomposition of the parameter space at the sub-box 000000. 
-The output from {\it verify} would be redirected to the file \hbox{\tt output000000}.
-
-In {\it verify}, \hbox{\tt main} would check for syntax errors in the command line, and if there were no such errors, would read the location 000000 into the character array \hbox{\tt where}  and compute that the \hbox{\tt depth} of \hbox{\tt where} was 6, which means that 000000 contains
-six subdivisions.   It would then immediately print 
-$$
-\hbox{\tt verified 000000 - } \{$$
-into the file \hbox{\tt output000000}, and then call the function {\it verify}, as follows:
-$$
-\hbox{\tt verify(where, depth, 0);}
-$$
-
-The function \hbox{\tt verify(where, depth, autocode)} is now invoked; this time with \hbox{\tt autocode} equal to 0.  {\it Verify} would first check that \hbox{\tt depth} was not too deep.  Next, {\it verify} checks if \hbox{\tt autocode} is equal to 0, which it is, so it reads in the next (in this case, the first) integer from the unzipped file \hbox{\tt data/000000.gz}, and sets \hbox{\tt code} equal to this integer.  Now, {\it verify} recursively calls itself on the left child (0000000) of the \hbox{\tt where} box and the right child (0000001) of the
- \hbox{\tt where} box:
+From these formulas, we immediately compute the following.
 \begin{eqnarray*}
-\noalign{\vskip-12pt}
-&&
-\hbox{\tt where[depth] = \hbox{`}0\hbox{'};}
-\\
-&& \hbox{\tt verify(where, depth + 1, code);}
-\\
-&&
-\hbox{\tt where[depth] = \hbox{`}1\hbox{'};}
-\\
-&&\hbox{\tt verify(where, depth + 1, code);}
+(1 - EPS/2) |a + b| &\leq& |a \oplus b| 
+\leq (1 + EPS/2) |a+b|, \\ 
+  (1 - EPS/2) |a \oplus b|& \leq& |a + b| 
+\leq (1 + EPS/2) |a \oplus b|,\\
+\noalign{\vskip4pt}
+\noalign{\hfil .\hfil }  \noalign{\vskip4pt}
+\noalign{\hfil .\hfil } \noalign{\vskip4pt}
+\noalign{\hfil .\hfil } \noalign{\vskip4pt}
+(1 - EPS/2) |\sqrt a| &\leq&  |\root o \of a| 
+\leq (1 + EPS/2) |\sqrt a|, \\ (1 - EPS/2) |\root o \of a|&\leq&  |\sqrt a| 
+\leq (1 + EPS/2) |\root o \of a|, \\  (1 - EPS) |h(a,b)| &\leq&  |h_\circ (a,b)| 
+\leq (1 + EPS) |h(a,b)|, \\  (1 - EPS) |h_\circ (a,b)| &\leq& |h(a,b)| 
+\leq (1 + EPS) |h_\circ (a,b)|.
 \end{eqnarray*}
-In general, \hbox{\tt verify(where, depth, autocode)} does the following.  It checks to see that \hbox{\tt depth} is not too deep.  Then if \hbox{\tt autocode} is equal to 0, it recursively calls itself on its left and right children.  If \hbox{\tt autocode} is not equal to 0, then \hbox{\tt code} is set equal to \hbox{\tt autocode}, and
-three possibilities can occur.  Either, 
-\vglue9pt
-1)  \hbox{\tt code} is less than zero, in which case we are at 
-a sub-box to be skipped, 
- and {\it verify} prints out its location  (\hbox{\tt where}) in \hbox{\tt output000000} and recursively moves on to the next node in the tree, or 
-\vglue9pt
-2) \hbox{\tt code} is greater than zero and it invokes a condition/killerword from the file {\it conditionlist} which kills the entire sub-box \hbox{\tt where}
-in which case \hbox{\tt verify} simply recursively moves on to the next node in the tree, or 
-\vglue9pt
-3) \hbox{\tt code} is greater than zero and it invokes a condition/killerword from the file {\it conditionlist} which does not kill the entire sub-box \hbox{\tt where}, in which case
-\hbox{\tt verify} subdivides the sub-box \hbox{\tt where} and recursively calls itself on the left child and the right child, using the same \hbox{\tt code}:
-\begin{eqnarray*}
-&&\hbox{\tt where[depth] = \hbox{`}0\hbox{'};}
-\\ &&\hbox{\tt verify(where, depth + 1, code);}
-\\ &&\hbox{\tt where[depth] =\hbox{`}1\hbox{'};}
-\\ &&\hbox{\tt verify(where, depth + 1, code);}
+Of course, we can also get the following type of formula, which is sometimes convenient,
+ for example, in the proof of Lemma 7.2:
+$$\left({1 \over {1 + {EPS \over 2}}}\right) |a \oplus b| \leq |a + b| 
+\leq \left({1 \over {1 - {EPS \over 2}}}\right) |a \oplus b|.$$
+
+Before stating our propositions, we prove two lemmas.
+
+\nonumproclaim{Lemma 7.0 {\rm (assuming no underflow and no overflow)}} 
+For machine numbers $a$ and $b${\rm ,}
+$$(1 - EPS) \otimes |a \oplus b| \le |a + b| \le (1 + EPS) \otimes |a \oplus b|.$$
+ Analogous formulas hold for $\ -,\ *,\ /,\ \sqrt{}$.
+\endproclaim
+
+\demo{Proof}
+Assume $a+b > 0$.  
+If $(1+EPS) \otimes (a \oplus b) < (a+b)$ then the machine number 
+$(1+EPS) \otimes (a \oplus b)$ is a better approximation to $a+b$ than $a \oplus b$, because $(a \oplus b) 
+< (1+EPS) \otimes (a \oplus b)$.  This contradicts the IEEE standard.  The case $a+b < 0$ can be handled similarly, and the
+case $a+b = 0$ is trivial, similarly for the left-hand inequality.
+\enddemo
+
+\nonumproclaim{Lemma 7.1} $$(1 + EPS/2)^a A \le (1 + k EPS) \otimes A$$ 
+ where $A$ is a nonnegative machine number{\rm ,} and $a$ is a {\rm (}\/not huge\/{\rm )} integer{\rm ,} such that
+for $a$ even{\rm ,} $k = {a \over 2} + 1$ and  for $a$ odd, $k = {a+1 \over 2} + 1$. 
+\endproclaim
+
+\demo{Proof} 
+$$(1 + EPS/2)^a A\le (1 - EPS/2)(1 + k EPS) A \le (1 + k EPS) \otimes A.$$ 
+The first inequality holds if $a$ and $k$ are as in the lemma, and the second inequality is a consequence of one of the
+formulas preceding Lemma 7.0\break ($A \ge 0$). \enddemo
+ 
+We now begin our construction of complex arithmetic. We will give proofs for most of the operations; the others should be straightforward to derive,
+or can be found in the {\it Annals} web site.
+\vglue6pt
+{\it Remarks} 7.5.
+i) We remind the reader that all machine operations are on machine numbers, and that the various variables appearing in the propositions are assumed to be doubles.
+\vglue4pt
+ii) The propositions that follow include in their statements the definitions of the various operations (see Remark 6.6iii).
+
+\nonumproclaim{Proposition 7.1 {\rm $(-X)$}} 
+If $x$ is an {\rm XComplex,} then 
+$$-x \equiv (-x.{\rm re},-x.{\rm im}).$$ 
+\endproclaim
+
+\nonumproclaim{Proposition 7.2 {\rm $(X + D)$}} 
+If $x$ is an {\rm XComplex} and $d$ is a double{\rm ,} then 
+$S(x + d) \supseteq S(x) + S(d)${\rm ,} where 
+ $$x + d \equiv (x.{\rm re} \oplus d, x.{\rm im};
+(EPS/2)\otimes |x.{\rm re} \oplus d|).$$
+\endproclaim
+
+\demo{Proof}
+The  error is bounded by  
+\vglue12pt
+\hfill ${\displaystyle |(x.{\rm re} + d) - (x.{\rm re} \oplus d)|
+\le (EPS/2) | x.{\rm re} \oplus d|
+  =  (EPS/2) \otimes | x.{\rm re} \oplus d|.}$ \enddemo
+
+\nonumproclaim{Proposition 7.3 {\rm $(X - D)$}} 
+If $x$ is an {\rm XComplex} and $d$ is a double{\rm ,} then 
+$S(x - d) \supseteq S(x) - S(d)${\rm ,} where 
+ $$x - d \equiv (x.{\rm re} \ominus d, x.{\rm im};
+(EPS/2)\otimes |x.{\rm re} \ominus d|).$$ \endproclaim
+
+\nonumproclaim{Proposition 7.4 {\rm $(X + X)$}} 
+If $x$ and $y$ are {\rm XComplexes,} then 
+$S(x + y) \supseteq S(x) + S(y)${\rm ,} where
+ \begin{eqnarray*}
+x + y &\equiv& (x.{\rm re} \oplus y.{\rm re}, x.{\rm im} \oplus y.{\rm im};
+(EPS/2)\\
+&&  \otimes\ ((1 + EPS)  \otimes (|x.{\rm re} \oplus y.{\rm re}| \oplus |x.{\rm im} \oplus y.{\rm im}|))).
 \end{eqnarray*}
-In this way {\it verify} tests the entire starting box, in this case the sub-box 000000, and if successful at killing
-it minus the omissions which it prints out, it finishes \hbox{\tt main} by printing out a right bracket into \hbox{\tt output000000}. 
+\endproclaim
   
+
+\demo{Proof}
+The error is bounded by
+\begin{eqnarray*}
+&&|(x.{\rm re} + y.{\rm re}) - (x.{\rm re} \oplus y.{\rm re})| + 
+  |(x.{\rm im} + y.{\rm im}) - (x.{\rm im} \oplus y.{\rm im})|\\[4pt]
+&&\qquad \le (EPS/2)(| x.{\rm re} \oplus y.{\rm re}| + 
+   |x.{\rm im} \oplus y.{\rm im}|)\\[4pt]
+&&\qquad \le (EPS/2)((1 + EPS) \otimes (| x.{\rm re} \oplus y.{\rm re}| \oplus 
+   |x.{\rm im} \oplus y.{\rm im}|))\\[4pt]
+&&\qquad = (EPS/2) \otimes ((1 + EPS) \otimes (| x.{\rm re} \oplus y.{\rm re}| \oplus 
+   |x.{\rm im} \oplus y.{\rm im}|)).
+\end{eqnarray*}
+To go from line 2 to line 3 we used Lemma 7.0. \enddemo
+
+\nonumproclaim{Proposition 7.5 $(X - X)$}
+If $x$ and $y$ are {\rm XComplexes,} then 
+$S(x - y) \supseteq S(x) - S(y)${\rm ,} where
+\begin{eqnarray*}
+x - y &\equiv& (x.{\rm re} \ominus y.{\rm re}, x.{\rm im} \ominus y.{\rm im};\\[4pt]
+&&\quad 
+(EPS/2)\otimes ((1 + EPS) \otimes (|x.{\rm re} \ominus y.{\rm re}| \oplus |x.{\rm im} \ominus y.{\rm im}|))).
+\end{eqnarray*} \endproclaim
+
+
+\nonumproclaim{Proposition 7.6 $(A + A)$} 
+If $x$ and $y$ are {\rm AComplexes,} then 
+$S(x + y) \supseteq S(x) + S(y)${\rm ,} where
+\begin{eqnarray*}
+ x+y &\equiv& ({\rm re},{\rm im};e) \hbox{ with }\\[4pt]
+{\rm re}& =& x.{\rm re} \oplus y.{\rm re}\\[4pt]
+{\rm im}& =& x.{\rm im} \oplus y.{\rm im}\\[4pt]
+e& =& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\rm re}| \oplus |{\rm im}|))
+ \oplus (x.e \oplus y.e)). \end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+The error is bounded by the sum of the contributions from the real part, the imaginary part, and the two individual errors:
+\begin{eqnarray*}
+ & &\hskip-20pt |(x.{\rm re} \oplus y.{\rm re}) -(x.{\rm re} + y.{\rm re})| + |(x.{\rm im} \oplus y.{\rm im}) -
+(x.{\rm im} + y.{\rm im})| + (x.e + y.e).\\[4pt]
+&&\hskip-12pt \le (EPS/2) |x.{\rm re} \oplus y.{\rm re}| + (EPS/2) |x.{\rm im} \oplus y.{\rm im}| + 
+(1 + EPS/2) (x.e \oplus y.e)\\[4pt]
+&&\hskip-12pt \le  (1 + EPS/2) (EPS/2)(|x.{\rm re} \oplus y.{\rm re}| \oplus 
+ |x.{\rm im} \oplus y.{\rm im}| ) \\[4pt]
+&&\hskip-12pt \qquad + (1 + EPS/2) (x.e \oplus y.e)\\[4pt]
+&&\hskip-12pt = (1 + EPS/2) ((EPS/2)(|x.{\rm re} \oplus y.{\rm re}| \oplus 
+ |x.{\rm im} \oplus y.{\rm im}| ) + (x.e \oplus y.e))\\[4pt]
+&&\hskip-12pt \le (1 + EPS/2)^2 (((EPS/2) (|x.{\rm re} \oplus y.{\rm re}| \oplus 
+ |x.{\rm im} \oplus y.{\rm im}| )) \oplus  (x.e \oplus y.e))\\[4pt]
+&&\hskip-12pt \le   (1 + 2 EPS) \otimes (((EPS/2)\otimes (|x.{\rm re} \oplus
+y.{\rm re}| \oplus |x.{\rm im} \oplus y.{\rm im}| )) \oplus (x.e \oplus y.e)).\\[4pt]
+\noalign{\vskip-24pt}
+\end{eqnarray*}
+\enddemo
+
+The precedence for machine operations is the same as that for true operations, so some  parentheses are unnecessary
+and will often be omitted in what
+ follows.
+
+\nonumproclaim{Proposition 7.7 $(A - A)$}
+If $x$ and $y$ are {\rm AComplexes,} then 
+$S(x - y) \supseteq S(x) - S(y)${\rm ,} where
+\begin{eqnarray*}
+x-y &\equiv& ({\rm re},{\rm im};e) \hbox{ with }\\
+{\rm re}& =& x.{\rm re} \ominus y.{\rm re}\\
+{\rm im}& =& x.{\rm im} \ominus y.{\rm im}\\
+e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\rm re}| \oplus |{\rm im}|))
+ \oplus (x.e \oplus y.e)).
+\end{eqnarray*}
+\endproclaim
+
+
+\nonumproclaim{Proposition 7.8 $(X  \times  D)$} 
+If $x$ is an {\rm XComplex} and $d$ is a double{\rm ,} then 
+$S(x \times d) \supseteq S(x) \times S(d)${\rm ,} where
+\begin{eqnarray*}
+x \times d &\equiv& ({\rm re},{\rm im};e) \hbox{ with}\\[6pt] {\rm re} &= &x.{\rm re} \otimes d\\[6pt] {\rm im} &= &x.{\rm im} \otimes d\\[6pt] e &=& (EPS/2) \otimes ((1 + EPS) \otimes (|{\rm re}| \oplus |{\rm im}|) ). \end{eqnarray*}
+\endproclaim
+
+\nonumproclaim{Proposition 7.9 $(X / D)$} 
+If $x$ is an {\rm XComplex} and $d$ is a double{\rm ,} then 
+$S(x / d) \supseteq S(x) / S(d)${\rm ,} where
+\begin{eqnarray*}
+x / d& \equiv& ({\rm re},{\rm im};e) \hbox{ with }\\[6pt] {\rm re}& =& x.{\rm re} \oslash d\\[6pt] {\rm im} &= &x.{\rm im} \oslash d\\[6pt] e& = &(EPS/2) \otimes ((1 + EPS) \otimes (|{\rm re}| \oplus |{\rm im}|) ).
+\end{eqnarray*}
+
+\nonumproclaim{Proposition 7.10 $(X  \times  X)$}
+If $x$ and $y$ are {\rm XComplexes,} then 
+$S(x \times y) \supseteq S(x) \times S(y)${\rm ,} where
+\begin{eqnarray*}
+x \times y &\equiv& ({\rm re},{\rm im};e)\hbox{ with}\\[6pt] {\rm re}& =&{\rm  re}1 \ominus {\rm re2}, \hbox{ with ${\rm re1} = x.{\rm re} \otimes y.{\rm re}$ and ${\rm re}2 =
+x.{\rm im} \otimes y.{\rm im}$} \\[6pt] {\rm im}& =& {\rm im}1 \oplus {\rm im}2, \hbox{ with ${\rm im}1 = x.{\rm re} \otimes y.{\rm im}$ and ${\rm im}2 = x.{\rm im} \otimes
+y.{\rm re}$}\\[6pt] e& =& EPS \otimes ((1 + 2EPS) \otimes  ((|{\rm re}1| \oplus |{\rm re}2|) \oplus  (|{\rm im}1| \oplus |{\rm im}2|))).
+\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+The error is bounded by the sum of the contributions from the real part and the imaginary part:
+\begin{eqnarray*}
+&&|(x.{\rm re} \times  y.{\rm re} - x.{\rm im} \times y.{\rm im}) - ((x.{\rm re} \otimes y.{\rm re}) \ominus
+(x.{\rm im}
+\otimes y.{\rm im}))| \\[6pt]
+&&\quad + |(x.{\rm re} \times  y.{\rm im} + x.{\rm im} \times y.{\rm re}) - ((x.{\rm re} \otimes y.{\rm re}) \oplus (x.{\rm im}
+\otimes y.{\rm im}))|.
+\end{eqnarray*}
+   We want to bound this by a machine formula.  Let us begin by bounding 
+$$|(x.{\rm re} \times  y.{\rm re} - x.{\rm im} \times y.{\rm im}) - ((x.{\rm re} \otimes y.{\rm re}) \ominus (x.{\rm im}
+ \otimes y.{\rm im}))| $$ 
+by a machine formula:\eject
+
+\centerline{
+${\displaystyle |(x.{\rm re} \times  y.{\rm re} - x.{\rm im} \times y.{\rm im}) - ((x.{\rm re} \otimes y.{\rm re}) \ominus
+(x.{\rm im}
+\otimes y.{\rm im}))| }$}
+\begin{eqnarray*}
+\noalign{\vskip-16pt}
+&&\le |((x.{\rm re} \times  y.{\rm re}) - (x.{\rm im} \times y.{\rm im})) - ((x.{\rm re} \otimes y.{\rm re}) -
+(x.{\rm im}
+\otimes y.{\rm im}))|\\
+&&\quad + |((x.{\rm re} \otimes y.{\rm re}) - (x.{\rm im} \otimes y.{\rm im}))-((x.{\rm re} \otimes y.{\rm re})
+\ominus (x.{\rm im} \otimes y.{\rm im}))| \\
+&&\le |(x.{\rm re} \times  y.{\rm re}) - (x.{\rm re} \otimes y.{\rm re})| + |(x.{\rm
+im} \times y.{\rm im})- (x.{\rm im} \otimes y.{\rm im})| \\
+&&\quad + (EPS/2)|(x.{\rm re} \otimes y.{\rm re}) - (x.{\rm im} \otimes
+y.{\rm im})|\\
+&&\le (EPS/2)|(x.{\rm re} \otimes y.{\rm re})| + (EPS/2)|(x.{\rm im} \otimes y.{\rm im})| \\
+&&\quad + (EPS/2)(|x.{\rm re} \otimes
+y.{\rm re}| + |x.{\rm im} \otimes y.{\rm im}|)\\
+&&= (EPS/2)(2) (|x.{\rm re} \otimes y.{\rm re}| + |x.{\rm im} \otimes y.{\rm
+im}|)\\
+&&\le EPS (1 + EPS/2) (|x.{\rm re} \otimes y.{\rm re}| \oplus |(x.{\rm im} \otimes y.{\rm im}|) .
+\end{eqnarray*}
+
+
+Almost the exact same calculation produces the analogous formula for the imaginary contribution, and we now combine the
+two to get a bound on the total error.  
+\begin{eqnarray*}
+&&\le EPS (1 + EPS/2) (|x.{\rm re} \otimes y.{\rm re}| \oplus |x.{\rm im} \otimes y.{\rm im}|) \\
+&&\quad +
+EPS (1 + EPS/2) (|x.{\rm re} \otimes y.{\rm im}| \oplus |x.{\rm im} \otimes y.{\rm re}| )\\
+&&\le EPS \otimes ((1 +
+2EPS)\otimes((|x.{\rm re} \otimes y.{\rm re}| \oplus |x.{\rm im} \otimes y.{\rm im}| ) \\
+&&\quad \oplus
+(|x.{\rm re} \otimes y.{\rm im}| \oplus |x.{\rm im} \otimes y.{\rm re}| ))).
+\\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+
+\nonumproclaim{Proposition 7.11 $(D / X)$}
+If $x$ is a double and $y$ is an {\rm XComplex,} then
+$S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+\begin{eqnarray*}
+x  / y & \equiv& ({\rm re},{\rm im};e)\hbox{ with }\\
+re& =& (x  \otimes y.{\rm re})\oslash nrm \hbox{ where $nrm = y.{\rm re} \otimes y.{\rm re} \oplus y.{\rm im} \otimes
+y.{\rm im}$}
+\\
+{\rm im} &=& -(x  \otimes y.{\rm im}) \oslash nrm\\
+e& =& (2EPS) \otimes ((1 +  2EPS)\otimes(|{\rm re}| \oplus |{\rm im}|)).
+\end{eqnarray*}
+\endproclaim
+
+{\it Proof}.
+The true version of $x/y$ is equal to  
+$$(x \times y.{\rm re} + i (-x \times y.{\rm im}))/ ((y.{\rm re})^2 + (y.{\rm im})^2)$$ and we need to compare this with the
+machine version to find the error.  Further, this error is less than or equal to the sum of the real error and the imaginary
+error. Thus, we start with the real calculation (as in the statement of the proposition, we use $nrm$ to represent the
+machine version of $(y.{\rm re})^2 + (y.{\rm im})^2$).
+\begin{eqnarray*}
+&&\hskip-36pt \left|{x \times y.{\rm re}  \over (y.{\rm re})^2 + (y.{\rm im})^2} - ((x \otimes y.{\rm re})\oslash
+nrm)\right|\\
+&
+\le &\left|(x
+\otimes y.{\rm re}) \oslash nrm - {x \otimes y.{\rm re} \over nrm}\right|\\
+&& +\ \left|{x \otimes y.{\rm re} \over nrm} - {x
+\times y.{\rm re}
+\over nrm}\right| + \left|{x \times y.{\rm re} \over nrm} - 
+{x \times y.{\rm re}  \over (y.{\rm re})^2 + (y.{\rm im})^2}\right|.
+\end{eqnarray*}
+ 
+Before continuing, let us compare ${1 \over nrm}$ and ${1 \over (y.{\rm re})^2 + (y.{\rm im})^2}$ by developing a formula for
+comparing ${1 \over a^2 + b^2}$ and its associated ${1 \over nrm}$:
+\nonumproclaim{Lemma 7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
+{\it where} $nrm = a\otimes a \oplus b \otimes b.$
+\endproclaim
+
+\demo{Proof}
+We compute that 
+$$\left({1 \over 1 + EPS/2}\right)^2 \times nrm
+\le a^2 + b^2 
+\le \left({1 \over 1 - EPS/2}\right)^2 \times nrm;$$ hence 
+$${1 \over nrm} (1 - EPS/2)^2 
+\le {1 \over a^2 + b^2}
+\le {1 \over nrm} (1 + EPS/2)^2.$$  It then follows that 
+\begin{eqnarray*}
+\left|{1 \over nrm} - {1 \over a^2 + b^2}\right|& \le &
+    {1 \over nrm} (1 + EPS/2)^2 - {1 \over nrm}\\
+&=& {1 \over nrm} ((1 + EPS/2)^2 - 1) =
+  (EPS + (EPS/2)^2){1 \over nrm} .\\
+\noalign{\vskip-24pt}
+\end{eqnarray*}
+\enddemo
+
+\phantom{someone}
+Getting back to our main calculation (with $nrm = y.{\rm re} \otimes y.{\rm re} \oplus y.{\rm im} \otimes y.{\rm im}$), we
+have
+\begin{eqnarray*}
+&&\hskip-16pt\left|(x \otimes y.{\rm re}) \oslash nrm - {x \otimes y.{\rm re} \over nrm}\right|\\
+&&\quad +
+\left|{x \otimes y.{\rm re} \over nrm} - {x \times y.{\rm re} \over nrm}\right| +
+\left|{x \times y.{\rm re} \over nrm} - 
+{x \times y.{\rm re}  \over (y.{\rm re})^2 + (y.{\rm im})^2}\right|\\
+&&  \le(EPS/2){|x \otimes y.{\rm re}| \over nrm} +
+        (EPS/2){|x \otimes   y.{\rm re}| \over nrm} +
+(EPS + (EPS/2)^2) {|x \times   y.{\rm re}| \over nrm}\\
+&&  =(EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.{\rm re}| +
+(2 + EPS/2) \times |x \times y.{\rm re}| )\\
+&&  \le (EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.{\rm re}| +
+(2 + EPS/2)(1 + EPS/2) \times |x \otimes y.{\rm re}| )\\
+&&\quad = (EPS/2)\left({1 \over nrm}\right)(|x \otimes y.{\rm re}|)
+(2 + (2 + EPS/2)(1+EPS/2))\\
+&&  \le (EPS/2)(4 + 3EPS/2 + (EPS/2)^2)(|x \otimes y.{\rm re}|)\left({1 \over nrm}\right)\\
+&& \le (EPS/2)(4 + 3EPS/2 +
+(EPS/2)^2)(1+EPS/2)(|x \otimes y.{\rm re}| \oslash nrm)\\
+&&  \le (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)(|(x \otimes y.{\rm
+re} \oslash nrm)|).
+\end{eqnarray*}
+ We also get the analogous formula for the imaginary contribution for the error, so our total error is
+bounded by
+\begin{eqnarray*}
+&&\hskip-24pt (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)((|(x \otimes y.{\rm re})\oslash nrm|)\\
+&&\quad+(|(x \otimes y.{\rm
+im})\oslash nrm|))\\
+&& \le (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)^2\\
+&&\quad\cdot\ ((|(x \otimes y.{\rm re})\oslash nrm|)  \oplus (|(x \otimes
+y.{\rm im})\oslash nrm|))\\
+&&  \le (2EPS)(1 - EPS/2)(1+ 2EPS)\\
+&&\quad\cdot\ ((|(x \otimes y.{\rm re})\oslash nrm|) \oplus (|(x \otimes y.{\rm
+im})\oslash nrm|))\\
+&&  \le (2EPS) \otimes ((1+ 2EPS) \otimes ((|(x \otimes y.{\rm re})\oslash nrm|)\\
+&&\quad  \oplus (|(x \otimes y.{\rm
+im})\oslash nrm|))).
+\end{eqnarray*}
+
+Here we used the fact that 
+\vglue6pt
+\hfill $(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)^2 \le (1 - EPS/2)(1+ 2EPS).$ \hfill\qed
+\vglue9pt
+ 
+This should give the flavor of division proofs.  As such, we will skip the proofs of $X/X$ and $A/A$ and simply refer to the
+ {\it Annals} web site.
+\nonumproclaim{Proposition 7.12 $(X / X)$}
+If $x$ and $y$ are {\rm XComplexes,} then
+$S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+\begin{eqnarray*}
+x  / y  &\equiv& ({\rm re},{\rm im};e)\hbox{ with}\\
+{\rm re}& =& (x.{\rm re} \otimes y.{\rm re} \oplus x.{\rm im} \otimes y.{\rm im}) \oslash nrm\\
+&&\hbox{ where $nrm = y.{\rm
+re}
+\otimes y.{\rm re} \oplus y.{\rm im} \otimes y.{\rm im}$}\\
+{\rm im}& = &(x.{\rm im} \otimes y.{\rm re} \ominus x.{\rm re} \otimes y.{\rm im}) \oslash nrm\\
+e& =& (5EPS/2) \otimes ((1
++  3EPS) \otimes A) \hbox{  where}\\
+ A& =& 
+((|x.{\rm re} \otimes y.{\rm re}| \oplus |x.{\rm im} \otimes y.{\rm im}|)
+ \oplus 
+ (|x.{\rm im} \otimes y.{\rm re}| \oplus |x.{\rm re} \otimes y.{\rm im}|))
+\oslash nrm
+.\end{eqnarray*}
+\endproclaim
+
+\nonumproclaim{Proposition 7.13 $(A / A)$}
+If $x$ and $y$ are {\rm AComplexes} with 
+$y.e < 100 EPS \otimes |y|${\rm ,} or{\rm ,} more accurately{\rm , }
+$$(y.e)^2< ((10000 EPS) \otimes EPS)\otimes nrm$$ then
+$S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+\begin{eqnarray*}
+x  / y & \equiv& ({\rm re},{\rm im};e)\hbox{ with}\\
+{\rm re}& =& (x.{\rm re} \otimes y.{\rm re} \oplus x.{\rm im} \otimes y.{\rm im}) \oslash nrm\\
+&&\hbox{ where $nrm = y.{\rm
+re}
+\otimes y.{\rm re} \oplus y.{\rm im} \otimes y.{\rm im}$}\\
+{\rm im}& =& (x.{\rm im} \otimes y.{\rm re} \ominus x.{\rm re} \otimes y.{\rm im}) \oslash nrm\\
+e& =& (1 + 4EPS)\otimes 
+(
+((5 EPS/2) \otimes A \oplus (1+103EPS) \otimes B)
+\oslash nrm)\hbox{ where}\\
+ A& =& (|x.{\rm re} \otimes y.{\rm re}| \oplus |x.{\rm im}\otimes y.{\rm im}|) 
+ \oplus
+(|x.{\rm im} \otimes y.{\rm re}| \oplus | x.{\rm re} \otimes y.{\rm im}|)\\
+B& =& x.e\otimes(|y.{\rm re}|\oplus|y.{\rm im}|)
+\oplus
+   (|x.{\rm re}|\oplus|x.{\rm im}|)\otimes y.e.
+\end{eqnarray*}
+\endproclaim
+
+In our last proposition we will construct the square-root function.  As\break a warm-up, ignoring round-off error, our
+construction is as follows.  If\break $x = x.{\rm re} + i x.{\rm im}$ then $\sqrt{x} = s + {\rm i d}$ where $s=\sqrt{(|x.{\rm
+re}| + h(x.{\rm re},x.{\rm im}))/2}$ and $d = x.{\rm im}/(2s)$ when $x.{\rm re} > 0.0$, and $\sqrt{x} = d + i s$ otherwise.  
+Thus, we take our (no-round-off) square roots to be in the first and fourth quadrants.
+
+\nonumproclaim{Proposition 7.14 ($\sqrt{X}$)}
+If $x$ is an {\rm XComplex,} then $S(\sqrt{x}) \supseteq \sqrt{S(x)}$
+where we
+let $s_o = \root o \of {(|x.{\rm re}| \oplus h_o (x.{\rm re},x.{\rm im})) \otimes 0.5}$
+ and $d_o = (x.{\rm im} \oslash s) \otimes 0.5${\rm ,} and define
+\begin{eqnarray*}
+ \sqrt{x} & \equiv &({\rm re},{\rm im};e) \hbox{ where }\\
+ {\rm re} &=& s_o \hbox{ if $x.{\rm re} > 0.0$ and $re = d_o$ otherwise},\\
+{\rm im}& =& d_o \hbox{ if $x.{\rm re} > 0.0$ and $im = s_o$ otherwise},
+\\
+e& =& EPS \otimes ((1 + 4 EPS) \otimes (1.25 \otimes s_o \oplus 1.75 \otimes |d_o|)).
+\end{eqnarray*}
+\endproclaim
+
+\demo{Proof}
+This will be a little nasty.  Let us begin by analyzing $e_s$, which is the difference between the true calculation of $s$ and
+the machine calculation of~$s$, that is $e_s = |s - s_o|.$   First, we bound $s.$
+\begin{eqnarray*}
+s &=& \sqrt{(|x.{\rm re}| + h(x.{\rm re},x.{\rm im})) * 0.5}\\
+&\le& (1+EPS)^{1/2} \sqrt{(|x.{\rm re}| + h_o(x.{\rm re},x.{\rm im}))
+* 0.5}\\
+&\le& (1+EPS)^{1/2} (1+EPS/2)^{1/2}
+\sqrt{(|x.{\rm re}| \oplus h_o(x.{\rm re},x.{\rm im})) * 0.5}\\
+&\le& (1+EPS)^{1/2} (1+EPS/2)^{1/2}\\
+&&\cdot\ (1+EPS/2)
+\root o \of {(|x.{\rm re}| \oplus h_o(x.{\rm re},x.{\rm im})) * 0.5}\\
+&=& (1+EPS)^{1/2} (1+EPS/2)^{3/2} s_o.
+\end{eqnarray*}
+By a power series expansion, we see that
+\begin{eqnarray*}
+(1+EPS)^{1/2} (1+EPS/2)^{3/2}&=&\left(1 + {1 \over 2} EPS - {1 \over 8} EPS^2 + \cdots\right)\\
+&& +\
+     \left(1 + {3 \over 2} EPS/2 + {3 \over 8} (EPS/2)^2 +\cdots\right)\\
+&=&\left(1 + {5 \over 4} EPS + {11 \over 32} EPS^2 +\cdots\right),
+\end{eqnarray*}
+so that,
+$$s \le \left(1 + {5 \over 4} EPS + {11 \over 32} EPS^2 + \cdots\right) s_o.$$
+Similarly, 
+$$s \ge \left(1 - {5 \over 4} EPS\right) s_o.$$
+
+Thus, we can bound the $s$ error, 
+\begin{eqnarray*}
+e_s = |s - s_o|&\le&\left(\left(1 + {5 \over 4} EPS + {11 \over 32} EPS^2 +\cdots\right) - 1\right) s_o\\
+&=& \left({5 \over 4} EPS +
+{11 \over 32} EPS^2 +\cdots\right) s_o.
+\end{eqnarray*}
+
+Next, we analyze $e_d$, which is the absolute value of the difference between the true calculation of $d$ and the machine calculation of $d$.  That is, $e_d = |d - d_o|.$
+\begin{eqnarray*}
+e_d &=& |x.{\rm im}/(2s) - x.{\rm im} \oslash (2 s_o)|\\
+&\le& |x.{\rm im} \oslash (2 s_o) - x.{\rm im} / (2 s_o)| + 
+|x.{\rm im}/(2s_o) - x.{\rm im}/(2s) |\\
+&\le& (EPS/2) |x.{\rm im} / (2 s_o)| + \left|{x.{\rm im} \over 2} {s - s_o \over s s_o} \right|\\
+&\le& (EPS/2) |x .{\rm im}/ (2
+s_o)| +\left|{x.{\rm im} \over 2} {1 \over s s_o} ((5/4)EPS + (11/32)EPS^2+\cdots) s_o\right|\\
+&\le& (EPS/2) |x.{\rm im} / (2
+s_o)| \\
+&&+ \left|{x.{\rm im} \over 2} {1 \over s_o (1 - (5/4)EPS)}((5/4)EPS + (11/32)EPS^2+\cdots)\right|\\
+&= &(EPS/2) |x .{\rm
+im}/ (2 s_o)| \left(1 + {(5/2) + (11/16)EPS+\cdots) \over (1 - (5/4)EPS)}\right)\\
+&= &(EPS/2) {(7/2) + (-9/16) EPS +\cdots\over
+(1 - (5/4)EPS)} |x .{\rm im}/ (2 s_o)|\\
+&\le& (EPS/2) (1+EPS/2)
+ {7/2 \over (1 - (5/4)EPS)}
+|x .{\rm im} \oslash (2 s_o)|\\
+&= &(EPS/2) (1+EPS/2)
+ {7/2 \over (1 - (5/4)EPS)}
+|d_o|.
+\end{eqnarray*}
+ 
+Finally, we can bound the overall error $e = e_s + e_d$.
+\begin{eqnarray*}
+e_s + e_d&\le& \left({5 \over 4} EPS + {11 \over 32} EPS^2 +\cdots\right) s_o\\
+&& +\
+ (EPS/2) (1+EPS/2)
+ {7/2 \over (1 - (5/4)EPS)}|d_o|\\
+&\le& \left( EPS + {11 \over 40} EPS^2 +\cdots\right) \left({5 \over 4} s_o\right) \\
+&&+\
+ EPS (1+EPS/2)
+ {1 \over (1 - (5/4)EPS)}\left|{7 \over 4} d_o\right|\\
+&\le& EPS (1+EPS/2)
+ {1 \over (1 - (5/4)EPS)} \left({5 \over 4} s_o\right) \\
+&&+
+\  EPS (1+EPS/2)
+ {1 \over (1 - (5/4)EPS)}\left|{7 \over 4} d_o\right|\\
+&\le& EPS (1+EPS/2)
+ {1 \over (1 - (5/4)EPS)}
+\left({5 \over 4} s_o +\left|{7 \over 4} d_o\right|\right)\\
+&\le& EPS (1+EPS/2)^3
+ {1 \over (1 - (5/4)EPS)}
+\left({5 \over 4} \otimes s_o \oplus \left|{7 \over 4} \otimes d_o\right|\right)\\
+&\le& EPS (1 - (EPS/2))(1 + 4 EPS) 
+\left({5 \over 4} \otimes s_o \oplus \left|{7 \over 4} \otimes d_o\right|\right)\\
+&\le& EPS \otimes \left((1 + 4 EPS) \otimes
+\left({5 \over 4} \otimes s_o \oplus \left|{7 \over 4} \otimes d_o\right|\right)\right).\\
+\noalign{\vskip-36pt}
+\end{eqnarray*}
+\enddemo
+ 
+Now, we develop two formulas for the absolute value of an XComplex.
+ 
+
+\demo{Formula {\rm 7.0 (${\rm absUB}(X)$)}}
+If $x$ is an XComplex, then
+there is an upper bound on the absolute value of $x$ as follows:
+\begin{eqnarray*}
+|x| &=& h(x.{\rm re},x.{\rm im}) \le (1 + EPS) h_{\circ} (x.{\rm re},x.{\rm im})\\
+&\le& (1 - EPS/2) (1 + 2EPS)h_{\circ} (x.{\rm re},x.{\rm im}) \\
+&\le& (1 + 2EPS) \otimes h_{\circ} (x.{\rm re},x.{\rm im}).
+\end{eqnarray*}
+Thus, we define 
+$${\rm absUB}(x) = (1 + 2EPS) \otimes h_{\circ} (x.{\rm re},x.{\rm im}).$$ 
+\enddemo
+
+{\it Formula} 7.1 (${\rm absLB}(X)$).
+If $x$ is an XComplex, then
+we get a lower bound on the absolute value of $x$ as follows.
+\begin{eqnarray*}
+|x|& =& h(x.{\rm re},x.{\rm im}) \ge (1 - EPS) h_{\circ} (x.{\rm re},x.{\rm im})\\
+&\ge& (1 + EPS/2) (1 - 2EPS) h_{\circ} (x.{\rm
+re},x.{\rm im})\\
+&\ge& (1 - 2EPS) \otimes h_{\circ} (x.{\rm re},x.{\rm im}).
+\end{eqnarray*}
+Thus, we define 
+$${\rm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.{\rm re},x.{\rm im}).$$ 
+\vglue12pt
+
+Finally, in several places in the {\it verify} program we perform a standard operation on a pair of doubles and must take into account round-off error.  This is easy if we use Lemma 7.0.
+
+For example, in {\it inequalityHolds} we want to show that $$wh \times wh  > {\rm absUB}{\rm (along),}$$ where $wh =
+{\rm absLB}{\rm (whirle)}.$   
+By Lemma 7.0, we know that $$(1 - EPS) \otimes (wh \otimes wh) \le wh \times wh$$ and we simply test that 
+$$(1 - EPS) \otimes  (wh \otimes wh) \ge {\rm absUB}{\rm (along)}.$$
+
+A slightly more complicated version of this occurs in the computer calculation of ${\rm pos}[i]$ and $size[i],$ that is, the center and size of a sub-box.  Prior to multiplication by ${\rm scale}[i] = 2 ^{(5 - i)/6},$  the calculations of ${\rm pos}$ and $size$ are exact.  However, multiplication by $scale$ introduces round-off error.  For the center of the sub-box we will have the computer use ${\rm pos}[i] \otimes {\rm scale}[i]$ with the realization that this is not necessarily ${\rm pos}[i] \times {\rm scale}[i]$.   Thus, we have to choose appropriate sizes to ensure that the machine sub-box contains the true sub-box.  
+
+Notationally, this is annoying, because we typically use a computer command like ${\rm pos}[i] = {\rm pos}[i] \otimes {\rm scale}[i],$ while in an exposition, we need to avoid that.  We will denote the true center of the sub-box by $p[i]$ and the machine center of the sub-box by $p_0[i],$ and the true and machine sizes will be denoted $s[i]$ and $s_0[i].$  We will let $pos[i]$ and $size[i]$ be the position and size (true and machine are the same) before multiplication by ${\rm scale}[i].$
+
+Let $p[i] = pos[i] \times {\rm scale}[i],\ p_0[i] = pos[i] \otimes {\rm scale}[i],$ and 
+$s[i]= size[i] \times {\rm scale}[i].$  We must select $s_0[i]$ so that 
+$p_0[i] + s_0[i] \ge p[i] + s[i].$  (Here, taking $+$ on the left-hand side is correct, because the need for machine calculation there is incorporated at other points in the programs.)  So, we must find $s_0[i]$ such that $s_0[i] \ge (p[i] - p_0[i]) + s[i].$
+\begin{eqnarray*}
+(p[i] - p_0[i]) + s[i]. &\le& (EPS/2) |p_0[i]| + {\rm size}[i] \times {\rm scale}[i]\\[4pt]
+&\le& (EPS/2) |p_0[i]| + (1 + EPS/2) ({\rm size}[i] \otimes
+{\rm scale}[i])\\[4pt]
+&\le& (1 + EPS/2) ((EPS/2) |p_0[i]| +  ({\rm size}[i] \otimes {\rm scale}[i]))\\[4pt]
+&\le& (1 + EPS/2)^2 ((EPS/2) |p_0[i]| \oplus  ({\rm size}[i]
+\otimes {\rm scale}[i]))\\[4pt]
+&\le& (1 + 2EPS) \otimes ((EPS/2) |p_0[i]| \oplus  ({\rm size}[i] \otimes {\rm scale}[i])).
+\end{eqnarray*}
+Thus we take 
+$$s_0 [i]= (1 + 2EPS) \otimes ((EPS/2) |p_0[i]| \oplus  ({\rm size}[i] \otimes {\rm scale}[i])).$$
+This also works to give $p_0[i] - s_0[i] \le p[i] - s[i].$\hfill\qed
+
+
+ 
+
+
+
+

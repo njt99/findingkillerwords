@@ -5,32 +5,23 @@
 This paper documents a rigorous computer-assisted procedure for analyzing 
 hyperbolic $3$-manifolds.
 
-The first two applications of this procedure was published as part of [GMT],
-as Propositions 1.28 and 2.8. The proof of Proposition 1.28 is reproduced here
-with only minor changes, including most of Section 1 and the entirety of Sections 2 through 5.
-This document introduces techniques useful for "finding killerwords" in Section 6,
+The first two applications of this procedure were originally published
+as propositions of [GMT].
+The proof of Proposition 1.28 is reproduced here with only minor changes.
+This document introduces techniques useful for "finding killerwords" in Section 7,
 and in so doing borrows from material that was originally published as remarks
 in [GMT].
 
-k
-that every hyperbolic $3$-manifold has a non-coalescible insulator family,
-and therefore that homotopy hyperbolic $3$-manifolds are hyperbolic. Formally
+Formally, that result shows that
+every hyperbolic $3$-manifold has a non-coalescible insulator family,
+and therefore that homotopy hyperbolic $3$-manifolds are hyperbolic.
 
 Informally, the result was first published as Conjecture 1.31 of [GMT],
 and recently become theorem:
 
 \proclaim{Theorem} Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
 a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
-$M$ is isometric to one of $N_0, \cdots, N_6$, where:
-\begin{itemize}
-\ritem{i)} $N_0$ is Vol3.
-\ritem{ii)} $N_1$ is FIXME.
-\ritem{iii)} $N_2$ is FIXME.
-\ritem{iv)} $N_3$ is FIXME.
-\ritem{v)} $N_4$ is FIXME.
-\ritem{vi)} $N_5$ is FIXME.
-\ritem{vii)} $N_6$ is FIXME.
-\end{itemize}
+$M$ is isometric to one of seven specific manifolds.
 \endproclaim
 \demo{Proof}
 Let $X_0, \cdots, X_6$ denote the exceptional regions of Theorem 2.XX,
@@ -53,10 +44,11 @@ Theorem [G]  (Smale conjecture of hyperbolic 3-manifolds)
 If N is a closed hyperbolic 3-manifold,
 then the natural inclusion $Isom(N)\to Diff(N)$ is a homotopy equivalence.
 
-The proof made essential use of the fact that a shortest geodesic of a closed hyperbolic 3-manifold satisfies the insulator condition [GMT]
+The proof made essential use of the fact that a shortest geodesic
+of a closed hyperbolic 3-manifold satisfies the insulator condition [GMT].
 
-Theorem [GMM], [Mi] The Week's manifold is the
-unique closed orientable hyperbolic 3-manifold of minimal volume.
+Theorem [GMM], [Mi] The Week's manifold
+is the unique closed orientable hyperbolic 3-manifold of minimal volume.
 
 This result relies on 
 
@@ -65,7 +57,10 @@ and that C is a shortest geodesic in M.
 Set N D drillC .M/. If $tuberad(C) \ge .log 3/2$ then
 volN < 3:0177 volM.
 
-This is based on a result of [ADST], that makes essential use of Perelman's [Pe] monotonicty result, a key element of his proof of geometrization and the log(3)/2 theorem of [GMT].  Theorem C is used to prove other results such as 
+This is based on a result of [ADST],
+that makes essential use of Perelman's [Pe] monotonicty result.
+a key element of his proof of geometrization and the log(3)/2 theorem of [GMT].
+Theorem C is used to prove other results such as 
 
 Theorem [ACS] Suppose that M is a closed, orientable, hyperbolic
 3Ðmanifold such that $vol(M)\le 1.22$.
@@ -73,13 +68,15 @@ Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.
 
 (The statement is sharpened slightly to take into account [GT])
 
-Theorem [LM] Let M be a compact orientable 3-manifold with boundary a
-torus, and with interior admitting a complete finite-volume hyperbolic structure.
+Theorem [LM] Let M be a compact orientable 3-manifold with boundary a torus,
+and with interior admitting a complete finite-volume hyperbolic structure.
 Then the number of exceptional slopes on M is at most 10.
 
-This result, known as the Gordon conjecture, relies on rigorous computer assistance using the AffApprox technology.
+This result, known as the Gordon conjecture,
+relies on rigorous computer assistance using the AffApprox technology.
 
-Finally, the procedure is currently in use by Gabai, Thurston, and Yarmola
+Finally, the procedure is currently in use
+by Gabai, Haraway, Meyerhoff, Thurston, and Yarmola
 to rigorously analyze small orientable cusped hyperbolic $3$-manifolds,
 and to rigorously analyze small non-orientable closed hyperbolic $3$-manifolds.
 
@@ -90,8 +87,7 @@ In Section 1 we introduce [GMT]'s Proposition 1.28 as Theorem 2.XX, and sketch i
 
 In Section 2 we provide a formal statement and proof of Theorem 2.XX.
 
-INCREMENTSECTIONNUMBER(
-In Sections 2 through 5 we address the computer-related aspects of the 
+In Sections 3 through 6 we address the computer-related aspects of the 
 proof.   In Section 2, the method for describing the decomposition of the 
 parameter space ${\cal W}$ into sub-regions is given, and the conditions 
 used to eliminate all but seven of the sub-regions are discussed.  Near the 
@@ -101,23 +97,24 @@ appropriately over the entire sub-region.  This is carried out by using a
 first-order Taylor approximation of the function together with a 
 remainder 
 bound.  Our computer version of such a Taylor approximation with remainder bound 
-is called an {\it AffApprox} and in Section 3, the relevant theory is 
-developed.  At this point, the detailed example of Section 2 can be 
+is called an {\it AffApprox} and in Section 4, the relevant theory is 
+developed.  At this point, the detailed example of Section 3 can be 
 completed.
 
-In Sections 4 and 5, round-off error analysis appropriate to our 
-set-up is introduced.  Specifically, in Section 5, round-off error is 
+In Sections 5 and 6, round-off error analysis appropriate to our 
+set-up is introduced.  Specifically, in Section 6, round-off error is 
 incorporated 
-into the {\it AffApprox} formulas introduced in Section 3.  The proofs here 
+into the {\it AffApprox} formulas introduced in Section 4.  The proofs here 
 require an analysis of round-off error for complex numbers, which is carried 
-out in Section 4.
-)
+out in Section 5.
 
-In Section 7 we WORDSMITH(breadcrumbs about finding killerwords).
+In Section 7 we give some hints that we hope will help
+others endeavoring to apply these methods.
 
 Finally, in Section 8, we present an updated version of
 the code used to check that the proof is valid,
-with self-contained copies of the proofs required for the reader check its own validity.
+with self-contained copies of the proofs required for the reader
+to check its own validity.
 
 {\it Acknowledgements}.
 FIXME
