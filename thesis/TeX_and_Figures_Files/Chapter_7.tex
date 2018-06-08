@@ -1,97 +1,96 @@
 \section{A trail of breadcrumbs about finding killer words}
 
-Here we outline our method for finding a decomposition of the initial box ${\cal W}$ into sub-boxes (other than those making up the
- seven exceptional boxes)
-each with a condition/killerword that kills off the entire associated sub-box.
+Here we outline our method for finding a decomposition of
+the initial box ${\cal W}$ into sub-boxes,
+each with a condition/killerword that kills off the entire associated sub-box,
+or with an indication that it belongs to one of the exceptional regions.
 For convenience, we will generally refer to a ``sub-box" simply as a ``box."
 
-A simple algorithm for finding a killerword for a region is as follows.
-Work with a set of words to consider, initialized to the null word.  At 
-each step, remove the oldest word from the set, and test to see if that 
-word is a killerword.
-If it is not, put the word back into the set, concatenated with each of 
-the generators and their inverses.
-Eventually, this algorithm will enumerate all words, and so, if there 
-is a killerword, the algorithm will eventually find it.  In practice, 
-there are two problems with this approach: there is no provision for the possibility that no killerword exists for the region under consideration, 
-and the time to find a word of length $n$ grows exponentially.
+A naive approach uses diagonal enumeration
+to combine breadth-first enumeration of the tree of boxes
+with breadth-first enumeration of the tree of words
+(which three edges out of each word, one for each generator or inverse-generator,
+pointing to the concatenation of the word with the generator).
+The naive algorithm has running time $O(3^L 2^D)$, where $L$ is maximum word length
+and $D$ is maximum box depth,
+once we prune backtracking words (that have $x x^{-1}$, for some generator x) from consideration.
+Much too slow.
 
-When we also take into account the possibility of subdividing the box, getting an answer in finite time will be possible; but the search is in practice 
-very expensive.  The most obvious way of speeding it up is to avoid 
-the search entirely when feasible: a killerword works on a neighborhood of a 
-region, and by testing killerwords found for nearby boxes, most of 
+The most obvious way of speeding it up is to avoid
+the search entirely when feasible: a killerword works on a neighborhood of a
+region, and by testing killerwords found for nearby boxes, most of
 the time the search is not necessary.
 
-Still, there are words of length as long as 44 that were considered, and testing all of the roughly $3^{44}$ 
-combinations would be prohibitive on today's computers.  In practice 
-(due to a bug), the search algorithm used for most of the parameter
-space was no better than the brute-force method just described, but to find 
-killerwords for the remaining regions, an improvement was needed.  
-Rather than blindly selecting words in first-in-first-out order, 
-the algorithm can
-rank the words under consideration based on a heuristic estimate of 
-the likelihood of their being useful (a word is {\it useful} if it is a prefix of a killerword).  
-We note first that short words tend to be better than 
-long words, as they have fewer steps and less error.
-Second, we note that words 
-with a large translation distance are given a bad ranking, for two reasons: 
-they will need more generators appended before they get back to the 
+Still, there are words of length as long as 44 that were considered,
+and testing all of the roughly $3^{44}$ combinations would be prohibitive.
+In practice (due to a bug), the search algorithm used for most of the parameter
+space was no better than the brute-force method just described,
+but to find killerwords for the remaining regions, an improvement was needed.
+Rather than blindly selecting words in first-in-first-out order,
+the algorithm can rank the words under consideration
+based on a heuristic estimate of the likelihood of their being useful
+(a word is {\it useful} if it is a prefix of a killerword).
+We note first that short words tend to be better than long words,
+as they have fewer steps and less error.
+Second, we note that words
+with a large translation distance are given a bad ranking, for two reasons:
+they will need more generators appended before they get back to the
 small translation distance which is needed for a contradiction, and
- computations with those words introduce more error per step than 
-computations with closer words.  
+computations with those words introduce more error per step than
+computations with closer words.
 
-This approach was an improvement, but was not finding enough killerwords in the regions 
-around $X_3$ and $X_4$.  Further investigation showed that the 
-algorithm was getting stuck on an identity: once it found an identity, 
-it would consider only words which started with that identity, and 
-ignored all of the other words.  To fix this problem, a ``diversity" 
-heuristic was introduced, to give special consideration to unlikely but 
+This approach was an improvement, but was not finding enough killerwords in the regions
+around $X_3$ and $X_4$.  Further investigation showed that the
+algorithm was getting stuck on an identity: once it found an identity,
+it would consider only words which started with that identity, and
+ignored all of the other words.  To fix this problem, a ``diversity"
+heuristic was introduced, to give special consideration to unlikely but
 unusual words.
 
-To prevent the search from running forever, it is 
-temporarily abandoned after some number of steps, and re-done 
-with twice as many steps every time the number of descendant boxes 
+To prevent the search from running forever, it is
+temporarily abandoned after some number of steps, and re-done
+with twice as many steps every time the number of descendant boxes
 doubles.  This way, the search could run forever, but only if
-the subdivision process runs forever. 
+the subdivision process runs forever.
 This merged process of alternately searching and subdividing we
 call the {\it decomposition algorithm}.
 
 The decomposition algorithm went through several revisions; at each stage
-of the revision process, 
-the algorithm effectively increased the extent to which killerwords 
-found for one region were used to kill other regions.  The first 
-attempt---used to determine the feasibility of the whole effort--- 
-iterated over regions in depth-first order, performing the search as 
+of the revision process,
+the algorithm effectively increased the extent to which killerwords
+found for one region were used to kill other regions.  The first
+attempt---used to determine the feasibility of the whole effort---
+iterated over regions in depth-first order, performing the search as
 described above.
-At that stage, it became evident that the search process, as 
-opposed to the subdivision process, 
-was consuming nearly all of the computation time, and so the second 
-version iterated over regions in breadth-first order, and, once it 
+At that stage, it became evident that the search process, as
+opposed to the subdivision process,
+was consuming nearly all of the computation time, and so the second
+version iterated over regions in breadth-first order, and, once it
 found a killerword, tried to use that word on all adjacent regions.
 
-The breadth-first version was used to analyze the entire parameter 
-space, although it skipped some parts due to various bugs; the search 
-heuristic was replaced once, and there was considerable human input 
-to tell the search about particularly difficult killerwords, or to tweak 
+The breadth-first version was used to analyze the entire parameter
+space, although it skipped some parts due to various bugs; the search
+heuristic was replaced once, and there was considerable human input
+to tell the search about particularly difficult killerwords, or to tweak
 its search parameters (length, and weightings in the heuristic).
 
-The third stage of the revision process reduced the number of boxes by attempting all found 
-killerwords in a large region (about a thousand boxes) on all boxes 
-in the region.  It did not  do any searching, since it was provided with a 
+The third stage of the revision process reduced the number of boxes by attempting all found
+killerwords in a large region (about a thousand boxes) on all boxes
+in the region.  It did not  do any searching, since it was provided with a
 list of killerwords known to work.
 
-The final version was created when the bugs in evaluation were 
-brought to light, and the existing killerword tree was found to be insufficient.  
-It used the list of killerwords used for the entire tree, and some 
-statistics about the number of subdivisions required in order for a 
-given word to kill a particular box, and evaluated each word on each box.  Whenever 
-a word was evaluated, a kind of triage was used to determine 
-whether that word was likely to kill the box in question, likely to kill 
-any of its $n^{\rm th}$ generation descendants, or unlikely to kill any 
-descendants of the box; the answer to that heuristic either allowed more 
-detailed evaluation (with the error term included), deferred further 
-evaluation until the box had been subdivided $n$ more times, or 
-excluded that word from further consideration on any descendant of 
-the box.  With these heuristics, this program wound up evaluating on 
-average about 10 of the roughly 13200 words per box, and was able to 
+The final version was created when the bugs in evaluation were
+brought to light, and the existing killerword tree was found to be insufficient.
+It used the list of killerwords used for the entire tree, and some
+statistics about the number of subdivisions required in order for a
+given word to kill a particular box, and evaluated each word on each box.  Whenever
+a word was evaluated, a kind of triage was used to determine
+whether that word was likely to kill the box in question, likely to kill
+any of its $n^{\rm th}$ generation descendants, or unlikely to kill any
+descendants of the box; the answer to that heuristic either allowed more
+detailed evaluation (with the error term included), deferred further
+evaluation until the box had been subdivided $n$ more times, or
+excluded that word from further consideration on any descendant of
+the box.  With these heuristics, this program wound up evaluating on
+average about 10 of the roughly 13200 words per box, and was able to
 construct the tree consisting of the decomposition into sub-boxes with associated conditions/killerwords.
