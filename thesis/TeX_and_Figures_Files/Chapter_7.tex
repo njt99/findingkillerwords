@@ -14,7 +14,15 @@ pointing to the concatenation of the word with the generator).
 The naive algorithm has running time $O(3^L 2^D)$, where $L$ is maximum word length
 and $D$ is maximum box depth,
 once we prune backtracking words (that have $x x^{-1}$, for some generator x) from consideration.
-Much too slow.
+Much too slow - $3^44 2^120$ operations is not close to reasonable.
+
+To speed it up, there are three basic approaches, all of which are necessary:
+we can avoid considering most boxes by stopping once we have a solution;
+we can reuse words that word on one box elsewhere;
+and we can use heuristics to prefer words that are geometrically more likely to work.
+The exposition will proceed in rough chronological order,
+in the hope that by describing some of the wrong turns,
+we'll help others avoid making the same mistakes.
 
 The most obvious way of speeding it up is to avoid
 the search entirely when feasible: a killerword works on a neighborhood of a
