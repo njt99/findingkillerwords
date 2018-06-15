@@ -2,28 +2,29 @@
 \advance\sectioncount by -1
 \section{Introduction}
 
-This paper documents a rigorous computer-assisted procedure for analyzing 
-hyperbolic $3$-manifolds. Briefly, the procedure is a geometrical enumeration
-by finding contradictions, filtering through a parameter space,
-to find proofs that most of the parameter space is uninteristing,
-and isolate and constrain the remainder.
-
-The first two applications of this procedure were originally published
-as propositions of [GMT].
-The proof of Proposition 1.28 is reproduced here with only minor changes.
-This document introduces techniques useful for "finding killerwords" in Section 7,
-and in so doing borrows from material that was originally published as remarks
-in [GMT].
-
-Formally, that result shows that
-every hyperbolic $3$-manifold has a non-coalescible insulator family,
-and therefore that homotopy hyperbolic $3$-manifolds are hyperbolic.
-
-Informally, the result was first published as Conjecture 1.31 of [GMT],
-and recently become theorem:
-
-\proclaim{Theorem} Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
-a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
+This paper documents a computer-assisted procedure
+for rigorously analyzing small hyperbolic $3$-manifolds.
+The first two applications were used to prove
+the main technical result of [GMT]:
+\proclaim{Theorem [GMT]}
+Every closed hyperbolic $3$-manifold
+has a non-coalescible insulator family,
+indeed one coming from a shortest geodesic.
+As a consequence,
+homotopy hyperbolic $3$-manifolds are hyperbolic.
+\endproclaim
+and a proposition:
+\proclaim{Proposition [GMT]}
+Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
+a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$,
+or $M$ lies within one of seven tightly constrained
+exceptional shortest-geodesic-geometry regions.
+\endproclaim
+More recently, this second result has been sharpened:
+\proclaim{Theorem}
+Let $M$ be an orientable hyperbolic $3$-manifold,
+and let $\delta$ be a shortest geodesic.
+Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
 $M$ is isometric to one of seven specific manifolds.
 \endproclaim
 \demo{Proof}
@@ -38,7 +39,7 @@ and [CLLMR] show that these manifolds are the unique ones in its region.
 In [GT] the proof is completed by showing that $N_3$ covers no manifold
 and each of $N_2$ and $N_4$ 2-fold cover manifolds,
 however the quotients are all non exceptional,
-i.e. each shortest geodesic has a $log(3)/2$ tube.
+i.e. each shortest geodesic has a $ln(3)/2$ tube.
 \enddemo
 
 Other applications of the procedure:
@@ -55,15 +56,15 @@ is the unique closed orientable hyperbolic 3-manifold of minimal volume.
 
 This result relies on 
 
-Theorem  [ACS] Suppose that M is a closed, orientable hyperbolic 3-manifold,
+Lemma [ACS] Suppose that M is a closed, orientable hyperbolic 3-manifold,
 and that C is a shortest geodesic in M.
-Set N D drillC .M/. If $tuberad(C) \ge .log 3/2$ then
-volN < 3:0177 volM.
+Set $N = \rm{drill}_C(M)$. If $\rm{tuberad}(C) \ge .ln 3/2$ then
+$\rm{vol} N < 3:0177 \rm{vol}M$.
 
 This is based on a result of [ADST],
 that makes essential use of Perelman's [Pe] monotonicty result.
-a key element of his proof of geometrization and the log(3)/2 theorem of [GMT].
-Theorem C is used to prove other results such as 
+a key element of his proof of geometrization and the ln(3)/2 theorem of [GMT].
+Lemma [ACS] is used to prove other results such as 
 
 Theorem [ACS] Suppose that M is a closed, orientable, hyperbolic
 3-manifold such that $vol(M)\le 1.22$.
@@ -83,18 +84,21 @@ by Gabai, Haraway, Meyerhoff, Thurston, and Yarmola
 to rigorously analyze small orientable cusped hyperbolic $3$-manifolds,
 and to rigorously analyze small non-orientable closed hyperbolic $3$-manifolds.
 
+
 * ORGANIZATION
-This paper is organized as follows.  
+This paper is organized as follows.
 
-In Section 1 we introduce [GMT]'s Proposition 1.28 as Theorem 2.XX, and sketch its proof.
+In Section 1 we introduce [GMT]'s Proposition 1.28 as Theorem 2.19, and sketch its proof.
 
-In Section 2 we provide a formal statement and proof of Theorem 2.XX.
+In Section 2 we provide a formal statement and proof of Theorem 2.19.
 
-In Sections 3 through 6 we address the computer-related aspects of the 
-proof.   In Section 2, the method for describing the decomposition of the 
-parameter space ${\cal W}$ into sub-regions is given, and the conditions 
-used to eliminate all but seven of the sub-regions are discussed.  Near the 
-end of this chapter, the first part of a detailed example is given.  Eliminating 
+In Section 3,
+the method for describing the decomposition
+of the parameter space ${\cal W}$ into sub-regions is given,
+and the conditions used to eliminate sub-regions are discussed.
+Near the end of this chapter, the first part of a detailed example is given.
+
+Eliminating 
 a sub-region requires that a certain function is shown to be bounded 
 appropriately over the entire sub-region.  This is carried out by using a 
 first-order Taylor approximation of the function together with a 
@@ -118,6 +122,12 @@ Finally, in Section 8, we present an updated version of
 the code used to check that the proof is valid,
 with self-contained copies of the proofs required for the reader
 to check its own validity.
+
+{\it Prior publication}
+Sections 2 through 6 originally appeared in [GMT],
+and are reproduced here with only minor revision.
+Section 1 is an abridged version of the parts of the rest of [GMT].
+Section 7 borrows from material which originally appeared in remarks in [GMT].
 
 {\it Acknowledgements}.
 FIXME

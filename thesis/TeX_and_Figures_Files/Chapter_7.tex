@@ -9,22 +9,26 @@ For convenience, we will generally refer to a ``sub-box" simply as a ``box."
 A naive approach uses diagonal enumeration
 to combine breadth-first enumeration of the tree of boxes
 with breadth-first enumeration of the tree of words
-(which three edges out of each word, one for each generator or inverse-generator,
+(with three edges from each word,
+one for each generator or inverse-generator
+that isn't the inverse of the last symbol in the word,
 pointing to the concatenation of the word with the generator).
 The naive algorithm has running time $O(3^L 2^D)$, where $L$ is maximum word length
-and $D$ is maximum box depth,
-once we prune backtracking words (that have $x x^{-1}$, for some generator x) from consideration.
-Much too slow - $3^44 2^120$ operations is not close to reasonable.
+and $D$ is maximum box depth.
+Much too slow - $3^{44} 2^{120}$ operations is not close to reasonable.
 
 To speed it up, there are three basic approaches, all of which are necessary:
-we can avoid considering most boxes by stopping once we have a solution;
-we can reuse words that word on one box elsewhere;
-and we can use heuristics to prefer words that are geometrically more likely to work.
+\begin{enumerate}
+  \item we can avoid considering most boxes by stopping once we have a solution
+  \item we can reuse words that work on one box elsewhere
+  \item and we can use geometric heuristics to prefer words
+        that are more likely to work.
+\end{enumerate}
 The exposition will proceed in rough chronological order,
 in the hope that by describing some of the wrong turns,
 we'll help others avoid making the same mistakes.
 
-The most obvious way of speeding it up is to avoid
+The most obvious way of speeding up the search is to avoid
 the search entirely when feasible: a killerword works on a neighborhood of a
 region, and by testing killerwords found for nearby boxes, most of
 the time the search is not necessary.
@@ -82,17 +86,19 @@ heuristic was replaced once, and there was considerable human input
 to tell the search about particularly difficult killerwords, or to tweak
 its search parameters (length, and weightings in the heuristic).
 
-The third stage of the revision process reduced the number of boxes by attempting all found
-killerwords in a large region (about a thousand boxes) on all boxes
-in the region.  It did not  do any searching, since it was provided with a
-list of killerwords known to work.
+The third stage of the revision process reduced the number of boxes
+by attempting all found killerwords in a large region (about a thousand boxes)
+on all boxes in the region.
+It did not  do any searching,
+since it was provided with a kist of killerwords known to work.
 
 The final version was created when the bugs in evaluation were
 brought to light, and the existing killerword tree was found to be insufficient.
 It used the list of killerwords used for the entire tree, and some
 statistics about the number of subdivisions required in order for a
-given word to kill a particular box, and evaluated each word on each box.  Whenever
-a word was evaluated, a kind of triage was used to determine
+given word to kill a particular box, and evaluated each word on each box.
+Whenever a word was evaluated,
+a kind of triage was used to determine
 whether that word was likely to kill the box in question, likely to kill
 any of its $n^{\rm th}$ generation descendants, or unlikely to kill any
 descendants of the box; the answer to that heuristic either allowed more
@@ -102,3 +108,15 @@ excluded that word from further consideration on any descendant of
 the box.  With these heuristics, this program wound up evaluating on
 average about 10 of the roughly 13200 words per box, and was able to
 construct the tree consisting of the decomposition into sub-boxes with associated conditions/killerwords.
+
+More recently, an updated version of the search program is in use
+to solve a nearby problem, classification by enumeration of cusped hyperbolic
+3-manifolds.
+It's not far different from the final version of the search.
+Indeed, its source code was edited from the final version.
+The main differences are:
+the search for new words that work is again mixed
+with the search for words for all boxes;
+the search for words combines pairs of words instead of appending a generator;
+the logic for use of words is specific to the context of cusped manifolds.
+The updated code is available at https://github.com/njt99/momsearch.
