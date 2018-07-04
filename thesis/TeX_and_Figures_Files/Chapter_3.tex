@@ -29,7 +29,7 @@ exceptional boxes $X_0, X_1, \ldots, X_6.$
 perhaps with the help of a killerword.  To {\it kill} a sub-box means to show that 
 ${\cal S} - \bigcup_{n = 0,\dots, 6} X_n$ has no point in the sub-box. 
 \end{itemize}
-\noindent The set-up for efficiently describing these sub-boxes will be given in Construction 5.3. 
+\noindent The set-up for efficiently describing these sub-boxes will be given in Construction FIXME(5.3). 
  
 
 We now list the conditions used to kill the nonexceptional sub-boxes.  There are two types of conditions: the trivial and
@@ -57,7 +57,7 @@ outside of $\exp({\cal P}).$
 {\it Condition} `l' ({\it long}): Tests that all points in the sub-box have $|z_0 + i z_3| > 3.63201.$  This ensures that  
 $$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| > 3.63201 > \exp(1.289785)$$ and we are outside of $\exp({\cal P}).$  
 \vglue6pt
-{\it Condition} `n' ({\it near}): Tests that all points in the sub-box have $|z_1 + i z_4|\break < 1.$  This ensures that 
+{\it Condition} `n' ({\it near}): Tests that all points in the sub-box have $|z_1 + i z_4| < 1.$  This ensures that 
 $$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4| <1= \exp(0)$$ and we are outside of $\exp({\cal P}).$
 \vglue6pt
 {\it Condition} `f' ({\it far}): Tests that all points in the sub-box have $|z_1 + i z_4| > 3.$  This ensures that 
@@ -76,12 +76,12 @@ $$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are
 FIXME(5.2)
 }}.
 \vglue6pt
-{\it Condition}  `L': This condition comes equipped with a killerword $k$ in\break $f, w, f^{-1}, w^{-1},$ and tests that all
+{\it Condition}  `L': This condition comes equipped with a killerword $k$ in $f, w, f^{-1}, w^{-1},$ and tests that all
 points in the sub-box have $|\exp({\rm length}(k))| <  |L^{\prime}| = |\exp(L)|,$ where ${\rm length}(k)$ means the length
 of the isometry determined by $k.$   This, of course, contradicts the fact that $L$ is the length of the shortest geodesic.
 
 It is easy to carry out the test $|\exp({\rm length}(k))| <  |L^{\prime}|$ because
-Lemma 1.25a) can be used.
+Lemma FIXME(1.25a)) can be used.
 Note that in {\it verify} the function which computes $\exp({\rm length})$ is called {\it length}.  
 
 Of course, Condition `L' also checks that the isometry corresponding to the word $k$ is not the identity.
@@ -95,7 +95,7 @@ with negative endpoint $(0,0,0).$)
 This, of course, contradicts the ``nearest" condition.
 
 It is easy to carry out the test $|\exp({\rm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))| <  |D^{\prime}|$ because
-Lemma 1.25b) can be used. Note that in {\it verify} the function which computes the quantity
+Lemma FIXME(1.25b)) can be used. Note that in {\it verify} the function which computes the quantity
 $\exp({\rm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))$ is called {\it orthodist}.  
 
 Also, Condition `O' checks that the isometry corresponding to the word $k$ does not take the axis of $f$ to itself.
@@ -116,18 +116,18 @@ entry is a 1. This condition does not appear in {\it verify} because it is appli
 programs, as described in Construction 
 FIXME(5.3).
 \vglue6pt
- {\it Construction} 5.3: 
+ {\it Construction} FIXME(5.3): 
 We now give the method for describing the roughly 930 million sub-boxes that the initial box ${\cal W}$ is subdivided into.
 
 All sub-boxes are obtained by subdivision of a previous sub-box along a real
 hyper-plane midway between parallel faces of the sub-box before
 subdivision.  Of course, these midway planes are of the form $x_i = $ a
 constant.   We use $0$'s and $1$'s to describe which half of a subdivided
-sub-box to take\break ($0$ corresponds to lesser $x_i$ values).  For example, 0
+sub-box to take ($0$ corresponds to lesser $x_i$ values).  For example, 0
 describes 
 the sub-box $${\cal W} \cap \{(x_0,x_1,x_2,x_3,x_4,x_5): x_0 \le 0 \},$$ 
 $010$ describes the sub-box 
-$$W \cap \{(x_0,x_1,x_2,x_3,\break x_4,x_5) : x_0 \le 0,\ x_1 \ge 0,\ x_2 \le 0 \},$$
+$$W \cap \{(x_0,x_1,x_2,x_3, x_4,x_5) : x_0 \le 0,\ x_1 \ge 0,\ x_2 \le 0 \},$$
 and so on.
 
 In this way, we get a one-to-one correspondence

@@ -5,13 +5,13 @@
 To show that a sub-box of the parameter box ${\cal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
 Section 5).  That is, we are simply analyzing a certain function from the sub-box to ${\bf C}$.  
 
-As described in Remark 6.5, this analysis can be pulled back from the sub-box in question to the closed polydisc 
-$A = \{(z_0,z_1,z_2) \in {\bf C}^3 : |z_k| \le 1$  for\break $k \in \{0,1,2\}\}.$  
+As described in Remark FIXME(6.5), this analysis can be pulled back from the sub-box in question to the closed polydisc 
+$A = \{(z_0,z_1,z_2) \in {\bf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
 Loosely,  we will analyze such a function on $A$ by using  Taylor approximations consisting of an affine approximating
 function together with a bound on the ``error" in the approximation (this could also be described as a ``remainder bound").  This ``error" 
 is separate from round-off error,  which will be analyzed in Sections 7 and 8.  
 
-\demo{Problems {\rm 6.2}}
+\demo{Problems {\rm FIXME(6.2)}}
 There are two immediate problems likely to arise from this Taylor approximation approach.
 The first problem is the appearance of unpleasant functions such as 
 Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space ${\cal P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on ${\cal W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
@@ -24,12 +24,14 @@ get the Taylor approximation with error term for the resultant function from the
 A similar approach was developed independently by Stolfi and Figuereido (see [FS]).
 \enddemo
 
-{\it Remark} 6.3.
-We set up the Taylor approximation approach rigorously as follows in Definition 6.4.  The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\it verify}.  However, it should be pointed out that the formulas in this
+{\it Remark} FIXME(6.3).
+We set up the Taylor approximation approach rigorously
+as follows in Definition FIXME(6.4).
+The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\it verify}.  However, it should be pointed out that the formulas in this
 section will be superseded by the ones in Section 8, which incorporate a round-off error analysis.  It is the Section 8 formulas that are
 used in {\it verify}.
 
-\vglue8pt {\it Definition {\rm 6.4}}.  An {\it AffApprox}  $x$ is a five-tuple
+\vglue8pt {\it Definition {\rm FIXME(6.4)}}.  An {\it AffApprox}  $x$ is a five-tuple
 $(x.f;\ x.f_0,\ x.f_1,\ x.f_2;\ x.e),$
 consisting of four complex numbers $x.f,\ x.f_0,\ x.f_1,\ x.f_2$ and one real number $x.e,$  which represents all functions 
 $g: A \rightarrow {\bf C}$ such that
@@ -38,7 +40,7 @@ for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ t
 \vglue6pt
 
 {\it Remark} 6.5.
-As mentioned in Remark 6.1, given a sub-box to analyze, instead of working with functions defined on the sub-box, we will work with corresponding functions defined on $A.$  Specifically, rather than build up a function by elementary operations performed on the co-ordinate functions 
+As mentioned in Remark FIXME(6.1), given a sub-box to analyze, instead of working with functions defined on the sub-box, we will work with corresponding functions defined on $A.$  Specifically, rather than build up a function by elementary operations performed on the co-ordinate functions 
 $L^{\prime}, D^{\prime}, R^{\prime}$ 
 restricted to the given sub-box, we will perform the elementary operations on the following functions defined on $A$, 
 $$(p_0 + i p_3; s_0 + i s_3,0,0; 0)\  \ (p_1 + i p_4; 0, s_1 + i s_4,0;0) \   \ (p_2 + i p_5; 0,0, s_2 + i s_5; 0)$$
@@ -49,7 +51,7 @@ After the following remarks, we state and prove the combination formulas.
 
 \vglue6pt {\it Remarks} 6.6.
 i) In order to co-ordinate numbering with Section 8, we will break with the convention used previously in this paper and start the
-numbering of the propositions with 6.1. However, we will end this section with Example 6.7.
+numbering of the propositions with FIXME(6.1). However, we will end this section with Example FIXME(6.7).
 \vglue2pt
 ii)  The negation of a set of functions is the set consisting of the negatives of the original functions, and similarly for other operations.
 \vglue2pt
@@ -57,7 +59,7 @@ iii)  The propositions that follow include in their statements the definitions o
 be proved is that the $S$ functions behave as expected.  For example, we need to show that under the definition given for addition, the
 set of functions $S(x+y)$ contains all functions obtained by adding a function from $S(x)$ to a function from $S(y).$
 
-\nonumproclaim{Proposition 6.1 {\rm (unary minus)}} If $x$ is an {\rm AffApprox,} then 
+\nonumproclaim{Proposition FIXME(6.1) {\rm (unary minus)}} If $x$ is an {\rm AffApprox,} then 
 $S(-x) = -(S(x))$ where 
 $$-x \equiv (-x.f;\ -x.f_0,\ -x.f_1,\ -x.f_2;\ x.e).$$ 
 \endproclaim
@@ -69,7 +71,7 @@ if and only if
 \hfill $|-g(z_0,z_1,z_2) - (-x.f - x.f_0 z_0 - x.f_1 z_1 - x.f_2 z_2)| \le e.$ \hfill\qed
 
 
-\nonumproclaim{Proposition 6.2 {\rm (addition)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x + y)\break \supseteq S(x)
+\nonumproclaim{Proposition FIXME(6.2) {\rm (addition)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x + y) \supseteq S(x)
 + S(y)${\rm ,} where
 $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.e).$$
 \endproclaim  
@@ -89,33 +91,33 @@ $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.
 \end{eqnarray*}
 \enddemo
 
-\nonumproclaim{Proposition 6.3 {\rm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x - y)\break \supseteq
+\nonumproclaim{Proposition FIXME(6.3) {\rm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x - y) \supseteq
 S(x) - S(y)${\rm ,}
  where
 $$x - y \equiv (x.f - y.f; x.f_0 - y.f_0, x.f_1 - y.f_1, x.f_2 - y.f_2; x.e + y.e).$$ 
 \endproclaim
 
 To co-ordinate numbering with Section 8 (where we incorporate round-off error into these formulas) we include the following special
-cases of Propositions 6.2 and 6.3.  Similarly for Propositions 6.7, 6.9, and 6.10. 
+cases of Propositions FIXME(6.2) and FIXME(6.3).  Similarly for Propositions FIXME(6.7, 6.9, and 6.10). 
 
 In what follows,  ``double" refers to a real number, and has an associated AffApprox, with the last four entries zero.  When we do
-machine arithmetic in Sections 7 and 8, doubles will be  machine numbers.
+machine arithmetic in Sections FIXME(7 and 8), doubles will be  machine numbers.
 
-\nonumproclaim{Proposition 6.4 {\rm (addition of an AffApprox and a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double{\rm ,}
+\nonumproclaim{Proposition FIXME(6.4) {\rm (addition of an AffApprox and a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double{\rm ,}
  then $S(x +
 y)
 \supseteq S(x) + S(y)${\rm ,} where
 $$x + y \equiv (x.f + y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
 \endproclaim
 
-\nonumproclaim{Proposition 6.5 {\rm (subtraction of a double from an AffApprox)}}  If $x$ is an {\rm AffApprox} and $y$ is a double{\rm ,}
+\nonumproclaim{Proposition FIXME(6.5) {\rm (subtraction of a double from an AffApprox)}}  If $x$ is an {\rm AffApprox} and $y$ is a double{\rm ,}
  then
 $S(x - y)
 \supseteq S(x) - S(y)${\rm ,} where
 $$x - y \equiv (x.f - y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
 \endproclaim
 
-\nonumproclaim{Proposition 6.6 {\rm (multiplication)}}  If $x$ and $y$ are {\rm AffApproxes,}
+\nonumproclaim{Proposition FIXME(6.6) {\rm (multiplication)}}  If $x$ and $y$ are {\rm AffApproxes,}
  then $S(x \times y) \supseteq S(x) \times
 S(y)${\rm ,} where
 \begin{eqnarray*}
@@ -170,14 +172,14 @@ Hence,
 \enddemo
 
 \vglue9pt 
-\nonumproclaim{Proposition 6.7 {\rm (an AffApprox multiplied by a double)}}
+\nonumproclaim{Proposition FIXME(6.7) {\rm (an AffApprox multiplied by a double)}}
 If $x$ is an {\rm AffApprox}  and $y$ is a double{\rm ,} then $S(x \times y) \supseteq S(x) \times S(y)${\rm ,} where
 $$ x \times y \equiv (x.f \times y;  x.f_0 \times y, 
 x.f_1 \times y,  x.f_2 \times y; 
 x.e \times |y|). $$
 \endproclaim
 
-\nonumproclaim{Proposition 6.8 {\rm (division)}} If $x$ and $y$ are {\rm AffApproxes}  with $|y.f| > {\rm size}(y) + y.e${\rm ,}
+\nonumproclaim{Proposition FIXME(6.8) {\rm (division)}} If $x$ and $y$ are {\rm AffApproxes}  with $|y.f| > {\rm size}(y) + y.e${\rm ,}
  then $S(x / y) \supseteq
 S(x) / S(y)${\rm ,} where
 \begin{eqnarray*}
@@ -232,7 +234,7 @@ Finally,
  because the denominator in the second quotient is less than or equal to the absolute value of the denominator in the first quotient, we
 see that the absolute value of the first quotient is less than or equal to the second quotient, as desired. \enddemo
 
-\nonumproclaim{Proposition 6.9 {\rm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\rm AffApprox }
+\nonumproclaim{Proposition FIXME(6.9) {\rm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\rm AffApprox }
  with $|y.f| > {\rm size}(y) + y.e${\rm ,} then $S(x / y) \supseteq S(x) / S(y)${\rm ,} where
 \begin{eqnarray*}
 x / y &\hskip-8pt\equiv\hskip-8pt& (x / y.f; -x \times y.f_0 /((y.f)^2), 
@@ -244,7 +246,7 @@ x / y &\hskip-8pt\equiv\hskip-8pt& (x / y.f; -x \times y.f_0 /((y.f)^2),
 \endproclaim
 
 
-\nonumproclaim{Proposition 6.10 {\rm (division of an AffApprox by a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double
+\nonumproclaim{Proposition FIXME(6.10) {\rm (division of an AffApprox by a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double
 with $|y| > 0${\rm ,} then $S(x / y) \supseteq S(x) / S(y)${\rm ,} where
 $$
 x / y \equiv (x.f / y; x.f_0 / y, 
@@ -255,7 +257,7 @@ $$
 
 Finally, we do the square root.
 
-\nonumproclaim{Proposition 6.11 {\rm (square root)}} If $x$ is an {\rm AffApprox}  with $|x.f| > {\rm size}(x) + x.e${\rm ,}
+\nonumproclaim{Proposition FIXME(6.11) {\rm (square root)}} If $x$ is an {\rm AffApprox}  with $|x.f| > {\rm size}(x) + x.e${\rm ,}
  then $S(\sqrt x)
 \supseteq
 \sqrt {S(x)}${\rm ,} where
@@ -271,7 +273,7 @@ Finally, we do the square root.
 \endproclaim 
 If $|x.f| \le {\rm size}(x) + x.e$ then we use the crude estimate $$\left(0;0,0,0;\sqrt{|x.f| + {\rm size}(x) + x.e}\right).$$
  
-The branch of the square root of a complex number is determined by the construction of the square root of a complex in Proposition 7.14.  In fact, the square root is in the first or fourth quadrant.
+The branch of the square root of a complex number is determined by the construction of the square root of a complex in Proposition FIXME(7.14).  In fact, the square root is in the first or fourth quadrant.
 
 \demo{Proof} 
 As above, note that for any point $(z_0, z_1, z_2) \in A$ and any function $g \in S(x)$ we can find a complex number $u$ with 
@@ -319,7 +321,7 @@ The left-hand denominator is
 $$\left|\sqrt {x.f + x.f_k z_k + (x.e) u} + 
 \left(\sqrt {x.f} + {x.f_k z_k\over 2 \sqrt{x.f}}\right)\right|$$
 while the right-hand denominator is 
-$$\sqrt{|x.f|} - {{\rm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\rm size}(x) + x.e)}. \pagebreak$$
+$$\sqrt{|x.f|} - {{\rm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\rm size}(x) + x.e)}.$$
 The claim that the left-hand denominator is greater than or equal to the right-hand denominator is a bit complicated.  First, compare the $\sqrt{x.f}$ term and the $\sqrt{|x.f|}$ terms.  They are the same distance from the origin.  Next, note that as $z_k$ and $u$ take on all
 relevant values, $x.f + x.f_k z_k + (x.e) u$ describes a disk centered at $x.f$
 with radius   less than $ |\sqrt {x.f}|$.  Hence, $\sqrt {x.f + x.f_k z_k + (x.e) u}$ describes a convex set containing $\sqrt{x.f}$.  This set
@@ -335,8 +337,9 @@ can get closer to the origin than
 {{\rm size}(x) \over 2 \sqrt {|x.f|}}.} $ \enddemo
 
 \vglue12pt
-{\it Example} 6.7 (Continuation of Example 5.4).
-We can now complete the analysis begun in Example 5.4, because we can describe $f$ and $w$ as 2-by-2 matrices of AffApproxes.
+{\it Example} FIXME(6.7) (Continuation of Example FIXME(5.4)).
+We can now complete the analysis begun in Example FIXME(5.4),
+because we can describe $f$ and $w$ as 2-by-2 matrices of AffApproxes.
 We note the minor quibble that the full definition of AffApprox is
 given in Section 8, where round-off error is incorporated into
 the remainder/error-bound term.

@@ -4,7 +4,28 @@
 
 This paper documents a computer-assisted procedure
 for rigorously analyzing small hyperbolic $3$-manifolds.
-The first two applications were used to prove
+Briefly, we will define a compact six-dimensional space ${\cal P}$
+that parameterizes pairs of elements of ${\rm Isom}({\bf H}^3)$,
+and then construct a regular binary space partition (BSP) tree
+which subdivides ${\cal P}$ into subregions ${\cal P_i}$
+and whose leaves are --- with a few exceptions --- labeled with killerwords.
+These killerwords will encode miniature proofs that ${\cal P_i}$
+cannot contain any points which correspond to
+particular choices of pairs of generators of
+any torsion-free discrete group of ${\rm Isom}({\bf H}^3)$.
+This tree of mini-proofs will then be used
+to exhaustively isolate all possible manifolds
+which can have properties related to the dimensions of ${\cal P}$.
+
+The first two applications of the procedure
+were used to prove a proposition from [GMT]:
+\proclaim{Proposition [GMT]}
+Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
+a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$,
+or $M$ lies within one of seven tightly constrained
+exceptional shortest-geodesic-geometry regions.
+\endproclaim
+and a related proposition; both of which were used in the proof of
 the main technical result of [GMT]:
 \proclaim{Theorem [GMT]}
 Every closed hyperbolic $3$-manifold
@@ -13,14 +34,7 @@ indeed one coming from a shortest geodesic.
 As a consequence,
 homotopy hyperbolic $3$-manifolds are hyperbolic.
 \endproclaim
-and a proposition:
-\proclaim{Proposition [GMT]}
-Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
-a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$,
-or $M$ lies within one of seven tightly constrained
-exceptional shortest-geodesic-geometry regions.
-\endproclaim
-More recently, this second result has been sharpened:
+More recently, the proposition has been sharpened:
 \proclaim{Theorem}
 Let $M$ be an orientable hyperbolic $3$-manifold,
 and let $\delta$ be a shortest geodesic.
@@ -28,7 +42,7 @@ Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
 $M$ is isometric to one of seven specific manifolds.
 \endproclaim
 \demo{Proof}
-Let $X_0, \cdots, X_6$ denote the exceptional regions of Theorem 2.XX,
+Let $X_0, \cdots, X_6$ denote the exceptional regions of Theorem FIXME(2.XX),
 with $N_i$ the corresponding conjectural manifold.
 [GMT] showed that $N_0$=Vol3 is the unique manifold in the region
 and [JR] showed that Vol3 covered no 3-manifold.
@@ -46,7 +60,7 @@ Other applications of the procedure:
 
 Theorem [G]  (Smale conjecture of hyperbolic 3-manifolds)
 If N is a closed hyperbolic 3-manifold,
-then the natural inclusion $Isom(N)\to Diff(N)$ is a homotopy equivalence.
+then the natural inclusion ${\rm Isom}(N)\to {\rm Diff}(N)$ is a homotopy equivalence.
 
 The proof made essential use of the fact that a shortest geodesic
 of a closed hyperbolic 3-manifold satisfies the insulator condition [GMT].
@@ -58,16 +72,17 @@ This result relies on
 
 Lemma [ACS] Suppose that M is a closed, orientable hyperbolic 3-manifold,
 and that C is a shortest geodesic in M.
-Set $N = \rm{drill}_C(M)$. If $\rm{tuberad}(C) \ge .ln 3/2$ then
+Set $N = \rm{drill}_C(M)$. If $\rm{tuberad}(C) \ge \ln(3)/2$ then
 $\rm{vol} N < 3:0177 \rm{vol}M$.
 
 This is based on a result of [ADST],
 that makes essential use of Perelman's [Pe] monotonicty result.
-a key element of his proof of geometrization and the ln(3)/2 theorem of [GMT].
+a key element of his proof of geometrization and the $\ln(3)/2$
+theorem of [GMT].
 Lemma [ACS] is used to prove other results such as 
 
 Theorem [ACS] Suppose that M is a closed, orientable, hyperbolic
-3-manifold such that $vol(M)\le 1.22$.
+3-manifold such that ${\rm vol}(M) \le 1.22$.
 Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.
 
 (The statement is sharpened slightly to take into account [GT])
@@ -85,28 +100,29 @@ to rigorously analyze small orientable cusped hyperbolic $3$-manifolds,
 and to rigorously analyze small non-orientable closed hyperbolic $3$-manifolds.
 
 
-* ORGANIZATION
 This paper is organized as follows.
 
-In Section 1 we introduce [GMT]'s Proposition 1.28 as Theorem 2.19, and sketch its proof.
+In Section 1 we introduce [GMT; Proposition 2.8] as Theorem FIXME(2.19),
+and sketch its proof.
 
-In Section 2 we provide a formal statement and proof of Theorem 2.19.
+In Section 2 we provide a formal statement and proof of Theorem FIXME(2.19).
 
 In Section 3,
 the method for describing the decomposition
 of the parameter space ${\cal W}$ into sub-regions is given,
 and the conditions used to eliminate sub-regions are discussed.
-Near the end of this chapter, the first part of a detailed example is given.
+Near the end of this section, the first part of a detailed example is given.
 
 Eliminating 
 a sub-region requires that a certain function is shown to be bounded 
 appropriately over the entire sub-region.  This is carried out by using a 
 first-order Taylor approximation of the function together with a 
 remainder 
-bound.  Our computer version of such a Taylor approximation with remainder bound 
-is called an {\it AffApprox} and in Section 4, the relevant theory is 
-developed.  At this point, the detailed example of Section 3 can be 
-completed.
+bound.
+Our computer version of such a Taylor approximation with remainder bound 
+is called an {\it AffApprox} and in Section 4,
+the relevant theory is developed.
+At this point, the detailed example of Section 3 can be completed.
 
 In Sections 5 and 6, round-off error analysis appropriate to our 
 set-up is introduced.  Specifically, in Section 6, round-off error is 
@@ -115,8 +131,8 @@ into the {\it AffApprox} formulas introduced in Section 4.  The proofs here
 require an analysis of round-off error for complex numbers, which is carried 
 out in Section 5.
 
-In Section 7 we give some hints that we hope will help
-others endeavoring to apply these methods.
+In Section 7 we give some hints about the search for a atree,
+in the hope that they will help others endeavoring to apply these methods.
 
 Finally, in Section 8, we present an updated version of
 the code used to check that the proof is valid,

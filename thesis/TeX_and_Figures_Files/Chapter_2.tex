@@ -8,15 +8,15 @@
 \section{Killerwords and the parameter space}
 \vglue-4pt
 
-{\it Notation and conventions} 1.1.
-A hyperbolic $3$-manifold is a Riemannian\break $3$-manifold of constant sectional curvature $-1$.  All hyperbolic $3$-manifolds under
+{\it Notation and conventions} FIXME(1.1).
+A hyperbolic $3$-manifold is a Riemannian $3$-manifold of constant sectional curvature $-1$.  All hyperbolic $3$-manifolds under
 consideration will be closed and orientable. We will work in the upper-half-space model for
 hyperbolic 3-space:  ${\bf H}^3 = \{(x,y,z): z > 0\}$ with 
 metric ${\rm ds_H} = {\rm ds_E}/z.$ The distance between two points $w$ and $v$ in ${\bf H}^3$ will be denoted $\rho(w,v).$
 
 It is well known that  
 ${\rm Isom}_+({\bf H}^3) = {\rm PSL(2,}{\bf C}),$  
-where an element of\break
+where an element of
 ${\rm PSL(2,}{\bf C})$ acts as a M\"obius transformation on the bounding (extended) complex plane and the extension to upper-half-space is the natural extension
  (see [Bea]).  
 If $M$ is a hyperbolic $3$-manifold, then $M={\bf H}^3/\Gamma$ where $\Gamma$ is a 
@@ -66,7 +66,7 @@ So, for all isometries we have that $\Relength = {\rm Re}(\length).$
 \numbereddemo{Definition}   If
 $G$ is a subgroup of ${\rm Isom}_+({\bf H}^3),$ then  we say that $f$ is a {\it shortest} element  in $G$ if $f\neq {\rm id}$ and
 $\Relength(f)\le \Relength(g)$
-for all \pagebreak $g\in G, \ g\neq {\rm id}.$
+for all $g\in G, \ g\neq {\rm id}.$
 \enddemo
  
 \numbereddemo{Definition}
@@ -93,7 +93,9 @@ $\distance(\sigma,\tau) = 0 + i0,$ or $0 + i\pi$ depending on whether or not $\s
 
 Define ${\it Redistance} = {\rm Re} (\distance).$
 
-As defined, Redistance is nonnegative.  In Definition 1.8 and in Sections 2 and 3, it will be useful to have a broader definition. Given an oriented
+As defined, Redistance is nonnegative.
+In Definition FIXME(1.8) and in Sections FIXME(2 and 3),
+it will be useful to have a broader definition. Given an oriented
 geodesic $\alpha$ in ${\bf H}^3$ orthogonal to oriented geodesics $\beta$ and $\gamma$, define $d_\alpha(\beta,\gamma) \in {\bf C}$ where a
 $d_\alpha(\beta,\gamma)$ translation of ${\bf H}^3$  along $\alpha$ takes $\beta$ to $\gamma.$
 \enddemo
@@ -120,7 +122,7 @@ Our desire to understand tuberadii about closed geodesics, and especially about 
 $w$ corresponding to an element taking $\delta_0$ to its nearest covering translate.  We investigate these 2-generator groups by using certain
 subsets of ${\bf C}^3$ as parameter spaces.
 
-A {\it marked {\rm (2-}generator\/{\rm )} group} is a triple $\{G,f,w\}$ consisting of a\break 2-generator subgroup $G$ of ${\rm Isom}_+({\bf H}^3)$
+A {\it marked {\rm (2-}generator\/{\rm )} group} is a triple $\{G,f,w\}$ consisting of a 2-generator subgroup $G$ of ${\rm Isom}_+({\bf H}^3)$
 and an ordered pair of isometries $f,w$ of ${\bf H}^3$ which generate $G$  such that $\Relength(f) > 0$ and if $A_f$ is the axis of $f,$ then $w(A_f)
 \cap A_f  = \emptyset$  (here, intersection is taken in ${\bf H}^3 \cup S^2_\infty$). Two marked groups $\{G_1,f_1,w_1\}$ and $\{G_2,f_2,w_2\}$
 are {\it conjugate} if $G_1$ and $G_2$ are conjugate via an element of ${\rm Isom}_+({\bf H}^3)$ and this conjugating element takes $f_1$ to $f_2$
@@ -153,9 +155,9 @@ $-\Relength(f)/2< {\rm Re}(d_ {B_{(0;\infty)}})$
 (ortholine from $w^{-1}( B_{(0;\infty)})$ to $ B_{(0;\infty)}$),
 (ortholine from $ B_{(0;\infty)}$ to $w(B_{(0;\infty)}))))
 \le \Relength(f)/2.$  
-See Figure 1.1.
+See Figure FIXME(1.1).
 Note that because $f$ is shortest and
-$\Relength(f)\break > 0,$ it follows that $G$ must be 
+$\Relength(f) > 0,$ it follows that $G$ must be 
 discrete, torsion-free, and parabolic-free.
  
 
@@ -176,7 +178,7 @@ following two propositions imply this subset of ${\cal T}^{\prime}$ lives in a c
 \enddemo
 
  \figin{fig1.1}{500}
- \centerline{Figure 1.1}
+ \centerline{Figure FIXME(1.1)}
 
 \numbereddemo{Definition} \hglue-8pt Let ${\cal P}\subset{\cal P}^{\prime}$ be the set of those parameters $\alpha
 = (l+it$, $d+ib, r+ia)$ such
@@ -196,14 +198,14 @@ The point of the definition of ${\cal P}$ and ${\cal T}$ is as follows.  We want
 ${\cal P}^{\prime}$ and its subset ${\cal T}^{\prime}.$  But 
 ${\cal P}^{\prime}$ is problematic from the computational viewpoint because it is noncompact.  We wish to replace 
 ${\cal P}^{\prime}$ by ${\cal P}$ which is compact, and 
-${\cal T}^{\prime}$ by ${\cal T}$ in our computer analysis.  This is carried out in Lemma 1.13.  Note that we worked to make ${\cal P}$ as small as reasonable to save computation time;  for example, the $t$ and $r$ restrictions above cut down the parameter space by a factor of 4 over the obvious $t$ and $r$ restrictions. 
+${\cal T}^{\prime}$ by ${\cal T}$ in our computer analysis.  This is carried out in Lemma FIXME(1.13).  Note that we worked to make ${\cal P}$ as small as reasonable to save computation time;  for example, the $t$ and $r$ restrictions above cut down the parameter space by a factor of 4 over the obvious $t$ and $r$ restrictions. 
 
 By [G; Lemma 5.9] (or see Example A.3 in the appendix) a closed orientable hyperbolic $3$-manifold $N$
 satisfies the insulator condition provided that
 tuberadius$(\delta) > \ln(3)/2$ for some closed geodesic $\delta\subset N.$  Thus we
 are led to consider:
 
-\numbereddemo{Definition}  A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark 1.17 holds for each $\beta\in {\cal P}_i$
+\numbereddemo{Definition}  A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark FIXME(1.17) holds for each $\beta\in {\cal P}_i$
 and for which $h_\beta$ is not a power of $f_\beta$ for each $\beta\in {\cal P}_i$ is
 called a {\it killerword} for ${\cal P}_i$ with respect to contradiction a) (resp.\ b)).
 
@@ -221,7 +223,7 @@ thus use the computer to eliminate all of~${\cal P}_i .$
 \enddemo
 
 \vglue8pt 
-{\it Definition} 1.22. Let 
+{\it Definition} FIXME(1.22). Let 
 \vglue4pt
 \centerline{$ {\cal W} = \{ (x_0,x_1,x_2,x_3,x_4,x_5) : |x_i| \le 4 \times 2^{(5 - i) /6} {\rm \ for\ } i = 0,1,2,3,4,5 \}$}
 \begin{eqnarray*}
@@ -244,18 +246,19 @@ L^\prime &\hskip-8pt=\hskip-8pt& \exp(L) = \exp(l+it),\enspace D^\prime = \exp(D
 \end{eqnarray*}
  
 
-{\it Remarks} 1.23.
+{\it Remarks} FIXME(1.23).
 i) We work with ${\cal W}$ instead of $\exp({\cal P})$ because we want our initial parameter space to be a (6-dimensional) box that is easily
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\cal W}_i$ of ${\cal W}$ will be eliminated because they are outside of $\exp({\cal P})$ not because of the analogues of conditions a) and b) in
-Remark 1.17.
- The entire collection of conditions is given \pagebreak in Chapter 5.
+Remark FIXME(1.17).
+The entire collection of conditions is given in Section FIXME(5).
  
-ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\cal W}$ is explained in Construction 5.3.  Briefly, the main reason for including it
+ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\cal W}$ is explained in Construction FIXME(5.3).
+Briefly, the main reason for including it
 is to make the shape of regions stay as uniform and ``round" as possible under subdivision.
 This makes the Taylor approximations efficient, hence fast.
 \vglue4pt
-iii)  We chose the co-ordinates of ${\cal W}$  so that $L^\prime = x_0 + i x_3,\ D^\prime =\break x_1 + i x_4,\ R^\prime = x_2 + i x_5\ $ to gain a mild
+iii)  We chose the co-ordinates of ${\cal W}$  so that $L^\prime = x_0 + i x_3,\ D^\prime = x_1 + i x_4,\ R^\prime = x_2 + i x_5\ $ to gain a mild
 computer advantage.  
 \advance\theoremcount by 3
 
@@ -283,7 +286,7 @@ ${\rm PSL(2,}{\bf C})$ to ${\rm SL(2,}{\bf C})$).
 
 b)  $w = \beta \circ \alpha$ where $\beta$ is translation of distance $R$ along $ B_{(0;\infty)}$ and $\alpha$ is translation of distance $D$ along $ B_{(-1;1)}$.  Thus,
 a matrix representative of $\beta$ is $$ \left(\matrix{\sqrt{R^\prime} & 0 \cr 0 & 1/\sqrt{R^\prime}\cr}\right)$$ and a matrix representative of $\alpha$ can be computed to be $$\left(\matrix{\cosh(D/2) & \sinh(D/2) \cr \sinh(D/2) & \cosh(D/2)\cr}\right).$$ But
-\pagebreak $\cosh(D/2) = (\exp(D/2) + \exp(-D/2))/2 = 
+$\cosh(D/2) = (\exp(D/2) + \exp(-D/2))/2 = 
 (\sqrt{D^\prime} + 1/\sqrt{D^\prime})/2 = ch$ and similarly for $sh.$
 Thus, $$\alpha = \left(\matrix{ch & sh \cr sh & ch\cr}\right)$$ and b) follows by matrix multiplication.
 \enddemo
@@ -293,7 +296,7 @@ C}),$$ then
 \begin{itemize}
 \ritem{a)} $\exp(\Relength (h))= |\trace(A)/2 \pm \sqrt{(\trace(A)/2)^2 - 1}|^2,$
 
-\ritem{b)} $\exp({\rm Redistance} (h(B_{(0;\infty)}), B_{(0;\infty)}))=|{\rm orthotrace}(A) \pm$\hfill\break \noindent $\sqrt{({\rm
+\ritem{b)} $\exp({\rm Redistance} (h(B_{(0;\infty)}), B_{(0;\infty)}))=|{\rm orthotrace}(A) \pm$\hfill \noindent $\sqrt{({\rm
 orthotrace}(A))^2 - 1}|$  where 
 {\rm orthotrace(}$A) = ad + bc.$ $\phantom{\sum^\int}$
 \end{itemize}
@@ -306,7 +309,7 @@ which case there is no need to choose.
 is a real number between 2 and -2).  
 
 We assume $A$ is hyperbolic.  Because trace is a conjugacy invariant, we can assume the oriented axis of $A$ is $ B_{(0;\infty)}.$  Thus $A$ is a diagonal matrix with $p$ and $p^{-1}$ along the diagonal with 
-$|p| > 1,$ and, as in the proof of Lemma 1.24, we see that 
+$|p| > 1,$ and, as in the proof of Lemma FIXME(1.24), we see that 
 $\exp({\rm length}(h)) = p^2.$  Of course,  $\trace(A)= p + p^{-1}$, and it is easy enough to solve for $p.$   Specifically, 
 $p = \trace(A)/2 \pm \sqrt{(\trace(A)/2)^2 - 1}.$
 Thus, 
@@ -343,7 +346,7 @@ Thus,
 \end{eqnarray*}
 \enddemo
 
-\numbereddemo{{R}emarks} i)  It follows from Lemma 1.25 that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
+\numbereddemo{{R}emarks} i)  It follows from Lemma FIXME(1.25) that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
 parameter value $\alpha\in {\cal W},$
 $$\exp(\Relength(h_\alpha)), \hbox{ and }
   \exp({\rm Redistance}(h_\alpha(B_{(0;\infty)}), B_{(0;\infty)}))$$ can be computed using only the
@@ -352,7 +355,8 @@ operations $+, -, \times, /, \sqrt{}.$
  ii) During the course of the computer work needed to prove the main theorems, the parameter space
 ${\cal W}$ was decomposed into sub-boxes by computer via a recursive subdivision process:
 Given a sub-box  being analyzed, either it can be {\it killed directly} (that is, eliminated by a killerword and associated condition as described in
-Remark 1.17, or for the trivial reason described in Remark 1.23i), or it cannot.  
+Remark FIXME(1.17),
+or for the trivial reason described in Remark FIXME(1.23i)), or it cannot.  
 If it cannot be killed directly, it is subdivided in half by a hyperplane
 $\{x_i = c \}$ (where $i$ runs through the various co-ordinate dimensions
 cyclically) and the two pieces are analyzed separately, and so on. 
@@ -384,11 +388,11 @@ lesser $x_5$ values, and produces the interval $[-4,0].$  The second entry (1) m
 $[-2,0].$  The third entry (1) produces $[-1,0].$  Continuing, we see that $X_{6a}^{\phantom{|}}$ has $-2^{-9} \le x_5 = {\rm Im}(R') \le 0.$  The other
 co-ordinates can be computed in the same fashion, although they must at the end be multiplied by the factor $2^{(5 - i)/6}$ (see the definition of the
 initial box
-${\cal W}$).  The range of co-ordinate values for each  exceptional  box $X_0, X_1, \ldots, X_6$ is given in Table 1.1 (a limited number of significant
+${\cal W}$).  The range of co-ordinate values for each  exceptional  box $X_0, X_1, \ldots, X_6$ is given in Table FIXME:1.1 (a limited number of significant
 digits is given), and  then a range of co-ordinates for exceptional regions (in ${\cal P}$) 
-${\cal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks 1.30i) and 1.30ii)) in Table 1.2. (Note that this use of the symbol ${\cal R}_i$ differs
+${\cal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks FIXME:1.30i) and 1.30ii)) in Table FIXME:1.2. (Note that this use of the symbol ${\cal R}_i$ differs
 slightly from the use in \S 0.)
-Finally, two {\it quasi-relators} are given in Proposition 1.28 for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).
+Finally, two {\it quasi-relators} are given in Proposition FIXME:1.28 for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).
  
 
 \numbereddemo{Definition} A {\it quasi-relator} in a sub-box $X$ of ${\cal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
@@ -448,8 +452,6 @@ $r_2 = FwfwfWfwfw,$
 101101001101001000\ 
 110101011000000100\ 
 000.$ 
-\pagebreak
-
 
 \noindent $X_1\ \ 
 $ quasi\/{\rm -}\/relators\/{\rm :}
@@ -566,7 +568,7 @@ $r_2 = FWFwfwFwfWfwFwfw.$
 
  
 \demo{Proof}  
-The proof follows along the lines presented in Remark 1.17.  
+The proof follows along the lines presented in Remark FIXME(1.17).  
 Two computer files contain the data needed for the proof.   
 The first computer file describes the partition of ${\cal W}$ into
 sub-boxes and attaches an integer to each such sub-box, 
@@ -574,7 +576,7 @@ and the second file, called ``conditionlist" is an ordered list of conditions an
 The integer associated to a sub-box in the first file describes the numbered condition/killerword from   conditionlist that will eliminate the sub-box
 in question (other than those corresponding to the $X_i).$ A computer program named {\it verify} shows
 that the conditions and killerwords in question actually do kill off their associated sub-boxes (see Section 5 for more details).  This computer
-program addresses the issues of Remark 1.20.  The code for {\it
+program addresses the issues of Remark FIXME(1.20).  The code for {\it
 verify} is available at the {\it Annals} web site. 
 
 In addition, a mild modification of {\it verify} showed that the listed words were quasi-relators for the given sub-boxes. 
