@@ -1,23 +1,23 @@
  
-\section{Conditions and sub-boxes}
+\chapter{Conditions and sub-boxes}
   
 In this section we expand on some topics mentioned briefly in Section 1.  As such, it would be useful to look again at
-FIXME(Definitions 1.8, 1.12, and 1.22, and Remark 1.9),
+Definitions \ref{GMT 1.8], \ref{GMT 1.12}, and \ref{GMT 1.22}, and Remark \ref{GMT 1.9}),
 where ${\mathcal P}$, ${\mathcal T}$ and their partners (under exponentiation)
 ${\mathcal W}$, ${\mathcal S}$ are introduced, and at
-FIXME(Definition 1.18)
+Definition \ref{GMT 1.18}
  where the notion of a killerword is introduced (the
 definition is phrased in terms of ${\mathcal P}$, but the definition also makes sense for ${\mathcal W}$).  Note that working with
 the region
 ${\mathcal P}$ is intuitively appealing, but working with the box ${\mathcal W}$ is vastly superior computationally (see Remark
 1.21).
 
-FIXME(Theorem 0.2),
+Theorem \ref{GMT 0.2},
 hence
-FIXME(Theorem 0.1), follows from
-FIXME(Propositions 1.28, 2.8, 3.1, and 3.2).
+Theorem \ref{GMT 0.1}, follows from
+Propositions \ref{GMT 1.28}, \ref{GMT 2.8}, \ref{GMT 3.1}, and \ref{GMT 3.2}.
   The computational aspects of the proofs of each of these propositions are similar.  We will focus on
-FIXME(Proposition 1.28)
+Proposition \ref{GMT 1.28}
  here.
 Its proof   amounts to decomposing 
  ${\mathcal W}$ into a collection of sub-boxes of two types:
@@ -29,14 +29,14 @@ exceptional boxes $X_0, X_1, \ldots, X_6.$
 perhaps with the help of a killerword.  To {\textit kill} a sub-box means to show that 
 ${\mathcal S} - \bigcup_{n = 0,\dots, 6} X_n$ has no point in the sub-box. 
 \end{itemize}
-\noindent The set-up for efficiently describing these sub-boxes will be given in Construction FIXME(5.3). 
+\noindent The set-up for efficiently describing these sub-boxes will be given in Construction \ref{GMT 5.3}. 
  
 
 We now list the conditions used to kill the nonexceptional sub-boxes.  There are two types of conditions: the trivial and
 the interesting.  The trivial conditions kill sub-boxes in ${\mathcal W}$ since the sub-boxes in question miss 
 $\exp({\mathcal P}).$  The interesting conditions are where the real work is done, and they require a killerword in $f, w,
 f^{-1}, w^{-1}$ to work their magic (see
-FIXME(Remark 1.17)
+Remark \ref{GMT 1.17}
 ).
 
 To be consistent with the computer program {\textit verify} we use the following notation: $L^{\prime} = z_0 + i z_3$,
@@ -45,12 +45,12 @@ $L^{\prime} = \exp(L) = \exp(l+it),\   D^{\prime} = \exp(D) = \exp(d+ib),\
 R^{\prime} = \exp(R) = \exp(r+ia).$
 \vglue10pt
  {{\textbf The trivial conditions  
-FIXME(5.1)
+\ref{GMT 5.1}
 }}.
 \vglue6pt
 {\textit Condition} `s' ({\textit short}):  Tests that all points in the sub-box have $|z_0 + i z_3| < 1.10274.$  This ensures that  
 $$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| < 1.10274 < \exp(0.0978),$$  and
-FIXME(Definition 1.12)
+Definition \ref{GMT 1.12}
  tells us that we are
 outside of $\exp({\mathcal P}).$
 \vglue6pt
@@ -73,7 +73,7 @@ $$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are
 
 \vglue12pt
  {{\textbf The interesting conditions 
-FIXME(5.2)
+\ref{GMT 5.2}
 }}.
 \vglue6pt
 {\textit Condition}  `L': This condition comes equipped with a killerword $k$ in $f, w, f^{-1}, w^{-1},$ and tests that all
@@ -81,7 +81,7 @@ points in the sub-box have $|\exp({\textrm length}(k))| <  |L^{\prime}| = |\exp(
 of the isometry determined by $k.$   This, of course, contradicts the fact that $L$ is the length of the shortest geodesic.
 
 It is easy to carry out the test $|\exp({\textrm length}(k))| <  |L^{\prime}|$ because
-Lemma FIXME(1.25a)) can be used.
+Lemma \ref{GMT 1.25a}) can be used.
 Note that in {\textit verify} the function which computes $\exp({\textrm length})$ is called {\textit length}.  
 
 Of course, Condition `L' also checks that the isometry corresponding to the word $k$ is not the identity.
@@ -95,7 +95,7 @@ with negative endpoint $(0,0,0).$)
 This, of course, contradicts the ``nearest" condition.
 
 It is easy to carry out the test $|\exp({\textrm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))| <  |D^{\prime}|$ because
-Lemma FIXME(1.25b)) can be used. Note that in {\textit verify} the function which computes the quantity
+Lemma \ref{GMT 1.25b}) can be used. Note that in {\textit verify} the function which computes the quantity
 $\exp({\textrm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))$ is called {\textit orthodist}.  
 
 Also, Condition `O' checks that the isometry corresponding to the word $k$ does not take the axis of $f$ to itself.
@@ -107,16 +107,16 @@ greater than or equal to $l/4.$
 \eject
 
 {\textit Condition}  `conjugate':  There is one other condition that is used to eliminate points in ${\mathcal W}.$  Following
-FIXME(Definition 1.12)
+Definition \ref{GMT 1.12}
  (and 
-FIXME(Lemma 1.13)
+Lemma \ref{GMT 1.13}
 ) we eliminate all boxes with $0 < t \le \pi.$  Of course, after exponentiating $L = l+it,$
 this corresponds to eliminating all boxes with $z_3 > 0.$ Specifically, we toss all sub-boxes of ${\mathcal W}$ whose fourth
 entry is a 1. This condition does not appear in {\textit verify} because it is applied ``outside" of these
 programs, as described in Construction 
-FIXME(5.3).
+\ref{GMT 5.3}.
 \vglue6pt
- {\textit Construction} FIXME(5.3): 
+ {\textit Construction} \ref{GMT 5.3}: 
 We now give the method for describing the roughly 930 million sub-boxes that the initial box ${\mathcal W}$ is subdivided into.
 
 All sub-boxes are obtained by subdivision of a previous sub-box along a real
@@ -146,7 +146,7 @@ is always done across the longest dimension of the box,
 and so that all of the sub-boxes are similar.  
 The dimensions of ${\mathcal W}$ have the beneficial effect of making the sub-boxes as ``round" as possible, hence making the Taylor approximation calculations efficient and fast.
 This explains the factor of $2^{(5-i)/6}$ in Definition 
-FIXME(1.22)
+\ref{GMT 1.22}
 .
 
 To kill a sub-box $Z(s)$, the checker program has two (recursive) options:
@@ -154,7 +154,7 @@ use a condition and, if necessary, an associated killerword  to kill $Z(s)$ dire
 At this point, it may seem as if the second option is not necessary,
 because surely a condition which kills two halves also kills the whole.
 The answer to this has been hinted at in 
-FIXME(Remarks 1.17 and 1.35)
+Remarks \ref{GMT 1.17} and \ref{GMT 1.35}
  where
 it is noted that our evaluation of a function arising
 from a killerword  is via first-order Taylor
@@ -163,7 +163,7 @@ approximation, complete with remainder/error term.
 both the theoretical error arising from using a first-order Taylor
 approximation to approximate a function, and the accumulated
 round-off error; see 
-FIXME(Sections 6, 7,  and 8)
+Chapters FIXME(6, 7,  and 8)
 .)
 Even if a killerword could theoretically kill off a sub-box,
 it is quite possible that our
@@ -228,7 +228,7 @@ $-1$ tells {\textit verify} to omit the sub-box, and mark it as skipped
 The checker program {\textit verify}, its inputs, and the list of conditions
 are available from the {\textit Annals of Mathematics} web site.
 \vglue7pt
-FIXME({\textit Example} 5.4.)
+{\textit Example} \ref{GMT 5.4}.)
 To illustrate the checking process in action, this is a (non-representative)
 example, which shows how the sub-box $Z(s)$ (minus a hole) is killed,
 where
@@ -258,14 +258,14 @@ which causes the program to kill $Z(s)$ in the following fashion:
 \>\>\>kill $Z(s011)$ with condition 1996 = ``L(FwFwFWFWfWFWFwFwfww)''
 \>omit $Z(s1)$
 \noindent as shown in 
-FIXME(Figure 5.1).
+Figure \ref{GMT 5.1}.
 }
 
  
  %FIXME \centerline{\BoxedEPSF{fig5.1.eps scaled 1250}}
 
  \begin{quote}{
-FIXME(Figure 5.1)
+ Figure \label{GMT 5.1}
 .  Six levels of subdivision, in two projections,
  with all the trimmings.}
  \end{quote}
@@ -330,12 +330,12 @@ and so on.
 However, these items take on values over an entire sub-box and thus are computed via AffApproxes (first-order Taylor
 approximations with remainder/error bounds), which are not formally defined until the next section.  We
 complete
-FIXME(Example 5.4)
+Example \ref{GMT 5.4}
  at the end of 
-FIXME(Section 6).
+Chapter FIXME(6).
 
 \vglue9pt 
-FIXME({\textit Remark} 5.5)
+({\textit Remark} \label{GMT 5.5}
 .  For those planning on looking at the program {\textit verify}
 we now tie in the above description of its workings to a portion of the actual code in the program.  We note that the CWeb version of {\textit verify} is extensively documented, and is organized so that the most important details are presented first.
 

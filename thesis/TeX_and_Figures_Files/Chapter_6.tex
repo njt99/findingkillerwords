@@ -1,4 +1,4 @@
-\section{AffApproxes with round-off error}
+\chapter{AffApproxes with round-off error}
  
 In Section 6, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
 these calculations.  
@@ -13,8 +13,8 @@ that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_
 $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
 \end{conventions}
 
-{\textit Remark} FIXME:8.2.
-A review of Definition FIXME:7.2 (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
+{\textit Remark} \label{GMT 8.2}
+A review of Definition \ref{GMT 7.2} (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
 
 One approach to round-off error for AffApproxes would be to replace the four complex numbers in the definition of AffApprox by four AComplex numbers complete with their round-off errors, and similarly for the one real number.  We will not do this because it would necessitate keeping track of five separate round-off-error terms when we do AffApprox calculations.
 
@@ -24,7 +24,7 @@ Thus, the definition of AffApprox remains
 essentially the same as in Section FIXME:6.
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.
 
-\begin{conventions}{ {\textrm FIXME:8.3}}
+\begin{conventions}\label{GMT 8.3}
 i)  In what follows, we will use Basic Properties FIXME:7.0 and Lemmas FIXME:7.0 and FIXME:7.1.  Also, the propositions in Section 6
 will be utilized;  as such, the numbering of the propositions is the same in Sections FIXME:6 and FIXME:8 (for example,
 Proposition FIXME:6.7 corresponds to Proposition FIXME:8.7).  

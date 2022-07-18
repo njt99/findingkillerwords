@@ -8,7 +8,7 @@
 \chapter{Killerwords and the parameter space}
 \vglue-4pt
 
-{\textit Notation and conventions} FIXME(1.1).
+{\textit Notation and conventions} \ref{GMT 1.1}.
 A hyperbolic $3$-manifold is a Riemannian $3$-manifold of constant sectional curvature $-1$.  All hyperbolic $3$-manifolds under
 consideration will be closed and orientable. We will work in the upper-half-space model for
 hyperbolic 3-space:  ${\mathbf H}^3 = \{(x,y,z): z > 0\}$ with 
@@ -93,7 +93,7 @@ $\distance(\sigma,\tau) = 0 + i0,$ or $0 + i\pi$ depending on whether or not $\s
 Define ${\textit Redistance} = {\mathrm Re} (\distance).$
 
 As defined, Redistance is nonnegative.
-In Definition FIXME(1.8) and in Sections FIXME(2 and 3),
+In Definition \ref{GMT 1.8} and in Chapters FIXME(2 and 3),
 it will be useful to have a broader definition. Given an oriented
 geodesic $\alpha$ in ${\mathbf H}^3$ orthogonal to oriented geodesics $\beta$ and $\gamma$, define $d_\alpha(\beta,\gamma) \in {\mathbf C}$ where a
 $d_\alpha(\beta,\gamma)$ translation of ${\mathbf H}^3$  along $\alpha$ takes $\beta$ to $\gamma.$
@@ -154,7 +154,7 @@ $-\Relength(f)/2< {\mathrm Re}(d_ {B_{(0;\infty)}})$
 (ortholine from $w^{-1}( B_{(0;\infty)})$ to $ B_{(0;\infty)}$),
 (ortholine from $ B_{(0;\infty)}$ to $w(B_{(0;\infty)}))))
 \le \Relength(f)/2.$  
-See Figure FIXME(1.1).
+See Figure \ref{GMT 1.1}.
 Note that because $f$ is shortest and
 $\Relength(f) > 0,$ it follows that $G$ must be 
 discrete, torsion-free, and parabolic-free.
@@ -177,7 +177,7 @@ following two propositions imply this subset of ${\mathcal T}^{\prime}$ lives in
 \end{remark}
 
 %FIXME \figin{fig1.1}{500}
- \centerline{Figure FIXME(1.1)}
+ \centerline{Figure \ref{GMT 1.1}}
 
 \begin{definition} \hglue-8pt Let ${\mathcal P}\subset{\mathcal P}^{\prime}$ be the set of those parameters $\alpha
 = (l+it$, $d+ib, r+ia)$ such
@@ -197,14 +197,14 @@ The point of the definition of ${\mathcal P}$ and ${\mathcal T}$ is as follows. 
 ${\mathcal P}^{\prime}$ and its subset ${\mathcal T}^{\prime}.$  But 
 ${\mathcal P}^{\prime}$ is problematic from the computational viewpoint because it is noncompact.  We wish to replace 
 ${\mathcal P}^{\prime}$ by ${\mathcal P}$ which is compact, and 
-${\mathcal T}^{\prime}$ by ${\mathcal T}$ in our computer analysis.  This is carried out in Lemma FIXME(1.13).  Note that we worked to make ${\mathcal P}$ as small as reasonable to save computation time;  for example, the $t$ and $r$ restrictions above cut down the parameter space by a factor of 4 over the obvious $t$ and $r$ restrictions. 
+${\mathcal T}^{\prime}$ by ${\mathcal T}$ in our computer analysis.  This is carried out in Lemma \ref{GMT 1.13}.  Note that we worked to make ${\mathcal P}$ as small as reasonable to save computation time;  for example, the $t$ and $r$ restrictions above cut down the parameter space by a factor of 4 over the obvious $t$ and $r$ restrictions. 
 
 By [G; Lemma 5.9] (or see Example A.3 in the appendix) a closed orientable hyperbolic $3$-manifold $N$
 satisfies the insulator condition provided that
 tuberadius$(\delta) > \ln(3)/2$ for some closed geodesic $\delta\subset N.$  Thus we
 are led to consider:
 
-\begin{definition}  A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark FIXME(1.17) holds for each $\beta\in {\mathcal P}_i$
+\begin{definition}  A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark \ref{GMT 1.17} holds for each $\beta\in {\mathcal P}_i$
 and for which $h_\beta$ is not a power of $f_\beta$ for each $\beta\in {\mathcal P}_i$ is
 called a {\textit killerword} for ${\mathcal P}_i$ with respect to contradiction a) (resp.\ b)).
 \end{definition}
@@ -223,7 +223,7 @@ thus use the computer to eliminate all of~${\mathcal P}_i .$
 \end{remark}
 
 \vglue8pt 
-{\textit Definition} FIXME(1.22). Let 
+{\textit Definition} \ref{GMT 1.22}. Let 
 \vglue4pt
 \centerline{$ {\mathcal W} = \{ (x_0,x_1,x_2,x_3,x_4,x_5) : |x_i| \le 4 \times 2^{(5 - i) /6} {\mathrm \ for\ } i = 0,1,2,3,4,5 \}$}
 \begin{eqnarray*}
@@ -246,14 +246,14 @@ L^\prime &\hskip-8pt=\hskip-8pt& \exp(L) = \exp(l+it),\enspace D^\prime = \exp(D
 \end{eqnarray*}
  
 
-{\textit Remarks} FIXME(1.23).
+{\textit Remarks} \ref{GMT 1.23}.
 i) We work with ${\mathcal W}$ instead of $\exp({\mathcal P})$ because we want our initial parameter space to be a (6-dimensional) box that is easily
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\mathcal W}_i$ of ${\mathcal W}$ will be eliminated because they are outside of $\exp({\mathcal P})$ not because of the analogues of conditions a) and b) in
-Remark FIXME(1.17).
-The entire collection of conditions is given in Section FIXME(5).
+Remark \ref{GMT 1.17}.
+The entire collection of conditions is given in Chapter FIXME(5).
  
-ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction FIXME(5.3).
+ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction \ref{GMT 5.3}.
 Briefly, the main reason for including it
 is to make the shape of regions stay as uniform and ``round" as possible under subdivision.
 This makes the Taylor approximations efficient, hence fast.
@@ -316,7 +316,7 @@ which case there is no need to choose.
 is a real number between 2 and -2).  
 
 We assume $A$ is hyperbolic.  Because trace is a conjugacy invariant, we can assume the oriented axis of $A$ is $ B_{(0;\infty)}.$  Thus $A$ is a diagonal matrix with $p$ and $p^{-1}$ along the diagonal with 
-$|p| > 1,$ and, as in the proof of Lemma FIXME(1.24), we see that 
+$|p| > 1,$ and, as in the proof of Lemma \ref{GMT 1.24}, we see that 
 $\exp({\textrm length}(h)) = p^2.$  Of course,  $\trace(A)= p + p^{-1}$, and it is easy enough to solve for $p.$   Specifically, 
 $p = \trace(A)/2 \pm \sqrt{(\trace(A)/2)^2 - 1}.$
 Thus, 
@@ -353,7 +353,7 @@ Thus,
 \end{eqnarray*}
 \end{proof}
 
-\begin{remark} i)  It follows from Lemma FIXME(1.25) that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
+\begin{remark} i)  It follows from Lemma \ref{GMT 1.25} that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
 parameter value $\alpha\in {\mathcal W},$
 $$\exp(\Relength(h_\alpha)), \hbox{ and }
   \exp({\textrm Redistance}(h_\alpha(B_{(0;\infty)}), B_{(0;\infty)}))$$ can be computed using only the
@@ -363,7 +363,7 @@ operations $+, -, \times, /, \sqrt{}.$
  ii) During the course of the computer work needed to prove the main theorems, the parameter space
 ${\mathcal W}$ was decomposed into sub-boxes by computer via a recursive subdivision process:
 Given a sub-box  being analyzed, either it can be {\textit killed directly} (that is, eliminated by a killerword and associated condition as described in
-Remark FIXME(1.17),
+Remark \ref{GMT 1.17},
 or for the trivial reason described in Remark FIXME(1.23i)), or it cannot.  
 If it cannot be killed directly, it is subdivided in half by a hyperplane
 $\{x_i = c \}$ (where $i$ runs through the various co-ordinate dimensions
@@ -400,7 +400,7 @@ ${\mathcal W}$).  The range of co-ordinate values for each  exceptional  box $X_
 digits is given), and  then a range of co-ordinates for exceptional regions (in ${\mathcal P}$) 
 ${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks FIXME:1.30i) and 1.30ii)) in Table FIXME:1.2. (Note that this use of the symbol ${\mathcal R}_i$ differs
 slightly from the use in \S 0.)
-Finally, two {\textit quasi-relators} are given in Proposition FIXME:1.28 for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).
+Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).
  
 
 \begin{definition} A {\textit quasi-relator} in a sub-box $X$ of ${\mathcal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
@@ -576,7 +576,7 @@ $r_2 = FWFwfwFwfWfwFwfw.$
 
  
 \begin{proof}{}  
-The proof follows along the lines presented in Remark FIXME(1.17).  
+The proof follows along the lines presented in Remark \ref{GMT 1.17}.  
 Two computer files contain the data needed for the proof.   
 The first computer file describes the partition of ${\mathcal W}$ into
 sub-boxes and attaches an integer to each such sub-box, 
@@ -584,7 +584,7 @@ and the second file, called ``conditionlist" is an ordered list of conditions an
 The integer associated to a sub-box in the first file describes the numbered condition/killerword from   conditionlist that will eliminate the sub-box
 in question (other than those corresponding to the $X_i).$ A computer program named {\textit verify} shows
 that the conditions and killerwords in question actually do kill off their associated sub-boxes (see Section 5 for more details).  This computer
-program addresses the issues of Remark FIXME(1.20).  The code for {\textit
+program addresses the issues of Remark \ref{GMT 1.20}.  The code for {\textit
 verify} is available at the {\textit Annals} web site. 
 
 In addition, a mild modification of {\textit verify} showed that the listed words were quasi-relators for the given sub-boxes. 

@@ -1,8 +1,8 @@
-\section{Complex numbers with round-off error}
+\chapter{Complex numbers with round-off error}
 
 
-{\textit Remark} FIXME:7.1.
-The theoretical method for proving Theorem FIXME(0.2)
+{\textit Remark} \label{GMT 7.1}
+The theoretical method for proving Theorem \ref{GMT 0.2}
 has been implemented via the computer program {\textit verify}, which is available, together with the relevant data sets, at the {\textit Annals} web site.  To make this computer-aided proof rigorous, we needed to deal with round-off error in calculations.  
 
 One approach to round-off error would be to use interval arithmetic packages to carry out all calculations with floating-point machine numbers, or to generate our own version of these packages.  
@@ -15,7 +15,7 @@ sub-boxes. This necessitates that we incorporate round-off error directly into c
 In this section we show how to do standard operations on complex numbers while keeping track of round-off error.
 In the next section we work with  AffApproxes.
 
-\begin{definition}{ {\textrm FIXME(7.2)}}
+\begin{definition}{ {\textrm \ref{GMT 7.2}}}
 There are two types of complex numbers to consider: 
 
 \begin{itemize}
@@ -38,7 +38,7 @@ In general,  our operations  act on XComplexes and produce AComplexes, or they a
 In the calculations that follow the effect on the error is the whole point.
 
 %FIXME \demo{Conventions and standards {\textrm FIXME:7.4}}
-\begin{conventions}
+\begin{conventions}\label{GMT 7.4}
 We begin, by writing down our basic rules, which follow easily from the IEEE-754 standard for machine arithmetic (see [IEEE]).
 (Actually,  the ``hypot" function $h(a,b)$, which computes by elaborate chicanery $\sqrt{a^2 + b^2},$ is not part of the IEEE-754 standard, but  satisfies the appropriate standard according to the documentation provided (see [K1]).)  The operations here are on
 double-precision floating-point real numbers (``doubles") and we denote a true operation by the usual symbol and the associated machine operation by the same symbol in a circle, with two exceptions: a machine square root $\sqrt a$ is denoted $\root o \of a$ and the machine version of the hypot function is denoted $h_\circ$.  Perhaps a third exception is our occasional notation of true multiplication by the absence of a symbol.  
@@ -76,7 +76,7 @@ As in Section 6, we now break with the usual numbering convention.  Note that th
 following properties.
 \vglue12pt
 
- {\textbf Basic Properties FIXME:7.0 (assuming no underflow and no overflow)}.
+ {\textbf Basic Properties \label{GMT 7.0}(assuming no underflow and no overflow)}.
 \vglue6pt
 
 In the formulas that follow, $a$,$b$, and $A$ are machine numbers and
@@ -117,13 +117,13 @@ From these formulas, we immediately compute the following.
 \leq (1 + EPS) |h_\circ (a,b)|.
 \end{eqnarray*}
 Of course, we can also get the following type of formula, which is sometimes convenient,
- for example, in the proof of Lemma FIXME(7.2):
+ for example, in the proof of Lemma \ref{GMT 7.2}:
 $$\left({1 \over {1 + {EPS \over 2}}}\right) |a \oplus b| \leq |a + b| 
 \leq \left({1 \over {1 - {EPS \over 2}}}\right) |a \oplus b|.$$
 
 Before stating our propositions, we prove two lemmas.
 
-\begin{lemma}{FIXME(7.0) {\textrm (assuming no underflow and no overflow)}} 
+\begin{lemma}{\ref{GMT 7.0} {\textrm (assuming no underflow and no overflow)}} 
 For machine numbers $a$ and $b${\textrm ,}
 $$(1 - EPS) \otimes |a \oplus b| \le |a + b| \le (1 + EPS) \otimes |a \oplus b|.$$
  Analogous formulas hold for $\ -,\ *,\ /,\ \sqrt{}$.
@@ -137,7 +137,7 @@ $(1+EPS) \otimes (a \oplus b)$ is a better approximation to $a+b$ than $a \oplus
 case $a+b = 0$ is trivial, similarly for the left-hand inequality.
 \end{proof}
 
-\begin{lemma}{FIXME:7.1} $$(1 + EPS/2)^a A \le (1 + k EPS) \otimes A$$ 
+\begin{lemma}\label{GMT 7.1} $$(1 + EPS/2)^a A \le (1 + k EPS) \otimes A$$ 
  where $A$ is a nonnegative machine number{\textrm ,} and $a$ is a {\textrm (}\/not huge\/{\textrm )} integer{\textrm ,} such that
 for $a$ even{\textrm ,} $k = {a \over 2} + 1$ and  for $a$ odd, $k = {a+1 \over 2} + 1$. 
 \end{lemma}
@@ -145,22 +145,22 @@ for $a$ even{\textrm ,} $k = {a \over 2} + 1$ and  for $a$ odd, $k = {a+1 \over 
 \begin{proof}{} 
 $$(1 + EPS/2)^a A\le (1 - EPS/2)(1 + k EPS) A \le (1 + k EPS) \otimes A.$$ 
 The first inequality holds if $a$ and $k$ are as in the lemma, and the second inequality is a consequence of one of the
-formulas preceding Lemma FIXME:7.0 ($A \ge 0$). \end{proof}
+formulas preceding Lemma \ref{GMT 7.0} ($A \ge 0$). \end{proof}
  
 We now begin our construction of complex arithmetic. We will give proofs for most of the operations; the others should be straightforward to derive,
 or can be found in the {\textit Annals} web site.
 \vglue6pt
-{\textit Remarks} FIXME:7.5.
+{\textit Remarks} \label{GMT 7.5}.
 i) We remind the reader that all machine operations are on machine numbers, and that the various variables appearing in the propositions are assumed to be doubles.
 \vglue4pt
-ii) The propositions that follow include in their statements the definitions of the various operations (see Remark FIXME:6.6iii).
+ii) The propositions that follow include in their statements the definitions of the various operations (see Remark \ref{GMT 6.6iii}).
 
-\begin{proposition}{FIXME:7.1 {$(-X)$}} 
+\begin{proposition}\label{GMT 7.1}{$(-X)$}
 If $x$ is an {\textrm XComplex,} then 
 $$-x \equiv (-x.{\mathrm re},-x.{\mathrm im}).$$ 
 \end{proposition}
 
-\begin{proposition}{FIXME:7.2 {$(X + D)$}} 
+\begin{proposition}\label{GMT 7.2}{$(X + D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x + d) \supseteq S(x) + S(d)${\textrm ,} where 
  $$x + d \equiv (x.{\mathrm re} \oplus d, x.{\mathrm im};
@@ -174,13 +174,13 @@ The  error is bounded by
 \le (EPS/2) | x.{\mathrm re} \oplus d|
   =  (EPS/2) \otimes | x.{\mathrm re} \oplus d|.}$ \end{proof}
 
-\begin{proposition}{FIXME:7.3 {$(X - D)$}} 
+\begin{proposition}\label{GMT 7.3}{$(X - D)$}
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x - d) \supseteq S(x) - S(d)${\textrm ,} where 
  $$x - d \equiv (x.{\mathrm re} \ominus d, x.{\mathrm im};
 (EPS/2)\otimes |x.{\mathrm re} \ominus d|).$$ \end{proposition}
 
-\begin{proposition}{FIXME:7.4 {$(X + X)$}} 
+\begin{proposition}\label{GMT 7.4}{$(X + X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
  \begin{eqnarray*}
@@ -203,9 +203,9 @@ The error is bounded by
 &&\qquad = (EPS/2) \otimes ((1 + EPS) \otimes (| x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
    |x.{\mathrm im} \oplus y.{\mathrm im}|)).
 \end{eqnarray*}
-To go from line 2 to line 3 we used Lemma FIXME:7.0. \end{proof}
+To go from line 2 to line 3 we used Lemma \ref{GMT 7.0}. \end{proof}
 
-\begin{proposition}{FIXME:7.5 $(X - X)$}
+\begin{proposition}\label{GMT 7.5}{$(X - X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -215,7 +215,7 @@ x - y &\equiv& (x.{\mathrm re} \ominus y.{\mathrm re}, x.{\mathrm im} \ominus y.
 \end{eqnarray*} \end{proposition}
 
 
-\begin{proposition}{FIXME:7.6 $(A + A)$} 
+\begin{proposition}\label{GMT 7.6}{$(A + A)$} 
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -250,7 +250,7 @@ The precedence for machine operations is the same as that for true operations, s
 and will often be omitted in what
  follows.
 
-\begin{proposition}{FIXME:7.7 $(A - A)$}
+\begin{proposition}\label{GMT 7.7}{$(A - A)$}
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -263,14 +263,14 @@ e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\mathrm re}| \oplus |{\mathrm im
 \end{proposition}
 
 
-\begin{proposition}{FIXME:7.8 $(X  \times  D)$} 
+\begin{proposition}\label{GMT 7.8}{$(X  \times  D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x \times d) \supseteq S(x) \times S(d)${\textrm ,} where
 \begin{eqnarray*}
 x \times d &\equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with}\\[6pt] {\mathrm re} &= &x.{\mathrm re} \otimes d\\[6pt] {\mathrm im} &= &x.{\mathrm im} \otimes d\\[6pt] e &=& (EPS/2) \otimes ((1 + EPS) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|) ). \end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}{FIXME:7.9 $(X / D)$} 
+\begin{proposition}\label{GMT 7.9}{$(X / D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x / d) \supseteq S(x) / S(d)${\textrm ,} where
 \begin{eqnarray*}
@@ -278,7 +278,7 @@ x / d& \equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\[6pt] {\mathrm re}& 
 \end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}{FIXME:7.10 $(X  \times  X)$}
+\begin{proposition}\label{GMT 7.10}{$(X  \times  X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -341,7 +341,7 @@ EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm im}| \oplus |x.{\mathrm im} 
 \end{eqnarray*}
 \end{proof}
 
-\begin{proposition}{FIXME:7.11 $(D / X)$}
+\begin{proposition}\label{GMT 7.11}{$(D / X)$}
 If $x$ is a double and $y$ is an {\textrm XComplex,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -374,7 +374,7 @@ nrm)\right|\\
  
 Before continuing, let us compare ${1 \over nrm}$ and ${1 \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2}$ by developing a formula for
 comparing ${1 \over a^2 + b^2}$ and its associated ${1 \over nrm}$:
-\begin{lemma}{FIXME:7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
+\begin{lemma}\label{GMT 7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
 {\textit where} $nrm = a\otimes a \oplus b \otimes b.$
 \end{lemma}
 
@@ -443,7 +443,7 @@ Here we used the fact that
  
 This should give the flavor of division proofs.  As such, we will skip the proofs of $X/X$ and $A/A$ and simply refer to the
  {\textit Annals} web site.
-\begin{proposition}{FIXME:7.12 $(X / X)$}
+\begin{proposition}\label{GMT 7.12}{$(X / X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -463,7 +463,7 @@ e& =& (5EPS/2) \otimes ((1
 .\end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}{FIXME:7.13 $(A / A)$}
+\begin{proposition}\label{GMT 7.13}{$(A / A)$}
 If $x$ and $y$ are {\textrm AComplexes} with 
 $y.e < 100 EPS \otimes |y|${\textrm ,} or{\textrm ,} more accurately{\textrm ,}
 $$(y.e)^2< ((10000 EPS) \otimes EPS)\otimes nrm$$ then
@@ -493,7 +493,7 @@ construction is as follows.  If $x = x.{\mathrm re} + i x.{\mathrm im}$ then $\s
 re}| + h(x.{\mathrm re},x.{\mathrm im}))/2}$ and $d = x.{\mathrm im}/(2s)$ when $x.{\mathrm re} > 0.0$, and $\sqrt{x} = d + i s$ otherwise.  
 Thus, we take our (no-round-off) square roots to be in the first and fourth quadrants.
 
-\begin{proposition}{FIXME:7.14 ($\sqrt{X}$)}
+\begin{proposition}\label{GMT 7.14}{($\sqrt{X}$)}
 If $x$ is an {\textrm XComplex,} then $S(\sqrt{x}) \supseteq \sqrt{S(x)}$
 where we
 let $s_o = \root o \of {(|x.{\mathrm re}| \oplus h_o (x.{\mathrm re},x.{\mathrm im})) \otimes 0.5}$
@@ -595,7 +595,7 @@ e_s + e_d&\le& \left({5 \over 4} EPS + {11 \over 32} EPS^2 +\cdots\right) s_o\\
 Now, we develop two formulas for the absolute value of an XComplex.
  
 
-\begin{definition}
+\begin{definition} \label{GMT 7.0}
 	%FIXME {Formula {\textrm FIXME:7.0 (${\textrm absUB}(X)$)}}
 If $x$ is an XComplex, then
 there is an upper bound on the absolute value of $x$ as follows:
@@ -608,7 +608,7 @@ Thus, we define
 $${\textrm absUB}(x) = (1 + 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ 
 \end{definition}
 
-{\textit Formula} FIXME:7.1 (${\textrm absLB}(X)$).
+{\textit Formula} \label{GMT 7.1}{(${\textrm absLB}(X)$).
 If $x$ is an XComplex, then
 we get a lower bound on the absolute value of $x$ as follows.
 \begin{eqnarray*}
@@ -621,11 +621,11 @@ Thus, we define
 $${\textrm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ 
 \vglue12pt
 
-Finally, in several places in the {\textit verify} program we perform a standard operation on a pair of doubles and must take into account round-off error.  This is easy if we use Lemma FIXME:7.0.
+Finally, in several places in the {\textit verify} program we perform a standard operation on a pair of doubles and must take into account round-off error.  This is easy if we use Lemma \ref{GMT 7.0}.
 
 For example, in {\textit inequalityHolds} we want to show that $$wh \times wh  > {\textrm absUB}{\textrm (along),}$$ where $wh =
 {\textrm absLB}{\textrm (whirle)}.$   
-By Lemma FIXME:7.0, we know that $$(1 - EPS) \otimes (wh \otimes wh) \le wh \times wh$$ and we simply test that 
+By Lemma \ref{GMT 7.0}, we know that $$(1 - EPS) \otimes (wh \otimes wh) \le wh \times wh$$ and we simply test that 
 $$(1 - EPS) \otimes  (wh \otimes wh) \ge {\textrm absUB}{\textrm (along)}.$$
 
 A slightly more complicated version of this occurs in the computer calculation of ${\textrm pos}[i]$ and $size[i],$ that is, the center and size of a sub-box.  Prior to multiplication by ${\textrm scale}[i] = 2 ^{(5 - i)/6},$  the calculations of ${\textrm pos}$ and $size$ are exact.  However, multiplication by $scale$ introduces round-off error.  For the center of the sub-box we will have the computer use ${\textrm pos}[i] \otimes {\textrm scale}[i]$ with the realization that this is not necessarily ${\textrm pos}[i] \times {\textrm scale}[i]$.   Thus, we have to choose appropriate sizes to ensure that the machine sub-box contains the true sub-box.  
