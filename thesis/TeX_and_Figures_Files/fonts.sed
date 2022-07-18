@@ -11,6 +11,7 @@ s!mathrm \((*[a-zA-Z][a-zA-Z][a-zA-Z]\)!textrm \1!g
 s!mathbf \([a-zA-Z][a-zA-Z][a-zA-Z]\)!textbf \1!g
 s!\\tt!\\texttt!g
 s!{\\mathrm \([,-;:()]\) *}!{\\textrm \1}!g
+s!{\\mathrm \([,-;:()][,-:;()]\) *}!{\\textrm \1}!g
 /\\sectioncount/d
 /\\theoremcount/d
 s!\\proclaim{Theorem *\(.*\)}!\\begin{theorem}{\1}!
@@ -22,6 +23,7 @@ s!\\numbereddemo{Definition}!\\begin{definition}!
 s!\\numbereddemo{{R}emarks*}!\\begin{remark}!
 s!\\numbereddemo{Summary}!\\begin{summary}!
 s!\\demo{Definition!\\begin{definition}{!
+s!\\demo{Conventions!\\begin{conventions}{!
 s!\\endproclaim!\\end{proposition}!
 s!\\demo{Proof *\(.*\)}!\\begin{proof}{\1}!
 s!\\enddemo!\\end{proof}!

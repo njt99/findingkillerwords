@@ -1,7 +1,7 @@
 \section{A trail of breadcrumbs about finding killer words}
 
 Here we outline our method for finding a decomposition of
-the initial box ${\cal W}$ into sub-boxes,
+the initial box ${\mathcal W}$ into sub-boxes,
 each with a condition/killerword that kills off the entire associated sub-box,
 or with an indication that it belongs to one of the exceptional regions.
 For convenience, we will generally refer to a ``sub-box" simply as a ``box."
@@ -41,7 +41,7 @@ but to find killerwords for the remaining regions, an improvement was needed.
 Rather than blindly selecting words in first-in-first-out order,
 the algorithm can rank the words under consideration
 based on a heuristic estimate of the likelihood of their being useful
-(a word is {\it useful} if it is a prefix of a killerword).
+(a word is {\textit useful} if it is a prefix of a killerword).
 We note first that short words tend to be better than long words,
 as they have fewer steps and less error.
 Second, we note that words
@@ -65,7 +65,7 @@ with twice as many steps every time the number of descendant boxes
 doubles.  This way, the search could run forever, but only if
 the subdivision process runs forever.
 This merged process of alternately searching and subdividing we
-call the {\it decomposition algorithm}.
+call the {\textit decomposition algorithm}.
 
 The decomposition algorithm went through several revisions; at each stage
 of the revision process,
@@ -100,7 +100,7 @@ given word to kill a particular box, and evaluated each word on each box.
 Whenever a word was evaluated,
 a kind of triage was used to determine
 whether that word was likely to kill the box in question, likely to kill
-any of its $n^{\rm th}$ generation descendants, or unlikely to kill any
+any of its $n^{\mathrm th}$ generation descendants, or unlikely to kill any
 descendants of the box; the answer to that heuristic either allowed more
 detailed evaluation (with the error term included), deferred further
 evaluation until the box had been subdivided $n$ more times, or

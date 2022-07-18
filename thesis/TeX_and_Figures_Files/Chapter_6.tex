@@ -3,7 +3,7 @@
 In Section 6, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
 these calculations.  
 
-\demo{Conventions {\textrm FIXME:8.1}}
+\begin{conventions}{ {\textrm FIXME:8.1}}
 An AffApprox $x$ is a five-tuple
 $(x.f; x.f_0,x.f_1,x.f_2; x.{\textrm err})$
 consisting of four complex numbers $(x.f, x.f_0,x.f_1, x.f_2)$ and one real number $x.{\textrm err}.$  In Section FIXME:6, the
@@ -11,7 +11,7 @@ real number was denoted $x.e,$ but it seems preferable to use $x.{\textrm err}$ 
 that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1 \
 {\textrm for} \ k \in \{0,1,2\}\}$ to ${\mathbf C}$ that are $x.{\textrm err}$-well-approximated by the affine function
 $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
-\end{proof}
+\end{conventions}
 
 {\textit Remark} FIXME:8.2.
 A review of Definition FIXME:7.2 (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
@@ -24,7 +24,7 @@ Thus, the definition of AffApprox remains
 essentially the same as in Section FIXME:6.
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.
 
-\demo{Conventions {\textrm FIXME:8.3}}
+\begin{conventions}{ {\textrm FIXME:8.3}}
 i)  In what follows, we will use Basic Properties FIXME:7.0 and Lemmas FIXME:7.0 and FIXME:7.1.  Also, the propositions in Section 6
 will be utilized;  as such, the numbering of the propositions is the same in Sections FIXME:6 and FIXME:8 (for example,
 Proposition FIXME:6.7 corresponds to Proposition FIXME:8.7).  
@@ -41,7 +41,7 @@ FIXME:6.6iii)).
 \vglue4pt
 v)  We remind the reader (see Section FIXME:7.4) that all machine operations act on machine numbers, and that the 
 various variables appearing in the propositions are assumed to be doubles.
-\end{proof}
+\end{conventions}
 
 $-X$:
 
@@ -212,7 +212,7 @@ $X/Y$:
 For convenience, let  $ax = {\textrm absUB}(x.f),\ ay = {\textrm absLB}(y.f).$ 
  
 \begin{proposition}{FIXME:8.8} If $x$ and $y$ are 
-{\textrm AffApproxes}  with $D > 0$ {\textrm (}\/see below{\mathrm ),} then
+{\textrm AffApproxes}  with $D > 0$ {\textrm (}\/see below{\textrm ),} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
 with
@@ -297,7 +297,7 @@ For convenience, let $ax = |x|,\ ay = {\textrm absLB}(y.f).\ $  Having done divi
 web site for the proof.
 
 \begin{proposition}{FIXME:8.9} If $x$ is a double and $y$ is an 
-{\textrm AffApprox}  with $D > 0$ {\textrm (}\/see below{\mathrm ),}
+{\textrm AffApprox}  with $D > 0$ {\textrm (}\/see below{\textrm ),}
  then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
 with
@@ -338,7 +338,7 @@ $\sqrt X$:
 Here, $x$ is an AffApprox and we let $ax = {\textrm absUB}(x.f)$.  There are two cases to consider depending on whether or not
 $D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is or is not greater than zero.
 
-\begin{proposition}{FIXME:8.11{\mathrm a}} If $x$ is an {\textrm AffApprox}
+\begin{proposition}{FIXME:8.11{\textrm a}} If $x$ is an {\textrm AffApprox}
 and
 $ D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is not greater than zero{\textrm ,} then 
 $S(\sqrt x) \supseteq \sqrt {S(x)}${\textrm ,} where
@@ -354,7 +354,7 @@ we use the crude overestimate $$\sqrt x \equiv \left(0;0,0,0;(1 + 2EPS) \otimes
 \end{eqnarray*}
 \end{proof}
 
-\begin{proposition}{FIXME:8.11{\mathrm b}} If 
+\begin{proposition}{FIXME:8.11{\textrm b}} If 
 $x$  is an {\textrm AffApprox} and
 $ D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is greater than zero{\textrm ,}
 then $S(\sqrt x) \supseteq \sqrt {S(x)}${\textrm ,} where
