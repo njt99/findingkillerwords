@@ -1,20 +1,19 @@
 \section{Affine approximations}
 
  
-{\it Remark} 6.1.
-To show that a sub-box of the parameter box ${\cal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
-Section 5).  That is, we are simply analyzing a certain function from the sub-box to ${\bf C}$.  
+{\textit Remark} 6.1.
+To show that a sub-box of the parameter box ${\mathcal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
+Section 5).  That is, we are simply analyzing a certain function from the sub-box to ${\mathbf C}$.  
 
 As described in Remark FIXME(6.5), this analysis can be pulled back from the sub-box in question to the closed polydisc 
-$A = \{(z_0,z_1,z_2) \in {\bf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
+$A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
 Loosely,  we will analyze such a function on $A$ by using  Taylor approximations consisting of an affine approximating
 function together with a bound on the ``error" in the approximation (this could also be described as a ``remainder bound").  This ``error" 
 is separate from round-off error,  which will be analyzed in Sections 7 and 8.  
 
-\demo{Problems {\rm FIXME(6.2)}}
 There are two immediate problems likely to arise from this Taylor approximation approach.
 The first problem is the appearance of unpleasant functions such as 
-Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space ${\cal P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on ${\cal W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
+Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space ${\mathcal P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on ${\mathcal W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
 
 Second,  for a given ``built-up function'' the computer needs to be able to compute the Taylor approximation, and the error term.  This will be handled 
 by developing combination formulas for elementary operations (see the propositions below).  Specifically, given two Taylor
@@ -22,34 +21,33 @@ approximations with error terms representing functions $g$ and $h$ and an elemen
 get the Taylor approximation with error term for the resultant function from the two original Taylor approximations. 
 
 A similar approach was developed independently by Stolfi and Figuereido (see [FS]).
-\enddemo
 
-{\it Remark} FIXME(6.3).
+{\textit Remark} FIXME(6.3).
 We set up the Taylor approximation approach rigorously
 as follows in Definition FIXME(6.4).
-The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\it verify}.  However, it should be pointed out that the formulas in this
+The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\textit verify}.  However, it should be pointed out that the formulas in this
 section will be superseded by the ones in Section 8, which incorporate a round-off error analysis.  It is the Section 8 formulas that are
-used in {\it verify}.
+used in {\textit verify}.
 
-\vglue8pt {\it Definition {\rm FIXME(6.4)}}.  An {\it AffApprox}  $x$ is a five-tuple
+\vglue8pt {\textit Definition {\textrm FIXME(6.4)}}.  An {\textit AffApprox}  $x$ is a five-tuple
 $(x.f;\ x.f_0,\ x.f_1,\ x.f_2;\ x.e),$
 consisting of four complex numbers $x.f,\ x.f_0,\ x.f_1,\ x.f_2$ and one real number $x.e,$  which represents all functions 
-$g: A \rightarrow {\bf C}$ such that
+$g: A \rightarrow {\mathbf C}$ such that
 $$|g(z_0,z_1,z_2) - (x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2)| \le x.e$$
-for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to ${\bf C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.
+for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to ${\mathbf C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.
 \vglue6pt
 
-{\it Remark} 6.5.
+{\textit Remark} 6.5.
 As mentioned in Remark FIXME(6.1), given a sub-box to analyze, instead of working with functions defined on the sub-box, we will work with corresponding functions defined on $A.$  Specifically, rather than build up a function by elementary operations performed on the co-ordinate functions 
 $L^{\prime}, D^{\prime}, R^{\prime}$ 
 restricted to the given sub-box, we will perform the elementary operations on the following functions defined on $A$, 
 $$(p_0 + i p_3; s_0 + i s_3,0,0; 0)\  \ (p_1 + i p_4; 0, s_1 + i s_4,0;0) \   \ (p_2 + i p_5; 0,0, s_2 + i s_5; 0)$$
-where $(p_0 + i p_3, p_1 + i p_4, p_2 + i p_5)$ is the center of the sub-box in question, and the $s_i$ describe the six dimensions of the box. In the computer programs, these three functions are called {\it along}, {\it ortho}, and {\it whirle,} respectively, and $p_i$ and $s_i$
- are denoted {\it pos}[$i$] and {\it size}[$i$], respectively.
+where $(p_0 + i p_3, p_1 + i p_4, p_2 + i p_5)$ is the center of the sub-box in question, and the $s_i$ describe the six dimensions of the box. In the computer programs, these three functions are called {\textit along}, {\textit ortho}, and {\textit whirle,} respectively, and $p_i$ and $s_i$
+ are denoted {\textit pos}[$i$] and {\textit size}[$i$], respectively.
 \vglue6pt
 After the following remarks, we state and prove the combination formulas. 
 
-\vglue6pt {\it Remarks} 6.6.
+\vglue6pt {\textit Remarks} 6.6.
 i) In order to co-ordinate numbering with Section 8, we will break with the convention used previously in this paper and start the
 numbering of the propositions with FIXME(6.1). However, we will end this section with Example FIXME(6.7).
 \vglue2pt
@@ -59,24 +57,24 @@ iii)  The propositions that follow include in their statements the definitions o
 be proved is that the $S$ functions behave as expected.  For example, we need to show that under the definition given for addition, the
 set of functions $S(x+y)$ contains all functions obtained by adding a function from $S(x)$ to a function from $S(y).$
 
-\nonumproclaim{Proposition FIXME(6.1) {\rm (unary minus)}} If $x$ is an {\rm AffApprox,} then 
+\begin{proposition}{FIXME(6.1) {\textrm (unary minus)}} If $x$ is an {\textrm AffApprox,} then 
 $S(-x) = -(S(x))$ where 
 $$-x \equiv (-x.f;\ -x.f_0,\ -x.f_1,\ -x.f_2;\ x.e).$$ 
-\endproclaim
+\end{proposition}
 
-{\it Proof}.
+{\textit Proof}.
 $$|g(z_0,z_1,z_2) - (x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2)| \le e$$
 if and only if 
 \vglue6pt
 \hfill $|-g(z_0,z_1,z_2) - (-x.f - x.f_0 z_0 - x.f_1 z_1 - x.f_2 z_2)| \le e.$ \hfill\qed
 
 
-\nonumproclaim{Proposition FIXME(6.2) {\rm (addition)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x + y) \supseteq S(x)
-+ S(y)${\rm ,} where
+\begin{proposition}{FIXME(6.2) {\textrm (addition)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x + y) \supseteq S(x)
++ S(y)${\textrm ,} where
 $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.e).$$
-\endproclaim  
+\end{proposition}  
 
-\demo{Proof}  If $g\in S(x)$ and $h \in S(y)$ then we must show that $g + h \in S(x + y).$
+\begin{proof}{}  If $g\in S(x)$ and $h \in S(y)$ then we must show that $g + h \in S(x + y).$
 \begin{eqnarray*}
 &&|(g + h)(z_0,z_1,z_2) \\
 &&\quad- ((x.f + y.f) + (x.f_0 + y.f_0) z_0 + (x.f_1 + y.f_1) z_1 + (x.f_2 + y.f_2) z_2)| \\
@@ -89,13 +87,13 @@ $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.
 &&\qquad \le x.e + y.e.\\
 \noalign{\vskip-36pt}
 \end{eqnarray*}
-\enddemo
+\end{proof}
 
-\nonumproclaim{Proposition FIXME(6.3) {\rm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\rm AffApproxes,} then $S(x - y) \supseteq
-S(x) - S(y)${\rm ,}
+\begin{proposition}{FIXME(6.3) {\textrm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x - y) \supseteq
+S(x) - S(y)${\textrm ,}
  where
 $$x - y \equiv (x.f - y.f; x.f_0 - y.f_0, x.f_1 - y.f_1, x.f_2 - y.f_2; x.e + y.e).$$ 
-\endproclaim
+\end{proposition}
 
 To co-ordinate numbering with Section 8 (where we incorporate round-off error into these formulas) we include the following special
 cases of Propositions FIXME(6.2) and FIXME(6.3).  Similarly for Propositions FIXME(6.7, 6.9, and 6.10). 
@@ -103,42 +101,42 @@ cases of Propositions FIXME(6.2) and FIXME(6.3).  Similarly for Propositions FIX
 In what follows,  ``double" refers to a real number, and has an associated AffApprox, with the last four entries zero.  When we do
 machine arithmetic in Sections FIXME(7 and 8), doubles will be  machine numbers.
 
-\nonumproclaim{Proposition FIXME(6.4) {\rm (addition of an AffApprox and a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double{\rm ,}
+\begin{proposition}{FIXME(6.4) {\textrm (addition of an AffApprox and a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,}
  then $S(x +
 y)
-\supseteq S(x) + S(y)${\rm ,} where
+\supseteq S(x) + S(y)${\textrm ,} where
 $$x + y \equiv (x.f + y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
-\endproclaim
+\end{proposition}
 
-\nonumproclaim{Proposition FIXME(6.5) {\rm (subtraction of a double from an AffApprox)}}  If $x$ is an {\rm AffApprox} and $y$ is a double{\rm ,}
+\begin{proposition}{FIXME(6.5) {\textrm (subtraction of a double from an AffApprox)}}  If $x$ is an {\textrm AffApprox} and $y$ is a double{\textrm ,}
  then
 $S(x - y)
-\supseteq S(x) - S(y)${\rm ,} where
+\supseteq S(x) - S(y)${\textrm ,} where
 $$x - y \equiv (x.f - y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
-\endproclaim
+\end{proposition}
 
-\nonumproclaim{Proposition FIXME(6.6) {\rm (multiplication)}}  If $x$ and $y$ are {\rm AffApproxes,}
+\begin{proposition}{FIXME(6.6) {\textrm (multiplication)}}  If $x$ and $y$ are {\textrm AffApproxes,}
  then $S(x \times y) \supseteq S(x) \times
-S(y)${\rm ,} where
+S(y)${\textrm ,} where
 \begin{eqnarray*}
 x \times y &\equiv& (x.f \times y.f; x.f \times y.f_0 + x.f_0 \times y.f, \\
 && \quad
 x.f \times y.f_1 + x.f_1 \times y.f, x.f \times y.f_2 + x.f_2 \times y.f; 
 \\
 && \quad
-({\rm size}(x) + x.e) \times ({\rm size}(y) + y.e) + (|x.f| \times y.e + x.e \times |y.f|))
+({\textrm size}(x) + x.e) \times ({\textrm size}(y) + y.e) + (|x.f| \times y.e + x.e \times |y.f|))
                                             \end{eqnarray*}
- with ${\rm size}(x) = |x.f_0| + |x.f_1| + |x.f_2|$ and ${\rm size}(y) = |y.f_0| + |y.f_1| + |y.f_2|.$
-\endproclaim
+ with ${\textrm size}(x) = |x.f_0| + |x.f_1| + |x.f_2|$ and ${\textrm size}(y) = |y.f_0| + |y.f_1| + |y.f_2|.$
+\end{proposition}
 
-\demo{Proof}  If $g \in S(x)$ and $h \in S(y)$ then we must show that $g\times h \in S(x \times y).$  That is, we need to show
+\begin{proof}{}  If $g \in S(x)$ and $h \in S(y)$ then we must show that $g\times h \in S(x \times y).$  That is, we need to show
 \begin{eqnarray*}
 &&\hskip-.25in |(g \times h)(z_0,z_1,z_2)   - 
 ((x.f \times y.f) + 
 (x.f \times y.f_0 + x.f_0 \times y.f) z_0 \\
 &\hskip-8pt+\hskip-8pt& (x.f \times y.f_1 + x.f_1 \times y.f) z_1 + (x.f \times y.f_2 + x.f_2 \times y.f) z_2)| 
 \\
-\le&\hskip-8pt\hskip-8pt&\hskip-16pt ({\rm size}(x) + x.e) \times ({\rm size}(y) + y.e) + (|x.f| \times y.e + x.e \times |y.f|).
+\le&\hskip-8pt\hskip-8pt&\hskip-16pt ({\textrm size}(x) + x.e) \times ({\textrm size}(y) + y.e) + (|x.f| \times y.e + x.e \times |y.f|).
 \end{eqnarray*}
 Note that for any point $(z_0, z_1, z_2) \in A$ and any functions $g \in S(x)$ and $h \in S(y)$ we can find complex numbers $u, v$ with
 $|u| \le 1$ and $|v| \le 1$, such that
@@ -166,22 +164,22 @@ Hence,
 (x.f \times y.f_2 + x.f_2 \times y.f) z_2))|
  \\
 &\le& (|x.f| y.e + x.e |y.f|) + 
-({\rm size}(x) + x.e) \times ({\rm size}(y) + y.e).\\
+({\textrm size}(x) + x.e) \times ({\textrm size}(y) + y.e).\\
 \noalign{\vskip-36pt}
 \end{eqnarray*}
-\enddemo
+\end{proof}
 
 \vglue9pt 
-\nonumproclaim{Proposition FIXME(6.7) {\rm (an AffApprox multiplied by a double)}}
-If $x$ is an {\rm AffApprox}  and $y$ is a double{\rm ,} then $S(x \times y) \supseteq S(x) \times S(y)${\rm ,} where
+\begin{proposition}{FIXME(6.7) {\textit (an AffApprox multiplied by a double)}}
+If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,} then $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 $$ x \times y \equiv (x.f \times y;  x.f_0 \times y, 
 x.f_1 \times y,  x.f_2 \times y; 
 x.e \times |y|). $$
-\endproclaim
+\end{proposition}
 
-\nonumproclaim{Proposition FIXME(6.8) {\rm (division)}} If $x$ and $y$ are {\rm AffApproxes}  with $|y.f| > {\rm size}(y) + y.e${\rm ,}
+\begin{proposition}{FIXME(6.8) {\textrm (division)}} If $x$ and $y$ are {\textrm AffApproxes}  with $|y.f| > {\textrm size}(y) + y.e${\textrm ,}
  then $S(x / y) \supseteq
-S(x) / S(y)${\rm ,} where
+S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
 x / y &\equiv& (x.f / y.f; (-x.f \times y.f_0 + x.f_0 \times y.f)/((y.f)^2),\\&&\qquad  
 (-x.f \times y.f_1 + x.f_1 \times y.f)/((y.f)^2), 
@@ -189,13 +187,13 @@ x / y &\equiv& (x.f / y.f; (-x.f \times y.f_0 + x.f_0 \times y.f)/((y.f)^2),\\&&
 &&\qquad 
 (-x.f \times y.f_2 + x.f_2 \times y.f)/((y.f)^2); 
 \\
-&&\qquad (|x.f| + {\rm size}(x) + x.e) /(|y.f| - ({\rm size}(y) + y.e))\\
+&&\qquad (|x.f| + {\textrm size}(x) + x.e) /(|y.f| - ({\textrm size}(y) + y.e))\\
 &&  - \
-((|x.f|/|y.f| + {\rm size}(x)/|y.f|) + |x.f| {\rm size}(y)/(|y.f||y.f|))).
+((|x.f|/|y.f| + {\textrm size}(x)/|y.f|) + |x.f| {\textrm size}(y)/(|y.f||y.f|))).
                                            \end{eqnarray*}
-\endproclaim
+\end{proposition}
 
-\demo{Proof} 
+\begin{proof}{} 
 For notational convenience, denote $(x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2)$ by $x.f_k z_k$ and similarly for $y.f_k z_k$ and so on.
 As above, note that for any point $(z_0, z_1, z_2) \in A$ and any functions $g \in S(x)$ and $h \in S(y)$ we can find complex numbers $u, v$ with $|u| \le 1$ and $|v| \le 1$, such that
 $$ g(z_0, z_1, z_2) = x.f + (x.f_k z_k) + (x.e) u$$ and 
@@ -218,81 +216,81 @@ and cancelling equal terms (in the numerator) we are left with a quotient whose 
 We must show this (first) quotient is bounded by
 \begin{eqnarray*}
 &&
-(|x.f| + {\rm size}(x) + x.e) /(|y.f| - ({\rm size}(y) + y.e)) \\
+(|x.f| + {\textrm size}(x) + x.e) /(|y.f| - ({\textrm size}(y) + y.e)) \\
 &&\qquad\quad - \
-((|x.f|/|y.f| + {\rm size}(x)/|y.f|) + |x.f| {\rm size}(y)/(|y.f||y.f|)).        
+((|x.f|/|y.f| + {\textrm size}(x)/|y.f|) + |x.f| {\textrm size}(y)/(|y.f||y.f|)).        
 \end{eqnarray*}
 Putting this over a common denominator of 
-$|(y.f)|^2 (|y.f| - ({\rm size}(y) + y.e))$ 
+$|(y.f)|^2 (|y.f| - ({\textrm size}(y) + y.e))$ 
 and cancelling equal terms (in the numerator) we are left with a second quotient, whose numerator is 
-$$x.e |y.f|^2 - (-|x.f| |y.f| y.e - {\rm size}(x) |y.f| ({\rm size}(y) + y.e) -
-|x.f| {\rm size}(y) ({\rm size}(y) + y.e))$$
+$$x.e |y.f|^2 - (-|x.f| |y.f| y.e - {\textrm size}(x) |y.f| ({\textrm size}(y) + y.e) -
+|x.f| {\textrm size}(y) ({\textrm size}(y) + y.e))$$
 and we see that all terms in this numerator are positive.
 Further, the terms in the numerators of the first and second quotients correspond in a natural way, and each term in the numerator of the second quotient  is greater than or equal to the absolute value of its corresponding term in the numerator of the first quotient.  
 
 Finally,
  because the denominator in the second quotient is less than or equal to the absolute value of the denominator in the first quotient, we
-see that the absolute value of the first quotient is less than or equal to the second quotient, as desired. \enddemo
+see that the absolute value of the first quotient is less than or equal to the second quotient, as desired. \end{proof}
 
-\nonumproclaim{Proposition FIXME(6.9) {\rm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\rm AffApprox }
- with $|y.f| > {\rm size}(y) + y.e${\rm ,} then $S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+\begin{proposition}{FIXME(6.9) {\textrm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\textrm AffApprox }
+ with $|y.f| > {\textrm size}(y) + y.e${\textrm ,} then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
 x / y &\hskip-8pt\equiv\hskip-8pt& (x / y.f; -x \times y.f_0 /((y.f)^2), 
 -x.f \times y.f_1 /((y.f)^2), -x.f \times y.f_2 /((y.f)^2); 
 \\
-&\hskip-8pt\hskip-8pt&\qquad (|x|  /(|y.f| - ({\rm size}(y) + y.e)) - 
-(|x|/|y.f|  + |x| {\rm size}(y)/(|y.f||y.f|))).
+&\hskip-8pt\hskip-8pt&\qquad (|x|  /(|y.f| - ({\textrm size}(y) + y.e)) - 
+(|x|/|y.f|  + |x| {\textrm size}(y)/(|y.f||y.f|))).
                                               \end{eqnarray*}
-\endproclaim
+\end{proposition}
 
 
-\nonumproclaim{Proposition FIXME(6.10) {\rm (division of an AffApprox by a double)}} If $x$ is an {\rm AffApprox}  and $y$ is a double
-with $|y| > 0${\rm ,} then $S(x / y) \supseteq S(x) / S(y)${\rm ,} where
+\begin{proposition}{FIXME(6.10) {\textrm (division of an AffApprox by a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double
+with $|y| > 0${\textrm ,} then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$
 x / y \equiv (x.f / y; x.f_0 / y, 
 x.f_1 / y, x.f_2 / y; 
 x.e/ |y| ).
 $$
-\endproclaim
+\end{proposition}
 
 Finally, we do the square root.
 
-\nonumproclaim{Proposition FIXME(6.11) {\rm (square root)}} If $x$ is an {\rm AffApprox}  with $|x.f| > {\rm size}(x) + x.e${\rm ,}
+\begin{proposition}{FIXME(6.11) {\textrm (square root)}} If $x$ is an {\textrm AffApprox}  with $|x.f| > {\textrm size}(x) + x.e${\textrm ,}
  then $S(\sqrt x)
 \supseteq
-\sqrt {S(x)}${\rm ,} where
+\sqrt {S(x)}${\textrm ,} where
 \begin{eqnarray*}
 \sqrt x& = &\left(\sqrt {x.f}; 
  {x.f_0 \over 2 \sqrt {x.f}}, 
  {x.f_1 \over 2 \sqrt {x.f}}, 
  {x.f_2 \over 2 \sqrt {x.f}};
 \right.\\
-&& \left. \sqrt {|x.f|} - \left({{\rm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\rm size}(x) + x.e)}\right)
+&& \left. \sqrt {|x.f|} - \left({{\textrm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\textrm size}(x) + x.e)}\right)
                                               \right).
 \end{eqnarray*}
-\endproclaim 
-If $|x.f| \le {\rm size}(x) + x.e$ then we use the crude estimate $$\left(0;0,0,0;\sqrt{|x.f| + {\rm size}(x) + x.e}\right).$$
+\end{proposition} 
+If $|x.f| \le {\textrm size}(x) + x.e$ then we use the crude estimate $$\left(0;0,0,0;\sqrt{|x.f| + {\textrm size}(x) + x.e}\right).$$
  
 The branch of the square root of a complex number is determined by the construction of the square root of a complex in Proposition FIXME(7.14).  In fact, the square root is in the first or fourth quadrant.
 
-\demo{Proof} 
+\begin{proof}{} 
 As above, note that for any point $(z_0, z_1, z_2) \in A$ and any function $g \in S(x)$ we can find a complex number $u$ with 
 $|u|   \le 1$, such that
 $$ g(z_0, z_1, z_2) = x.f + (x.f_k z_k) + (x.e) u.$$
-Also, because $|x.f| > {\rm size}(x) + x.e.$ we see that the argument of
+Also, because $|x.f| > {\textrm size}(x) + x.e.$ we see that the argument of
 $x.f + (x.f_k z_k) + (x.e) u$ is within $\pi/2$ of the argument of 
 $x.f$, and therefore, we can require that $\sqrt{g(z_0,z_1,z_2)}$ have argument within $\pi/4$ of the argument of $\sqrt{x.f}.$
 
 We need to show that 
 \begin{eqnarray*}
 &&\hskip-35pt \left|\sqrt {x.f + x.f_k z_k + (x.e) u} - (\sqrt{x.f} + {x.f_k z_k\over 2 \sqrt {x.f}})\right|\\[4pt]
-&&\qquad \le \sqrt{|x.f|} - \left({{\rm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\rm size}(x) + x.e)}\ \right).
+&&\qquad \le \sqrt{|x.f|} - \left({{\textrm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\textrm size}(x) + x.e)}\ \right).
 \end{eqnarray*}
 Or, after we multiply both sides by $\sqrt {|x.f|}$,  
 \begin{eqnarray*}
 &&
 \hskip-35pt\left| \sqrt {x.f (x.f + x.f_k z_k + (x.e) u)} - (x.f + (x.f_k) z_k /2) \right|\\
-&&\quad \le \left( |x.f| - {\rm size}(x) /2\right) - \sqrt {|x.f|(|x.f| - ({\rm size}(x) +
+&&\quad \le \left( |x.f| - {\textrm size}(x) /2\right) - \sqrt {|x.f|(|x.f| - ({\textrm size}(x) +
 x.e))}.
 \end{eqnarray*}
  The two  sides of the inequality are of the form $ A - B$ and $C - D$, and we
@@ -308,10 +306,10 @@ The   left-hand numerator is
 \end{eqnarray*}
 The right-hand numerator is 
 \begin{eqnarray*}
-&&(|x.f| - {\rm size}(x)/2)^2 - |x.f| (|x.f| - ({\rm size}(x) + x.e))\\[4pt]
-&&\qquad = |x.f|^2 - |x.f| {\rm size}(x) + {\rm size}(x)^2/4 - |x.f|^2 + |x.f| {\rm
+&&(|x.f| - {\textrm size}(x)/2)^2 - |x.f| (|x.f| - ({\textrm size}(x) + x.e))\\[4pt]
+&&\qquad = |x.f|^2 - |x.f| {\textrm size}(x) + {\textrm size}(x)^2/4 - |x.f|^2 + |x.f| {\mathrm
 size}(x) + |x.f| x.e\\[4pt]
-&&\qquad = |x.f| x.e + {\rm size}(x)^2/4.
+&&\qquad = |x.f| x.e + {\textrm size}(x)^2/4.
 \end{eqnarray*}
 So the left-hand numerator is indeed less than or equal to the right-hand numerator.
 \vglue4pt
@@ -321,23 +319,23 @@ The left-hand denominator is
 $$\left|\sqrt {x.f + x.f_k z_k + (x.e) u} + 
 \left(\sqrt {x.f} + {x.f_k z_k\over 2 \sqrt{x.f}}\right)\right|$$
 while the right-hand denominator is 
-$$\sqrt{|x.f|} - {{\rm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\rm size}(x) + x.e)}.$$
+$$\sqrt{|x.f|} - {{\textrm size}(x) \over 2 \sqrt {|x.f|}} + \sqrt {|x.f| - ({\textrm size}(x) + x.e)}.$$
 The claim that the left-hand denominator is greater than or equal to the right-hand denominator is a bit complicated.  First, compare the $\sqrt{x.f}$ term and the $\sqrt{|x.f|}$ terms.  They are the same distance from the origin.  Next, note that as $z_k$ and $u$ take on all
 relevant values, $x.f + x.f_k z_k + (x.e) u$ describes a disk centered at $x.f$
 with radius   less than $ |\sqrt {x.f}|$.  Hence, $\sqrt {x.f + x.f_k z_k + (x.e) u}$ describes a convex set containing $\sqrt{x.f}$.  This set
 is symmetric about the line joining the origin and $\sqrt{x.f}$. Further, $\sqrt{x.f} + \sqrt {x.f + x.f_k z_k + (x.e) u}$ describes a convex
 set containing $2 \sqrt{x.f}$.   This set is also symmetric about the line joining the origin and  $\sqrt{x.f}$.
-It is easy enough to see that no points on this convex symmetric set get closer to the origin than $\sqrt{|x.f|}  + \sqrt {|x.f| - ({\rm size}(x) + x.e)}$.
+It is easy enough to see that no points on this convex symmetric set get closer to the origin than $\sqrt{|x.f|}  + \sqrt {|x.f| - ({\textrm size}(x) + x.e)}$.
 
-Finally, because $|{x.f_k z_k \over 2 \sqrt{x.f}}| \le {{\rm size}(x) \over 2 \sqrt {|x.f|}},$ no points of $$\sqrt {x.f} + \sqrt {x.f + x.f_k z_k + (x.e) u} + 
+Finally, because $|{x.f_k z_k \over 2 \sqrt{x.f}}| \le {{\textrm size}(x) \over 2 \sqrt {|x.f|}},$ no points of $$\sqrt {x.f} + \sqrt {x.f + x.f_k z_k + (x.e) u} + 
 {x.f_k z_k \over 2 \sqrt{x.f}}$$
 can get closer to the origin than
 \vglue12pt
-\hfill ${\displaystyle \sqrt{|x.f|} + \sqrt {|x.f| - ({\rm size}(x) + x.e)} - 
-{{\rm size}(x) \over 2 \sqrt {|x.f|}}.} $ \enddemo
+\hfill ${\displaystyle \sqrt{|x.f|} + \sqrt {|x.f| - ({\textrm size}(x) + x.e)} - 
+{{\textrm size}(x) \over 2 \sqrt {|x.f|}}.} $ \end{proof}
 
 \vglue12pt
-{\it Example} FIXME(6.7) (Continuation of Example FIXME(5.4)).
+{\textit Example} FIXME(6.7) (Continuation of Example FIXME(5.4)).
 We can now complete the analysis begun in Example FIXME(5.4),
 because we can describe $f$ and $w$ as 2-by-2 matrices of AffApproxes.
 We note the minor quibble that the full definition of AffApprox is
@@ -353,12 +351,12 @@ $$s = 001000110001110111001111000101111111101111100111001111000001111011110111$$
 
 \noindent is the region where
 $$\left(\begin{array}{rll}
--1.381589027741\ldots &\hskip-6pt \le  {\rm Re}(L')&  \hskip-6pt\le  -1.379848991182\ldots\\[7pt]
--1.378124546093\ldots &\hskip-6pt \le  {\rm Re}(D')&\hskip-6pt  \le  -1.376574349753\ldots\\[7pt]
-0.999893182771\ldots  &\hskip-6pt\le {\rm Re}(R')& \hskip-6pt  \le  1.001274250703\ldots\\[7pt]
--2.535837191243\ldots &\hskip-6pt \le  {\rm Im}(L')&\hskip-6pt  \le  -2.534606799593\ldots\\[7pt]
-2.535404997792\ldots & \hskip-6pt\le  {\rm Im}(D') &\hskip-6pt \le  -2.534308843448\ldots\\[7pt]
--0.001953125000\ldots &\hskip-6pt \le {\rm  Im}(R')&\hskip-6pt  \le  0.000000000000\ldots
+-1.381589027741\ldots &\hskip-6pt \le  {\mathrm Re}(L')&  \hskip-6pt\le  -1.379848991182\ldots\\[7pt]
+-1.378124546093\ldots &\hskip-6pt \le  {\mathrm Re}(D')&\hskip-6pt  \le  -1.376574349753\ldots\\[7pt]
+0.999893182771\ldots  &\hskip-6pt\le {\mathrm Re}(R')& \hskip-6pt  \le  1.001274250703\ldots\\[7pt]
+-2.535837191243\ldots &\hskip-6pt \le  {\mathrm Im}(L')&\hskip-6pt  \le  -2.534606799593\ldots\\[7pt]
+2.535404997792\ldots & \hskip-6pt\le  {\mathrm Im}(D') &\hskip-6pt \le  -2.534308843448\ldots\\[7pt]
+-0.001953125000\ldots &\hskip-6pt \le {\mathrm  Im}(R')&\hskip-6pt  \le  0.000000000000\ldots
 \end{array}\right).$$ 
 
 For this sub-box, we get (printing only 10 decimal places,
@@ -478,7 +476,7 @@ $$
 \end{small}
 We then get
 $$
-{\rm length}(g) = \left(\begin{array}{c}
+{\textrm length}(g) = \left(\begin{array}{c}
     -1.3588762105 - i 2.4897230182;\\[4pt]
   \phantom{-}  0.0030210500 - i 0.0182284729,\\[4pt]
    \phantom{-} 0.0007938572 - i 0.0096614614,\\[4pt]
@@ -488,7 +486,7 @@ $$
 $$
 and
 $$
-{{\rm length}(g) \over L'} =
+{{\textrm length}(g) \over L'} =
   \left(\begin{array}{c}
    \phantom{-} 0.9825397896 - i 0.0008933519;\\[4pt]
    \phantom{-} 0.0053701602 + i 0.0037789019,\\[4pt]
@@ -500,26 +498,26 @@ $$
 
 
 This is not quite good enough to kill the sub-box, since
-$|{\rm length}(g)/L'|$ can be as high as $1.0001951323$.
+$|{\textrm length}(g)/L'|$ can be as high as $1.0001951323$.
 
 When we subdivide $Z(s01011)$, we have to analyze two sub-boxes,
 $Z(s010110)$ and $Z(s010111)$.
 For $Z(s010110)$, the same calculation on the region
 $$\begin{array}{rll}
--1.381589027741073400 &\hskip-6pt \leq {\rm Re}(L') &\hskip-6pt\leq -1.379848991182205200\\[4pt]
--1.378124546093485700 &\hskip-6pt\leq {\rm Re}(D')
+-1.381589027741073400 &\hskip-6pt \leq {\mathrm Re}(L') &\hskip-6pt\leq -1.379848991182205200\\[4pt]
+-1.378124546093485700 &\hskip-6pt\leq {\mathrm Re}(D')
 &\hskip-6pt\leq -1.376574349753672900\\[4pt]
-0.999893182771602220 &\hskip-6pt\leq {\rm Re}(R')&\hskip-6pt \leq 1.001274250703607400\\[4pt]
--2.535837191243490300&\hskip-6pt \leq {\rm Im}(L')&\hskip-6pt \leq
+0.999893182771602220 &\hskip-6pt\leq {\mathrm Re}(R')&\hskip-6pt \leq 1.001274250703607400\\[4pt]
+-2.535837191243490300&\hskip-6pt \leq {\mathrm Im}(L')&\hskip-6pt \leq
 -2.534606799593201600\\[4pt]
--2.535404997792558600 &\hskip-6pt\leq {\rm Im}(D') &\hskip-6pt\leq -2.534308843448505900\\[4pt]
--0.001953125000000000&\hskip-6pt \leq {\rm Im}(R')
+-2.535404997792558600 &\hskip-6pt\leq {\mathrm Im}(D') &\hskip-6pt\leq -2.534308843448505900\\[4pt]
+-0.001953125000000000&\hskip-6pt \leq {\mathrm Im}(R')
 &\hskip-6pt\leq -0.000976562500000000
 \end{array} 
 $$
 gives 
 $$
-{{\rm length}(g) \over L'} = 
+{{\textrm length}(g) \over L'} = 
   \left(\begin{array}{c}
  \phantom{-}   0.9814518667 + i 0.0008103446;\\[4pt]
 \phantom{-}      0.0053616729 + i 0.0037834001,\\[4pt]
@@ -528,12 +526,12 @@ $$
     0.0019033926
   \end{array}\right),
 $$
-and we can then bound $\left|{{\rm length}(g) \over L'}\right| \leq 0.9967745579$,
+and we can then bound $\left|{{\textrm length}(g) \over L'}\right| \leq 0.9967745579$,
 which kills $Z(s010110)$.  
 
 On $Z(s010111)$, the calculation gives
 $$
-{{\rm length}(g) \over L'} =
+{{\textrm length}(g) \over L'} =
   \left(\begin{array}{c}
 \phantom{-}      0.9836225919 - i 0.0025990177;\\[4pt]
   \phantom{-}    0.0053786346 + i 0.0037743930,\\[4pt]
@@ -542,7 +540,7 @@ $$
     0.0019044429
   \end{array}\right)
 $$
-and $\left|{{\rm length}(g) \over L'}\right| \leq 0.9989610507$,
+and $\left|{{\textrm length}(g) \over L'}\right| \leq 0.9989610507$,
 which kills $Z(s010111)$.
 
  

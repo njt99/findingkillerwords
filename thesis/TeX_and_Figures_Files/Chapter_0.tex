@@ -1,47 +1,48 @@
-\def\Arccosh{{\rm Arccosh}}
-\advance\sectioncount by -1
-\section{Introduction}
+\def\Arccosh{{\mathrm Arccosh}}
+\chapter{Introduction}
 
 This paper documents a computer-assisted procedure
 for rigorously analyzing small hyperbolic $3$-manifolds.
-Briefly, we will define a compact six-dimensional space ${\cal P}$
-that parameterizes pairs of elements of ${\rm Isom}({\bf H}^3)$,
+Briefly, we will define a compact six-dimensional space ${\mathcal P}$
+that parameterizes pairs of elements of ${\mathrm Isom}({\mathbf H}^3)$,
 and then construct a regular binary space partition (BSP) tree
-which subdivides ${\cal P}$ into subregions ${\cal P_i}$
+which subdivides ${\mathcal P}$ into subregions ${\mathcal P_i}$
 and whose leaves are --- with a few exceptions --- labeled with killerwords.
-These killerwords will encode miniature proofs that ${\cal P_i}$
+These killerwords will encode miniature proofs that ${\mathcal P_i}$
 cannot contain any points which correspond to
 particular choices of pairs of generators of
-any torsion-free discrete group of ${\rm Isom}({\bf H}^3)$.
+any torsion-free discrete group of ${\mathrm Isom}({\mathbf H}^3)$.
 This tree of mini-proofs will then be used
 to exhaustively isolate all possible manifolds
-which can have properties related to the dimensions of ${\cal P}$.
+which can have properties related to the dimensions of ${\mathcal P}$.
 
 The first two applications of the procedure
 were used to prove a proposition from [GMT]:
-\proclaim{Proposition [GMT]}
+
+\begin{proposition}{[GMT]}
 Let $M$ be an orientable hyperbolic $3$-manifold, and let $\delta$ be
-a shortest geodesic. Then, either ${\it tuberadius}(\delta) > \ln(3)/2$,
+a shortest geodesic. Then, either ${\mathit tuberadius}(\delta) > \ln(3)/2$,
 or $M$ lies within one of seven tightly constrained
 exceptional shortest-geodesic-geometry regions.
-\endproclaim
+\end{proposition}
+
 and a related proposition; both of which were used in the proof of
 the main technical result of [GMT]:
-\proclaim{Theorem [GMT]}
+\begin{theorem}{[GMT]}
 Every closed hyperbolic $3$-manifold
 has a non-coalescible insulator family,
 indeed one coming from a shortest geodesic.
 As a consequence,
 homotopy hyperbolic $3$-manifolds are hyperbolic.
-\endproclaim
+\end{theorem}
 More recently, the proposition has been sharpened:
-\proclaim{Theorem}
+\begin{theorem}{}
 Let $M$ be an orientable hyperbolic $3$-manifold,
 and let $\delta$ be a shortest geodesic.
-Then, either ${\it tuberadius}(\delta) > \ln(3)/2$, or
+Then, either ${\mathit tuberadius}(\delta) > \ln(3)/2$, or
 $M$ is isometric to one of seven specific manifolds.
-\endproclaim
-\demo{Proof}
+\end{theorem}
+\begin{proof}{}
 Let $X_0, \cdots, X_6$ denote the exceptional regions of Theorem FIXME(2.XX),
 with $N_i$ the corresponding conjectural manifold.
 [GMT] showed that $N_0$=Vol3 is the unique manifold in the region
@@ -54,17 +55,17 @@ In [GT] the proof is completed by showing that $N_3$ covers no manifold
 and each of $N_2$ and $N_4$ 2-fold cover manifolds,
 however the quotients are all non exceptional,
 i.e. each shortest geodesic has a $ln(3)/2$ tube.
-\enddemo
+\end{proof}
 
 Other applications of the procedure:
-
+\vskip 8pt
 Theorem [G]  (Smale conjecture of hyperbolic 3-manifolds)
 If N is a closed hyperbolic 3-manifold,
-then the natural inclusion ${\rm Isom}(N)\to {\rm Diff}(N)$ is a homotopy equivalence.
-
+then the natural inclusion ${\mathrm Isom}(N)\to {\mathrm Diff}(N)$ is a homotopy equivalence.
+\vskip 8pt
 The proof made essential use of the fact that a shortest geodesic
 of a closed hyperbolic 3-manifold satisfies the insulator condition [GMT].
-
+\vskip 8pt
 Theorem [GMM], [Mi] The Week's manifold
 is the unique closed orientable hyperbolic 3-manifold of minimal volume.
 
@@ -82,7 +83,7 @@ theorem of [GMT].
 Lemma [ACS] is used to prove other results such as 
 
 Theorem [ACS] Suppose that M is a closed, orientable, hyperbolic
-3-manifold such that ${\rm vol}(M) \le 1.22$.
+3-manifold such that ${\mathrm vol}(M) \le 1.22$.
 Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.
 
 (The statement is sharpened slightly to take into account [GT])
@@ -109,7 +110,7 @@ In Section 2 we provide a formal statement and proof of Theorem FIXME(2.19).
 
 In Section 3,
 the method for describing the decomposition
-of the parameter space ${\cal W}$ into sub-regions is given,
+of the parameter space ${\mathcal W}$ into sub-regions is given,
 and the conditions used to eliminate sub-regions are discussed.
 Near the end of this section, the first part of a detailed example is given.
 
@@ -120,14 +121,14 @@ first-order Taylor approximation of the function together with a
 remainder 
 bound.
 Our computer version of such a Taylor approximation with remainder bound 
-is called an {\it AffApprox} and in Section 4,
+is called an {\textit AffApprox} and in Section 4,
 the relevant theory is developed.
 At this point, the detailed example of Section 3 can be completed.
 
 In Sections 5 and 6, round-off error analysis appropriate to our 
 set-up is introduced.  Specifically, in Section 6, round-off error is 
 incorporated 
-into the {\it AffApprox} formulas introduced in Section 4.  The proofs here 
+into the {\textit AffApprox} formulas introduced in Section 4.  The proofs here 
 require an analysis of round-off error for complex numbers, which is carried 
 out in Section 5.
 
@@ -139,11 +140,11 @@ the code used to check that the proof is valid,
 with self-contained copies of the proofs required for the reader
 to check its own validity.
 
-{\it Prior publication}
+{\textit Prior publication}
 Sections 2 through 6 originally appeared in [GMT],
 and are reproduced here with only minor revision.
 Section 1 is an abridged version of the parts of the rest of [GMT].
 Section 7 borrows from material which originally appeared in remarks in [GMT].
 
-{\it Acknowledgements}.
+{\textit Acknowledgements}.
 FIXME

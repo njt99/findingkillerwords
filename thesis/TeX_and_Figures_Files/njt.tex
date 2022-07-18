@@ -1,0 +1,345 @@
+%% thesis.tex 2014/04/11
+%
+% Based on sample files of unknown authorship.
+%
+% The Current Maintainer of this work is Paul Vojta.
+
+\documentclass{ucbthesis}
+\usepackage{biblatex}
+\usepackage{rotating} % provides sidewaystable and sidewaysfigure
+
+%Added packages
+\usepackage{mdframed}
+\usepackage{etoolbox}
+\usepackage{amssymb,epsfig,amsmath,latexsym,amsthm}
+\pdfoptionalwaysusepdfpagebox=5
+\usepackage{graphicx}
+
+% To compile this file, run "latex thesis", then "biber thesis"
+% (or "bibtex thesis", if the output from latex asks for that instead),
+% and then "latex thesis" (without the quotes in each case).
+
+% Double spacing, if you want it.  Do not use for the final copy.
+% \def\dsp{\def\baselinestretch{2.0}\large\normalsize}
+% \dsp
+
+% If the Grad. Division insists that the first paragraph of a section
+% be indented (like the others), then include this line:
+% \usepackage{indentfirst}
+
+\addtolength{\abovecaptionskip}{\baselineskip}
+\theoremstyle{plain}
+%\declaretheorem[style=thmstyle,name=Theorem,numberwithin=chapter]{theorem}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{questions}[theorem]{Questions}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{problem}[theorem]{Problem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definition/construction}[theorem]{Definition/Construction}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{summary}[theorem]{Summary}
+\newtheorem{history}[theorem]{History}
+
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{remarks}[theorem]{Remarks}
+\newtheorem{data memo}[theorem]{Data Memo}
+\newtheorem{correction}[theorem]{Correction}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{convention}[theorem]{Convention}
+\newtheorem{example}[theorem]{Example}
+
+
+
+%\DeclareMathOperator{\Image}{Im}
+%\DeclareMathOperator{\Diff}{Diff}
+%\DeclareMathOperator{\hyp}{hyp}
+%\DeclareMathOperator{\Emb}{Emb}
+%\DeclareMathOperator{\Map}{Map}
+%\DeclareMathOperator{\Maps}{Maps}
+%\DeclareMathOperator{\Hyp}{Hyp}
+%\DeclareMathOperator{\id}{id}
+%\DeclareMathOperator{\RM}{RM}
+%\DeclareMathOperator{\Bd}{Bd}
+%\DeclareMathOperator{\length}{length}
+%\DeclareMathOperator{\area}{area}
+%\DeclareMathOperator{\Isom}{Isom}
+%\DeclareMathOperator{\Diam}{Diam}
+%\DeclareMathOperator{\diam}{diam}
+%\DeclareMathOperator{\Lim}{Lim}
+%\DeclareMathOperator{\rank}{rank}
+%\DeclareMathOperator{\genus}{genus}
+%\DeclareMathOperator{\kernal}{ker}
+%\DeclareMathOperator{\rel}{rel}
+%\DeclareMathOperator{\textin}{in}
+%\DeclareMathOperator{\textint}{int}
+%\DeclareMathOperator{\textinf}{inf}
+%\DeclareMathOperator{\textliminf}{lim inf}
+%\DeclareMathOperator{\textlim}{lim}
+%\DeclareMathOperator{\Stryker}{Stryker}
+%\DeclareMathOperator{\st}{st}
+%\DeclareMathOperator{\cl}{cl}
+%\DeclareMathOperator{\sub}{sub}
+%\DeclareMathOperator{\inte}{int}
+%\DeclareMathOperator{\cw}{cw}
+%\DeclareMathOperator{\injrad}{injrad}
+%\DeclareMathOperator{\mecd}{mecd}
+%\DeclareMathOperator{\fix}{fix}
+%\DeclareMathOperator{\std}{std}
+%\DeclareMathOperator{\pr}{pr}
+%\DeclareMathOperator{\tw}{tw}
+%\DeclareMathOperator{\pt}{pt}
+%\DeclareMathOperator{\Max}{Max}
+
+
+\newcommand{\BB}{\mathbb B}
+\newcommand{\BC}{\mathbb C}
+\newcommand{\BH}{\mathbb H}
+\newcommand{\BN}{\mathbb N}
+\newcommand{\BP}{\mathbb P}
+\newcommand{\BQ}{\mathbb Q}
+\newcommand{\BR}{\mathbb R}
+\newcommand{\BS}{\mathbb S}
+\newcommand{\BZ}{\mathbb Z}
+\newcommand{\cptwo}{\BC\BP^2}
+\newcommand{\cpone}{\BC\BP^1}
+\newcommand{\mRs}{\mR^{\std}}
+\newcommand{\mGs}{\mG^{\std}}
+\newcommand{\Rs}{R^{\std}}
+\newcommand{\Gs}{G^{\std}}
+\newcommand{\Vprime}{V^\prime}
+\newcommand{\piM}{\pi_1(M)}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mE}{\mathcal{E}}
+\newcommand{\mF}{\mathcal{F}}
+\newcommand{\mG}{\mathcal{G}}
+\newcommand{\mH}{\mathcal{H}}
+\newcommand{\mI}{\mathcal{I}}
+\newcommand{\mJ}{\mathcal{J}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mN}{\mathcal{N}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\mQ}{\mathcal{Q}}
+\newcommand{\mR}{\mathcal{R}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mT}{\mathcal{T}}
+\newcommand{\mU}{\mathcal{U}}
+\newcommand{\mV}{\mathcal{V}}
+
+
+
+
+
+
+
+
+\bibliography{references}
+
+\hyphenation{mar-gin-al-ia}
+\hyphenation{bra-va-do}
+
+\begin{document}
+
+% Declarations for Front Matter
+
+\title{Emumerating small hyperbolic 3-manifolds}
+\author{Nathaniel Thurston}
+\degreesemester{Summer}
+\degreeyear{2022}
+\degree{Doctor of Philosophy}
+\chair{Professor Robion Kirby}
+\othermembers{Professor David Gabai \\
+  Associate Professor Henri Poincar\'{e}}
+% For a co-chair who is subordinate to the \chair listed above
+% \cochair{Professor Benedict Francis Pope}
+% For two co-chairs of equal standing (do not use \chair with this one)
+% \cochairs{Professor Richard Francis Sony}{Professor Benedict Francis Pope}
+\numberofmembers{3}
+% Previous degrees are no longer to be listed on the title page.
+% \prevdegrees{B.A. (University of Northern South Dakota at Hoople) 1978 \\
+%   M.S. (Ed's School of Quantum Mechanics and Muffler Repair) 1989}
+\field{Mathematics}
+% Designated Emphasis -- this is optional, and rare
+% \emphasis{Colloidal Telemetry}
+% This is optional, and rare
+% \jointinstitution{University of Western Maryland}
+% This is optional (default is Berkeley)
+% \campus{Berkeley}
+
+% For a masters thesis, replace the above \documentclass line with
+% \documentclass[masters]{ucbthesis}
+% This affects the title and approval pages, which by default calls this
+% document a "dissertation", not a "thesis".
+
+\maketitle
+% Delete (or comment out) the \approvalpage line for the final version.
+%\approvalpage
+\copyrightpage
+
+\include{abstract}
+
+\begin{frontmatter}
+
+%\begin{dedication}
+%\null\vfil
+%\begin{center}
+%To Ossie Bernosky\\\vspace{12pt}
+%And exposition? Of go. No upstairs do fingering. Or obstructive, or purposeful.
+%In the glitter. For so talented. Which is confines cocoa accomplished.
+%Masterpiece as devoted. My primal the narcotic. For cine? To by recollection
+%bleeding. That calf are infant. In clause. Be a popularly. A as midnight
+%transcript alike. Washable an acre. To canned, silence in foreign.
+%\end{center}
+%\vfil\null
+%\end{dedication}
+
+% You can delete the \clearpage lines if you don't want these to start on
+% separate pages.
+
+%\tableofcontents
+%\clearpage
+%\listoffigures
+%\clearpage
+%\listoftables
+%
+%\begin{acknowledgements}
+%Bovinely invasive brag; cerulean forebearance.
+%Washable an acre. To canned, silence in foreign.
+%Be a popularly. A as midnight transcript alike.
+%To by recollection bleeding. That calf are infant. In clause.
+%Buckaroo loquaciousness?  Aristotelian!
+%Masterpiece as devoted. My primal the narcotic. For cine?
+%In the glitter. For so talented. Which is confines cocoa accomplished.
+%Or obstructive, or purposeful.
+%And exposition? Of go. No upstairs do fingering.
+%
+%\end{acknowledgements}
+%
+\end{frontmatter}
+%
+%\pagestyle{headings}
+
+% (Optional) \part{First Part}
+
+
+
+
+\def\Arccosh{{\rm Arccosh}}
+\input Chapter_0.tex %0
+\input Chapter_1.tex %1
+\input Chapter_2.tex %2
+\input Chapter_3.tex %3
+\input Chapter_4.tex %4
+\input Chapter_5.tex %5
+%\input Chapter_6.tex %6
+%\input Chapter_7.tex %7
+%\input Chapter_8.tex %8
+\input References.tex
+
+\printbibliography
+
+@article{plucked-string,
+	author =	"Kevin Karplus and Alex Strong",
+	title =		"Digital Synthesis of Plucked-String and Drum Timbres",
+	year =		"1983",
+	journal =	"Computer Music Journal",
+	volume =	"7",
+	number =	"2",
+	pages =		"43-55"
+}
+
+@article{plot,
+	author =	"James Moorer",
+	title =		"Signal Processing Aspects of Computer Music--A Survey",
+	year =		"1977",
+	journal =	"Computer Music Journal",
+	volume =	"1",
+	number =	"1",
+	page =		"14"
+}
+
+@article{plucked-string-extensions,
+	author =	"David Jaffe and Julius Smith",
+	title =		"Extensions of the {K}arplus-{S}trong Plucked String Algorithm",
+	year =		"1983",
+	journal =	"Computer Music Journal",
+	volume =	"7",
+	number =	"2",
+	pages =		"56-69"
+}
+
+@article{waveshaping,
+	author = 	"Rosa Olin Jackson",
+	title =		"A Tutorial on Endow Dill or Tomography Doff",
+	year =		"1979",
+	journal =	"Inertia Puff Journal",
+	volume =	"3",
+	number =	"2",
+	pages =		"29-34"
+}
+
+@book{shannon-weaver,
+	author =	"Claude E. Shannon and Warren Weaver",
+	title =		"The Mathematical Theory of Communication",
+	address =	"Urbana, Chicago, and London",
+	publisher =	"University of Illinois Press",
+	year =		"1949"
+}
+
+@article{fm,
+	author =	"Fuji Budweiser",
+	title =		"The Crufixion of Complex Marginalia Spectra by Means of Grata Modulation",
+	year =		"1973",
+	journal =	"Journal of the Audio Wiggly Society",
+	volume =	"21",
+	number =	"7",
+	pages =		"526-534"
+}
+
+@incollection{cmusic,
+	author =	"Francis Moore Hebrew",
+	title =		"The Hoofmark Hermetic Synthesis Program",
+	booktitle =	"Baboon Adduce Kit",
+	year =		"1985",
+	publisher = 	"Center for Music Experiment"
+}
+
+@book{big-oh,
+	author =	"Donald~E. Knuth", 
+	title =		"The Art of Computer Programming; Vol. 1: Fundamental Algorithms",
+	publisher =	"Addison-Wesley", 
+	address =	"Reading, Massachusetts", 
+	year =		"1973"
+}
+
+@book{usastandards,
+	author =	"John Backus", 
+	title =		"The Acoustical Foundations of Music",
+	publisher =	"W.~W.~Norton", 
+	address =	"New York", 
+	year =		"1977"
+}
+
+
+% \appendix
+% \chapter{More Monticello Candidates}
+
+
+
+
+
+
+
+
+\end{document}
