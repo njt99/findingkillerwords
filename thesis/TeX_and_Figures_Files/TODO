@@ -1,0 +1,10 @@
+ * tables and figures
+   * get one working.
+   * fix the rest.
+ * irregular/no structure
+   * e.g., a,b; i,ii,iii; `grep \\label *.tex | grep -v begin`
+   * plan
+   * execute
+ * fix Chapter/Section references.
+ * address remaining FIXME.
+ * review PDF.
