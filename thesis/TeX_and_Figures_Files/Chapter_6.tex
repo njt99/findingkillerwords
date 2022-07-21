@@ -3,11 +3,11 @@
 In Section 6, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
 these calculations.  
 
-\begin{conventions}{ {\textrm FIXME:8.1}}
+\begin{conventions}\label{GMT 8,1}
 An AffApprox $x$ is a five-tuple
 $(x.f; x.f_0,x.f_1,x.f_2; x.{\textrm err})$
 consisting of four complex numbers $(x.f, x.f_0,x.f_1, x.f_2)$ and one real number $x.{\textrm err}.$  In Section FIXME:6, the
-real number was denoted $x.e,$ but it seems preferable to use $x.{\textrm err}$ here.  Recall (Definition FIXME:6.4)
+	real number was denoted $x.e,$ but it seems preferable to use $x.{\textrm err}$ here.  Recall (Definition \ref{GMT 6.4}
 that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1 \
 {\textrm for} \ k \in \{0,1,2\}\}$ to ${\mathbf C}$ that are $x.{\textrm err}$-well-approximated by the affine function
 $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
@@ -25,27 +25,27 @@ essentially the same as in Section FIXME:6.
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.
 
 \begin{conventions}\label{GMT 8.3}
-i)  In what follows, we will use Basic Properties FIXME:7.0 and Lemmas FIXME:7.0 and FIXME:7.1.  Also, the propositions in Section 6
+i)  In what follows, we will use Basic Properties \ref{GMT 7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT 7.1}.  Also, the propositions in Section 6
 will be utilized;  as such, the numbering of the propositions is the same in Sections FIXME:6 and FIXME:8 (for example,
-Proposition FIXME:6.7 corresponds to Proposition FIXME:8.7).  
+	Proposition \ref{GMT 6.7} corresponds to Proposition \ref{GMT 8.7}.  
 \vglue4pt
-ii)  Some notational simplifications will be introduced: ${\textrm dist}(x)$ before Proposition FIXME:8.6, $ax$ before Propositions FIXME:8.8, 8.9, 8.11
-(the middle usage of $ax$ differs slightly from the other two), and $ay$ before Propositions FIXME:8.8, 8.9.
+	ii)  Some notational simplifications will be introduced: ${\textrm dist}(x)$ before Proposition \ref{GMT 8.6}, $ax$ before Propositions \ref{GMT 8.8}, \ref{GMT 8.9}, \ref{GMT 8.11}
+	(the middle usage of $ax$ differs slightly from the other two), and $ay$ before Propositions \ref{GMT 8.8}, \ref{GMT 8.9}.
 \vglue4pt
-iii)  We will try to keep our notation fairly consistent with that of the {\textit verify} computer program, and this will produce some mildly peculiar notation.  In particular, in the operations pertaining to Propositions FIXME:8.2 and beyond, the resultant AffApproxes will be denoted $(r\_f.z; r\_f_1.z, r\_f_2.z, 
+	iii)  We will try to keep our notation fairly consistent with that of the {\textit verify} computer program, and this will produce some mildly peculiar notation.  In particular, in the operations pertaining to Propositions \ref{GMT 8.2} and beyond, the resultant AffApproxes will be denoted $(r\_f.z; r\_f_1.z, r\_f_2.z, 
 r\_f_3.z; r\_{\textrm error})$
 where the first four terms are XComplexes and the last term is a double (technically, $r\_f.z$ is the XComplex part of the AComplex  $r\_f$ and similarly for the $r\_f_k.z$ terms).  One break with the notation of the programs though is that AffApproxes are called (in the programs) ACJ's, which stands for ``Approximate Complex 1-Jets."
 \vglue4pt
 iv) The propositions that follow include in their statements the definitions of the various operations on AffApproxes (see Remark
-FIXME:6.6iii)).
+	\ref{GMT 6.6iii}).
 \vglue4pt
-v)  We remind the reader (see Section FIXME:7.4) that all machine operations act on machine numbers, and that the 
+	v)  We remind the reader (see Section \ref{GMT 7.4}) that all machine operations act on machine numbers, and that the 
 various variables appearing in the propositions are assumed to be doubles.
 \end{conventions}
 
 $-X$:
 
-\begin{proposition}{FIXME:8.1}
+\begin{proposition}\label{GMT 8.1}
 If $x$ is an AffApprox 
 then $S(-x) = -(S(x))$ where
 $$-x \equiv (-x.f; -x.f_0,-x.f_1,-x.f_2; x.{\textrm err}).$$ \end{proposition}
@@ -55,14 +55,14 @@ $X+Y$:
 We analyze the addition of the  {\textrm AffApproxes} 
  $x = (x.f; x.f_0,x.f_1, x.f_2; x.{\textrm err})$  and 
 $y = (y.f; y.f_0,y.f_1,y.f_2; y.{\textrm err}).$  To get the first term in $x+y$ we add the XComplex numbers $x.f$ and $y.f;$ which
-produce the AComplex number $r\_f = x.f + y.f$ (see Proposition FIXME:7.4), and then we pluck off the XComplex part,
+produce the AComplex number $r\_f = x.f + y.f$ (see Proposition \ref{GMT 7.4}), and then we pluck off the XComplex part,
 which we denote $r\_f.z.$  The round-off error part $r\_f.e$ will be foisted into the overall error term $r\_{\textrm error}$
 for $x+y.$ Similarly for the next three terms in $x + y.$
 
 Abstractly, the overall error term $r\_{\textrm error}$ comes from adding the round-off error contributions $r\_f.e,\  r\_f_0.e,\  r\_f_1.e, 
 \ r\_f_2.e$ and the AffApprox error contributions $x.{\textrm err},\  y.{\textrm err}$.  Of course, we have to produce a machine version.
 
-\begin{proposition}{FIXME:8.2} If $x$ and $y$ are 
+\begin{proposition}\label{GMT 8.2} If $x$ and $y$ are 
 {\textrm AffApproxes, }
 then $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
 $$x + y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -89,11 +89,11 @@ y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2
 err} \oplus y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
 \end{eqnarray*}
  To get the last line
-we used Lemma FIXME:7.1. \end{proof}
+we used Lemma \ref{GMT 7.1}. \end{proof}
 
 $X - Y$:
 
-\begin{proposition}{FIXME:8.3:} If $x$ and $y$ are {\textrm AffApproxes,} then $S(x - y) \supseteq S(x) - S(y)${\textrm ,}
+\begin{proposition}\label{GMT 8.3} If $x$ and $y$ are {\textrm AffApproxes,} then $S(x - y) \supseteq S(x) - S(y)${\textrm ,}
  where
 $$x - y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
 with
@@ -109,7 +109,7 @@ r\_{\textrm error} &=& (1 + 3EPS)\\
 $X + D$: 
 Here, we add the AffApprox $x = (x.f; x.f_0,x.f_1,x.f_2; x.{\textrm err})$  to the double $y$.  The only terms that change are the first and the last.
 
-\begin{proposition}{FIXME:8.4}\hskip-8pt If $x$ is an 
+\begin{proposition}\label{GMT 8.4}\hskip-8pt If $x$ is an 
 {\textrm AffApprox}  and $y$ is a double{\textrm ,} 
 then $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
 $$x + y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -123,10 +123,10 @@ r\_{\textrm error}& = &(1 + EPS) \otimes (x.{\textrm err} \oplus r\_f.e).\end{eq
 \begin{proof}{}
 The error is given by 
 $$x.{\textrm err} + r\_f.e \le (1 + EPS) \otimes (x.{\textrm err} \oplus r\_f.e)$$
-by Lemma FIXME:7.0. \end{proof}
+by Lemma \ref{GMT 7.0}. \end{proof}
 
 $X - D$:
-\begin{proposition}{FIXME:8.5}\hskip-8pt If $x$ is an 
+\begin{proposition}\label{GMT 8.5}\hskip-8pt If $x$ is an 
 {\textrm AffApprox}  and $y$ is a double{\textrm ,}
 then $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 $$x - y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -140,14 +140,14 @@ r\_{\textrm error}& =& (1 + EPS) \otimes (x.{\textrm err} \oplus r\_f.e).\end{eq
 $X \times Y$: 
 We multiply the AffApproxes $x$ and $y$ while pushing all error into the $.{\textrm err}$ term.
 
-We will use the functions (see Formulas FIXME:7.0 and 7.1, at the end of Section~7) ${\textrm absUB}= (1 + 2EPS) \otimes
+We will use the functions (see Formulas \ref{GMT 7.0} and \ref{GMT 7.1}, at the end of Section~7) ${\textrm absUB}= (1 + 2EPS) \otimes
 {\textrm hypot}_o(x.re,x.im)$ and 
 ${\textrm absLB}(x) = (1 - 2EPS) \otimes {\textrm hypot}_o(x.re,x.im)$.
 
 When $x$ is an AffApprox, we define ${\textrm dist}(x)$ to be $$(1 + 2EPS) \otimes ({\textrm absUB}(x.f_0) \oplus ({\textrm absUB}(x.f_1) \oplus {\textrm absUB}(x.f_2))).$$  This is the machine representation of the sum of the absolute values of the linear terms in the AffApprox $x$ 
 (the proof is straightforward).
 
-\begin{proposition}{FIXME:8.6} If $x$ and $y$ are 
+\begin{proposition}\label{GMT 8.6} If $x$ and $y$ are 
 {\textrm AffApproxes,}
 then $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 $$x \times y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -194,7 +194,7 @@ We add the non-round-off error term for $x \times y$ to the various round-off er
 
 $X \times D$: 
 
-\begin{proposition}{FIXME:8.7} \hskip-8pt If $x$ is an 
+\begin{proposition}\label{GMT 8.7} \hskip-8pt If $x$ is an 
 AffApprox  and $y$ is a double{\textrm ,} 
 then $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 $$x \times y = (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -211,7 +211,7 @@ r\_{\textrm error} &=& (1+3EPS)\\
 $X/Y$: 
 For convenience, let  $ax = {\textrm absUB}(x.f),\ ay = {\textrm absLB}(y.f).$ 
  
-\begin{proposition}{FIXME:8.8} If $x$ and $y$ are 
+\begin{proposition}\label{GMT 8.8} If $x$ and $y$ are 
 {\textrm AffApproxes}  with $D > 0$ {\textrm (}\/see below{\textrm ),} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -293,10 +293,10 @@ and we put these three pieces together:
 
 $D/X$:
 We   divide a double $x$ by an AffApprox $y$.
-For convenience, let $ax = |x|,\ ay = {\textrm absLB}(y.f).\ $  Having done division out in the previous proposition, we will skip the proof of Proposition FIXME:8.9.  See the {\textit Annals}
+For convenience, let $ax = |x|,\ ay = {\textrm absLB}(y.f).\ $  Having done division out in the previous proposition, we will skip the proof of Proposition \ref{GMT 8.9}.  See the {\textit Annals}
 web site for the proof.
 
-\begin{proposition}{FIXME:8.9} If $x$ is a double and $y$ is an 
+\begin{proposition}\label{GMT 8.9} If $x$ is a double and $y$ is an 
 {\textrm AffApprox}  with $D > 0$ {\textrm (}\/see below{\textrm ),}
  then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error})$$
@@ -318,7 +318,7 @@ $X/D$:
 We   divide an AffApprox $x$ by a nonzero double $y$ (the computer will object if $y = 0$).  The proof is easy  and
 so we delete it.
 
-\begin{proposition}{FIXME:8.10} 
+\begin{proposition}\label{GMT 8.10} 
 If $x$ is an {\textrm AffApprox}  and $y$ is a nonzero double{\textrm ,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$x / y \equiv (r\_f.z; r\_f_0.z, r\_f_1.z, r\_f_2.z; r\_{\textrm error}),$$
@@ -338,7 +338,7 @@ $\sqrt X$:
 Here, $x$ is an AffApprox and we let $ax = {\textrm absUB}(x.f)$.  There are two cases to consider depending on whether or not
 $D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is or is not greater than zero.
 
-\begin{proposition}{FIXME:8.11{\textrm a}} If $x$ is an {\textrm AffApprox}
+\begin{proposition}\label{GMT 8.11a} If $x$ is an {\textrm AffApprox}
 and
 $ D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is not greater than zero{\textrm ,} then 
 $S(\sqrt x) \supseteq \sqrt {S(x)}${\textrm ,} where
@@ -354,7 +354,7 @@ we use the crude overestimate $$\sqrt x \equiv \left(0;0,0,0;(1 + 2EPS) \otimes
 \end{eqnarray*}
 \end{proof}
 
-\begin{proposition}{FIXME:8.11{\textrm b}} If 
+\begin{proposition}\label{GMT 8.11b} If 
 $x$  is an {\textrm AffApprox} and
 $ D = ax \ominus (1 + EPS) \otimes ({\textrm dist}(x) \oplus x.{\textrm err})$ is greater than zero{\textrm ,}
 then $S(\sqrt x) \supseteq \sqrt {S(x)}${\textrm ,} where

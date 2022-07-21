@@ -22,14 +22,15 @@ get the Taylor approximation with error term for the resultant function from the
 
 A similar approach was developed independently by Stolfi and Figuereido (see [FS]).
 
-{\textit Remark} \ref{GMT 6.3}.
+{\textit Remark} \label{GMT 6.3}.
 We set up the Taylor approximation approach rigorously
 as follows in Definition \ref{GMT 6.4}.
 The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\textit verify}.  However, it should be pointed out that the formulas in this
 section will be superseded by the ones in Section 8, which incorporate a round-off error analysis.  It is the Section 8 formulas that are
 used in {\textit verify}.
 
-\vglue8pt {\textit Definition {\textrm \ref{GMT 6.4}}}.  An {\textit AffApprox}  $x$ is a five-tuple
+%FIXME \vglue8pt {\textit Definition {\textrm \label{GMT 6.4}.
+An {\textit AffApprox}  $x$ is a five-tuple
 $(x.f;\ x.f_0,\ x.f_1,\ x.f_2;\ x.e),$
 consisting of four complex numbers $x.f,\ x.f_0,\ x.f_1,\ x.f_2$ and one real number $x.e,$  which represents all functions 
 $g: A \rightarrow {\mathbf C}$ such that
@@ -96,7 +97,7 @@ $$x - y \equiv (x.f - y.f; x.f_0 - y.f_0, x.f_1 - y.f_1, x.f_2 - y.f_2; x.e + y.
 \end{proposition}
 
 To co-ordinate numbering with Section 8 (where we incorporate round-off error into these formulas) we include the following special
-cases of Propositions \ref{GMT 6.2} and \ref{GMT 6.3}.  Similarly for Propositions \ref{GMT 6.7}, \ref{GMT 6.9}, and \ref{GMT 6.10). 
+cases of Propositions \ref{GMT 6.2} and \ref{GMT 6.3}.  Similarly for Propositions \ref{GMT 6.7}, \ref{GMT 6.9}, and \ref{GMT 6.10}. 
 
 In what follows,  ``double" refers to a real number, and has an associated AffApprox, with the last four entries zero.  When we do
 machine arithmetic in Sections FIXME(7 and 8), doubles will be  machine numbers.
