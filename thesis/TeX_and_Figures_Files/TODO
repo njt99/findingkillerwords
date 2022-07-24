@@ -1,10 +1,19 @@
+ * [NO] ??restart with final GMT version??
  * tables and figures
-   * get one working.
-   * fix the rest.
+   * [DONE] get one working.
+   * [DONE] get rest of .eps files from drive linken drom Maureen's email.
+   * [DONE] fix the rest.
  * irregular/no structure
    * e.g., a,b; i,ii,iii; `grep \\label *.tex | grep -v begin`
-   * plan
+   * [DONE] plan (add begin/end; leave extras out of structure))
    * execute
  * fix Chapter/Section references.
+ * numbering
+   * how many oarallel numberings are desired? fig+other
+   * how many exist in GMT?
+   * plan the fix
+   * execute
  * address remaining FIXME.
+ * fix and validate cross-references
+ * cross-read vs. GMT
  * review PDF.
