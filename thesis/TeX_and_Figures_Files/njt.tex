@@ -30,7 +30,7 @@
 \addtolength{\abovecaptionskip}{\baselineskip}
 \theoremstyle{plain}
 %\declaretheorem[style=thmstyle,name=Theorem,numberwithin=chapter]{theorem}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -38,16 +38,21 @@
 \newtheorem{question}[theorem]{Question}
 \newtheorem{questions}[theorem]{Questions}
 \newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{problem}[theorem]{Problem}
+
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{conventions}[theorem]{Conventions}
+\newtheorem{the trivial conditions}[theorem]{The Trivial Conditions}
+\newtheorem{the interesting conditions}[theorem]{The Interesting Conditions}
 \newtheorem{definition/construction}[theorem]{Definition/Construction}
 \newtheorem{notationsandconventions}[theorem]{Notations And Conventions}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{summary}[theorem]{Summary}
 \newtheorem{history}[theorem]{History}
-
+\newtheorem{basic properties}[theorem]{Basic Properties}
+\newtheorem{problem}[theorem]{Problem}
 \newtheorem{addendum}[theorem]{Addendum}
 \newtheorem{remarks}[theorem]{Remarks}
 \newtheorem{data memo}[theorem]{Data Memo}
@@ -55,8 +60,8 @@
 \newtheorem{warning}[theorem]{Warning}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{convention}[theorem]{Convention}
-\newtheorem{conventions}[theorem]{Conventions}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{formula}[theorem]{Formula}
 
 
 

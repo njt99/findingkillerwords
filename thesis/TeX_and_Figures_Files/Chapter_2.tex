@@ -32,7 +32,7 @@ at words in $f,w, f^{-1}, w^{-1}$ we will often let $F$ and $W$ denote
 $f^{-1}$ and $w^{-1},$ respectively.
 \end{notationsandconventions}
 
- \begin{definition}
+ \begin{definition}\label{GMT 1.2}
  If $f$ is an isometry, then we define
 $${\textit Relength}(f)=\inf\{\rho(w,f(w))\mid w\in {\mathbf H}^3\}.$$
 Thus $\Relength(f)=0$ if and only if $f$ is either a parabolic or elliptic
@@ -63,13 +63,13 @@ If $f$ is parabolic or the identity, we define $\length(f) = 0 + i0.$
 So, for all isometries we have that $\Relength = {\mathrm Re}(\length).$
 \end{definition}
 
-\begin{definition}   If
+\begin{definition} \label{GMT 1.3}  If
 $G$ is a subgroup of ${\textrm Isom}_+({\mathbf H}^3),$ then  we say that $f$ is a {\textit shortest} element  in $G$ if $f\neq {\mathrm id}$ and
 $\Relength(f)\le \Relength(g)$
 for all $g\in G, \ g\neq {\mathrm id}.$
 \end{definition}
  
-\begin{definition}
+\begin{definition}\label{GMT 1.4} 
   If $\sigma,\ \tau$ are disjoint oriented geodesics  in 
 ${\mathbf H}^3$ which do not meet at infinity,
 then define
@@ -94,13 +94,15 @@ $\distance(\sigma,\tau) = 0 + i0,$ or $0 + i\pi$ depending on whether or not $\s
 Define ${\textit Redistance} = {\mathrm Re} (\distance).$
 
 As defined, Redistance is nonnegative.
-In Definition \ref{GMT 1.8} and in Chapters FIXME(2 and 3),
+In Definition \ref{GMT 1.8} and in Chapters (CHECKTHIS: FIXME(2 and 3)),
 it will be useful to have a broader definition. Given an oriented
 geodesic $\alpha$ in ${\mathbf H}^3$ orthogonal to oriented geodesics $\beta$ and $\gamma$, define $d_\alpha(\beta,\gamma) \in {\mathbf C}$ where a
 $d_\alpha(\beta,\gamma)$ translation of ${\mathbf H}^3$  along $\alpha$ takes $\beta$ to $\gamma.$
 \end{definition}
 
-\begin{definition}
+%Note: 1.5 of GMT was dropped from Thesis
+
+\begin{definition} \label{GMT 1.6}
 A tube of radius $r$ about a geodesic $\delta_0$ in ${\mathbf H}^3$ is 
 $\{w \in {\mathbf H}^3 \mid \rho(w, v) \le r$ for some $v \in \delta_0 \}.$    
 If $\delta$
@@ -116,7 +118,9 @@ tuberadius$(\delta)=
 radius $r$ about $\delta \}.$
 \end{definition}
 
-\begin{definition}
+%Note: 1.7 of GMT was dropped
+
+\begin{definition} \label{GMT 1.8}
 Our desire to understand tuberadii about closed geodesics, and especially about a simple closed geodesic $\delta$, leads us to investigate certain 2-generator subgroups $G =
 \langle f,w\rangle$  of ${\textrm Isom}_+({\mathbf H}^3)$ with the generator $f$ corresponding to a primitive isometry fixing $\delta_0$ and the generator
 $w$ corresponding to an element taking $\delta_0$ to its nearest covering translate.  We investigate these 2-generator groups by using certain
@@ -162,7 +166,7 @@ discrete, torsion-free, and parabolic-free.
  
 
 
-\begin{remark}  ${\mathcal T}^{\prime}$ consists of those parameters corresponding to marked groups $\{G,f,w\}$ such that $l$ is the real
+\begin{remark}  \label{GMT 1.9} ${\mathcal T}^{\prime}$ consists of those parameters corresponding to marked groups $\{G,f,w\}$ such that $l$ is the real
 length of a shortest element of $G,\  d$ is the real distance between $ B_{(0;\infty)}$ and a nearest
 translate, and $-l/2<r\le l/2.$  
 In what follows, it is
@@ -177,13 +181,16 @@ parameters $\alpha$ with $d \le \ln(3).$  The
 following two propositions imply this subset of ${\mathcal T}^{\prime}$ lives in a compact subset of ${\mathcal P}^{\prime}.$
 \end{remark}
 
+%Note: GMT 1.10-1.11 dropped 
+
 \begin{figure}[h]\label{GMT fig 1.1}
 	\centering
 	\includegraphics[scale=0.500]{fig1.1}
 \end{figure}
 
 \begin{definition}\label{GMT 1.12}
-\hglue-8pt Let ${\mathcal P}\subset{\mathcal P}^{\prime}$ be the set of those parameters $\alpha
+%\hglue-8pt 
+Let ${\mathcal P}\subset{\mathcal P}^{\prime}$ be the set of those parameters $\alpha
 = (l+it$, $d+ib, r+ia)$ such
 that
  \vglue3pt
@@ -210,36 +217,39 @@ $\{G_\alpha,f_\alpha,w_\alpha\},$ then there exists a parameter $\beta=(l^{\prim
 with associated group $\{G_\beta,f_\beta, w_\beta\}$ such that $G_\beta$ is conjugate (in ${\textrm Isom}({\mathbf H}^3$)) to $G_\alpha.$ 
 \end{lemma}
 
-\begin{proof} We note that $d < l/2$ is eliminated from consideration by Proposition 1.11 i), and the definition of ${\mathcal T}^\prime.$ If $d\le \ln(3),$
+\begin{proof} We note that $d < l/2$ is eliminated from consideration by Proposition (CHECKTHIS: 1.11 i)), and the definition of ${\mathcal T}^\prime.$ If $d\le \ln(3),$
 then
-$0.0978\le l\le 1.289785$ by Propositions 1.10 and 1.11 ii).  If for the marked group $\{G, f, w\}$ we have 
+$0.0978\le l\le 1.289785$ by Propositions (CHECKTHIS: 1.10) and (CHECKTHIS: 1.11 ii)).  If for the marked group $\{G, f, w\}$ we have 
 $-l/2<r<0,$ then the marked group
 $\{G,f,w^{-1}\}$ is conjugate to an element of ${\mathcal T}$ whose new
 $r$-parameter is $-r.$  Thus we can assume that
-conditions a, b, c from Definition 1.12 hold for the relevant $\{G,f,w\}.$  Further,    conditions e and f hold.
+conditions a, b, c from Definition \ref{GMT 1.12} hold for the relevant $\{G,f,w\}.$  Further,    conditions e and f hold.
 
-This leaves condition 1.12d.  Conjugating $G$ by a
+This leaves condition \ref{GMT 1.12} d.  Conjugating $G$ by a
 reflection in the geodesic plane spanned
 by $B_{(0;\infty)}$ and $B_{(-1;1)}$ changes the $t$-parameter to 
 $-t \ ({\textrm mod}\ 2\pi)$
 but leaves the $r$ and $d$ parameters unchanged.
 The effect on $b$ and $a$ is irrelevant.  \end{proof}
 
-By [G; Lemma 5.9] (or see Example A.3 in the appendix) a closed orientable hyperbolic $3$-manifold $N$
+By [G; Lemma 5.9] (or see Example (CHECKTHIS: A.3 in the appendix)) a closed orientable hyperbolic $3$-manifold $N$
 satisfies the insulator condition provided that
 tuberadius$(\delta) > \ln(3)/2$ for some closed geodesic $\delta\subset N.$  Thus we
 are led to consider:
 
-\begin{definition}  A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark \ref{GMT 1.17} holds for each $\beta\in {\mathcal P}_i$
+%Note: 1.14-1.17 dropped
+
+\begin{definition}  \label{GMT 1.18} A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark 
+(CHECKTHIS: ref{GMT 1.17}) holds for each $\beta\in {\mathcal P}_i$
 and for which $h_\beta$ is not a power of $f_\beta$ for each $\beta\in {\mathcal P}_i$ is
 called a {\textit killerword} for ${\mathcal P}_i$ with respect to contradiction a) (resp.\ b)).
 \end{definition}
 
-\begin{summary}  With seven exceptions,  to each of the approximately one
+\begin{summary}  \label{GMT 1.19} With seven exceptions,  to each of the approximately one
 billion regions partitioning ${\mathcal P},$ we will
 associate a killerword and a contradiction.  \end{summary} 
 
-\begin{remark}  Computers are well suited for partitioning a set such as ${\mathcal P}$
+\begin{remark}  \label{GMT 1.20} Computers are well suited for partitioning a set such as ${\mathcal P}$
 into many regions $\{{\mathcal P}_i \},$ and finding a
 killerword $h_i$ which eliminates all $\alpha_i \in {\mathcal P}_i $ due to contradiction $C_i.$
 Depending on the contradiction, we find
@@ -249,7 +259,7 @@ thus use the computer to eliminate all of~${\mathcal P}_i .$
 \end{remark}
 
 \vglue8pt 
-{\textit Definition} \ref{GMT 1.22}. Let 
+\begin{definition} \label{GMT 1.22} Let 
 \vglue4pt
 \centerline{$ {\mathcal W} = \{ (x_0,x_1,x_2,x_3,x_4,x_5) : |x_i| \le 4 \times 2^{(5 - i) /6} {\mathrm \ for\ } i = 0,1,2,3,4,5 \}$}
 \begin{eqnarray*}
@@ -269,15 +279,15 @@ $L = l+it,\ D = d+ib,\ R = r+ia$ by exponentiated versions.  That is, let
 \begin{eqnarray*}
 L^\prime &\hskip-8pt=\hskip-8pt& \exp(L) = \exp(l+it),\enspace D^\prime = \exp(D) = \exp(d + ib), 
 \\ R^\prime &\hskip-8pt=\hskip-8pt& \exp(R) = \exp(r+ia).
-\end{eqnarray*}
+\end{eqnarray*}\end{definition}
  
 
-{\textit Remarks} \ref{GMT 1.23}.
+\begin{remarks}\label{GMT 1.23}
 i) We work with ${\mathcal W}$ instead of $\exp({\mathcal P})$ because we want our initial parameter space to be a (6-dimensional) box that is easily
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\mathcal W}_i$ of ${\mathcal W}$ will be eliminated because they are outside of $\exp({\mathcal P})$ not because of the analogues of conditions a) and b) in
-Remark \ref{GMT 1.17}.
-The entire collection of conditions is given in Chapter FIXME(5).
+Remark (CHECKTHIS ref{GMT 1.17}).
+The entire collection of conditions is given in Chapter 4.
  
 ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction \ref{GMT 5.3}.
 Briefly, the main reason for including it
@@ -285,9 +295,9 @@ is to make the shape of regions stay as uniform and ``round" as possible under s
 This makes the Taylor approximations efficient, hence fast.
 \vglue4pt
 iii)  We chose the co-ordinates of ${\mathcal W}$  so that $L^\prime = x_0 + i x_3,\ D^\prime = x_1 + i x_4,\ R^\prime = x_2 + i x_5\ $ to gain a mild
-computer advantage.  
+computer advantage.  \end{remarks}
 
-\begin{lemma}{}  If $(L^\prime, D^\prime, R^\prime)\in {\mathcal W}$ and  $\{G,f,w\}$ is the associated normalized 
+\begin{lemma}\label{GMT 1.24}  If $(L^\prime, D^\prime, R^\prime)\in {\mathcal W}$ and  $\{G,f,w\}$ is the associated normalized 
 marked group{\textrm ,} then $f$ and $w$ have matrix representatives
  $$ f = \left(
 	\begin{matrix}
@@ -324,7 +334,7 @@ $\cosh(D/2) = (\exp(D/2) + \exp(-D/2))/2 =
 Thus, $$\alpha = \left(\begin{matrix}ch & sh \cr sh & ch\cr\end{matrix}\right)$$ and b) follows by matrix multiplication.
 \end{proof}
 
-\begin{lemma}{} If $h \in {\textrm Isom}_+({\mathbf H}^3)$ is represented by the matrix $$A = \left(\begin{matrix}a &  b \cr c & d\cr\end{matrix}\right)\in {\mathrm SL}(2,{\mathbf
+\begin{lemma}\label{GMT 1.25} If $h \in {\textrm Isom}_+({\mathbf H}^3)$ is represented by the matrix $$A = \left(\begin{matrix}a &  b \cr c & d\cr\end{matrix}\right)\in {\mathrm SL}(2,{\mathbf
 C}),$$ then 
 \begin{itemize}
 \item{a)} $\exp(\Relength (h))= |\trace(A)/2 \pm \sqrt{(\trace(A)/2)^2 - 1}|^2,$
@@ -379,18 +389,18 @@ Thus,
 \end{eqnarray*}
 \end{proof}
 
-\begin{remark} i)  It follows from Lemma \ref{GMT 1.25} that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
+\begin{remark}\label{GMT 1.26} i)  It follows from Lemma \ref{GMT 1.25} that if $h$ is a word in $f,w,f^{-1},w^{-1},$ then for any
 parameter value $\alpha\in {\mathcal W},$
 $$\exp(\Relength(h_\alpha)), \hbox{ and }
   \exp({\textrm Redistance}(h_\alpha(B_{(0;\infty)}), B_{(0;\infty)}))$$ can be computed using only the
 operations $+, -, \times, /, \sqrt{}.$
 \vglue4pt
-\end{remark} %FIXME
+
  ii) During the course of the computer work needed to prove the main theorems, the parameter space
 ${\mathcal W}$ was decomposed into sub-boxes by computer via a recursive subdivision process:
 Given a sub-box  being analyzed, either it can be {\textit killed directly} (that is, eliminated by a killerword and associated condition as described in
-Remark \ref{GMT 1.17},
-or for the trivial reason described in Remark FIXME(1.23i)), or it cannot.  
+Remark (CHECKTHIS: ref{GMT 1.17}),
+or for the trivial reason described in Remark \ref{GMT 1.23} i), or it cannot.  
 If it cannot be killed directly, it is subdivided in half by a hyperplane
 $\{x_i = c \}$ (where $i$ runs through the various co-ordinate dimensions
 cyclically) and the two pieces are analyzed separately, and so on. 
@@ -398,7 +408,7 @@ cyclically) and the two pieces are analyzed separately, and so on.
 As such, a sub-box of ${\mathcal W}$ can be described by a sequence of 0's and 1's where 0 means ``take the lesser $x_i$ values" and 1 means ``take the greater $x_i$ values."  
 For the decomposition of ${\mathcal W}$ into sub-boxes, all the 
 sub-box descriptions could be neatly encoded into one tree (although in practice we found it preferable to use several trees to describe the entire
-decomposition.  See \S 5).
+decomposition.  See Chapter 4).
 \vglue4pt
 iii) In the following proposition, seven {\textit exceptional boxes} are described as sequences of 0's and 1's.  
 Four of the exceptional boxes---$X_0, X_4, X_5, X_6$---are each the union of two abutting sub-boxes, $X_0 = X_{0a} \cup X_{0b}$ and so on.  It is a pleasant exercise to work through the fact that they abut.  
@@ -424,9 +434,9 @@ co-ordinates can be computed in the same fashion, although they must at the end 
 initial box
 ${\mathcal W}$).  The range of co-ordinate values for each  exceptional  box $X_0, X_1, \ldots, X_6$ is given in Table \ref{GMT tab 1.1} (a limited number of significant
 digits is given), and  then a range of co-ordinates for exceptional regions (in ${\mathcal P}$) 
-${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks FIXME:1.30i) and 1.30ii)) in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
+${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks (CHECKTHIS: FIXME:1.30i) and 1.30ii))) in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
 slightly from the use in \S 0.)
-Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).
+Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
  
 \begin{table}\label{GMT tab 1.1}
 \caption{Exceptional boxes in $(L',D',R')$ co-ordinates in ${\mathcal W}$; truncated values}
@@ -610,7 +620,7 @@ r_{\textrm max} &\hskip-6pt =  0.002654&   a_{\textrm min} &\hskip-6pt =  -0.001
 \end{small}
 \end{table}
 
-\begin{definition} A {\textit quasi-relator} in a sub-box $X$ of ${\mathcal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
+\begin{definition} \label{GMT 1.27} A {\textit quasi-relator} in a sub-box $X$ of ${\mathcal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
 throughout
 $X$ and experimentally appears to be converging to the identity at some point in $X.$  In particular, a quasi-relator rigorously has Relength less than
 that of $f$ at all points in $X.$
@@ -783,18 +793,20 @@ $r_2 = FWFwfwFwfWfwFwfw.$
 
  
 \begin{proof}{}  
-The proof follows along the lines presented in Remark \ref{GMT 1.17}.  
+The proof follows along the lines presented in Remark (CHECKTHIS: ref{GMT 1.17}).  
 Two computer files contain the data needed for the proof.   
 The first computer file describes the partition of ${\mathcal W}$ into
 sub-boxes and attaches an integer to each such sub-box, 
 and the second file, called ``conditionlist" is an ordered list of conditions and killerwords.
 The integer associated to a sub-box in the first file describes the numbered condition/killerword from   conditionlist that will eliminate the sub-box
 in question (other than those corresponding to the $X_i).$ A computer program named {\textit verify} shows
-that the conditions and killerwords in question actually do kill off their associated sub-boxes (see Section 5 for more details).  This computer
+that the conditions and killerwords in question actually do kill off their associated sub-boxes (see Section (CHECKTHIS: 5) for more details).  This computer
 program addresses the issues of Remark \ref{GMT 1.20}.  The code for {\textit
 verify} is available at the {\textit Annals} web site. 
 
 In addition, a mild modification of {\textit verify} showed that the listed words were quasi-relators for the given sub-boxes. 
 \end{proof}
+
+%Note GMT 1.29-1.35 dropped
 
 

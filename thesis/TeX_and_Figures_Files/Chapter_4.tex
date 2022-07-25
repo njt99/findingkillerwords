@@ -1,7 +1,7 @@
 \chapter{Affine approximations}
 
  
-{\textit Remark} 6.1.
+\begin{remark} \label{GMT 6.1}
 To show that a sub-box of the parameter box ${\mathcal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
 Section 5).  That is, we are simply analyzing a certain function from the sub-box to ${\mathbf C}$.  
 
@@ -9,9 +9,9 @@ As described in Remark \ref{GMT 6.5}, this analysis can be pulled back from the 
 $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
 Loosely,  we will analyze such a function on $A$ by using  Taylor approximations consisting of an affine approximating
 function together with a bound on the ``error" in the approximation (this could also be described as a ``remainder bound").  This ``error" 
-is separate from round-off error,  which will be analyzed in Sections 7 and 8.  
+is separate from round-off error,  which will be analyzed in Chapters 6 and 7.  \end{remark}
 
-There are two immediate problems likely to arise from this Taylor approximation approach.
+\begin{problem} There are two immediate problems likely to arise from this Taylor approximation approach.
 The first problem is the appearance of unpleasant functions such as 
 Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space ${\mathcal P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on ${\mathcal W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
 
@@ -20,57 +20,57 @@ by developing combination formulas for elementary operations (see the propositio
 approximations with error terms representing functions $g$ and $h$ and an elementary operation on $g$ and $h$, we will show how to
 get the Taylor approximation with error term for the resultant function from the two original Taylor approximations. 
 
-A similar approach was developed independently by Stolfi and Figuereido (see [FS]).
+A similar approach was developed independently by Stolfi and Figuereido (see [FS]).\end{problem}
 
-{\textit Remark} \label{GMT 6.3}.
+\begin{remark} \label{GMT 6.3}
 We set up the Taylor approximation approach rigorously
 as follows in Definition \ref{GMT 6.4}.
 The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\textit verify}.  However, it should be pointed out that the formulas in this
-section will be superseded by the ones in Section 8, which incorporate a round-off error analysis.  It is the Section 8 formulas that are
-used in {\textit verify}.
+section will be superseded by the ones in Chapter 7, which incorporate a round-off error analysis.  It is the Chapter 7 formulas that are
+used in {\textit verify}.\end{remark}
 
 %FIXME \vglue8pt {\textit Definition {\textrm \label{GMT 6.4}.
-An {\textit AffApprox}  $x$ is a five-tuple
+\begin{definition} \label{GMT 6.4} An {\textit AffApprox}  $x$ is a five-tuple
 $(x.f;\ x.f_0,\ x.f_1,\ x.f_2;\ x.e),$
 consisting of four complex numbers $x.f,\ x.f_0,\ x.f_1,\ x.f_2$ and one real number $x.e,$  which represents all functions 
 $g: A \rightarrow {\mathbf C}$ such that
 $$|g(z_0,z_1,z_2) - (x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2)| \le x.e$$
-for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to ${\mathbf C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.
+for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to ${\mathbf C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.\end{definition}
 \vglue6pt
 
-{\textit Remark} 6.5.
+\begin{remark}\label{GMT 6.5}
 As mentioned in Remark \ref{GMT 6.1}, given a sub-box to analyze, instead of working with functions defined on the sub-box, we will work with corresponding functions defined on $A.$  Specifically, rather than build up a function by elementary operations performed on the co-ordinate functions 
 $L^{\prime}, D^{\prime}, R^{\prime}$ 
 restricted to the given sub-box, we will perform the elementary operations on the following functions defined on $A$, 
 $$(p_0 + i p_3; s_0 + i s_3,0,0; 0)\  \ (p_1 + i p_4; 0, s_1 + i s_4,0;0) \   \ (p_2 + i p_5; 0,0, s_2 + i s_5; 0)$$
 where $(p_0 + i p_3, p_1 + i p_4, p_2 + i p_5)$ is the center of the sub-box in question, and the $s_i$ describe the six dimensions of the box. In the computer programs, these three functions are called {\textit along}, {\textit ortho}, and {\textit whirle,} respectively, and $p_i$ and $s_i$
- are denoted {\textit pos}[$i$] and {\textit size}[$i$], respectively.
-\vglue6pt
+ are denoted {\textit pos}[$i$] and {\textit size}[$i$], respectively.\end{remark}
+
 After the following remarks, we state and prove the combination formulas. 
 
-\vglue6pt {\textit Remarks} 6.6.
-i) In order to co-ordinate numbering with Section 8, we will break with the convention used previously in this paper and start the
-numbering of the propositions with \ref{GMT 6.1}. However, we will end this section with Example \ref{GMT 6.7}.
+\begin{remarks} \label{GMT 6.6}
+i) (CHECKTHIS sentence.  In order to co-ordinate numbering with Section 7, we will break with the convention used previously in this paper and start the
+numbering of the propositions with ref{GMT 6.1}). However, we will end this section with Example \ref{GMT 6.7}.
 \vglue2pt
 ii)  The negation of a set of functions is the set consisting of the negatives of the original functions, and similarly for other operations.
 \vglue2pt
 iii)  The propositions that follow include in their statements the definitions of the various operations on AffApproxes.  What needs to
 be proved is that the $S$ functions behave as expected.  For example, we need to show that under the definition given for addition, the
-set of functions $S(x+y)$ contains all functions obtained by adding a function from $S(x)$ to a function from $S(y).$
+set of functions $S(x+y)$ contains all functions obtained by adding a function from $S(x)$ to a function from $S(y).$\end{remarks}
 
-\begin{proposition}{\ref{GMT 6.1} {\textrm (unary minus)}} If $x$ is an {\textrm AffApprox,} then 
+\begin{proposition}{\label{GMT prop6.1} {\textrm (unary minus)}} If $x$ is an {\textrm AffApprox,} then 
 $S(-x) = -(S(x))$ where 
 $$-x \equiv (-x.f;\ -x.f_0,\ -x.f_1,\ -x.f_2;\ x.e).$$ 
 \end{proposition}
 
-{\textit Proof}.
+\begin{proof}
 $$|g(z_0,z_1,z_2) - (x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2)| \le e$$
 if and only if 
 \vglue6pt
-\hfill $|-g(z_0,z_1,z_2) - (-x.f - x.f_0 z_0 - x.f_1 z_1 - x.f_2 z_2)| \le e.$ \hfill\qed
+\hfill $|-g(z_0,z_1,z_2) - (-x.f - x.f_0 z_0 - x.f_1 z_1 - x.f_2 z_2)| \le e.$ \hfill\end{proof}
 
 
-\begin{proposition}{\ref{GMT 6.2} {\textrm (addition)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x + y) \supseteq S(x)
+\begin{proposition}{\label{GMT prop6.2} {\textrm (addition)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x + y) \supseteq S(x)
 + S(y)${\textrm ,} where
 $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.e).$$
 \end{proposition}  
@@ -90,33 +90,33 @@ $$x + y \equiv (x.f + y.f; x.f_0 + y.f_0, x.f_1 + y.f_1, x.f_2 + y.f_2; x.e + y.
 \end{eqnarray*}
 \end{proof}
 
-\begin{proposition}{\ref{GMT 6.3} {\textrm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x - y) \supseteq
+\begin{proposition}{\label{GMT prop6.3} {\textrm (subtraction)}} \hskip-8pt If $x$ and $y$ are {\textrm AffApproxes,} then $S(x - y) \supseteq
 S(x) - S(y)${\textrm ,}
  where
 $$x - y \equiv (x.f - y.f; x.f_0 - y.f_0, x.f_1 - y.f_1, x.f_2 - y.f_2; x.e + y.e).$$ 
 \end{proposition}
 
-To co-ordinate numbering with Section 8 (where we incorporate round-off error into these formulas) we include the following special
-cases of Propositions \ref{GMT 6.2} and \ref{GMT 6.3}.  Similarly for Propositions \ref{GMT 6.7}, \ref{GMT 6.9}, and \ref{GMT 6.10}. 
+To co-ordinate numbering with Section 7 (where we incorporate round-off error into these formulas) we include the following special
+cases of Propositions (CHECKTHIS: ref{GMT 6.2} and ref{GMT 6.3}).  Similarly for Propositions (CHECKTHIS: ref{GMT 6.7}, ref{GMT 6.9}, and ref{GMT 6.10}). 
 
 In what follows,  ``double" refers to a real number, and has an associated AffApprox, with the last four entries zero.  When we do
-machine arithmetic in Sections FIXME(7 and 8), doubles will be  machine numbers.
+machine arithmetic in Chapters (CHECKTHIS: 6 and 7), doubles will be  machine numbers.
 
-\begin{proposition}{\ref{GMT 6.4} {\textrm (addition of an AffApprox and a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,}
+\begin{proposition}{\label{GMT prop6.4} {\textrm (addition of an AffApprox and a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,}
  then $S(x +
 y)
 \supseteq S(x) + S(y)${\textrm ,} where
 $$x + y \equiv (x.f + y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
 \end{proposition}
 
-\begin{proposition}{\ref{GMT 6.5} {\textrm (subtraction of a double from an AffApprox)}}  If $x$ is an {\textrm AffApprox} and $y$ is a double{\textrm ,}
+\begin{proposition}{\label{GMT prop6.5} {\textrm (subtraction of a double from an AffApprox)}}  If $x$ is an {\textrm AffApprox} and $y$ is a double{\textrm ,}
  then
 $S(x - y)
 \supseteq S(x) - S(y)${\textrm ,} where
 $$x - y \equiv (x.f - y; x.f_0, x.f_1 , x.f_2 ; x.e).$$ 
 \end{proposition}
 
-\begin{proposition}{\ref{GMT 6.6} {\textrm (multiplication)}}  If $x$ and $y$ are {\textrm AffApproxes,}
+\begin{proposition}{\label{GMT prop6.6} {\textrm (multiplication)}}  If $x$ and $y$ are {\textrm AffApproxes,}
  then $S(x \times y) \supseteq S(x) \times
 S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -171,14 +171,14 @@ Hence,
 \end{proof}
 
 \vglue9pt 
-\begin{proposition}{\ref{GMT 6.7} {\textit (an AffApprox multiplied by a double)}}
+\begin{proposition}{\label{GMT prop6.7} {\textit (an AffApprox multiplied by a double)}}
 If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,} then $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 $$ x \times y \equiv (x.f \times y;  x.f_0 \times y, 
 x.f_1 \times y,  x.f_2 \times y; 
 x.e \times |y|). $$
 \end{proposition}
 
-\begin{proposition}{\ref{GMT 6.8} {\textrm (division)}} If $x$ and $y$ are {\textrm AffApproxes}  with $|y.f| > {\textrm size}(y) + y.e${\textrm ,}
+\begin{proposition}{\label{GMT prop6.8} {\textrm (division)}} If $x$ and $y$ are {\textrm AffApproxes}  with $|y.f| > {\textrm size}(y) + y.e${\textrm ,}
  then $S(x / y) \supseteq
 S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -233,7 +233,7 @@ Finally,
  because the denominator in the second quotient is less than or equal to the absolute value of the denominator in the first quotient, we
 see that the absolute value of the first quotient is less than or equal to the second quotient, as desired. \end{proof}
 
-\begin{proposition}{\ref{GMT 6.9} {\textrm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\textrm AffApprox }
+\begin{proposition}{\label{GMT prop6.9} {\textrm (division of a double by an AffApprox)}} If $x$ is a double and $y$ is an {\textrm AffApprox }
  with $|y.f| > {\textrm size}(y) + y.e${\textrm ,} then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
 x / y &\hskip-8pt\equiv\hskip-8pt& (x / y.f; -x \times y.f_0 /((y.f)^2), 
@@ -245,7 +245,7 @@ x / y &\hskip-8pt\equiv\hskip-8pt& (x / y.f; -x \times y.f_0 /((y.f)^2),
 \end{proposition}
 
 
-\begin{proposition}{\ref{GMT 6.10} {\textrm (division of an AffApprox by a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double
+\begin{proposition}{\label{GMT prop6.10} {\textrm (division of an AffApprox by a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double
 with $|y| > 0${\textrm ,} then $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 $$
 x / y \equiv (x.f / y; x.f_0 / y, 
@@ -256,7 +256,7 @@ $$
 
 Finally, we do the square root.
 
-\begin{proposition}{\ref{GMT 6.11} {\textrm (square root)}} If $x$ is an {\textrm AffApprox}  with $|x.f| > {\textrm size}(x) + x.e${\textrm ,}
+\begin{proposition}{\label{GMT prop6.11} {\textrm (square root)}} If $x$ is an {\textrm AffApprox}  with $|x.f| > {\textrm size}(x) + x.e${\textrm ,}
  then $S(\sqrt x)
 \supseteq
 \sqrt {S(x)}${\textrm ,} where
@@ -272,7 +272,7 @@ Finally, we do the square root.
 \end{proposition} 
 If $|x.f| \le {\textrm size}(x) + x.e$ then we use the crude estimate $$\left(0;0,0,0;\sqrt{|x.f| + {\textrm size}(x) + x.e}\right).$$
  
-The branch of the square root of a complex number is determined by the construction of the square root of a complex in Proposition \ref{GMT 7.14}.  In fact, the square root is in the first or fourth quadrant.
+The branch of the square root of a complex number is determined by the construction of the square root of a complex in Proposition (CHECKTHIS: ref{GMT 7.14}).  In fact, the square root is in the first or fourth quadrant.
 
 \begin{proof}{} 
 As above, note that for any point $(z_0, z_1, z_2) \in A$ and any function $g \in S(x)$ we can find a complex number $u$ with 
@@ -336,11 +336,11 @@ can get closer to the origin than
 {{\textrm size}(x) \over 2 \sqrt {|x.f|}}.} $ \end{proof}
 
 \vglue12pt
-{\textit Example} \ref{GMT 6.7} (Continuation of Example \ref{GMT 5.4}).
+\begin{example} \label{GMT 6.7} (Continuation of Example \ref{GMT 5.4}).
 We can now complete the analysis begun in Example \ref{GMT 5.4},
 because we can describe $f$ and $w$ as 2-by-2 matrices of AffApproxes.
 We note the minor quibble that the full definition of AffApprox is
-given in Section 8, where round-off error is incorporated into
+given in Section 7, where round-off error is incorporated into
 the remainder/error-bound term.
 
 For convenience,
@@ -542,6 +542,6 @@ $$
   \end{array}\right)
 $$
 and $\left|{{\textrm length}(g) \over L'}\right| \leq 0.9989610507$,
-which kills $Z(s010111)$.
+which kills $Z(s010111)$.\end{example}
 
  

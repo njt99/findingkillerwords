@@ -15,7 +15,7 @@ ${\mathcal P}$ is intuitively appealing, but working with the box ${\mathcal W}$
 Theorem \ref{GMT 0.2},
 hence
 Theorem \ref{GMT 0.1}, follows from
-Propositions \ref{GMT 1.28}, \ref{GMT 2.8}, \ref{GMT 3.1}, and \ref{GMT 3.2}.
+Propositions \ref{GMT 1.28}, (CHECKTHIS ref{GMT 2.8}, ref{GMT 3.1}, and ref{GMT 3.2}).
   The computational aspects of the proofs of each of these propositions are similar.  We will focus on
 Proposition \ref{GMT 1.28}
  here.
@@ -36,18 +36,14 @@ We now list the conditions used to kill the nonexceptional sub-boxes.  There are
 the interesting.  The trivial conditions kill sub-boxes in ${\mathcal W}$ since the sub-boxes in question miss 
 $\exp({\mathcal P}).$  The interesting conditions are where the real work is done, and they require a killerword in $f, w,
 f^{-1}, w^{-1}$ to work their magic (see
-Remark \ref{GMT 1.17}
-).
+Remark (CHECKTHIS: ref{GMT 1.17}).
 
 To be consistent with the computer program {\textit verify} we use the following notation: $L^{\prime} = z_0 + i z_3$,
 $D^{\prime} = z_1 + i z_4,$ and $R^{\prime} = z_2 + i z_5.$  Here $(L^{\prime}, D^{\prime}, R^{\prime}) \in {\mathcal W}$ and
 $L^{\prime} = \exp(L) = \exp(l+it),\   D^{\prime} = \exp(D) = \exp(d+ib),\  
 R^{\prime} = \exp(R) = \exp(r+ia).$
 \vglue10pt
- {{\textbf The trivial conditions  
-\ref{GMT 5.1}
-}}.
-\vglue6pt
+\begin{the trivial conditions}  \label{GMT 5.1}
 {\textit Condition} `s' ({\textit short}):  Tests that all points in the sub-box have $|z_0 + i z_3| < 1.10274.$  This ensures that  
 $$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| < 1.10274 < \exp(0.0978),$$  and
 Definition \ref{GMT 1.12}
@@ -62,26 +58,24 @@ $$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4| <1= \exp(0)$$ and we are ou
 \vglue6pt
 {\textit Condition} `f' ({\textit far}): Tests that all points in the sub-box have $|z_1 + i z_4| > 3.$  This ensures that 
 $$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4|  > 3= \exp(\ln 3)$$ and we are outside of $\exp({\mathcal P}).$  
-\eject
-
+%\eject
+\vskip 8pt
 {\textit Condition} `w' ({\textit whirle  big}): Tests that all points in the sub-box have $|z_2 + i z_5|^2 > |z_0 + i z_3| $  This
 ensures that $$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  > \sqrt{|z_0 + i z_3|} =  \sqrt {\exp(l)} = \exp(l/2)$$ and
 we are outside of $\exp({\mathcal P}).$  
 \vglue6pt
 {\textit Condition} `W' ({\textit whirle  small}): Tests that all points in the sub-box have $|z_2 + i z_5| < 1. $  This ensures that
-$$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are outside of $\exp({\mathcal P}).$
+$$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are outside of $\exp({\mathcal P}).$\end{the trivial conditions}
 
 \vglue12pt
- {{\textbf The interesting conditions 
-\ref{GMT 5.2}
-}}.
+\begin{the interesting conditions}\label{GMT 5.2}
 \vglue6pt
 {\textit Condition}  `L': This condition comes equipped with a killerword $k$ in $f, w, f^{-1}, w^{-1},$ and tests that all
 points in the sub-box have $|\exp({\textrm length}(k))| <  |L^{\prime}| = |\exp(L)|,$ where ${\textrm length}(k)$ means the length
 of the isometry determined by $k.$   This, of course, contradicts the fact that $L$ is the length of the shortest geodesic.
 
 It is easy to carry out the test $|\exp({\textrm length}(k))| <  |L^{\prime}|$ because
-Lemma \ref{GMT 1.25a}) can be used.
+Lemma \ref{GMT 1.25} a) can be used.
 Note that in {\textit verify} the function which computes $\exp({\textrm length})$ is called {\textit length}.  
 
 Of course, Condition `L' also checks that the isometry corresponding to the word $k$ is not the identity.
@@ -95,8 +89,8 @@ with negative endpoint $(0,0,0).$)
 This, of course, contradicts the ``nearest" condition.
 
 It is easy to carry out the test $|\exp({\textrm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))| <  |D^{\prime}|$ because
-Lemma \ref{GMT 1.25b}) can be used. Note that in {\textit verify} the function which computes the quantity
-$\exp({\textrm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))$ is called {\textit orthodist}.  
+Lemma \ref{GMT 1.25} b) can be used. Note that in {\textit verify} the function which computes the quantity
+$$\exp({\textrm distance}(k(B_{(0,\infty)}), B_{(0,\infty)}))$$ is called {\textit orthodist}.  
 
 Also, Condition `O' checks that the isometry corresponding to the word $k$ does not take the axis of $f$ to itself.
 \vglue6pt
@@ -104,8 +98,8 @@ Also, Condition `O' checks that the isometry corresponding to the word $k$ does 
 proviso that the killerword $k$ is of the form $f^p w^q.$ This ensures that $k$ is not the identity, because for $k$ to be
 the identity $f$ and $w$ would have to have the same axis, which contradicts the fact that $d$ can be taken to be
 greater than or equal to $l/4.$
-\eject
-
+%\eject
+\vskip 8pt
 {\textit Condition}  `conjugate':  There is one other condition that is used to eliminate points in ${\mathcal W}.$  Following
 Definition \ref{GMT 1.12}
  (and 
@@ -113,10 +107,9 @@ Lemma \ref{GMT 1.13}
 ) we eliminate all boxes with $0 < t \le \pi.$  Of course, after exponentiating $L = l+it,$
 this corresponds to eliminating all boxes with $z_3 > 0.$ Specifically, we toss all sub-boxes of ${\mathcal W}$ whose fourth
 entry is a 1. This condition does not appear in {\textit verify} because it is applied ``outside" of these
-programs, as described in Construction 
-\ref{GMT 5.3}.
+programs, as described in Construction \ref{GMT 5.3}.\end{the interesting conditions}
 \vglue6pt
- {\textit Construction} \ref{GMT 5.3}: 
+\begin{construction} \label{GMT 5.3}: 
 We now give the method for describing the roughly 930 million sub-boxes that the initial box ${\mathcal W}$ is subdivided into.
 
 All sub-boxes are obtained by subdivision of a previous sub-box along a real
@@ -147,14 +140,13 @@ and so that all of the sub-boxes are similar.
 The dimensions of ${\mathcal W}$ have the beneficial effect of making the sub-boxes as ``round" as possible, hence making the Taylor approximation calculations efficient and fast.
 This explains the factor of $2^{(5-i)/6}$ in Definition 
 \ref{GMT 1.22}
-.
 
 To kill a sub-box $Z(s)$, the checker program has two (recursive) options:
 use a condition and, if necessary, an associated killerword  to kill $Z(s)$ directly, or first kill $Z(s0)$ and then kill $Z(s1)$.
 At this point, it may seem as if the second option is not necessary,
 because surely a condition which kills two halves also kills the whole.
 The answer to this has been hinted at in 
-Remarks \ref{GMT 1.17} and \ref{GMT 1.35}
+Remarks (CHECKTHIS: ref{GMT 1.17} and ref{GMT 1.35})
  where
 it is noted that our evaluation of a function arising
 from a killerword  is via first-order Taylor
@@ -163,8 +155,7 @@ approximation, complete with remainder/error term.
 both the theoretical error arising from using a first-order Taylor
 approximation to approximate a function, and the accumulated
 round-off error; see 
-Chapters FIXME(6, 7,  and 8)
-.)
+Chapters (CHECKTHIS: FIXME(6, 7,  and 8).)
 Even if a killerword could theoretically kill off a sub-box,
 it is quite possible that our
 first-order Taylor approximation approach would not be
@@ -212,8 +203,8 @@ Instead of immediately working on killing the top-level box, we subdivide in the
 \noindent We then throw out
 the ones with fourth co-ordinate equal to 1 (see condition `conjugate'), leaving  the 32 sub-boxes
 $$Z(000000),Z(000001),Z(000010),Z(000011),\ldots, Z(111011).$$  \noindent We then use {\textit verify} to kill these.
-\eject
-
+%\eject
+\vskip 8pt
 The choices in {\textit verify} are made for it by a sequence
 of integers given as input.  The sequence of integers containing the directions for killing $Z(000000)$ is contained in the file data/000000 (actually, data/000000.d).
 In such a sequence, 
@@ -222,13 +213,13 @@ created by that subdivision, and to read in the next integer in the sequence. A 
 kill directly the sub-box it is positioned at, using the condition (and killerword, if necessary) on line $n$ in the
 ``conditionlist" file,  and then to position itself at the ``next" natural sub-box.  Now,
 $-1$ tells {\textit verify} to omit the sub-box, and mark it as skipped
-(the sequence of integers used in killing the skipped box $Z(s)$ is contained in a file data/s).
+(the sequence of integers used in killing the skipped box $Z(s)$ is contained in a file data/s).\end{construction}
 
 
 The checker program {\textit verify}, its inputs, and the list of conditions
 are available from the {\textit Annals of Mathematics} web site.
 \vglue7pt
-{\textit Example} \ref{GMT 5.4}.)
+\begin{example} \label{GMT 5.4}
 To illustrate the checking process in action, this is a (non-representative)
 example, which shows how the sub-box $Z(s)$ (minus a hole) is killed,
 where
@@ -257,8 +248,7 @@ which causes the program to kill $Z(s)$ in the following fashion:
 \>\>\>\>\>\>kill $Z(s010111)$ with condition 1929
 \>\>\>kill $Z(s011)$ with condition 1996 = ``L(FwFwFWFWfWFWFwFwfww)''
 \>omit $Z(s1)$
-\noindent as shown in 
-Figure \ref{GMT 5.1}.
+\noindent as shown in Figure \ref{GMT 5.1}.
 }
 
  
@@ -334,10 +324,10 @@ approximations with remainder/error bounds), which are not formally defined unti
 complete
 Example \ref{GMT 5.4}
  at the end of 
-Chapter FIXME(6).
+Chapter (CHECKTHIS: FIXME(6)).\end{example}
 
 \vglue9pt 
-({\textit Remark} \label{GMT 5.5}
+\begin{remark} \label{GMT 5.5}
 .  For those planning on looking at the program {\textit verify}
 we now tie in the above description of its workings to a portion of the actual code in the program.  We note that the CWeb version of {\textit verify} is extensively documented, and is organized so that the most important details are presented first.
 
@@ -391,5 +381,5 @@ in which case \hbox{\texttt verify} simply recursively moves on to the next node
 \\ &&\hbox{\texttt verify(where, depth + 1, code);}
 \end{eqnarray*}
 In this way {\textit verify} tests the entire starting box, in this case the sub-box 000000, and if successful at killing
-it minus the omissions which it prints out, it finishes \hbox{\texttt main} by printing out a right bracket into \hbox{\texttt output000000}. 
+it minus the omissions which it prints out, it finishes \hbox{\texttt main} by printing out a right bracket into \hbox{\texttt output000000}. \end{remark}
   

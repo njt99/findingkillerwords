@@ -1,7 +1,7 @@
 \chapter{Complex numbers with round-off error}
 
 
-{\textit Remark} \label{GMT 7.1}
+\begin{remark} \label{GMT 7.1}
 The theoretical method for proving Theorem \ref{GMT 0.2}
 has been implemented via the computer program {\textit verify}, which is available, together with the relevant data sets, at the {\textit Annals} web site.  To make this computer-aided proof rigorous, we needed to deal with round-off error in calculations.  
 
@@ -13,7 +13,7 @@ To solve this problem of speed, we implement round-off error at a higher level o
  into AffApproxes,  which makes our error calculations more accurate, thereby avoiding much subdivision of
 sub-boxes. This necessitates that we incorporate round-off error directly into complex numbers as well. 
 In this section we show how to do standard operations on complex numbers while keeping track of round-off error.
-In the next section we work with  AffApproxes.
+In the next section we work with  AffApproxes.\end{remark}
 
 \begin{definition}\label{GMT 7.2}
 There are two types of complex numbers to consider: 
@@ -32,13 +32,13 @@ $x.e = 0.$
 
 \end{definition}
 
-{\textit Remark} 7.3.
+\begin{remark}\label{GMT 7.3}
 In general,  our operations  act on XComplexes and produce AComplexes, or they act on AComplexes and produce
  AComplexes.  In one case, the unary minus, an XComplex goes to an XComplex.  
-In the calculations that follow the effect on the error is the whole point.
+In the calculations that follow the effect on the error is the whole point.\end{remark}
 
 %FIXME \demo{Conventions and standards {\textrm FIXME:7.4}}
-\begin{conventions}\label{GMT 7.4}
+\begin{conventions} \label{GMT 7.4}
 We begin, by writing down our basic rules, which follow easily from the IEEE-754 standard for machine arithmetic (see \cite{IEEE}).
 (Actually,  the ``hypot" function $h(a,b)$, which computes by elaborate chicanery $\sqrt{a^2 + b^2},$ is not part of the IEEE-754 standard, but  satisfies the appropriate standard according to the documentation provided (see \cite{K1}).)  The operations here are on
 double-precision floating-point real numbers (``doubles") and we denote a true operation by the usual symbol and the associated machine operation by the same symbol in a circle, with two exceptions: a machine square root $\sqrt a$ is denoted $\root o \of a$ and the machine version of the hypot function is denoted $h_\circ$.  Perhaps a third exception is our occasional notation of true multiplication by the absence of a symbol.  
@@ -60,7 +60,6 @@ follow immediately from the IEEE-754 standard, as long as we do not {\textit und
 Specifically, underflow occurs when the result of an operation is smaller in absolute value than $2^{-1022}$,
  and overflow occurs when the result of an operation is larger in absolute value than roughly $2^{1024}$
  (see [IEEE, \S 7]).
-\end{conventions}
 
 We further note that the formula 
 $$|(a + b) - (a \oplus b)| \leq (EPS/2) |a \oplus b|$$
@@ -70,20 +69,20 @@ Of course, a machine operation such as $\oplus$ must act on doubles, while a ``t
 In this section, long strings of inequalities will be used to prove the various propositions, and care was taken to ensure that machine operations act on machine numbers.  In particular, the various variables appearing in the propositions are assumed to be doubles. The IEEE-754 standard provides for conversions from decimal to binary (within the appropriate range, conversion is to the nearest representable number) and from binary to decimal.  However, these are rarely used in this paper, although a trivial class of exceptions is provided by the decimal numbers in the conditions of
 Section 5.
 
-When calculations underflow or overflow outside of the range of representable numbers, we require that the computer inform us if either exception has occurred.  
+When calculations underflow or overflow outside of the range of representable numbers, we require that the computer inform us if either exception has occurred. \end{conventions} 
 
-As in Section 6, we now break with the usual numbering convention.  Note that the above comments provide a proof of the
-following properties.
+(CHECKTHIS:  As in Section 6, we now break with the usual numbering convention.  Note that the above comments provide a proof of the
+following properties.)
 \vglue12pt
 
- {\textbf Basic Properties \label{GMT 7.0}(assuming no underflow and no overflow)}.
+\begin{basic properties} \label{GMT basic7.0}(assuming no underflow and no overflow)
 \vglue6pt
 
 In the formulas that follow, $a$,$b$, and $A$ are machine numbers and
 $1 + k \times EPS = 1 \oplus (k \otimes EPS)$ when $k$ is an integer which is not huge in absolute value (that is, 
 smaller than roughly $2^{50}$).  Thus, within the appropriate range,  $1 + k \times EPS$ is a machine number.  Similarly,
 $2^k
-\times A = 2^k \otimes A$ when $k$ is an integer and  $2^k \otimes A$ neither underflows nor overflows.
+\times A = 2^k \otimes A$ when $k$ is an integer and  $2^k \otimes A$ neither underflows nor overflows.\end{basic properties}
 \begin{eqnarray*}
 |(a + b) - (a \oplus b)| &\leq& (EPS/2) |a + b|,\\
 |(a + b) - (a \oplus b)|&\leq& (EPS/2) |a \oplus b|,\\
@@ -123,7 +122,7 @@ $$\left({1 \over {1 + {EPS \over 2}}}\right) |a \oplus b| \leq |a + b|
 
 Before stating our propositions, we prove two lemmas.
 
-\begin{lemma}{\ref{GMT 7.0} {\textrm (assuming no underflow and no overflow)}} 
+\begin{lemma}\label{GMT 7.0} {\textrm (assuming no underflow and no overflow)}
 For machine numbers $a$ and $b${\textrm ,}
 $$(1 - EPS) \otimes |a \oplus b| \le |a + b| \le (1 + EPS) \otimes |a \oplus b|.$$
  Analogous formulas hold for $\ -,\ *,\ /,\ \sqrt{}$.
@@ -150,17 +149,17 @@ formulas preceding Lemma \ref{GMT 7.0} ($A \ge 0$). \end{proof}
 We now begin our construction of complex arithmetic. We will give proofs for most of the operations; the others should be straightforward to derive,
 or can be found in the {\textit Annals} web site.
 \vglue6pt
-{\textit Remarks} \label{GMT 7.5}.
+\begin{remarks} \label{GMT 7.5}
 i) We remind the reader that all machine operations are on machine numbers, and that the various variables appearing in the propositions are assumed to be doubles.
 \vglue4pt
-ii) The propositions that follow include in their statements the definitions of the various operations (see Remark \ref{GMT 6.6iii}).
+ii) The propositions that follow include in their statements the definitions of the various operations (see Remark \ref{GMT 6.6} iii).\end{remarks}
 
-\begin{proposition}\label{GMT 7.1}{$(-X)$}
+\begin{proposition}\label{GMT prop7.1}{$(-X)$}
 If $x$ is an {\textrm XComplex,} then 
 $$-x \equiv (-x.{\mathrm re},-x.{\mathrm im}).$$ 
 \end{proposition}
 
-\begin{proposition}\label{GMT 7.2}{$(X + D)$} 
+\begin{proposition}\label{GMT prop7.2}{$(X + D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x + d) \supseteq S(x) + S(d)${\textrm ,} where 
  $$x + d \equiv (x.{\mathrm re} \oplus d, x.{\mathrm im};
@@ -174,13 +173,13 @@ The  error is bounded by
 \le (EPS/2) | x.{\mathrm re} \oplus d|
   =  (EPS/2) \otimes | x.{\mathrm re} \oplus d|.}$ \end{proof}
 
-\begin{proposition}\label{GMT 7.3}{$(X - D)$}
+\begin{proposition}\label{GMT prop7.3}{$(X - D)$}
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x - d) \supseteq S(x) - S(d)${\textrm ,} where 
  $$x - d \equiv (x.{\mathrm re} \ominus d, x.{\mathrm im};
 (EPS/2)\otimes |x.{\mathrm re} \ominus d|).$$ \end{proposition}
 
-\begin{proposition}\label{GMT 7.4}{$(X + X)$}
+\begin{proposition}\label{GMT prop7.4}{$(X + X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
  \begin{eqnarray*}
@@ -205,7 +204,7 @@ The error is bounded by
 \end{eqnarray*}
 To go from line 2 to line 3 we used Lemma \ref{GMT 7.0}. \end{proof}
 
-\begin{proposition}\label{GMT 7.5}{$(X - X)$}
+\begin{proposition}\label{GMT prop7.5}{$(X - X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -215,7 +214,7 @@ x - y &\equiv& (x.{\mathrm re} \ominus y.{\mathrm re}, x.{\mathrm im} \ominus y.
 \end{eqnarray*} \end{proposition}
 
 
-\begin{proposition}\label{GMT 7.6}{$(A + A)$} 
+\begin{proposition}\label{GMT prop7.6}{$(A + A)$} 
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -250,7 +249,7 @@ The precedence for machine operations is the same as that for true operations, s
 and will often be omitted in what
  follows.
 
-\begin{proposition}\label{GMT 7.7}{$(A - A)$}
+\begin{proposition}\label{GMT prop7.7}{$(A - A)$}
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -263,14 +262,14 @@ e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\mathrm re}| \oplus |{\mathrm im
 \end{proposition}
 
 
-\begin{proposition}\label{GMT 7.8}{$(X  \times  D)$} 
+\begin{proposition}\label{GMT prop7.8}{$(X  \times  D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x \times d) \supseteq S(x) \times S(d)${\textrm ,} where
 \begin{eqnarray*}
 x \times d &\equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with}\\[6pt] {\mathrm re} &= &x.{\mathrm re} \otimes d\\[6pt] {\mathrm im} &= &x.{\mathrm im} \otimes d\\[6pt] e &=& (EPS/2) \otimes ((1 + EPS) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|) ). \end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}\label{GMT 7.9}{$(X / D)$} 
+\begin{proposition}\label{GMT prop7.9}{$(X / D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x / d) \supseteq S(x) / S(d)${\textrm ,} where
 \begin{eqnarray*}
@@ -278,7 +277,7 @@ x / d& \equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\[6pt] {\mathrm re}& 
 \end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}\label{GMT 7.10}{$(X  \times  X)$}
+\begin{proposition}\label{GMT prop7.10}{$(X  \times  X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -300,7 +299,8 @@ The error is bounded by the sum of the contributions from the real part and the 
    We want to bound this by a machine formula.  Let us begin by bounding 
 $$|(x.{\mathrm re} \times  y.{\mathrm re} - x.{\mathrm im} \times y.{\mathrm im}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \ominus (x.{\mathrm im}
  \otimes y.{\mathrm im}))| $$ 
-by a machine formula:\eject
+by a machine formula:
+%\eject
 
 \centerline{
 ${\displaystyle |(x.{\mathrm re} \times  y.{\mathrm re} - x.{\mathrm im} \times y.{\mathrm im}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \ominus
@@ -341,7 +341,7 @@ EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm im}| \oplus |x.{\mathrm im} 
 \end{eqnarray*}
 \end{proof}
 
-\begin{proposition}\label{GMT 7.11}{$(D / X)$}
+\begin{proposition}\label{GMT prop7.11}{$(D / X)$}
 If $x$ is a double and $y$ is an {\textrm XComplex,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -354,7 +354,7 @@ e& =& (2EPS) \otimes ((1 +  2EPS)\otimes(|{\mathrm re}| \oplus |{\mathrm im}|)).
 \end{eqnarray*}
 \end{proposition}
 
-{\textit Proof}.
+\noindent\emph{Proof.}
 The true version of $x/y$ is equal to  
 $$(x \times y.{\mathrm re} + i (-x \times y.{\mathrm im}))/ ((y.{\mathrm re})^2 + (y.{\mathrm im})^2)$$ and we need to compare this with the
 machine version to find the error.  Further, this error is less than or equal to the sum of the real error and the imaginary
@@ -443,7 +443,7 @@ Here we used the fact that
  
 This should give the flavor of division proofs.  As such, we will skip the proofs of $X/X$ and $A/A$ and simply refer to the
  {\textit Annals} web site.
-\begin{proposition}\label{GMT 7.12}{$(X / X)$}
+\begin{proposition}\label{GMT prop7.12}{$(X / X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
@@ -463,7 +463,7 @@ e& =& (5EPS/2) \otimes ((1
 .\end{eqnarray*}
 \end{proposition}
 
-\begin{proposition}\label{GMT 7.13}{$(A / A)$}
+\begin{proposition}\label{GMT prop7.13}{$(A / A)$}
 If $x$ and $y$ are {\textrm AComplexes} with 
 $y.e < 100 EPS \otimes |y|${\textrm ,} or{\textrm ,} more accurately{\textrm ,}
 $$(y.e)^2< ((10000 EPS) \otimes EPS)\otimes nrm$$ then
@@ -493,7 +493,7 @@ construction is as follows.  If $x = x.{\mathrm re} + i x.{\mathrm im}$ then $\s
 re}| + h(x.{\mathrm re},x.{\mathrm im}))/2}$ and $d = x.{\mathrm im}/(2s)$ when $x.{\mathrm re} > 0.0$, and $\sqrt{x} = d + i s$ otherwise.  
 Thus, we take our (no-round-off) square roots to be in the first and fourth quadrants.
 
-\begin{proposition}\label{GMT 7.14}{($\sqrt{X}$)}
+\begin{proposition}\label{GMT prop7.14}{($\sqrt{X}$)}
 If $x$ is an {\textrm XComplex,} then $S(\sqrt{x}) \supseteq \sqrt{S(x)}$
 where we
 let $s_o = \root o \of {(|x.{\mathrm re}| \oplus h_o (x.{\mathrm re},x.{\mathrm im})) \otimes 0.5}$
@@ -595,7 +595,7 @@ e_s + e_d&\le& \left({5 \over 4} EPS + {11 \over 32} EPS^2 +\cdots\right) s_o\\
 Now, we develop two formulas for the absolute value of an XComplex.
  
 
-\begin{definition} \label{GMT 7.0}
+\begin{formula} \label{GMT formula7.0} (${\textrm absUB}(X)$)
 	%FIXME {Formula {\textrm FIXME:7.0 (${\textrm absUB}(X)$)}}
 If $x$ is an XComplex, then
 there is an upper bound on the absolute value of $x$ as follows:
@@ -606,9 +606,9 @@ there is an upper bound on the absolute value of $x$ as follows:
 \end{eqnarray*}
 Thus, we define 
 $${\textrm absUB}(x) = (1 + 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ 
-\end{definition}
+\end{formula}
 
-{\textit Formula} \label{GMT 7.1}{(${\textrm absLB}(X)$).
+\begin{formula} \label{GMT formula7.1}(${\textrm absLB}(X)$).
 If $x$ is an XComplex, then
 we get a lower bound on the absolute value of $x$ as follows.
 \begin{eqnarray*}
@@ -618,7 +618,7 @@ re},x.{\mathrm im})\\
 &\ge& (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).
 \end{eqnarray*}
 Thus, we define 
-$${\textrm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ 
+$${\textrm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ \end{formula}
 \vglue12pt
 
 Finally, in several places in the {\textit verify} program we perform a standard operation on a pair of doubles and must take into account round-off error.  This is easy if we use Lemma \ref{GMT 7.0}.
