@@ -1,19 +1,18 @@
- * [NO] ??restart with final GMT version??
- * tables and figures
-   * [DONE] get one working.
-   * [DONE] get rest of .eps files from drive linken drom Maureen's email.
-   * [DONE] fix the rest.
- * irregular/no structure
-   * e.g., a,b; i,ii,iii; `grep \\label *.tex | grep -v begin`
-   * [DONE] plan (add begin/end; leave extras out of structure))
-   * execute
+ * [DONE(NO)] ??restart with final GMT version??
+ * [DONE] tables and figures
+ * [DONE] irregular/no structure
+ * [DONE] fix and validate cross-references
+ * [DONE] numbering
+ * [DONE] cross-read vs. GMT
+ * [DONE] resolve discussion TODO
+ * items dropped from thesis
+   * [DONE] anchor both ends of all cross refs
+   * [DONE] decide case by case whether it belongs in thesis
+   * finish the surgery (making any needed repairs)
+ * address remaining FIXME and TODO
+ * fix duplicate labels of GMT 5.1, 7.1, 7.2
+   * egrep 'label{GMT (5\.1|7\.1|7\.2)}' *tex
  * fix Chapter/Section references.
- * numbering
-   * how many oarallel numberings are desired? fig+other
-   * how many exist in GMT?
-   * plan the fix
-   * execute
- * address remaining FIXME.
- * fix and validate cross-references
- * cross-read vs. GMT
- * review PDF.
+ * fix missing citation warnings
+ * address remaining TeX warnings.
+ * review PDF & fix bugs until satisfied.

@@ -94,7 +94,8 @@ $\distance(\sigma,\tau) = 0 + i0,$ or $0 + i\pi$ depending on whether or not $\s
 Define ${\textit Redistance} = {\mathrm Re} (\distance).$
 
 As defined, Redistance is nonnegative.
-In Definition \ref{GMT 1.8} and in Chapters (CHECKTHIS: FIXME(2 and 3)),
+In Definition \ref{GMT 1.8} and in
+	Chapters 2 and 3 %TODO:chxref
 it will be useful to have a broader definition. Given an oriented
 geodesic $\alpha$ in ${\mathbf H}^3$ orthogonal to oriented geodesics $\beta$ and $\gamma$, define $d_\alpha(\beta,\gamma) \in {\mathbf C}$ where a
 $d_\alpha(\beta,\gamma)$ translation of ${\mathbf H}^3$  along $\alpha$ takes $\beta$ to $\gamma.$
@@ -217,9 +218,13 @@ $\{G_\alpha,f_\alpha,w_\alpha\},$ then there exists a parameter $\beta=(l^{\prim
 with associated group $\{G_\beta,f_\beta, w_\beta\}$ such that $G_\beta$ is conjugate (in ${\textrm Isom}({\mathbf H}^3$)) to $G_\alpha.$ 
 \end{lemma}
 
-\begin{proof} We note that $d < l/2$ is eliminated from consideration by Proposition (CHECKTHIS: 1.11 i)), and the definition of ${\mathcal T}^\prime.$ If $d\le \ln(3),$
+\begin{proof} We note that $d < l/2$ is eliminated from consideration by
+	Proposition ref{GMT prop1.11}i) %TODO:xref to cut
+and the definition of ${\mathcal T}^\prime.$ If $d\le \ln(3),$
 then
-$0.0978\le l\le 1.289785$ by Propositions (CHECKTHIS: 1.10) and (CHECKTHIS: 1.11 ii)).  If for the marked group $\{G, f, w\}$ we have 
+$0.0978\le l\le 1.289785$ by
+	Propositions ref{GMT prop1.10} and ref{GMT prop1.11} ii) %TODO: xref to cut.
+If for the marked group $\{G, f, w\}$ we have 
 $-l/2<r<0,$ then the marked group
 $\{G,f,w^{-1}\}$ is conjugate to an element of ${\mathcal T}$ whose new
 $r$-parameter is $-r.$  Thus we can assume that
@@ -232,15 +237,18 @@ $-t \ ({\textrm mod}\ 2\pi)$
 but leaves the $r$ and $d$ parameters unchanged.
 The effect on $b$ and $a$ is irrelevant.  \end{proof}
 
-By [G; Lemma 5.9] (or see Example (CHECKTHIS: A.3 in the appendix)) a closed orientable hyperbolic $3$-manifold $N$
+By [G; Lemma 5.9] (or see
+	Example (CHECKTHIS: A.3 in the appendix)) % TODO: xref to cut
+a closed orientable hyperbolic $3$-manifold $N$
 satisfies the insulator condition provided that
 tuberadius$(\delta) > \ln(3)/2$ for some closed geodesic $\delta\subset N.$  Thus we
 are led to consider:
 
 %Note: 1.14-1.17 dropped
 
-\begin{definition}  \label{GMT 1.18} A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in Remark 
-(CHECKTHIS: ref{GMT 1.17}) holds for each $\beta\in {\mathcal P}_i$
+\begin{definition}  \label{GMT 1.18} A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in
+	Remark (CHECKTHIS: ref{GMT 1.17}) %TODO: xref to cut
+holds for each $\beta\in {\mathcal P}_i$
 and for which $h_\beta$ is not a power of $f_\beta$ for each $\beta\in {\mathcal P}_i$ is
 called a {\textit killerword} for ${\mathcal P}_i$ with respect to contradiction a) (resp.\ b)).
 \end{definition}
@@ -286,7 +294,7 @@ L^\prime &\hskip-8pt=\hskip-8pt& \exp(L) = \exp(l+it),\enspace D^\prime = \exp(D
 i) We work with ${\mathcal W}$ instead of $\exp({\mathcal P})$ because we want our initial parameter space to be a (6-dimensional) box that is easily
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\mathcal W}_i$ of ${\mathcal W}$ will be eliminated because they are outside of $\exp({\mathcal P})$ not because of the analogues of conditions a) and b) in
-Remark (CHECKTHIS ref{GMT 1.17}).
+	Remark (CHECKTHIS ref{GMT 1.17}).  %TODO: xref to cut
 The entire collection of conditions is given in Chapter 4.
  
 ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction \ref{GMT 5.3}.
@@ -399,7 +407,7 @@ operations $+, -, \times, /, \sqrt{}.$
  ii) During the course of the computer work needed to prove the main theorems, the parameter space
 ${\mathcal W}$ was decomposed into sub-boxes by computer via a recursive subdivision process:
 Given a sub-box  being analyzed, either it can be {\textit killed directly} (that is, eliminated by a killerword and associated condition as described in
-Remark (CHECKTHIS: ref{GMT 1.17}),
+	Remark (CHECKTHIS: ref{GMT 1.17}),%TODO: xref to cut
 or for the trivial reason described in Remark \ref{GMT 1.23} i), or it cannot.  
 If it cannot be killed directly, it is subdivided in half by a hyperplane
 $\{x_i = c \}$ (where $i$ runs through the various co-ordinate dimensions
@@ -434,7 +442,9 @@ co-ordinates can be computed in the same fashion, although they must at the end 
 initial box
 ${\mathcal W}$).  The range of co-ordinate values for each  exceptional  box $X_0, X_1, \ldots, X_6$ is given in Table \ref{GMT tab 1.1} (a limited number of significant
 digits is given), and  then a range of co-ordinates for exceptional regions (in ${\mathcal P}$) 
-${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see Remarks (CHECKTHIS: FIXME:1.30i) and 1.30ii))) in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
+${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see
+	Remarks (CHECKTHIS: FIXME:1.30i) and 1.30ii)))  %TODO: xref to cut
+in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
 slightly from the use in \S 0.)
 Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
  
@@ -793,14 +803,17 @@ $r_2 = FWFwfwFwfWfwFwfw.$
 
  
 \begin{proof}{}  
-The proof follows along the lines presented in Remark (CHECKTHIS: ref{GMT 1.17}).  
+The proof follows along the lines presented in
+	Remark (CHECKTHIS: ref{GMT 1.17}).    %TODO: xref to cut
 Two computer files contain the data needed for the proof.   
 The first computer file describes the partition of ${\mathcal W}$ into
 sub-boxes and attaches an integer to each such sub-box, 
 and the second file, called ``conditionlist" is an ordered list of conditions and killerwords.
 The integer associated to a sub-box in the first file describes the numbered condition/killerword from   conditionlist that will eliminate the sub-box
 in question (other than those corresponding to the $X_i).$ A computer program named {\textit verify} shows
-that the conditions and killerwords in question actually do kill off their associated sub-boxes (see Section (CHECKTHIS: 5) for more details).  This computer
+that the conditions and killerwords in question actually do kill off their associated sub-boxes (see
+	Section (CHECKTHIS: 5)  %TODO: chxref
+	for more details).  This computer
 program addresses the issues of Remark \ref{GMT 1.20}.  The code for {\textit
 verify} is available at the {\textit Annals} web site. 
 

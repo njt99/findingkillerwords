@@ -21,13 +21,16 @@ One approach to round-off error for AffApproxes would be to replace the four com
 Instead, we will 
 replace the four complex numbers by four XComplexes and push all the round-off error into the $.{\textrm err}$ term.  
 Thus, the definition of AffApprox remains 
-essentially the same as in (CHECKTHIS: Section FIXME:6).
+essentially the same as in
+	(CHECKTHIS: Section FIXME:6).  %TODO: chxref
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.\end{remarks}
 
 \begin{conventions}\label{GMT 8.3}
-i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT 7.1}.  Also, the propositions in Section (CHECKTHIS: 6)
-will be utilized;  as such, the numbering of the propositions is the same in Sections (CHECKTHIS: FIXME:6 and FIXME:8) (for example,
-	Proposition \ref{GMT prop6.7} corresponds to Proposition \ref{GMT prop8.7}.  
+i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT 7.1}.  Also, the propositions in
+	Section (CHECKTHIS: 6)  %TODO: chxref
+will be utilized;  as such, the numbering of the propositions is the same in
+	Sections (CHECKTHIS: FIXME:6 and FIXME:8)  %TODO: chxref
+(for example, Proposition \ref{GMT prop6.7} corresponds to Proposition \ref{GMT prop8.7}.  
 \vglue4pt
 	ii)  Some notational simplifications will be introduced: ${\textrm dist}(x)$ before Proposition \ref{GMT prop8.6}, $ax$ before Propositions \ref{GMT prop8.8}, \ref{GMT prop8.9}, \ref{GMT prop8.11a}, 
 	(the middle usage of $ax$ differs slightly from the other two), and $ay$ before Propositions \ref{GMT prop8.8}, \ref{GMT prop8.9}.
@@ -39,7 +42,9 @@ where the first four terms are XComplexes and the last term is a double (technic
 iv) The propositions that follow include in their statements the definitions of the various operations on AffApproxes (see Remark
 	\ref{GMT 6.6} iii).
 \vglue4pt
-	v)  We remind the reader (CHECKTHIS: (see Section ref{GMT 7.4})) that all machine operations act on machine numbers, and that the 
+	v)  We remind the reader
+	(CHECKTHIS: (see Section ref{GMT 7.4}))  %TODO: chxref
+	that all machine operations act on machine numbers, and that the 
 various variables appearing in the propositions are assumed to be doubles.
 \end{conventions}
 
@@ -293,7 +298,7 @@ and we put these three pieces together:
 
 $D/X$:
 We   divide a double $x$ by an AffApprox $y$.
-For convenience, let $ax = |x|,\ ay = {\textrm absLB}(y.f).\ $  Having done division out in the previous proposition, we will skip the proof of Proposition \ref{GMT 8.9}.  See the {\textit Annals}
+For convenience, let $ax = |x|,\ ay = {\textrm absLB}(y.f).\ $  Having done division out in the previous proposition, we will skip the proof of Proposition \ref{GMT prop8.9}.  See the {\textit Annals}
 web site for the proof.
 
 \begin{proposition}\label{GMT prop8.9} If $x$ is a double and $y$ is an 
