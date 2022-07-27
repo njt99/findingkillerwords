@@ -189,6 +189,95 @@ following two propositions imply this subset of ${\mathcal T}^{\prime}$ lives in
 	\includegraphics[scale=0.500]{fig1.1}
 \end{figure}
 
+\begin{proposition}\label{GMT prop1.10} All closed geodesics of length less than $0.0979$ in
+all hyperbolic $3$\/{\textrm -}\/manifolds have {\textrm (}\/embedded\/{\textrm )} tubes of
+radius $\ln(3)/2.$
+\end{proposition}
+
+\begin{proof}   In  [M1] it is proved that a closed geodesic of length $x + iy$ has a tube (embedded) of radius $r(x + iy)$ satisfying 
+$$
+\sinh^2(r(x + iy))  =  \max_{n \in {\mathbf Z_+}} {1 \over 2} \left({\sqrt{1 - 2k(x,y,n)} \over k(x,y,n)} - 1\right) 
+$$
+where
+$$k(x,y,n)  =  \cosh(nx) -
+\cos(ny),
+$$
+ where we restrict to $x+iy$ values which produce positive radii $r(x + iy)$ by means of this formula. It is easy to compute that for a
+given $x+iy$ we need to have $n$ for which $0 < k(x,y,n) < \sqrt 2 - 1$ to produce a positive radius tube by this method.
+
+The function ${1 \over 2} ({\sqrt{1 - 2k} \over k} - 1)$ is decreasing on the interval $(0, -1 + \sqrt 2).$  It is easy to solve for the $k$ value that produces radius $r = \ln(3)/2$ and it is just over $0.3397.$ Thus, by restricting to $k$ values in the interval $(0,0.3397)$ we guarantee radii $r$ greater than $\ln(3)/2.$
+
+Thus, to complete the proof of this proposition, we need to show that when a closed geodesic has real length $x$ less than 0.0979,  there exists a positive integer $n$ for which $k(x,y,n)$ is less than 0.3397
+for all angles $y$.
+Because $\cosh$ is an increasing function, we can restrict our analysis to $x = 0.0979.$  Thus,  we need only show that given
+\pagebreak any angle $y$, we can find a positive integer $n$ such that 
+$\cosh(n 0.0979) - \cos(ny) < 0.3397.$  When $n > 8$ we can compute that $\cosh(n 0.0979) - \cos(ny) > 0.3397,$ and we therefore restrict to positive integers $n \leq 8.$  
+
+We now consider angles $y$.  Because $\cos$ is an even function, we need only consider $y \in [0, \pi].$  
+Finally, we complete the proof by covering $[0,\pi]$ by 11 overlapping closed sub-intervals $\sigma_i$ each of which has an associated positive integer $n_i$ for which $\cosh(n_i 0.0979) - \cos(n_i y) < 0.3397$ is
+ true for all $y \in \sigma_i$:
+$$
+\begin{array}{rlrlrlrl}
+\sigma_0&\hskip-6pt= [0.000, 0.843] &\quad n_0 &\hskip-6pt= 1&\quad
+   \sigma_5&\hskip-6pt= [1.733, 1.858] &\quad n_5 &\hskip-6pt= 7\\
+ \sigma_1 &\hskip-6pt= [0.835, 0.960] & n_1&\hskip-6pt= 7&
+   \sigma_6&\hskip-6pt= [1.832, 2.357] & n_6&\hskip-6pt= 3\\
+ \sigma_2&\hskip-6pt= [0.951, 1.143]& n_2&\hskip-6pt= 6&
+   \sigma_7&\hskip-6pt= [2.334, 2.3792]& n_7&\hskip-6pt= 8\\
+ \sigma_3 &\hskip-6pt= [1.123, 1.391] & n_3&\hskip-6pt= 5&
+   \sigma_8&\hskip-6pt= [2.3789, 2.647] & n_8 &\hskip-6pt= 5\\
+ \sigma_4&\hskip-6pt= [1.386, 1.755] & n_4 &\hskip-6pt= 4&
+   \sigma_9 &\hskip-6pt= [2.630, 2.755]&n_9&\hskip-6pt= 7\\
+\end{array}
+$$
+\hfill $ \sigma_{10}  = [2.730, \pi] \quad  n_{10}  = 2$ 
+\end{proof}
+
+\begin{proposition}\label{GMT prop1.11} A {\textrm shortest}  geodesic $\delta$ in a closed hyperbolic $3$\/{\textrm -}\/manifold has 
+\vglue4pt
+{\textrm i)}  ${\mathrm tuberadius}(\delta) \ge l/4$ where $l = \Relength(\delta),$  and
+\vglue4pt
+{\textrm ii)} ${\mathrm tuberadius}(\delta) > \ln(3)/2$ if 
+$\Relength(\delta) \ge 1.289785.$ 
+\end{proposition}
+
+\begin{proof} Part i) is a consequence of the following 
+well-known argument:
+Uniformly expand a tube around a shortest geodesic in the hyperbolic
+$3$-manifold. 
+If the expanding tube hits itself before a
+radius of $l/4$ then we will construct a loop of length less than $l$, which produces a
+contradiction to being shortest.  Drop the two obvious perpendiculars from
+the hitting point down to the core geodesic. 
+Consider the following loop---down one perpendicular, 
+follow the shorter direction on the core geodesic,
+up the other perpendicular. Because a lift of this loop
+to ${\mathbf H}^3$ is not closed, this loop is homotopically nontrivial.  By
+construction it has length less than $l/4 + l/2 + l/4 = l.$  
+
+To prove part ii), we improve on this loop.  
+Replace the first half of the journey by the
+hypotenuse of the right triangle formed by the first perpendicular and the
+first half of the shorter arc along the core geodesic.  Replace the second
+half of the journey by the hypotenuse of the right triangle formed by the
+second perpendicular and the second half of the shorter arc along the core
+geodesic.  
+Now, to analyze the specific case of tuberadius $\ln(3)/2$, we use
+the hyperbolic Pythagorean theorem (see [F]) 
+$\cosh c = (\cosh a)
+( \cosh b)$ with $a = \ln(3)/2$ and $b = l/4.$ 
+We get that the length of the
+constructed loop is $2 \Arccosh (\cosh(\ln(3)/2) \cosh (l/4))$ and this is
+less than $l$ when $l > 1.289784\ldots$, 
+by a calculation (which follows) and the fact that $$2 \Arccosh (\cosh(\ln(3)/2) (\cosh (l/4)) - l$$ is a decreasing function of $l$.
+
+We solve explicitly for the value of $l$ at which
+$$2 \Arccosh (\cosh(\ln(3)/2) (\cosh (l/4)) - l = 0.$$  Noting that
+$\cosh(\ln(3)/2) = {2 \over \sqrt 3}$ we get ${2 \over \sqrt 3}(\cosh (l/4)) 
+= \cosh(l/2).$  Using a half-angle formula for $\cosh(l/2)$ we get ${2
+\over \sqrt 3}(\cosh (l/4))  = 2\cosh^2(l/4) - 1.$  Setting $x =
+\cosh(l/4)$ we get the quadratic ${2 \over \sqrt 3} x = 2 x^2 -1.$
+Solving and substituting, we get $l = 1.289784\ldots$ \end{proof}
 \begin{definition}\label{GMT 1.12}
 %\hglue-8pt 
 Let ${\mathcal P}\subset{\mathcal P}^{\prime}$ be the set of those parameters $\alpha
@@ -244,7 +333,58 @@ satisfies the insulator condition provided that
 tuberadius$(\delta) > \ln(3)/2$ for some closed geodesic $\delta\subset N.$  Thus we
 are led to consider:
 
-%Note: 1.14-1.17 dropped
+\begin{problem}\label{GMT 1.14}
+List all closed orientable hyperbolic $3$-manifolds $N$
+possessing a shortest geodesic $\delta$ such that tuberadius$(\delta)\le \ln(3)/2.$
+\end{problem}
+
+\begin{remarks}\label{GMT 1.15}
+i)  By a J. Weeks-modified version of {\textit SnapPea} [W1] it was known
+experimentally  that any shortest
+geodesic in Vol3 has a $0.415\ldots$ tube  (see \cite{G}).  Conjecturally, up to isometry, there are a total of six manifolds in the list answering Problem 1.14 (see Conjecture 1.31 and Remarks 1.32ii and 1.32iv).
+\vglue4pt
+ii)  If a shortest geodesic $\delta$ in $N$ satisfies tuberadius$(\delta)\le
+\ln(3)/2,$ then $N$ gives
+rise to an element $\alpha\in {\mathcal T}.$  (In fact $N$ may give rise to finitely many different elements of ${\mathcal T}.$)  
+Thus we need to investigate:
+\end{remarks}
+
+\begin{problem}
+Find all parameters $\alpha=(l+it, d+ib, r+ia) \in {\mathcal T}.$ 
+\end{problem}
+
+\begin{remark}\label{GMT 1.17}
+In the next     paragraphs, we will describe our method of (partially) answering Problem 1.16.  But before starting this description, we
+mention a technical point: starting with Definition 1.22, we 
+will realize major advantages by working in the space ${\mathcal W} \supset \exp({\mathcal P}),$ and
+our results will ultimately be described in terms of ${\mathcal W}.$ But for now, for simplicity,  we will describe the results in terms of the unexponentiated space ${\mathcal P}.$
+
+We will partition ${\mathcal P}$ into about one billion regions
+$\{{\mathcal P}_i\}$ and show that ${\mathcal T}$ is disjoint from all but seven small such regions.   Suppose that
+${\mathcal P}_i$ is a region of this partition and $\alpha\in {\mathcal P}_i.$  Let $h$ be a word in the
+letters $f,w$ and their inverses.  Associated to the parameter
+$\alpha=(l_\alpha+it_\alpha, d_\alpha+ib_\alpha, r_\alpha
++ia_\alpha)$ there are the group elements
+$f_\alpha, w_\alpha$ and hence $h_\alpha.$ 
+If $h_\alpha$ is not the identity then we ask
+\begin{itemize}
+\item[a)]  Is $\Relength (h_\alpha) < \Relength(f_\alpha) = l_\alpha?$
+
+\item[b)]  Is Redistance$(h_\alpha(B_{(0;\infty)}), B_{(0;\infty)}) < $ Redistance$(w_\alpha(B_{(0;\infty)})$, $B_{(0;\infty)})\break = d_\alpha?$
+\end{itemize}
+\noindent If either a) or b) is true, then $\alpha\notin {\mathcal T}.$
+
+Now let $\beta\in {\mathcal P}_i,$
+with $f_\beta, w_\beta,$ and $h_\beta$ the associated hyperbolic isometries.  If
+say a) is true for $\alpha$
+then so is the statement $\Relength(h_\beta) < \Relength(f_\beta)\break = l_\beta$ for
+$\beta$ sufficiently close to $\alpha.$
+Thus we can show that ${\mathcal T}\cap {\mathcal P}_i =\emptyset$ if we can find an $\alpha$ for
+which, say, statement a) is true, and then
+use first-order Taylor approximation (with error/remainder term) to show that the corresponding
+statement holds for all $\beta\in {\mathcal P}_i $ while continuing to avoid the prohibition that $h_\beta$ not be the identity.
+\end{remark}
+
 
 \begin{definition}  \label{GMT 1.18} A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in
 	Remark (CHECKTHIS: ref{GMT 1.17}) %TODO: xref to cut
@@ -448,188 +588,6 @@ in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ d
 slightly from the use in \S 0.)
 Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
  
-\begin{table}\label{GMT tab 1.1}
-\caption{Exceptional boxes in $(L',D',R')$ co-ordinates in ${\mathcal W}$; truncated values}
- 
-\begin{small}
-$$
-\begin{array}{rlrlrlrl}
-\noalign{\noindent $X_0$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt = -0.84065&\enspace l'_{\textrm max} &\hskip-6pt = -0.84060&\enspace
-t'_{\textrm min}&\hskip-6pt = -2.13726&\enspace t'_{\textrm max}&\hskip-6pt = -2.13722\\
- d'_{\textrm min}&\hskip-6pt = -0.84064& d'_{\textrm max} &\hskip-6pt = -0.84059&
-b'_{\textrm min}&\hskip-6pt = -2.13729& b'_{\textrm max} &\hskip-6pt = -2.13722\\
-r'_{\textrm min} &\hskip-6pt = 0.999979& r'_{\textrm max} &\hskip-6pt = 1.000022&
-a'_{\textrm min}&\hskip-6pt = -0.00006103& a'_{\textrm max}&\hskip-6pt = 0.00006103\end{array}
-$$
-$$
-\begin{array}{rlrlrlrl}
-\noalign{\vskip2pt}
-\noalign{ \noindent $X_1$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt = -1.34852&\enspace  l'_{\textrm max} &\hskip-6pt = -1.34831&\enspace 
-t'_{\textrm min} &\hskip-6pt = -2.66102&\enspace  t'_{\textrm max} &\hskip-6pt = -2.66072\\
-d'_{\textrm min} &\hskip-6pt = -0.54334& d'_{\textrm max}
-&\hskip-6pt = -0.54315&   b'_{\textrm min} &\hskip-6pt = -2.85877&  b'_{\textrm max} &\hskip-6pt = -2.85849\\
-r'_{\textrm min} &\hskip-6pt = 0.90390& 
-r'_{\textrm max} &\hskip-6pt = 0.90408&   a'_{\textrm min} &\hskip-6pt = -1.47167&  a'_{\textrm max} &\hskip-6pt = -1.47143
-\end{array}
-$$
-$$
-\begin{array}{rlrlrlrl}
-\noalign{\vskip2pt}
-\noalign{\noindent $X_2$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt =  -1.78701&\enspace   l'_{\textrm max} &\hskip-6pt =  -1.78527&\enspace  
-t'_{\textrm min} &\hskip-6pt =  -2.27253&\enspace   t'_{\textrm max} &\hskip-6pt =  -2.27130\\
-d'_{\textrm min} &\hskip-6pt =  -1.07428& d'_{\textrm max}
-&\hskip-6pt =  -1.07273&   b'_{\textrm min} &\hskip-6pt =  -2.71846&  b'_{\textrm max} &\hskip-6pt =  -2.71736\\
-r'_{\textrm min} &\hskip-6pt =  0.74163& 
-r'_{\textrm max} &\hskip-6pt =  0.74301&   a'_{\textrm min} &\hskip-6pt =  -1.52929&  a'_{\textrm max} &\hskip-6pt =  -1.52832
-\end{array}
-$$
-
-$$
-\begin{array}{rlrlrlrl}
-\noalign{\noindent 
-$X_3$}
-\noalign{\vskip2pt} l'_{\textrm min} &\hskip-6pt =   0.58117&\enspace   l'_{\textrm max} &\hskip-6pt =   0.58160&\enspace  
-t'_{\textrm min} &\hskip-6pt =   -3.31221&\enspace   t'_{\textrm max} &\hskip-6pt =   -3.31190\\
-d'_{\textrm min} &\hskip-6pt =   1.15644& d'_{\textrm max}
-&\hskip-6pt =   1.15683&  b'_{\textrm min} &\hskip-6pt =   -2.75628& b'_{\textrm max} &\hskip-6pt =   -2.75573\\
-r'_{\textrm min} &\hskip-6pt =   1.40420&
-r'_{\textrm max} &\hskip-6pt =   1.40454&  a'_{\textrm min} &\hskip-6pt =   -1.17968& a'_{\textrm max} &\hskip-6pt =   -1.17919
-\end{array}
-$$
-$$
-\begin{array}{rlrlrlrl}
-\noalign{\noindent 
-$X_4$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt = 0.33321&\enspace   l'_{\textrm max} &\hskip-6pt = 0.33495&\enspace  
-t'_{\textrm min} &\hskip-6pt = -3.31959&\enspace   t'_{\textrm max}&\hskip-6pt = -3.31898\\
-d'_{\textrm min} &\hskip-6pt = 0.97739& d'_{\textrm max}
-&\hskip-6pt = 0.97817&  b'_{\textrm min} &\hskip-6pt = -2.82533& b'_{\textrm max} &\hskip-6pt = -2.82478\\
-r'_{\textrm min} &\hskip-6pt = 1.35413&
-r'_{\textrm max} &\hskip-6pt = 1.35482&  a'_{\textrm min} &\hskip-6pt = -1.22558& a'_{\textrm max} &\hskip-6pt = -1.22460\end{array}$$
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent 
-$X_5$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt = -1.37984&\enspace   l'_{\textrm max}&\hskip-6pt = -1.37810&\enspace  
-t'_{\textrm min} &\hskip-6pt = -2.53706&\enspace   t'_{\textrm max} &\hskip-6pt = -2.53460\\
-d'_{\textrm min} &\hskip-6pt = -1.37967& d'_{\textrm max}
-&\hskip-6pt = -1.37657&  b'_{\textrm min}&\hskip-6pt = -2.53650& b'_{\textrm max} &\hskip-6pt = -2.53430\\
-r'_{\textrm min} &\hskip-6pt = 0.99989&
-r'_{\textrm max} &\hskip-6pt = 1.00265&  a'_{\textrm min} &\hskip-6pt = -0.001953& a'_{\textrm max} &\hskip-6pt = 0.001953\end{array}$$
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent 
-$X_6$}
-\noalign{\vskip2pt}
-l'_{\textrm min} &\hskip-6pt = 1.37810&\enspace   l'_{\textrm max}&\hskip-6pt = 1.37984&\enspace  
-t'_{\textrm min} &\hskip-6pt = -2.53706&\enspace   t'_{\textrm max} &\hskip-6pt = -2.53460\\
-d'_{\textrm min} &\hskip-6pt = 1.37657& d'_{\textrm max}
-&\hskip-6pt = 1.37967& b'_{\textrm min} &\hskip-6pt = -2.53650& b'_{\textrm max}&\hskip-6pt = -2.53430\\
-r'_{\textrm min} &\hskip-6pt = 0.99989&
-r'_{\textrm max} &\hskip-6pt = 1.00265&  a'_{\textrm min} &\hskip-6pt = -0.001953& a'_{\textrm max} &\hskip-6pt = 0.001953
-\end{array}$$
-\end{small}
- \vglue12pt
- \end{table}
-
-\begin{table}\label{GMT tab 1.2}
-\caption{Exceptional regions (boxes) in $(L,D,R)$ co-ordinates in ${\mathcal P}$}
-\begin{small}
-$$
-\begin{array}{rlrl}
-\noalign{\noindent  ${\mathcal R}_0$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  0.8314&\enspace    l_{\textrm max}&\hskip-6pt  = 0.8315\\
-t_{\textrm min} &\hskip-6pt =  -1.9456&\enspace    t_{\textrm max}&\hskip-6pt  = -1.9455\\
-d_{\textrm min} &\hskip-6pt =  0.8314&  d_{\mathrm
-max}&\hskip-6pt  = 0.8315\\   b_{\textrm min} &\hskip-6pt =  -1.9456&  b_{\textrm max} &\hskip-6pt = -1.9455\\
-r_{\textrm min} &\hskip-6pt =  -0.00002051&  r_{\textrm max} &\hskip-6pt = 0.00002267\\  a_{\textrm min} &\hskip-6pt =  -0.00006105&  a_{\mathrm
-max}&\hskip-6pt  = 0.00006105\end{array}
-$$
-
-%$$
-%\begin{array}{rlrlrlrl}
-%\noalign{\noindent  ${\mathcal R}_0$}
-%\noalign{\vskip2pt}
-%l_{\textrm min} &\hskip-6pt =  0.8314&\enspace    l_{\textrm max}&\hskip-6pt  = 0.8315&\enspace   
-%t_{\textrm min} &\hskip-6pt =  -1.9456&\enspace    t_{\textrm max}&\hskip-6pt  = -1.9455\\
-%d_{\textrm min} &\hskip-6pt =  0.8314&  d_{\mathrm
-%max}&\hskip-6pt  = 0.8315&   b_{\textrm min} &\hskip-6pt =  -1.9456&  b_{\textrm max} &\hskip-6pt = -1.9455\\
-%r_{\textrm min} &\hskip-6pt =  -0.00002051&  r_{\textrm max} &\hskip-6pt = 0.00002267&   a_{\textrm min} &\hskip-6pt =  -0.00006105&  a_{\mathrm
-%max}&\hskip-6pt  = 0.00006105\end{array}
-%$$
-
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent  ${\mathcal R}_1$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.0928&\enspace    l_{\textrm max} &\hskip-6pt = 1.0931&\enspace   
-t_{\textrm min} &\hskip-6pt =  -2.0399&\enspace   t_{\textrm max}&\hskip-6pt  = -2.0397\\
-d_{\textrm min} &\hskip-6pt =  1.0680&  d_{\mathrm
-max}&\hskip-6pt  = 1.0682&   b_{\textrm min} &\hskip-6pt =  -1.7587&  b_{\textrm max} &\hskip-6pt = -1.7585\\
-r_{\textrm min} &\hskip-6pt =  0.5463& 
-r_{\textrm max}&\hskip-6pt  = 0.5465&   a_{\textrm min} &\hskip-6pt =  -1.0201&  a_{\textrm max}&\hskip-6pt  = -1.0198\end{array}$$
-
-$$\begin{array}{rlrlrlrl}\noalign{\noindent  ${\mathcal R}_2$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.0608&\enspace    l_{\textrm max} &\hskip-6pt = 1.0617&\enspace   
-t_{\textrm min} &\hskip-6pt =  -2.2375&\enspace    t_{\textrm max} &\hskip-6pt = -2.2366\\
-d_{\textrm min} &\hskip-6pt =  1.0720&  d_{\mathrm
-max}&\hskip-6pt  = 1.0727&   b_{\textrm min} &\hskip-6pt =  -1.9473&  b_{\textrm max} &\hskip-6pt = -1.9466\\
-r_{\textrm min} &\hskip-6pt =  0.5298& 
-r_{\textrm max} &\hskip-6pt = 0.5308&   a_{\textrm min} &\hskip-6pt =  -1.1193&  a_{\textrm max} &\hskip-6pt = -1.1182\end{array}$$
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent  ${\mathcal R}_3$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.2126&\enspace    l_{\textrm max} &\hskip-6pt = 1.2129&\enspace   
-t_{\textrm min} &\hskip-6pt =  -1.3972&\enspace    t_{\textrm max}&\hskip-6pt  = -1.3969\\
-d_{\textrm min} &\hskip-6pt =  1.0947&  d_{\mathrm
-max}&\hskip-6pt  = 1.0951&   b_{\textrm min} &\hskip-6pt =  -1.1736&  b_{\textrm max}&\hskip-6pt  = -1.1733\\
-r_{\textrm min} &\hskip-6pt =  0.6063& 
-r_{\textrm max}&\hskip-6pt  = 0.6067&   a_{\textrm min} &\hskip-6pt =  -0.6988&  a_{\textrm max}&\hskip-6pt  = -0.6984\end{array}
-$$
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent  ${\mathcal R}_4$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.2046&\enspace    l_{\textrm max}&\hskip-6pt  = 1.2050&\enspace   
-t_{\textrm min} &\hskip-6pt =  -1.4708&\enspace    t_{\textrm max}&\hskip-6pt = -1.4702\\
-d_{\textrm min} &\hskip-6pt =  1.0949&  d_{\mathrm
-max}&\hskip-6pt  = 1.0953&   b_{\textrm min} &\hskip-6pt =  -1.2378&  b_{\textrm max} &\hskip-6pt = -1.2374\\
-r_{\textrm min} &\hskip-6pt =  0.6019& 
-r_{\textrm max} &\hskip-6pt = 0.6027&   a_{\textrm min} &\hskip-6pt =  -0.7357&  a_{\textrm max} &\hskip-6pt = -0.7349\end{array}$$
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\vskip-10pt}
-\noalign{\noindent  ${\mathcal R}_5$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.0595&\enspace    l_{\textrm max}&\hskip-6pt = 1.0606&\enspace   
-t_{\textrm min}&\hskip-6pt =  -2.0694&\enspace   t_{\textrm max} &\hskip-6pt = -2.0683\\
-d_{\textrm min} &\hskip-6pt =  1.0591&  d_{\mathrm
-max}&\hskip-6pt  = 1.0604&   b_{\textrm min} &\hskip-6pt =  -2.0694&  b_{\textrm max}&\hskip-6pt  = -2.0680\\
-r_{\textrm min} &\hskip-6pt =  -0.0001069&  r_{\textrm max} &\hskip-6pt =  0.002654&  a_{\textrm min} &\hskip-6pt =  -0.001954&  a_{\textrm max}
-&\hskip-6pt =  0.001954\end{array}$$
-
-$$\begin{array}{rlrlrlrl}
-\noalign{\noindent  ${\mathcal R}_6$}
-\noalign{\vskip2pt}
-l_{\textrm min} &\hskip-6pt =  1.0595&\enspace    l_{\textrm max} &\hskip-6pt =  1.0606&\enspace   
-t_{\textrm min} &\hskip-6pt =  -1.0733&\enspace    t_{\textrm max} &\hskip-6pt =  -1.0722\\
-d_{\textrm min} &\hskip-6pt =  1.0591&  d_{\textrm max}
-&\hskip-6pt =  1.0604&   b_{\textrm min} &\hskip-6pt =  -1.0736&  b_{\textrm max} &\hskip-6pt =  -1.0722\\
-r_{\textrm min} &\hskip-6pt =  -0.0001069& 
-r_{\textrm max} &\hskip-6pt =  0.002654&   a_{\textrm min} &\hskip-6pt =  -0.001954&  a_{\textrm max} &\hskip-6pt =  0.001954\end{array}$$
-\end{small}
-\end{table}
-
 \begin{definition} \label{GMT 1.27} A {\textit quasi-relator} in a sub-box $X$ of ${\mathcal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
 throughout
 $X$ and experimentally appears to be converging to the identity at some point in $X.$  In particular, a quasi-relator rigorously has Relength less than
@@ -820,6 +778,423 @@ verify} is available at the {\textit Annals} web site.
 In addition, a mild modification of {\textit verify} showed that the listed words were quasi-relators for the given sub-boxes. 
 \end{proof}
 
-%Note GMT 1.29-1.35 dropped
+\begin{corollary}\label{GMT 1.29}
+If $\delta$ is a shortest geodesic in $N,$ a closed orientable
+hyperbolic $3$\/{\textrm -}\/manifold{\textrm ,} then 
+\begin{itemize}
+\item{i)}  either {\textrm tuberadius(}$\delta) > \ln(3)/2$ or
+$\exp(\length(\delta))\in {\mathcal L}(X_k)$ for some\break $k\in {0,\ldots,6}$
+ where ${\mathcal L}(X_k)$
+denotes the range of $L^\prime$ values in the 
+exceptional box $X_k.$ 
+
+\item{ii)} Either {\textrm tuberadius(}$\delta) > \ln(3)/2$ or
+${\textrm tuberadius}(\delta) = {\mathrm Re}(D)/2$ where\break $\exp(D)
+\in {\mathcal D}(X_k)$ for some $k\in {0,\ldots,6}$
+ and ${\mathcal D}(X_k)$
+denotes the range of $D^\prime$ values in the 
+exceptional box $X_k.$\hfill\qed
+\end{itemize}
+
+\end{corollary}
+
+ 
+\begin{table}\label{GMT tab 1.1}
+\caption{Exceptional boxes in $(L',D',R')$ co-ordinates in ${\mathcal W}$; truncated values}
+ 
+\begin{small}
+$$
+\begin{array}{rlrlrlrl}
+\noalign{\noindent $X_0$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt = -0.84065&\enspace l'_{\textrm max} &\hskip-6pt = -0.84060&\enspace
+t'_{\textrm min}&\hskip-6pt = -2.13726&\enspace t'_{\textrm max}&\hskip-6pt = -2.13722\\
+ d'_{\textrm min}&\hskip-6pt = -0.84064& d'_{\textrm max} &\hskip-6pt = -0.84059&
+b'_{\textrm min}&\hskip-6pt = -2.13729& b'_{\textrm max} &\hskip-6pt = -2.13722\\
+r'_{\textrm min} &\hskip-6pt = 0.999979& r'_{\textrm max} &\hskip-6pt = 1.000022&
+a'_{\textrm min}&\hskip-6pt = -0.00006103& a'_{\textrm max}&\hskip-6pt = 0.00006103\end{array}
+$$
+$$
+\begin{array}{rlrlrlrl}
+\noalign{\vskip2pt}
+\noalign{ \noindent $X_1$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt = -1.34852&\enspace  l'_{\textrm max} &\hskip-6pt = -1.34831&\enspace 
+t'_{\textrm min} &\hskip-6pt = -2.66102&\enspace  t'_{\textrm max} &\hskip-6pt = -2.66072\\
+d'_{\textrm min} &\hskip-6pt = -0.54334& d'_{\textrm max}
+&\hskip-6pt = -0.54315&   b'_{\textrm min} &\hskip-6pt = -2.85877&  b'_{\textrm max} &\hskip-6pt = -2.85849\\
+r'_{\textrm min} &\hskip-6pt = 0.90390& 
+r'_{\textrm max} &\hskip-6pt = 0.90408&   a'_{\textrm min} &\hskip-6pt = -1.47167&  a'_{\textrm max} &\hskip-6pt = -1.47143
+\end{array}
+$$
+$$
+\begin{array}{rlrlrlrl}
+\noalign{\vskip2pt}
+\noalign{\noindent $X_2$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt =  -1.78701&\enspace   l'_{\textrm max} &\hskip-6pt =  -1.78527&\enspace  
+t'_{\textrm min} &\hskip-6pt =  -2.27253&\enspace   t'_{\textrm max} &\hskip-6pt =  -2.27130\\
+d'_{\textrm min} &\hskip-6pt =  -1.07428& d'_{\textrm max}
+&\hskip-6pt =  -1.07273&   b'_{\textrm min} &\hskip-6pt =  -2.71846&  b'_{\textrm max} &\hskip-6pt =  -2.71736\\
+r'_{\textrm min} &\hskip-6pt =  0.74163& 
+r'_{\textrm max} &\hskip-6pt =  0.74301&   a'_{\textrm min} &\hskip-6pt =  -1.52929&  a'_{\textrm max} &\hskip-6pt =  -1.52832
+\end{array}
+$$
+
+$$
+\begin{array}{rlrlrlrl}
+\noalign{\noindent 
+$X_3$}
+\noalign{\vskip2pt} l'_{\textrm min} &\hskip-6pt =   0.58117&\enspace   l'_{\textrm max} &\hskip-6pt =   0.58160&\enspace  
+t'_{\textrm min} &\hskip-6pt =   -3.31221&\enspace   t'_{\textrm max} &\hskip-6pt =   -3.31190\\
+d'_{\textrm min} &\hskip-6pt =   1.15644& d'_{\textrm max}
+&\hskip-6pt =   1.15683&  b'_{\textrm min} &\hskip-6pt =   -2.75628& b'_{\textrm max} &\hskip-6pt =   -2.75573\\
+r'_{\textrm min} &\hskip-6pt =   1.40420&
+r'_{\textrm max} &\hskip-6pt =   1.40454&  a'_{\textrm min} &\hskip-6pt =   -1.17968& a'_{\textrm max} &\hskip-6pt =   -1.17919
+\end{array}
+$$
+$$
+\begin{array}{rlrlrlrl}
+\noalign{\noindent 
+$X_4$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt = 0.33321&\enspace   l'_{\textrm max} &\hskip-6pt = 0.33495&\enspace  
+t'_{\textrm min} &\hskip-6pt = -3.31959&\enspace   t'_{\textrm max}&\hskip-6pt = -3.31898\\
+d'_{\textrm min} &\hskip-6pt = 0.97739& d'_{\textrm max}
+&\hskip-6pt = 0.97817&  b'_{\textrm min} &\hskip-6pt = -2.82533& b'_{\textrm max} &\hskip-6pt = -2.82478\\
+r'_{\textrm min} &\hskip-6pt = 1.35413&
+r'_{\textrm max} &\hskip-6pt = 1.35482&  a'_{\textrm min} &\hskip-6pt = -1.22558& a'_{\textrm max} &\hskip-6pt = -1.22460\end{array}$$
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent 
+$X_5$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt = -1.37984&\enspace   l'_{\textrm max}&\hskip-6pt = -1.37810&\enspace  
+t'_{\textrm min} &\hskip-6pt = -2.53706&\enspace   t'_{\textrm max} &\hskip-6pt = -2.53460\\
+d'_{\textrm min} &\hskip-6pt = -1.37967& d'_{\textrm max}
+&\hskip-6pt = -1.37657&  b'_{\textrm min}&\hskip-6pt = -2.53650& b'_{\textrm max} &\hskip-6pt = -2.53430\\
+r'_{\textrm min} &\hskip-6pt = 0.99989&
+r'_{\textrm max} &\hskip-6pt = 1.00265&  a'_{\textrm min} &\hskip-6pt = -0.001953& a'_{\textrm max} &\hskip-6pt = 0.001953\end{array}$$
+
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent 
+$X_6$}
+\noalign{\vskip2pt}
+l'_{\textrm min} &\hskip-6pt = 1.37810&\enspace   l'_{\textrm max}&\hskip-6pt = 1.37984&\enspace  
+t'_{\textrm min} &\hskip-6pt = -2.53706&\enspace   t'_{\textrm max} &\hskip-6pt = -2.53460\\
+d'_{\textrm min} &\hskip-6pt = 1.37657& d'_{\textrm max}
+&\hskip-6pt = 1.37967& b'_{\textrm min} &\hskip-6pt = -2.53650& b'_{\textrm max}&\hskip-6pt = -2.53430\\
+r'_{\textrm min} &\hskip-6pt = 0.99989&
+r'_{\textrm max} &\hskip-6pt = 1.00265&  a'_{\textrm min} &\hskip-6pt = -0.001953& a'_{\textrm max} &\hskip-6pt = 0.001953
+\end{array}$$
+\end{small}
+ \vglue12pt
+ \end{table}
+
+\begin{table}\label{GMT tab 1.2}
+\caption{Exceptional regions (boxes) in $(L,D,R)$ co-ordinates in ${\mathcal P}$}
+\begin{small}
+$$
+\begin{array}{rlrl}
+\noalign{\noindent  ${\mathcal R}_0$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  0.8314&\enspace    l_{\textrm max}&\hskip-6pt  = 0.8315\\
+t_{\textrm min} &\hskip-6pt =  -1.9456&\enspace    t_{\textrm max}&\hskip-6pt  = -1.9455\\
+d_{\textrm min} &\hskip-6pt =  0.8314&  d_{\mathrm
+max}&\hskip-6pt  = 0.8315\\   b_{\textrm min} &\hskip-6pt =  -1.9456&  b_{\textrm max} &\hskip-6pt = -1.9455\\
+r_{\textrm min} &\hskip-6pt =  -0.00002051&  r_{\textrm max} &\hskip-6pt = 0.00002267\\  a_{\textrm min} &\hskip-6pt =  -0.00006105&  a_{\mathrm
+max}&\hskip-6pt  = 0.00006105\end{array}
+$$
+
+%$$
+%\begin{array}{rlrlrlrl}
+%\noalign{\noindent  ${\mathcal R}_0$}
+%\noalign{\vskip2pt}
+%l_{\textrm min} &\hskip-6pt =  0.8314&\enspace    l_{\textrm max}&\hskip-6pt  = 0.8315&\enspace   
+%t_{\textrm min} &\hskip-6pt =  -1.9456&\enspace    t_{\textrm max}&\hskip-6pt  = -1.9455\\
+%d_{\textrm min} &\hskip-6pt =  0.8314&  d_{\mathrm
+%max}&\hskip-6pt  = 0.8315&   b_{\textrm min} &\hskip-6pt =  -1.9456&  b_{\textrm max} &\hskip-6pt = -1.9455\\
+%r_{\textrm min} &\hskip-6pt =  -0.00002051&  r_{\textrm max} &\hskip-6pt = 0.00002267&   a_{\textrm min} &\hskip-6pt =  -0.00006105&  a_{\mathrm
+%max}&\hskip-6pt  = 0.00006105\end{array}
+%$$
 
 
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent  ${\mathcal R}_1$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.0928&\enspace    l_{\textrm max} &\hskip-6pt = 1.0931&\enspace   
+t_{\textrm min} &\hskip-6pt =  -2.0399&\enspace   t_{\textrm max}&\hskip-6pt  = -2.0397\\
+d_{\textrm min} &\hskip-6pt =  1.0680&  d_{\mathrm
+max}&\hskip-6pt  = 1.0682&   b_{\textrm min} &\hskip-6pt =  -1.7587&  b_{\textrm max} &\hskip-6pt = -1.7585\\
+r_{\textrm min} &\hskip-6pt =  0.5463& 
+r_{\textrm max}&\hskip-6pt  = 0.5465&   a_{\textrm min} &\hskip-6pt =  -1.0201&  a_{\textrm max}&\hskip-6pt  = -1.0198\end{array}$$
+
+$$\begin{array}{rlrlrlrl}\noalign{\noindent  ${\mathcal R}_2$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.0608&\enspace    l_{\textrm max} &\hskip-6pt = 1.0617&\enspace   
+t_{\textrm min} &\hskip-6pt =  -2.2375&\enspace    t_{\textrm max} &\hskip-6pt = -2.2366\\
+d_{\textrm min} &\hskip-6pt =  1.0720&  d_{\mathrm
+max}&\hskip-6pt  = 1.0727&   b_{\textrm min} &\hskip-6pt =  -1.9473&  b_{\textrm max} &\hskip-6pt = -1.9466\\
+r_{\textrm min} &\hskip-6pt =  0.5298& 
+r_{\textrm max} &\hskip-6pt = 0.5308&   a_{\textrm min} &\hskip-6pt =  -1.1193&  a_{\textrm max} &\hskip-6pt = -1.1182\end{array}$$
+
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent  ${\mathcal R}_3$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.2126&\enspace    l_{\textrm max} &\hskip-6pt = 1.2129&\enspace   
+t_{\textrm min} &\hskip-6pt =  -1.3972&\enspace    t_{\textrm max}&\hskip-6pt  = -1.3969\\
+d_{\textrm min} &\hskip-6pt =  1.0947&  d_{\mathrm
+max}&\hskip-6pt  = 1.0951&   b_{\textrm min} &\hskip-6pt =  -1.1736&  b_{\textrm max}&\hskip-6pt  = -1.1733\\
+r_{\textrm min} &\hskip-6pt =  0.6063& 
+r_{\textrm max}&\hskip-6pt  = 0.6067&   a_{\textrm min} &\hskip-6pt =  -0.6988&  a_{\textrm max}&\hskip-6pt  = -0.6984\end{array}
+$$
+
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent  ${\mathcal R}_4$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.2046&\enspace    l_{\textrm max}&\hskip-6pt  = 1.2050&\enspace   
+t_{\textrm min} &\hskip-6pt =  -1.4708&\enspace    t_{\textrm max}&\hskip-6pt = -1.4702\\
+d_{\textrm min} &\hskip-6pt =  1.0949&  d_{\mathrm
+max}&\hskip-6pt  = 1.0953&   b_{\textrm min} &\hskip-6pt =  -1.2378&  b_{\textrm max} &\hskip-6pt = -1.2374\\
+r_{\textrm min} &\hskip-6pt =  0.6019& 
+r_{\textrm max} &\hskip-6pt = 0.6027&   a_{\textrm min} &\hskip-6pt =  -0.7357&  a_{\textrm max} &\hskip-6pt = -0.7349\end{array}$$
+
+$$\begin{array}{rlrlrlrl}
+\noalign{\vskip-10pt}
+\noalign{\noindent  ${\mathcal R}_5$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.0595&\enspace    l_{\textrm max}&\hskip-6pt = 1.0606&\enspace   
+t_{\textrm min}&\hskip-6pt =  -2.0694&\enspace   t_{\textrm max} &\hskip-6pt = -2.0683\\
+d_{\textrm min} &\hskip-6pt =  1.0591&  d_{\mathrm
+max}&\hskip-6pt  = 1.0604&   b_{\textrm min} &\hskip-6pt =  -2.0694&  b_{\textrm max}&\hskip-6pt  = -2.0680\\
+r_{\textrm min} &\hskip-6pt =  -0.0001069&  r_{\textrm max} &\hskip-6pt =  0.002654&  a_{\textrm min} &\hskip-6pt =  -0.001954&  a_{\textrm max}
+&\hskip-6pt =  0.001954\end{array}$$
+
+$$\begin{array}{rlrlrlrl}
+\noalign{\noindent  ${\mathcal R}_6$}
+\noalign{\vskip2pt}
+l_{\textrm min} &\hskip-6pt =  1.0595&\enspace    l_{\textrm max} &\hskip-6pt =  1.0606&\enspace   
+t_{\textrm min} &\hskip-6pt =  -1.0733&\enspace    t_{\textrm max} &\hskip-6pt =  -1.0722\\
+d_{\textrm min} &\hskip-6pt =  1.0591&  d_{\textrm max}
+&\hskip-6pt =  1.0604&   b_{\textrm min} &\hskip-6pt =  -1.0736&  b_{\textrm max} &\hskip-6pt =  -1.0722\\
+r_{\textrm min} &\hskip-6pt =  -0.0001069& 
+r_{\textrm max} &\hskip-6pt =  0.002654&   a_{\textrm min} &\hskip-6pt =  -0.001954&  a_{\textrm max} &\hskip-6pt =  0.001954\end{array}$$
+\end{small}
+\end{table}
+
+\begin{remarks}\label{GMT 1.30}
+i)  The values in Table 1.1 are only 
+approximations of actual values which can be computed as in Remark 1.26iii.
+\vglue4pt
+ii)  The values in Table 1.2 correspond to boxes in ${\mathcal P}$ which contain the natural log of the (exceptional) boxes in Table 1.1 (here we use the true co-ordinates of the boxes, not just the approximation-by-truncation co-ordinates).  
+For example,
+ the rectangle in ${\mathbf C}$ determined by $l_{\textrm min}, l_{\textrm max}$,
+$t_{\textrm min}, t_{\textrm max}$ for ${\mathcal R}_0$ contains the natural log of the rectangle in ${\mathbf C}$ determined by $l'_{\textrm min},
+l'_{\textrm max}, t'_{\textrm min}, t'_{\textrm max}$ for $X_0$.  
+\vglue4pt
+iii)  In Chapter 3 we show that $X_0 \cap {\mathcal T}$ is a single parameter.  
+This parameter has $L=D=0.8314429\ldots  -  (1.9455307\ldots) i $   and $R=0.$
+\vglue4pt
+iv)  Recall that $\ln(3)=1.0986\ldots\ $  .  Thus we see that all boxes
+but ${\mathcal R}_0$ lie
+close to the boundary of the parameter space ${\mathcal P}$.  
+Boxes ${\mathcal R}_3, {\mathcal R}_4$ are particularly close to the edge.
+\end{remarks}
+
+\begin{conjecture}\label{GMT 1.31}
+Each  exceptional 
+box $X_i, 0\le i\le 6,$ contains a unique element $s_i$ of $S.$
+Further{\textrm ,} if $\{G_i, f_i, w_i\}$ is the marked group
+associated to $s_i$ then
+$N_i = {\mathbf H}^3/G_i$ is a closed hyperbolic $3$\/{\textrm -}\/manifold
+with the following properties\/{\textrm :}
+\begin{itemize}
+\item{i)} $N_i$ has fundamental group
+$\langle f,w;r_1(X_i),r_2(X_i)\rangle${\textrm ,}
+where $r_1(X_i),\ r_2(X_i)$ are the quasi\/{\textrm -}\/relators
+associated to the box $X_i.$
+\item{ii)}  $N_i$ has a Heegaard genus $2$ splitting realizing the above group presentation.
+
+\item{iii)} $N_i$ nontrivially covers no manifold.  
+
+\item{iv)} $N_6$ is isometric to $N_5.$
+ 
+\item{v)} If $(L_i, D_i, R_i)$ is the parameter in ${\mathcal T}$
+corresponding to $s_i,$ then $L_i, D_i, R_i$ are related as follows.
+\begin{itemize}
+\item[] For $X_0,\ X_5,\ X_6:\ \ \ L=D, \ \ R=0.$  
+
+\item[] For $X_1,\ X_2,\ X_3,\ X_4:\ \ \ R=L/2.$
+\end{itemize}
+\end{itemize}
+\end{conjecture}
+
+\begin{remarks}
+i)
+Experimentally, at some point in the exceptional box $X_i$ under consideration the quasi-relators are actually relators. 
+\vglue4pt
+ii) In Chapter 3, we prove Conjecture 1.31 for $X_0.$ Recently, K. Jones and A. Reid have made further progress on Conjecture 1.31 (see \cite{JR}).  Among other things, they construct arithmetic hyperbolic $3$-manifolds associated to each exceptional box but $X_3$ and prove that the manifolds so constructed for $X_5$ and $X_6$ are isometric.  They are able to prove uniqueness
+in the case of $X_0$ and
+the techniques they use generalize to the other arithmetic hyperbolic $3$-manifolds, but the analysis is more complicated and the question of uniqueness remains open in these cases.
+\vglue4pt
+iii) According to {\textit Heegaard} [Ber], for each $i$, 
+there exists a closed $3$-manifold $B_i$ of Heegaard genus 2 such that $\pi_1(B_i)=\langle f,w;r_1(X_i),r_2(X_i)\rangle $ and
+this group presentation arises naturally from the Heegaard splitting.
+\vglue4pt
+ iv) Experimental evidence suggests that the manifolds associated to $X_5$ and $X_6$ are both 
+isometric to the Weeks census manifold $s479(-3,1).$
+Also experimentally, the manifold associated with $X_2$ is $s778(-3,1)$ and the manifold associated with $X_1$ is $v2678(2,1).$
+\vglue4pt
+v) Except for Vol3, R. Riley's program {\textit Poincar{\textrm \'{\textit e}}}  (see [R]) was the first to show (experimentally) that there is a closed orientable (hyperbolic) 
+$3$-manifold associated to each box.  It provided group presentations, which presumably could be shown to be those of the above.
+\vglue4pt
+vi)  Table 1.2, Conjecture 1.31, and Remark 1.32v) indicate that 
+there is a closed hyperbolic $3$-manifold with shortest geodesic $\delta$
+having $1.2126 < \Relength(\delta) < 1.2129$ and 
+${\textrm tuberadius}(\delta) < \ln(3)/2.$
+This indicates that the 
+Proposition 1.11ii) result
+${\textrm tuberadius}(\delta) > \ln(3)/2$ if $\Relength(\delta) > 1.289785$
+is somewhat close to being sharp.
+\vglue12pt
+\end{remarks}
+
+ The following conjecture is a succinct, though slightly weaker
+form of Conjecture 1.31.
+
+\begin{conjecture}\label{GMT 1.33}
+  If $\delta$ is a shortest geodesic in a closed
+orientable hyperbolic $3$\/{\textrm -}\/manifold $N,$ then either 
+tuberadius$(\delta) > \ln(3)/2$
+or $N$ is one of six exceptional manifolds.
+\end{conjecture}
+
+\begin{remark}\label{GMT1.34}
+Here we outline our method for finding a decomposition of the initial box ${\mathcal W}$ into sub-boxes (other than those making up the
+ seven exceptional boxes)
+each with a condition/killerword that kills off the entire associated sub-box.
+For convenience, we will generally refer to a ``sub-box" simply as a ``box."
+
+A simple algorithm for finding a killerword for a region is as follows.
+Work with a set of words to consider, initialized to the null word.  At 
+each step, remove the oldest word from the set, and test to see if that 
+word is a killerword.
+If it is not, put the word back into the set, concatenated with each of 
+the generators and their inverses.
+Eventually, this algorithm will enumerate all words, and so, if there 
+is a killerword, the algorithm will eventually find it.  In practice, 
+there are two problems with this approach: there is no provision for the possibility that no killerword exists for the region under consideration, 
+and the time to find a word of length $n$ grows exponentially.
+
+When we also take into account the possibility of subdividing the box, getting an answer in finite time will be possible; but the search is in practice 
+very expensive.  The most obvious way of speeding it up is to avoid 
+the search entirely when feasible: a killerword works on a neighborhood of a 
+region, and by testing killerwords found for nearby boxes, most of 
+the time the search is not necessary.
+
+Still, there are words of length as long as 44 that were considered, and testing all of the roughly $3^{44}$ 
+combinations would be prohibitive on today's computers.  In practice 
+(due to a bug), the search algorithm used for most of the parameter
+space was no better than the brute-force method just described, but to find 
+killerwords for the remaining regions, an improvement was needed.  
+Rather than blindly selecting words in first-in-first-out order, 
+the algorithm can
+rank the words under consideration based on a heuristic estimate of 
+the likelihood of their being useful (a word is {\textit useful} if it is a prefix of a killerword).  
+We note first that short words tend to be better than 
+long words, as they have fewer steps and less error.
+Second, we note that words 
+with a large translation distance are given a bad ranking, for two reasons: 
+they will need more generators appended before they get back to the 
+small translation distance which is needed for a contradiction, and
+ computations with those words introduce more error per step than 
+computations with closer words.  
+
+This approach was an improvement, but was not finding enough killerwords in the regions 
+around $X_3$ and $X_4$.  Further investigation showed that the 
+algorithm was getting stuck on an identity: once it found an identity, 
+it would consider only words which started with that identity, and 
+ignored all of the other words.  To fix this problem, a ``diversity" 
+heuristic was introduced, to give special consideration to unlikely but 
+unusual words.
+
+To prevent the search from running forever, it is 
+temporarily abandoned after some number of steps, and re-done 
+with twice as many steps every time the number of descendant boxes 
+doubles.  This way, the search could run forever, but only if
+the subdivision process runs forever. 
+This merged process of alternately searching and subdividing we
+call the {\textit decomposition algorithm}.
+
+The decomposition algorithm went through several revisions; at each stage
+of the revision process, 
+the algorithm effectively increased the extent to which killerwords 
+found for one region were used to kill other regions.  The first 
+attempt---used to determine the feasibility of the whole effort--- 
+iterated over regions in depth-first order, performing the search as 
+described above.
+At that stage, it became evident that the search process, as 
+opposed to the subdivision process, 
+was consuming nearly all of the computation time, and so the second 
+version iterated over regions in breadth-first order, and, once it 
+found a killerword, tried to use that word on all adjacent regions.
+
+The breadth-first version was used to analyze the entire parameter 
+space, although it skipped some parts due to various bugs; the search 
+heuristic was replaced once, and there was considerable human input 
+to tell the search about particularly difficult killerwords, or to tweak 
+its search parameters (length, and weightings in the heuristic).
+
+The third stage of the revision process reduced the number of boxes by attempting all found 
+killerwords in a large region (about a thousand boxes) on all boxes 
+in the region.  It did not  do any searching, since it was provided with a 
+list of killerwords known to work.
+
+The final version was created when the bugs in evaluation were 
+brought to light, and the existing killerword tree was found to be insufficient.  
+It used the list of killerwords used for the entire tree, and some 
+statistics about the number of subdivisions required in order for a 
+given word to kill a particular box, and evaluated each word on each box.  Whenever 
+a word was evaluated, a kind of triage was used to determine 
+whether that word was likely to kill the box in question, likely to kill 
+any of its $n^{\mathrm th}$ generation descendants, or unlikely to kill any 
+descendants of the box; the answer to that heuristic either allowed more 
+detailed evaluation (with the error term included), deferred further 
+evaluation until the box had been subdivided $n$ more times, or 
+excluded that word from further consideration on any descendant of 
+the box.  With these heuristics, this program wound up evaluating on 
+average about 10 of the roughly 13200 words per box, and was able to 
+construct the tree consisting of the decomposition into sub-boxes with associated conditions/killerwords.
+
+We mention that the bugs, complexity, and 
+frequent changes in the search programs are irrelevant to the 
+accuracy of the verification.  In fact, we shielded the verification 
+programs from internal issues related to the searching programs.  
+Given a putative decomposition of the parameter space into 
+sub-boxes with associated conditions/killerwords the program {\textit verify} 
+simply checks whether this decomposition with conditions/ 
+killerwords works. 
+\end{remark}
+
+\begin{preview}\label{GMT 1.35}
+In Remark 1.17, we mentioned that we use first-order Taylor approximations, with remainder term, to show that
+a killerword which eliminates a point $x\in {\mathcal W}_i$ eliminates all of ${\mathcal W}_i.$  
+The computational object we constructed to carry out these Taylor approximations is called an {\textit AffApprox}.
+In the parameter space ${\mathcal W},$ all functions analyzed via Taylor
+approximations in this way are built up from the
+operations $ +,\ -,\ \times, \  /,\ \sqrt{}_{\phantom{|}} .$  We prove combination
+formulas for these operations, which show how the Taylor approximations
+(including the remainder term) change when one of these operations is
+applied to two AffApproxes.   This is carried out in Chapter 6. 
+
+To ensure that all of our computer calculations are rigorous, we use a round-off error analysis.  Typically, this is done by using interval
+arithmetic on floating-point numbers. 
+Instead, we introduce
+round-off error at the level of AffApproxes and
+incorporate the round-off error into the remainder term.  
+The main reason for this additional complexity is to get
+more accuracy in our calculation of AffApproxes, 
+which allows us to analyze substantially fewer boxes.
+Further, the individual computations are faster.
+This is all
+carried out in Sections 7 and 8.
+\end{preview}
