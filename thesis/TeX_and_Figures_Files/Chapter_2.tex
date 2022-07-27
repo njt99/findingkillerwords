@@ -182,8 +182,6 @@ parameters $\alpha$ with $d \le \ln(3).$  The
 following two propositions imply this subset of ${\mathcal T}^{\prime}$ lives in a compact subset of ${\mathcal P}^{\prime}.$
 \end{remark}
 
-%Note: GMT 1.10-1.11 dropped 
-
 \begin{figure}[h]\label{GMT fig 1.1}
 	\centering
 	\includegraphics[scale=0.500]{fig1.1}
@@ -194,7 +192,7 @@ all hyperbolic $3$\/{\textrm -}\/manifolds have {\textrm (}\/embedded\/{\textrm 
 radius $\ln(3)/2.$
 \end{proposition}
 
-\begin{proof}   In  [M1] it is proved that a closed geodesic of length $x + iy$ has a tube (embedded) of radius $r(x + iy)$ satisfying 
+\begin{proof}   In  \cite{M1} it is proved that a closed geodesic of length $x + iy$ has a tube (embedded) of radius $r(x + iy)$ satisfying 
 $$
 \sinh^2(r(x + iy))  =  \max_{n \in {\mathbf Z_+}} {1 \over 2} \left({\sqrt{1 - 2k(x,y,n)} \over k(x,y,n)} - 1\right) 
 $$
@@ -308,11 +306,11 @@ with associated group $\{G_\beta,f_\beta, w_\beta\}$ such that $G_\beta$ is conj
 \end{lemma}
 
 \begin{proof} We note that $d < l/2$ is eliminated from consideration by
-	Proposition ref{GMT prop1.11}i) %TODO:xref to cut
+Proposition \ref{GMT prop1.11}i)
 and the definition of ${\mathcal T}^\prime.$ If $d\le \ln(3),$
 then
 $0.0978\le l\le 1.289785$ by
-	Propositions ref{GMT prop1.10} and ref{GMT prop1.11} ii) %TODO: xref to cut.
+Propositions \ref{GMT prop1.10} and \ref{GMT prop1.11} ii)
 If for the marked group $\{G, f, w\}$ we have 
 $-l/2<r<0,$ then the marked group
 $\{G,f,w^{-1}\}$ is conjugate to an element of ${\mathcal T}$ whose new
@@ -339,9 +337,9 @@ possessing a shortest geodesic $\delta$ such that tuberadius$(\delta)\le \ln(3)/
 \end{problem}
 
 \begin{remarks}\label{GMT 1.15}
-i)  By a J. Weeks-modified version of {\textit SnapPea} [W1] it was known
+i)  By a J. Weeks-modified version of {\textit SnapPea} \cite{W1} it was known
 experimentally  that any shortest
-geodesic in Vol3 has a $0.415\ldots$ tube  (see \cite{G}).  Conjecturally, up to isometry, there are a total of six manifolds in the list answering Problem 1.14 (see Conjecture 1.31 and Remarks 1.32ii and 1.32iv).
+	geodesic in Vol3 has a $0.415\ldots$ tube  (see \cite{G}).  Conjecturally, up to isometry, there are a total of six manifolds in the list answering Problem \ref{GMT 1.14} (see Conjecture \ref{GMT 1.31} and Remarks \ref{GMT 1.32}ii and \ref{GMT 1.32}iv).
 \vglue4pt
 ii)  If a shortest geodesic $\delta$ in $N$ satisfies tuberadius$(\delta)\le
 \ln(3)/2,$ then $N$ gives
@@ -354,8 +352,8 @@ Find all parameters $\alpha=(l+it, d+ib, r+ia) \in {\mathcal T}.$
 \end{problem}
 
 \begin{remark}\label{GMT 1.17}
-In the next     paragraphs, we will describe our method of (partially) answering Problem 1.16.  But before starting this description, we
-mention a technical point: starting with Definition 1.22, we 
+	In the next     paragraphs, we will describe our method of (partially) answering Problem \ref{GMT 1.16}.  But before starting this description, we
+	mention a technical point: starting with Definition \ref{GMT 1.22}, we 
 will realize major advantages by working in the space ${\mathcal W} \supset \exp({\mathcal P}),$ and
 our results will ultimately be described in terms of ${\mathcal W}.$ But for now, for simplicity,  we will describe the results in terms of the unexponentiated space ${\mathcal P}.$
 
@@ -387,7 +385,7 @@ statement holds for all $\beta\in {\mathcal P}_i $ while continuing to avoid the
 
 
 \begin{definition}  \label{GMT 1.18} A word $h$ in $w,f,w^{-1},f^{-1}$ for which statement a) (resp.\ b)) in
-	Remark (CHECKTHIS: ref{GMT 1.17}) %TODO: xref to cut
+Remark \ref{GMT 1.17}
 holds for each $\beta\in {\mathcal P}_i$
 and for which $h_\beta$ is not a power of $f_\beta$ for each $\beta\in {\mathcal P}_i$ is
 called a {\textit killerword} for ${\mathcal P}_i$ with respect to contradiction a) (resp.\ b)).
@@ -434,7 +432,7 @@ L^\prime &\hskip-8pt=\hskip-8pt& \exp(L) = \exp(l+it),\enspace D^\prime = \exp(D
 i) We work with ${\mathcal W}$ instead of $\exp({\mathcal P})$ because we want our initial parameter space to be a (6-dimensional) box that is easily
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\mathcal W}_i$ of ${\mathcal W}$ will be eliminated because they are outside of $\exp({\mathcal P})$ not because of the analogues of conditions a) and b) in
-	Remark (CHECKTHIS ref{GMT 1.17}).  %TODO: xref to cut
+Remark \ref{GMT 1.17}
 The entire collection of conditions is given in Chapter 4.
  
 ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction \ref{GMT 5.3}.
@@ -547,7 +545,7 @@ operations $+, -, \times, /, \sqrt{}.$
  ii) During the course of the computer work needed to prove the main theorems, the parameter space
 ${\mathcal W}$ was decomposed into sub-boxes by computer via a recursive subdivision process:
 Given a sub-box  being analyzed, either it can be {\textit killed directly} (that is, eliminated by a killerword and associated condition as described in
-	Remark (CHECKTHIS: ref{GMT 1.17}),%TODO: xref to cut
+Remark \ref{GMT 1.17}
 or for the trivial reason described in Remark \ref{GMT 1.23} i), or it cannot.  
 If it cannot be killed directly, it is subdivided in half by a hyperplane
 $\{x_i = c \}$ (where $i$ runs through the various co-ordinate dimensions
@@ -583,7 +581,7 @@ initial box
 ${\mathcal W}$).  The range of co-ordinate values for each  exceptional  box $X_0, X_1, \ldots, X_6$ is given in Table \ref{GMT tab 1.1} (a limited number of significant
 digits is given), and  then a range of co-ordinates for exceptional regions (in ${\mathcal P}$) 
 ${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see
-	Remarks (CHECKTHIS: FIXME:1.30i) and 1.30ii)))  %TODO: xref to cut
+Remarks \ref{GMT 1.30}i) and \ref{GMT 1.30}ii)
 in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
 slightly from the use in \S 0.)
 Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
@@ -762,7 +760,7 @@ $r_2 = FWFwfwFwfWfwFwfw.$
  
 \begin{proof}{}  
 The proof follows along the lines presented in
-	Remark (CHECKTHIS: ref{GMT 1.17}).    %TODO: xref to cut
+Remark \ref{GMT 1.17}
 Two computer files contain the data needed for the proof.   
 The first computer file describes the partition of ${\mathcal W}$ into
 sub-boxes and attaches an integer to each such sub-box, 
@@ -983,15 +981,15 @@ r_{\textrm max} &\hskip-6pt =  0.002654&   a_{\textrm min} &\hskip-6pt =  -0.001
 
 \begin{remarks}\label{GMT 1.30}
 i)  The values in Table 1.1 are only 
-approximations of actual values which can be computed as in Remark 1.26iii.
+	approximations of actual values which can be computed as in Remark \ref{GMT 1.26}iii.
 \vglue4pt
-ii)  The values in Table 1.2 correspond to boxes in ${\mathcal P}$ which contain the natural log of the (exceptional) boxes in Table 1.1 (here we use the true co-ordinates of the boxes, not just the approximation-by-truncation co-ordinates).  
+	ii)  The values in Table \ref{GMT tab 1.2} correspond to boxes in ${\mathcal P}$ which contain the natural log of the (exceptional) boxes in Table \ref{GMT tab 1.1} (here we use the true co-ordinates of the boxes, not just the approximation-by-truncation co-ordinates).  
 For example,
  the rectangle in ${\mathbf C}$ determined by $l_{\textrm min}, l_{\textrm max}$,
 $t_{\textrm min}, t_{\textrm max}$ for ${\mathcal R}_0$ contains the natural log of the rectangle in ${\mathbf C}$ determined by $l'_{\textrm min},
 l'_{\textrm max}, t'_{\textrm min}, t'_{\textrm max}$ for $X_0$.  
 \vglue4pt
-iii)  In Chapter 3 we show that $X_0 \cap {\mathcal T}$ is a single parameter.  
+iii)  In Chapter 3 we show that $X_0 \cap {\mathcal T}$ is a single parameter.  %TODO: xref to cite
 This parameter has $L=D=0.8314429\ldots  -  (1.9455307\ldots) i $   and $R=0.$
 \vglue4pt
 iv)  Recall that $\ln(3)=1.0986\ldots\ $  .  Thus we see that all boxes
@@ -1032,11 +1030,11 @@ corresponding to $s_i,$ then $L_i, D_i, R_i$ are related as follows.
 i)
 Experimentally, at some point in the exceptional box $X_i$ under consideration the quasi-relators are actually relators. 
 \vglue4pt
-ii) In Chapter 3, we prove Conjecture 1.31 for $X_0.$ Recently, K. Jones and A. Reid have made further progress on Conjecture 1.31 (see \cite{JR}).  Among other things, they construct arithmetic hyperbolic $3$-manifolds associated to each exceptional box but $X_3$ and prove that the manifolds so constructed for $X_5$ and $X_6$ are isometric.  They are able to prove uniqueness
+ii) In Chapter 3, we prove Conjecture 1.31 for $X_0.$ Recently, K. Jones and A. Reid have made further progress on Conjecture 1.31 (see \cite{JR}).  Among other things, they construct arithmetic hyperbolic $3$-manifolds associated to each exceptional box but $X_3$ and prove that the manifolds so constructed for $X_5$ and $X_6$ are isometric.  They are able to prove uniqueness%TODO: xref to cite
 in the case of $X_0$ and
 the techniques they use generalize to the other arithmetic hyperbolic $3$-manifolds, but the analysis is more complicated and the question of uniqueness remains open in these cases.
 \vglue4pt
-iii) According to {\textit Heegaard} [Ber], for each $i$, 
+	iii) According to {\textit Heegaard} \cite{Ber}, for each $i$, 
 there exists a closed $3$-manifold $B_i$ of Heegaard genus 2 such that $\pi_1(B_i)=\langle f,w;r_1(X_i),r_2(X_i)\rangle $ and
 this group presentation arises naturally from the Heegaard splitting.
 \vglue4pt
@@ -1044,22 +1042,22 @@ this group presentation arises naturally from the Heegaard splitting.
 isometric to the Weeks census manifold $s479(-3,1).$
 Also experimentally, the manifold associated with $X_2$ is $s778(-3,1)$ and the manifold associated with $X_1$ is $v2678(2,1).$
 \vglue4pt
-v) Except for Vol3, R. Riley's program {\textit Poincar{\textrm \'{\textit e}}}  (see [R]) was the first to show (experimentally) that there is a closed orientable (hyperbolic) 
+	v) Except for Vol3, R. Riley's program {\textit Poincar{\textrm \'{\textit e}}}  (see \cite{R}) was the first to show (experimentally) that there is a closed orientable (hyperbolic) 
 $3$-manifold associated to each box.  It provided group presentations, which presumably could be shown to be those of the above.
 \vglue4pt
-vi)  Table 1.2, Conjecture 1.31, and Remark 1.32v) indicate that 
+	vi)  Table \ref{GMT tab 1.2}, Conjecture \ref{GMT 1.31}, and Remark \ref{GMT 1.32}v) indicate that 
 there is a closed hyperbolic $3$-manifold with shortest geodesic $\delta$
 having $1.2126 < \Relength(\delta) < 1.2129$ and 
 ${\textrm tuberadius}(\delta) < \ln(3)/2.$
 This indicates that the 
-Proposition 1.11ii) result
+	Proposition \ref{GMT prop1.11}ii) result
 ${\textrm tuberadius}(\delta) > \ln(3)/2$ if $\Relength(\delta) > 1.289785$
 is somewhat close to being sharp.
 \vglue12pt
 \end{remarks}
 
  The following conjecture is a succinct, though slightly weaker
-form of Conjecture 1.31.
+form of Conjecture \ref{GMT 1.31}.
 
 \begin{conjecture}\label{GMT 1.33}
   If $\delta$ is a shortest geodesic in a closed
@@ -1175,8 +1173,9 @@ simply checks whether this decomposition with conditions/
 killerwords works. 
 \end{remark}
 
+%TODO: remove redundant parts or delete.
 \begin{preview}\label{GMT 1.35}
-In Remark 1.17, we mentioned that we use first-order Taylor approximations, with remainder term, to show that
+	In Remark \ref{GMT 1.17}, we mentioned that we use first-order Taylor approximations, with remainder term, to show that
 a killerword which eliminates a point $x\in {\mathcal W}_i$ eliminates all of ${\mathcal W}_i.$  
 The computational object we constructed to carry out these Taylor approximations is called an {\textit AffApprox}.
 In the parameter space ${\mathcal W},$ all functions analyzed via Taylor
