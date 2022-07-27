@@ -347,7 +347,7 @@ rise to an element $\alpha\in {\mathcal T}.$  (In fact $N$ may give rise to fini
 Thus we need to investigate:
 \end{remarks}
 
-\begin{problem}
+\begin{problem}\label{GMT 1.16}
 Find all parameters $\alpha=(l+it, d+ib, r+ia) \in {\mathcal T}.$ 
 \end{problem}
 
@@ -404,6 +404,26 @@ $\Relength(h_\beta)$ or Redistance$(h_\beta(B_{(0;\infty)}), B_{(0;\infty)})$ an
 thus use the computer to eliminate all of~${\mathcal P}_i .$ 
 \end{remark}
 
+\begin{remark}\label{GMT 1.21}.
+	To analyze Relength and Redistance as in Remark \ref{GMT 1.17}, we would be led to work with the $\Arccosh$ function, because, 
+$${\mathrm length}(f) = 2\Arccosh({\mathrm trace}(A)/2)$$
+where $A\in {\mathrm SL}(2,{\mathbf C})$ represents the isometry $f.$
+(As we do not need this formula for ${\mathrm length}(f)$ we will neither prove the formula, nor explain technical details about it.)  This would be problematic from the view-point of error analysis---we do not want to deal with transcendental functions such as $\Arccosh.$  
+
+This problem can be  avoided slickly by exponentiating the preliminary parameter space ${\mathcal P}$ to get the parameter space ${\mathcal W}$ (the
+	definition of ${\mathcal W}$ is given in Definition \ref{GMT 1.22}).   Lemmas \ref{GMT 1.24} and \ref{GMT 1.25} then demonstrate
+that while working in ${\mathcal W}$ one need only
+understand the basic arithmetic operations $+, -, \times, /, \sqrt{}$.
+The machine implementation of these basic operations is governed by the IEEE standard IEEE-754 (see [IEEE]).
+\end{remark}
+\vglue8pt
+
+To expand a bit on the problematic nature of transcendental 
+functions, we note that
+our computer version of Taylor approximations (see Preview \ref{GMT 1.35} and
+Chapters 6 and 8 %TODO: chxref
+) is designed to work for functions built up out of the basic arithmetic operations.  It would be a nightmare to include
+functions such as the Arccosh.
 \vglue8pt 
 \begin{definition} \label{GMT 1.22} Let 
 \vglue4pt
@@ -1026,7 +1046,7 @@ corresponding to $s_i,$ then $L_i, D_i, R_i$ are related as follows.
 \end{itemize}
 \end{conjecture}
 
-\begin{remarks}
+\begin{remarks}\label{GMT 1.32}
 i)
 Experimentally, at some point in the exceptional box $X_i$ under consideration the quasi-relators are actually relators. 
 \vglue4pt
