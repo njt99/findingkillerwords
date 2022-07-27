@@ -9,10 +9,13 @@
    * [DONE] anchor both ends of all cross refs
    * [DONE] decide case by case whether it belongs in thesis
    * [DONE] finish the surgery (making any needed repairs)
- * address remaining FIXME and TODO
- * fix duplicate labels of GMT 5.1, 7.1, 7.2
+ * [njt] update refs, gen needed_cites; email tarball]
+ * [G;5-6pm PDT wed] fix missing citation warnings
+ * [njt;easy] fix duplicate labels of GMT 5.1, 7.1, 7.2
    * egrep 'label{GMT (5\.1|7\.1|7\.2)}' *tex
+ * add acks
+ * [njt] include `cweave verify.w`
  * fix Chapter/Section references.
- * fix missing citation warnings
+ * address any new FIXME or TODO
  * address remaining TeX warnings.
  * review PDF & fix bugs until satisfied.

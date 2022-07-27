@@ -340,7 +340,7 @@ If a shortest geodesic $\delta$ in $N$ satisfies tuberadius$(\delta)\le
 \ln(3)/2,$ then $N$ gives
 rise to an element $\alpha\in {\mathcal T}.$  (In fact $N$ may give rise to finitely many different elements of ${\mathcal T}.$)  
 Thus we need to investigate:
-\end{remarks}
+\end{remark}
 
 \begin{problem}\label{GMT 1.16}
 Find all parameters $\alpha=(l+it, d+ib, r+ia) \in {\mathcal T}.$ 
@@ -599,7 +599,7 @@ ${\mathcal R}_i \supset \exp^{-1}(X_i)$ is given (see
 Remarks \ref{GMT 1.30}i) and \ref{GMT 1.30}ii)
 in Table \ref{GMT tab 1.2}. (Note that this use of the symbol ${\mathcal R}_i$ differs
 slightly from the use in \S 0.)
-Finally, two {\textit quasi-relators} are given in Proposition \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
+Finally, two {\textit quasi-relators} are given in Theorem \ref{GMT 1.28} for each exceptional box $X_0, X_1, \ldots, X_6$ (see the next definition).\end{remark}
  
 \begin{definition} \label{GMT 1.27} A {\textit quasi-relator} in a sub-box $X$ of ${\mathcal W}$ is a word in $f,w,F=f^{-1},W=w^{-1}$ that is close to the identity
 throughout
@@ -607,7 +607,7 @@ $X$ and experimentally appears to be converging to the identity at some point in
 that of $f$ at all points in $X.$
 \end{definition}
 
-\begin{proposition}\label{GMT 1.28}  
+\begin{theorem}\ref{GMT 1.28}  
 Within the parameter space ${\mathcal W}$ but outside the seven exceptional boxes there are no parameter points corresponding to 
 marked groups $\{G,f,w\}$ where $G$ is 
 discrete{\textrm ,} torsion\/{\textrm -}\/free and  parabolic\/{\textrm -}\/free\/{\textrm ;}
@@ -770,7 +770,7 @@ $110000001010000110\ 0,$
 $r_1 = FWFwFWfWFwFWFwfw,$
 
 $r_2 = FWFwfwFwfWfwFwfw.$
-\end{proposition}
+\end{theorem}
 
  
 \begin{proof}{}  
@@ -1155,7 +1155,6 @@ simply checks whether this decomposition with conditions/
 killerwords works. 
 \end{remark}
 
-%TODO: remove redundant parts or delete.
 \begin{preview}\label{GMT 1.35}
 	In Remark \ref{GMT 1.17}, we mentioned that we use first-order Taylor approximations, with remainder term, to show that
 a killerword which eliminates a point $x\in {\mathcal W}_i$ eliminates all of ${\mathcal W}_i.$  
@@ -1165,7 +1164,8 @@ approximations in this way are built up from the
 operations $ +,\ -,\ \times, \  /,\ \sqrt{}_{\phantom{|}} .$  We prove combination
 formulas for these operations, which show how the Taylor approximations
 (including the remainder term) change when one of these operations is
-applied to two AffApproxes.   This is carried out in Chapter 6. 
+applied to two AffApproxes.   This is carried out in
+	Chapter 6. %TODO: chxref
 
 To ensure that all of our computer calculations are rigorous, we use a round-off error analysis.  Typically, this is done by using interval
 arithmetic on floating-point numbers. 
@@ -1177,5 +1177,6 @@ more accuracy in our calculation of AffApproxes,
 which allows us to analyze substantially fewer boxes.
 Further, the individual computations are faster.
 This is all
-carried out in Sections 7 and 8.
+carried out in
+	Sections 7 and 8.%TODO: chxref
 \end{preview}
