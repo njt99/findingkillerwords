@@ -5,10 +5,10 @@
  * [DONE] numbering
  * [DONE] cross-read vs. GMT
  * [DONE] resolve discussion TODO
- * items dropped from thesis
+ * [DONE] items dropped from thesis
    * [DONE] anchor both ends of all cross refs
    * [DONE] decide case by case whether it belongs in thesis
-   * finish the surgery (making any needed repairs)
+   * [DONE] finish the surgery (making any needed repairs)
  * address remaining FIXME and TODO
  * fix duplicate labels of GMT 5.1, 7.1, 7.2
    * egrep 'label{GMT (5\.1|7\.1|7\.2)}' *tex
