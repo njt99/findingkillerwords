@@ -26,22 +26,26 @@ or $M$ lies within one of seven tightly constrained
 exceptional shortest-geodesic-geometry regions.
 \end{proposition}
 
-and a related proposition; both of which were used in the proof of
-the main technical result of \cite{GMT}:
-\begin{theorem}{\cite{GMT}}\label{GMT 0.1}\label{GMT 0.2}
+This proposition and a related one were used in the proof of
+the main technical result of \cite{GMT}, the topological rigidity of hyperbolic 3-manifolds. 
+
+\begin{theorem}{\cite{GMT}}\label{GMT 0.2}
 Every closed hyperbolic $3$-manifold
 has a non-coalescible insulator family,
 indeed one coming from a shortest geodesic.
 As a consequence,
 homotopy hyperbolic $3$-manifolds are hyperbolic.
 \end{theorem}
+
 More recently, the proposition has been sharpened:
+
 \begin{theorem}{}
 Let $M$ be an orientable hyperbolic $3$-manifold,
 and let $\delta$ be a shortest geodesic.
 Then, either ${\mathit tuberadius}(\delta) > \ln(3)/2$, or
 $M$ is isometric to one of seven specific manifolds.
 \end{theorem}
+
 \begin{proof}{}
 	Let $X_0, \cdots, X_6$ denote the exceptional regions of Proposition \ref{GMT 1.28}
 with $N_i$ the corresponding conjectural manifold.
@@ -59,47 +63,45 @@ i.e. each shortest geodesic has a $ln(3)/2$ tube.
 
 Other applications of the procedure:
 \vskip 8pt
-Theorem \cite{G}  (Smale conjecture of hyperbolic 3-manifolds)
+\begin{theorem} \cite{G1}  (Smale conjecture of hyperbolic 3-manifolds)
 If N is a closed hyperbolic 3-manifold,
-then the natural inclusion ${\mathrm Isom}(N)\to {\mathrm Diff}(N)$ is a homotopy equivalence.
+then the natural inclusion ${\mathrm Isom}(N)\to {\mathrm Diff}(N)$ is a homotopy equivalence.\end{theorem}
 \vskip 8pt
-The proof made essential use of the fact that a shortest geodesic
+The proof makes essential use of the fact that a shortest geodesic
 of a closed hyperbolic 3-manifold satisfies the insulator condition \cite{GMT}.
 \vskip 8pt
-Theorem \cite{GMM}, \cite{Mi} The Week's manifold
-is the unique closed orientable hyperbolic 3-manifold of minimal volume.
+\begin{theorem} \cite{GMM}, \cite{Mi} The Weeks manifold
+is the unique closed orientable hyperbolic 3-manifold of minimal volume.\end{theorem}
 
-This result relies on 
+In addition to \cite{GMT} this result relies on 
 
-Lemma \cite{ACS}  Suppose that M is a closed, orientable hyperbolic 3-manifold,
+\begin{lemma} \cite{ACS}\label{acs}  Suppose that M is a closed, orientable hyperbolic 3-manifold,
 and that C is a shortest geodesic in M.
 Set $N = \mathrm{drill}_C(M)$. If $\mathrm{tuberad}(C) \ge \ln(3)/2$ then
-$\mathrm{vol} N < 3:0177 \mathrm{vol}M$.
+$\mathrm{vol} N < 3.0177 \mathrm{vol}M$.\end{lemma}
 
 This is based on a result of \cite{ADST},
-that makes essential use of Perelman's [Pe] monotonicty result.
-a key element of his proof of geometrization and the $\ln(3)/2$
-theorem of \cite{GMT}.
-Lemma \cite{ACS} is used to prove other results such as 
+that makes essential use of Perelman's \cite{Pe1}, \cite{Pe2} Ricci flow with surgery and as well as his monotonicity result, which are key elements of his proof of geometrization.  Lemma \ref{acs} is used to prove other results such as:
 
-Theorem \cite{ACS} Suppose that M is a closed, orientable, hyperbolic
+
+%It  and the $\ln(3)/2$
+%theorem of \cite{GMT}.
+
+
+\begin{theorem}\cite{ACS} Suppose that M is a closed, orientable, hyperbolic
 3-manifold such that ${\mathrm vol}(M) \le 1.22$.
-Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.
+Then $H_1(M:Zp)$ has dimension at most 3 for every prime p.\end{theorem}
 
-(The statement is sharpened slightly to take into account \cite{GT})
+That result also requires this work and \cite{GMT}.  \vskip 8pt
 
-Theorem \cite{LM} Let M be a compact orientable 3-manifold with boundary a torus,
-and with interior admitting a complete finite-volume hyperbolic structure.
-Then the number of exceptional slopes on M is at most 10.
+The methods of this work are crucial to the following result.
 
-This result, known as the Gordon conjecture,
-relies on rigorous computer assistance using the AffApprox technology.
-
-Finally, the procedure is currently in use
-by Gabai, Haraway, Meyerhoff, Thurston, and Yarmola
-to rigorously analyze small orientable cusped hyperbolic $3$-manifolds,
-and to rigorously analyze small non-orientable closed hyperbolic $3$-manifolds.
-
+\begin{theorem} \cite{GHMTY} The figure-8 knot complement is the unique 1-cusped hyperbolic 3-manifold with 9 or more non hyperbolic fillings.  \end{theorem}
+ 
+This result gives a positive proof of the long-standing Gordon exceptional filling conjecture that has attracted much attention.  See \cite{GHMTY} for a detailed history.  An important result in this direction was the theorem of Lackenby and Meyerhoff \cite{LM} who showed that a cusped hyperbolic 3-manifold has at most 10 exceptional fillings.  That result also relied on rigorous computer assistance using the AffApprox technology.
+\vskip 8pt
+For a survey this work and further developments including other applications, see \cite{GMTY}.
+\vskip 8pt
 
 This paper is organized as follows.
 
@@ -140,12 +142,14 @@ Finally, in Section 8, we present an updated version of
 the code used to check that the proof is valid,
 with self-contained copies of the proofs required for the reader
 to check its own validity.
+\vskip 8pt
 
-{\textit Prior publication}
-Sections 2 through 6 originally appeared in \cite{GMT},
-and are reproduced here with only minor revision.
-Section 1 is an abridged version of the parts of the rest of \cite{GMT}.
-Section 7 borrows from material which originally appeared in remarks in \cite{GMT}.
+\noindent\textbf {Prior publication:} Chapter 2 includes material from section 0 of \cite{GMT}.
+Chapters 3 through 7 originally appeared as sections 1 and 5 through 8 of \cite{GMT},
+and are reproduced here with minor revision.  In particular, Chapter 3 is a somewhat abridged version of section 1 of \cite{GMT}.
+Chapter 8, which includes new insights, also contains material which originally appeared in remarks in \cite{GMT}.
 
-{\textit Acknowledgements}.
+\vskip 8pt
+
+\noindent\textbf {Acknowledgements:}
 %TODO: Acknowledge

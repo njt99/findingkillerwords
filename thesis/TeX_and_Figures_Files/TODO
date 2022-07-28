@@ -9,7 +9,8 @@
  * [DONE] update refs, gen needed_cites; email tarball
  * [DONE] fix missing citation warnings
  * [DONE] fix duplicate labels of GMT 5.1, 7.1, 7.2
- * add acks
+ * add acknowledgements
+ * address email issues
  * [njt] include `cweave verify.w`
  * fix Chapter/Section references.
  * address any new FIXME or TODO
