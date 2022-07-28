@@ -16,7 +16,7 @@ $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
 \end{conventions}
 
 \begin{remarks} \label{GMT 8.2}
-A review of Definition \ref{GMT 7.2} (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
+A review of Definition \ref{GMT def7.2} (XComplexes and AComplexes; loosely, exact and approximate complex numbers) might be helpful at this time.
 
 One approach to round-off error for AffApproxes would be to replace the four complex numbers in the definition of AffApprox by four AComplex numbers complete with their round-off errors, and similarly for the one real number.  We will not do this because it would necessitate keeping track of five separate round-off-error terms when we do AffApprox calculations.
 
@@ -28,7 +28,7 @@ essentially the same as in
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.\end{remarks}
 
 \begin{conventions}\label{GMT 8.3}
-i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT 7.1}.  Also, the propositions in
+i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT lemma7.1}.  Also, the propositions in
 	Section (CHECKTHIS: 6)  %TODO: chxref
 will be utilized;  as such, the numbering of the propositions is the same in
 	Sections (CHECKTHIS: FIXME:6 and FIXME:8)  %TODO: chxref
@@ -96,7 +96,7 @@ y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2
 err} \oplus y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
 \end{eqnarray*}
  To get the last line
-we used Lemma \ref{GMT 7.1}. \end{proof}
+we used Lemma \ref{GMT lemma7.1}. \end{proof}
 
 $X - Y$:
 

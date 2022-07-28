@@ -1,7 +1,7 @@
 \chapter{Complex numbers with round-off error}
 
 
-\begin{remark} \label{GMT 7.1}
+\begin{remark} \label{GMT remark7.1}
 The theoretical method for proving Theorem \ref{GMT 0.2}
 has been implemented via the computer program {\textit verify}, which is available, together with the relevant data sets, at the {\textit Annals} web site.  To make this computer-aided proof rigorous, we needed to deal with round-off error in calculations.  
 
@@ -15,7 +15,7 @@ sub-boxes. This necessitates that we incorporate round-off error directly into c
 In this section we show how to do standard operations on complex numbers while keeping track of round-off error.
 In the next section we work with  AffApproxes.\end{remark}
 
-\begin{definition}\label{GMT 7.2}
+\begin{definition}\label{GMT def7.2}
 There are two types of complex numbers to consider: 
 
 \begin{itemize}
@@ -112,7 +112,7 @@ From these formulas, we immediately compute the following.
 \leq (1 + EPS) |h_\circ (a,b)|.
 \end{eqnarray*}
 Of course, we can also get the following type of formula, which is sometimes convenient,
- for example, in the proof of Lemma \ref{GMT 7.2}:
+ for example, in the proof of Lemma \ref{GMT lemma7.2}:
 $$\left({1 \over {1 + {EPS \over 2}}}\right) |a \oplus b| \leq |a + b| 
 \leq \left({1 \over {1 - {EPS \over 2}}}\right) |a \oplus b|.$$
 
@@ -132,7 +132,7 @@ $(1+EPS) \otimes (a \oplus b)$ is a better approximation to $a+b$ than $a \oplus
 case $a+b = 0$ is trivial, similarly for the left-hand inequality.
 \end{proof}
 
-\begin{lemma}\label{GMT 7.1} $$(1 + EPS/2)^a A \le (1 + k EPS) \otimes A$$ 
+\begin{lemma}\label{GMT lemma7.1} $$(1 + EPS/2)^a A \le (1 + k EPS) \otimes A$$ 
  where $A$ is a nonnegative machine number{\textrm ,} and $a$ is a {\textrm (}\/not huge\/{\textrm )} integer{\textrm ,} such that
 for $a$ even{\textrm ,} $k = {a \over 2} + 1$ and  for $a$ odd, $k = {a+1 \over 2} + 1$. 
 \end{lemma}
@@ -370,7 +370,7 @@ nrm)\right|\\
  
 Before continuing, let us compare ${1 \over nrm}$ and ${1 \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2}$ by developing a formula for
 comparing ${1 \over a^2 + b^2}$ and its associated ${1 \over nrm}$:
-\begin{lemma}\label{GMT 7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
+\begin{lemma}\label{GMT lemma7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
 {\textit where} $nrm = a\otimes a \oplus b \otimes b.$
 \end{lemma}
 
