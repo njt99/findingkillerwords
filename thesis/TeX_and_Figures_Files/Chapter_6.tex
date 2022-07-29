@@ -1,13 +1,13 @@
-\chapter{AffApproxes with round-off error}
+\chapter{AffApproxes with round-off error}\label{Ch.AffWithEPS} % =~ GMT \S 8
  
-In Section 6, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
+In Chapter \ref{Ch.AffApprox}, we saw how to do calculations with AffApproxes.  Here, we incorporate round-off error into
 these calculations.  
 
-\begin{conventions}\label{GMT 8,1}
+\begin{conventions}\label{GMT 8.1}
 An AffApprox $x$ is a five-tuple
 $(x.f; x.f_0,x.f_1,x.f_2; x.{\textrm err})$
 consisting of four complex numbers $(x.f, x.f_0,x.f_1, x.f_2)$ and one real number $x.{\textrm err}.$  In
-	Section FIXME:6 %TODO: chxref
+	Chapter \ref{Ch.AffApprox}
 , the
 real number was denoted $x.e,$ but it seems preferable to use $x.{\textrm err}$ here.  Recall (Definition \ref{GMT 6.4}
 that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1 \
@@ -24,14 +24,13 @@ Instead, we will
 replace the four complex numbers by four XComplexes and push all the round-off error into the $.{\textrm err}$ term.  
 Thus, the definition of AffApprox remains 
 essentially the same as in
-	(CHECKTHIS: Section FIXME:6).  %TODO: chxref
+	\ref{Ch.AffApprox}
 We note that, in doing an AffApprox calculation, our subsidiary calculations will generally be on XComplex numbers and produce an AComplex number whose $.e$ term will be plucked off and forced into the $.{\textrm err}$ term of the final AffApprox.\end{remarks}
 
 \begin{conventions}\label{GMT 8.3}
-i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT lemma7.1}.  Also, the propositions in
-	Section (CHECKTHIS: 6)  %TODO: chxref
-will be utilized;  as such, the numbering of the propositions is the same in
-	Sections (CHECKTHIS: FIXME:6 and FIXME:8)  %TODO: chxref
+i)  In what follows, we will use Basic Properties \ref{GMT basic7.0} and Lemmas \ref{GMT 7.0} and \ref{GMT lemma7.1}.  Also, the corresponding propositions in
+	Chapter \ref{Ch.AffApprox}
+will be utilized.
 (for example, Proposition \ref{GMT prop6.7} corresponds to Proposition \ref{GMT prop8.7}.  
 \vglue4pt
 	ii)  Some notational simplifications will be introduced: ${\textrm dist}(x)$ before Proposition \ref{GMT prop8.6}, $ax$ before Propositions \ref{GMT prop8.8}, \ref{GMT prop8.9}, \ref{GMT prop8.11a}, 
@@ -45,7 +44,7 @@ iv) The propositions that follow include in their statements the definitions of 
 	\ref{GMT 6.6} iii).
 \vglue4pt
 	v)  We remind the reader
-	(CHECKTHIS: (see Section ref{GMT 7.4}))  %TODO: chxref
+	(see Conventions \ref{GMT cs7.4}
 	that all machine operations act on machine numbers, and that the 
 various variables appearing in the propositions are assumed to be doubles.
 \end{conventions}
@@ -62,7 +61,7 @@ $X+Y$:
 We analyze the addition of the  {\textrm AffApproxes} 
  $x = (x.f; x.f_0,x.f_1, x.f_2; x.{\textrm err})$  and 
 $y = (y.f; y.f_0,y.f_1,y.f_2; y.{\textrm err}).$  To get the first term in $x+y$ we add the XComplex numbers $x.f$ and $y.f;$ which
-produce the AComplex number $r\_f = x.f + y.f$ (see Proposition \ref{GMT 7.4}), and then we pluck off the XComplex part,
+produce the AComplex number $r\_f = x.f + y.f$ (see Proposition \ref{GMT prop7.4}), and then we pluck off the XComplex part,
 which we denote $r\_f.z.$  The round-off error part $r\_f.e$ will be foisted into the overall error term $r\_{\textrm error}$
 for $x+y.$ Similarly for the next three terms in $x + y.$
 
@@ -147,7 +146,7 @@ r\_{\textrm error}& =& (1 + EPS) \otimes (x.{\textrm err} \oplus r\_f.e).\end{eq
 $X \times Y$: 
 We multiply the AffApproxes $x$ and $y$ while pushing all error into the $.{\textrm err}$ term.
 
-We will use the functions (see Formulas \ref{GMT formula7.0} and \ref{GMT formula7.1}, at the end of Section~7) ${\textrm absUB}= (1 + 2EPS) \otimes
+We will use the functions (see Formulas \ref{GMT formula7.0} and \ref{GMT formula7.1}, at the end of Chapter \ref{Ch.XComplex}) ${\textrm absUB}= (1 + 2EPS) \otimes
 {\textrm hypot}_o(x.re,x.im)$ and 
 ${\textrm absLB}(x) = (1 - 2EPS) \otimes {\textrm hypot}_o(x.re,x.im)$.
 

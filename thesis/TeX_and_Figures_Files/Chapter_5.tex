@@ -1,4 +1,4 @@
-\chapter{Complex numbers with round-off error}
+\chapter{Complex numbers with round-off error}\label{Ch.XComplex} % =~ GMT \S 7
 
 
 \begin{remark} \label{GMT remark7.1}
@@ -12,8 +12,8 @@ would be much too slow given the size of our collection of sub-boxes and conditi
 To solve this problem of speed, we implement round-off error at a higher level of programing.  That is, we incorporate round-off error directly
  into AffApproxes,  which makes our error calculations more accurate, thereby avoiding much subdivision of
 sub-boxes. This necessitates that we incorporate round-off error directly into complex numbers as well. 
-In this section we show how to do standard operations on complex numbers while keeping track of round-off error.
-In the next section we work with  AffApproxes.\end{remark}
+In this chapter we show how to do standard operations on complex numbers while keeping track of round-off error.
+In the next chapter we work with  AffApproxes.\end{remark}
 
 \begin{definition}\label{GMT def7.2}
 There are two types of complex numbers to consider: 
@@ -37,7 +37,7 @@ In general,  our operations  act on XComplexes and produce AComplexes, or they a
  AComplexes.  In one case, the unary minus, an XComplex goes to an XComplex.  
 In the calculations that follow the effect on the error is the whole point.\end{remark}
 
-\begin{conventions} \label{GMT 7.4}
+\begin{conventions} \label{GMT cs7.4}
 We begin, by writing down our basic rules, which follow easily from the IEEE-754 standard for machine arithmetic (see \cite{IEEE}).
 (Actually,  the ``hypot" function $h(a,b)$, which computes by elaborate chicanery $\sqrt{a^2 + b^2},$ is not part of the IEEE-754 standard, but  satisfies the appropriate standard according to the documentation provided (see \cite{K1}).)  The operations here are on
 double-precision floating-point real numbers (``doubles") and we denote a true operation by the usual symbol and the associated machine operation by the same symbol in a circle, with two exceptions: a machine square root $\sqrt a$ is denoted $\root o \of a$ and the machine version of the hypot function is denoted $h_\circ$.  Perhaps a third exception is our occasional notation of true multiplication by the absence of a symbol.  
@@ -65,8 +65,9 @@ $$|(a + b) - (a \oplus b)| \leq (EPS/2) |a \oplus b|$$
 follows because the true answer has ``exponent" which is less than or equal to the exponent of the machine answer.  We reiterate, that in both cases, $a$ and $b$ are assumed to be machine numbers.
 
 Of course, a machine operation such as $\oplus$ must act on doubles, while a ``true" operation such as $+$ can act on reals (which includes doubles).
-In this section, long strings of inequalities will be used to prove the various propositions, and care was taken to ensure that machine operations act on machine numbers.  In particular, the various variables appearing in the propositions are assumed to be doubles. The IEEE-754 standard provides for conversions from decimal to binary (within the appropriate range, conversion is to the nearest representable number) and from binary to decimal.  However, these are rarely used in this paper, although a trivial class of exceptions is provided by the decimal numbers in the conditions of
-Section 5.
+In this chapter,
+long strings of inequalities will be used to prove the various propositions, and care was taken to ensure that machine operations act on machine numbers.  In particular, the various variables appearing in the propositions are assumed to be doubles. The IEEE-754 standard provides for conversions from decimal to binary (within the appropriate range, conversion is to the nearest representable number) and from binary to decimal.  However, these are rarely used in this paper, although a trivial class of exceptions is provided by the decimal numbers in the conditions of
+	Chapter \ref{Ch.ConditionsTree}
 
 When calculations underflow or overflow outside of the range of representable numbers, we require that the computer inform us if either exception has occurred. \end{conventions} 
 \vglue12pt

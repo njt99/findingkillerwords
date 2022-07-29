@@ -1,5 +1,5 @@
 \def\Arccosh{{\mathrm Arccosh}}
-\chapter{Introduction}
+\chapter{Introduction}\label{Ch.intro}
 
 This paper documents a computer-assisted procedure
 for rigorously analyzing small hyperbolic $3$-manifolds.
@@ -105,13 +105,13 @@ For a survey this work and further developments including other applications, se
 
 This paper is organized as follows.
 
-In Section \ref{Ch. Technical Introduction} we introduce
+In Chapter \ref{Ch.TechIntro} we introduce
 \cite{GMT}; Proposition 1.28 as Theorem \ref{GMT 1.28},
 and sketch its proof.
 
-In Section 2 we provide a formal statement and proof of Theorem \ref{GMT 1.28}.
+In Chapter \ref{Ch.WordsParams} we provide a formal statement and proof of Theorem \ref{GMT 1.28}.
 
-In Section 3,
+In Chapter \ref{Ch.ConditionsTree},
 the method for describing the decomposition
 of the parameter space ${\mathcal W}$ into sub-regions is given,
 and the conditions used to eliminate sub-regions are discussed.
@@ -124,21 +124,21 @@ first-order Taylor approximation of the function together with a
 remainder 
 bound.
 Our computer version of such a Taylor approximation with remainder bound 
-is called an {\textit AffApprox} and in Section 4,
+is called an {\textit AffApprox} and in Chapter \ref{Ch.AffApprox},
 the relevant theory is developed.
-At this point, the detailed example of Section 3 can be completed.
+At this point, the detailed example of Chapter \ref{Ch.ConditionsTree} can be completed.
 
-In Sections 5 and 6, round-off error analysis appropriate to our 
-set-up is introduced.  Specifically, in Section 6, round-off error is 
+In Chapter \ref{Ch.XComplex} and \ref{Ch.AffWithEPS}, round-off error analysis appropriate to our 
+set-up is introduced.  Specifically, in Chapter \ref{Ch.AffWithEPS}, round-off error is 
 incorporated 
-into the {\textit AffApprox} formulas introduced in Section 4.  The proofs here 
+into the {\textit AffApprox} formulas introduced in Chapter \ref{Ch.AffApprox}.  The proofs here 
 require an analysis of round-off error for complex numbers, which is carried 
-out in Section 5.
+out in Chapter \ref{Ch.XComplex}.
 
-In Section 7 we give some hints about the search for a atree,
+In Section \ref{Ch.Crumbs} we give some hints about the search for a tree,
 in the hope that they will help others endeavoring to apply these methods.
 
-Finally, in Section 8, we present an updated version of
+Finally, in Chapter \ref{Ch.Verify}, we present an updated version of
 the code used to check that the proof is valid,
 with self-contained copies of the proofs required for the reader
 to check its own validity.

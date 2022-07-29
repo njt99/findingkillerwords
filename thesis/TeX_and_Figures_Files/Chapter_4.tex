@@ -1,15 +1,16 @@
-\chapter{Affine approximations}
+\chapter{Affine approximations}\label{Ch.AffApprox} % =~ GMT \S 6
 
  
 \begin{remark} \label{GMT 6.1}
 To show that a sub-box of the parameter box ${\mathcal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
-Section 5).  That is, we are simply analyzing a certain function from the sub-box to ${\mathbf C}$.  
+	Chapter \ref{Ch.ConditionsTree}
+	).  That is, we are simply analyzing a certain function from the sub-box to ${\mathbf C}$.  
 
 As described in Remark \ref{GMT 6.5}, this analysis can be pulled back from the sub-box in question to the closed polydisc 
 $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
 Loosely,  we will analyze such a function on $A$ by using  Taylor approximations consisting of an affine approximating
 function together with a bound on the ``error" in the approximation (this could also be described as a ``remainder bound").  This ``error" 
-is separate from round-off error,  which will be analyzed in Chapters 6 and 7.  \end{remark}
+is separate from round-off error,  which will be analyzed in Chapters \ref{Ch.XComplex} and \ref{Ch.AffWithEPS}.  \end{remark}
 
 \begin{problem} There are two immediate problems likely to arise from this Taylor approximation approach.
 The first problem is the appearance of unpleasant functions such as 
@@ -26,7 +27,7 @@ A similar approach was developed independently by Figuereido and Stolfi  (see \c
 We set up the Taylor approximation approach rigorously
 as follows in Definition \ref{GMT 6.4}.
 The notation will be a bit unusual, but we are motivated by a desire to stay close to the notation used in the checker computer programs, {\textit verify}.  However, it should be pointed out that the formulas in this
-section will be superseded by the ones in Chapter 7, which incorporate a round-off error analysis.  It is the Chapter 7 formulas that are
+	chapter will be superseded by the ones in Chapter \ref{Ch.AffWithEPS}, which incorporate a round-off error analysis.  It is the Chapter \ref{Ch.AffWithEPS} formulas that are
 used in {\textit verify}.\end{remark}
 
 \begin{definition} \label{GMT 6.4} An {\textit AffApprox}  $x$ is a five-tuple
@@ -49,8 +50,8 @@ After the following remarks, we state and prove the combination formulas.
 
 \begin{remarks} \label{GMT 6.6}
 i)i
-The reader man find useful the sequential correspondence between propositions of this Chapter and those of
-Chapter 7 % file ChPTER_6.TEX. TODO: chxref
+The reader may find useful the sequential correspondence between propositions of this Chapter and those of
+	Chapter \ref{Ch.AffWithEPS}.
 \vglue2pt
 ii)  The negation of a set of functions is the set consisting of the negatives of the original functions, and similarly for other operations.
 \vglue2pt
@@ -98,7 +99,7 @@ $$x - y \equiv (x.f - y.f; x.f_0 - y.f_0, x.f_1 - y.f_1, x.f_2 - y.f_2; x.e + y.
 
 In what follows,  ``double" refers to a real number, and has an associated AffApprox, with the last four entries zero.  When we do
 machine arithmetic in
-Chapters (CHECKTHIS: 6 and 7),  %TODO: chxref
+Chapters \ref{Ch.XComplex} and \ref{Ch.AffWithEPS},
 doubles will be  machine numbers.
 
 \begin{proposition}{\label{GMT prop6.4} {\textrm (addition of an AffApprox and a double)}} If $x$ is an {\textrm AffApprox}  and $y$ is a double{\textrm ,}
@@ -341,7 +342,7 @@ can get closer to the origin than
 We can now complete the analysis begun in Example \ref{GMT 5.4},
 because we can describe $f$ and $w$ as 2-by-2 matrices of AffApproxes.
 We note the minor quibble that the full definition of AffApprox is
-given in Section 7, where round-off error is incorporated into
+	given in Chapter \ref{Ch.AffWithEPS}, where round-off error is incorporated into
 the remainder/error-bound term.
 
 For convenience,

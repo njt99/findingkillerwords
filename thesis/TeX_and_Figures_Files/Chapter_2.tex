@@ -5,7 +5,7 @@
 \def\distance{{\textrm distance}}
 
 \vglue-8pt
-\chapter{Killerwords and the parameter space}
+\chapter{Killerwords and the parameter space}\label{Ch.WordsParams} %=~ GMT \S 1
 \vglue-4pt
 
 \begin{notationsandconventions}\label{GMT 1.1}.
@@ -94,8 +94,7 @@ $\distance(\sigma,\tau) = 0 + i0,$ or $0 + i\pi$ depending on whether or not $\s
 Define ${\textit Redistance} = {\mathrm Re} (\distance).$
 
 As defined, Redistance is nonnegative.
-In Definition \ref{GMT 1.8} and in
-	Chapters 2 and 3 %TODO:chxref
+In Definition \ref{GMT 1.8},
 it will be useful to have a broader definition. Given an oriented
 geodesic $\alpha$ in ${\mathbf H}^3$ orthogonal to oriented geodesics $\beta$ and $\gamma$, define $d_\alpha(\beta,\gamma) \in {\mathbf C}$ where a
 $d_\alpha(\beta,\gamma)$ translation of ${\mathbf H}^3$  along $\alpha$ takes $\beta$ to $\gamma.$
@@ -182,7 +181,7 @@ parameters $\alpha$ with $d \le \ln(3).$  The
 following two propositions imply this subset of ${\mathcal T}^{\prime}$ lives in a compact subset of ${\mathcal P}^{\prime}.$
 \end{remark}
 
-\begin{figure}[h]\label{GMT fig 1.1}
+\begin{figure}[ht]\label{GMT fig 1.1}
 	\centering
 	\includegraphics[scale=0.500]{fig1.1}
 \end{figure}
@@ -416,7 +415,7 @@ The machine implementation of these basic operations is governed by the IEEE sta
 To expand a bit on the problematic nature of transcendental 
 functions, we note that
 our computer version of Taylor approximations (see Preview \ref{GMT 1.35} and
-Chapters 6 and 8 %TODO: chxref
+Chapters \ref{Ch.AffApprox} and \ref{Ch.AffWithEPS}
 ) is designed to work for functions built up out of the basic arithmetic operations.  It would be a nightmare to include
 functions such as the Arccosh.
 \vglue8pt 
@@ -448,7 +447,7 @@ i) We work with ${\mathcal W}$ instead of $\exp({\mathcal P})$ because we want o
 subdivided.  This has the side effect that certain regions (sub-boxes)
  ${\mathcal W}_i$ of ${\mathcal W}$ will be eliminated because they are outside of $\exp({\mathcal P})$ not because of the analogues of conditions a) and b) in
 Remark \ref{GMT 1.17}
-The entire collection of conditions is given in Chapter 4.
+	The entire collection of conditions is given in Chapter \ref{Ch.ConditionsTree}.
  
 ii)  The presence of the factor $2^{(5-i)/6}$ in the definition of ${\mathcal W}$ is explained in Construction \ref{GMT 5.3}.
 Briefly, the main reason for including it
@@ -569,7 +568,7 @@ cyclically) and the two pieces are analyzed separately, and so on.
 As such, a sub-box of ${\mathcal W}$ can be described by a sequence of 0's and 1's where 0 means ``take the lesser $x_i$ values" and 1 means ``take the greater $x_i$ values."  
 For the decomposition of ${\mathcal W}$ into sub-boxes, all the 
 sub-box descriptions could be neatly encoded into one tree (although in practice we found it preferable to use several trees to describe the entire
-decomposition.  See Chapter 4).
+	decomposition.  See Chapter \ref{Ch.ConditionsTree}).
 \vglue4pt
 iii) In the following proposition, seven {\textit exceptional boxes} are described as sequences of 0's and 1's.  
 Four of the exceptional boxes---$X_0, X_4, X_5, X_6$---are each the union of two abutting sub-boxes, $X_0 = X_{0a} \cup X_{0b}$ and so on.  It is a pleasant exercise to work through the fact that they abut.  
@@ -783,7 +782,7 @@ and the second file, called ``conditionlist" is an ordered list of conditions an
 The integer associated to a sub-box in the first file describes the numbered condition/killerword from   conditionlist that will eliminate the sub-box
 in question (other than those corresponding to the $X_i).$ A computer program named {\textit verify} shows
 that the conditions and killerwords in question actually do kill off their associated sub-boxes (see
-	Section (CHECKTHIS: 5)  %TODO: chxref
+	Section \ref{Ch.ConditionsTree}
 	for more details).  This computer
 program addresses the issues of Remark \ref{GMT 1.20}.  The code for {\textit
 verify} is available at the {\textit Annals} web site. 
@@ -1008,7 +1007,7 @@ l'_{\textrm max}, t'_{\textrm min}, t'_{\textrm max}$ for $X_0$.
 
 The following conjecture apppeared in \cite{GMT}. It has since been proven,
 with item iii) amended; see
-the Introduction %TODO: chxref
+the Introduction
 
 \begin{conjecture}\label{GMT 1.31}
 Each  exceptional 
@@ -1165,7 +1164,7 @@ operations $ +,\ -,\ \times, \  /,\ \sqrt{}_{\phantom{|}} .$  We prove combinati
 formulas for these operations, which show how the Taylor approximations
 (including the remainder term) change when one of these operations is
 applied to two AffApproxes.   This is carried out in
-	Chapter 6. %TODO: chxref
+	Chapter \ref{Ch.AffApprox}
 
 To ensure that all of our computer calculations are rigorous, we use a round-off error analysis.  Typically, this is done by using interval
 arithmetic on floating-point numbers. 
@@ -1178,5 +1177,5 @@ which allows us to analyze substantially fewer boxes.
 Further, the individual computations are faster.
 This is all
 carried out in
-	Sections 7 and 8.%TODO: chxref
+	Sections \ref{Ch.XComplex} and \ref{Ch.AffWithEPS}.
 \end{preview}
