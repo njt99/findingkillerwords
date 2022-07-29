@@ -10,12 +10,11 @@
  * [DONE] fix missing citation warnings
  * [DONE] fix duplicate labels of GMT 5.1, 7.1, 7.2
  * {njt, before Saturday}
-   * fix Chapter/Section references.
-   * address email issues
-   * minor:
-     * formatting of abstract
-   * address any new FIXME or TODO
-   * address remaining TeX warnings.
+   * [DONE] fix Chapter/Section references.
+   * [DONE] address email issues
+   * [DONE] consistency in reference mnemonics
+   * [DONE] formatting of abstract
    * add acknowledgements
    * include `cweave verify.w`
+   * {\text<FONTSTYLE> -> \text<FONTSTYLE>{
  * review PDF & fix bugs until satisfied.
