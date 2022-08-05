@@ -1,115 +1,37 @@
-\chapter{A trail of breadcrumbs about finding killer words}\label{Ch.Crumbs}
+\chapter{Finding killer words and trees}\label{Ch.Crumbs}
+\section{Maxmizing volume of directly-killed regions}
+%TODO: intervals vs. 1-Jets vs. 2-Jets.
+%TODO: flattening parameter space
+%TODO: box shape
+\section{Reuse of effective killerwords}
+\section{Persistence of partial decomposition trees}
+\section{Heuristic killerword search}
+%TODO: combine word pairs or append generators?
+%TODO: priority queue
+%TODO: avoiding limitations of SL2ACJ
+%TODO: quasirelator issues
+\section{Separate programs for verification; decomposion; and statistics and control}
+%TODO: language choices
+\section{Parallelism}
+%TODO: killerwords
+%TODO: bounded subtrees
+\section{Understanding tree shape}
+%TODO: 1-, 2-, and 3- quasirelator fuzzy variety regions
+\section{Lower bounds on running time}
+%TODO: preliminary monte carlo
+%TODO: failed-subtree growth rate
+%TODO: time to complete breadth-first pass
+%TODO: regional analysis
+\section{Diagnostics}
+%TODO: quasi-parabolic words
+%TODO: discovering conjugation symmetry
+\section{Improvements to the math}
+%TODO: impossible words
+%TODO: corona technology
+\section{Evolution of decomposition algorithm}
+%TODO: ref 3.34
 
-Here we outline our method for finding a decomposition of
-the initial box ${\mathcal W}$ into sub-boxes,
-each with a condition/killerword that kills off the entire associated sub-box,
-or with an indication that it belongs to one of the exceptional regions.
-For convenience, we will generally refer to a ``sub-box" simply as a ``box."
-
-A naive approach uses diagonal enumeration
-to combine breadth-first enumeration of the tree of boxes
-with breadth-first enumeration of the tree of words
-(with three edges from each word,
-one for each generator or inverse-generator
-that isn't the inverse of the last symbol in the word,
-pointing to the concatenation of the word with the generator).
-The naive algorithm has running time $O(3^L 2^D)$, where $L$ is maximum word length
-and $D$ is maximum box depth.
-Much too slow - $3^{44} 2^{120}$ operations is not close to reasonable.
-
-To speed it up, there are three basic approaches, all of which are necessary:
-\begin{enumerate}
-  \item we can avoid considering most boxes by stopping once we have a solution
-  \item we can reuse words that work on one box elsewhere
-  \item and we can use geometric heuristics to prefer words
-        that are more likely to work.
-\end{enumerate}
-The exposition will proceed in rough chronological order,
-in the hope that by describing some of the wrong turns,
-we'll help others avoid making the same mistakes.
-
-The most obvious way of speeding up the search is to avoid
-the search entirely when feasible: a killerword works on a neighborhood of a
-region, and by testing killerwords found for nearby boxes, most of
-the time the search is not necessary.
-
-Still, there are words of length as long as 44 that were considered,
-and testing all of the roughly $3^{44}$ combinations would be prohibitive.
-In practice (due to a bug), the search algorithm used for most of the parameter
-space was no better than the brute-force method just described,
-but to find killerwords for the remaining regions, an improvement was needed.
-Rather than blindly selecting words in first-in-first-out order,
-the algorithm can rank the words under consideration
-based on a heuristic estimate of the likelihood of their being useful
-(a word is {\textit useful} if it is a prefix of a killerword).
-We note first that short words tend to be better than long words,
-as they have fewer steps and less error.
-Second, we note that words
-with a large translation distance are given a bad ranking, for two reasons:
-they will need more generators appended before they get back to the
-small translation distance which is needed for a contradiction, and
-computations with those words introduce more error per step than
-computations with closer words.
-
-This approach was an improvement, but was not finding enough killerwords in the regions
-around $X_3$ and $X_4$.  Further investigation showed that the
-algorithm was getting stuck on an identity: once it found an identity,
-it would consider only words which started with that identity, and
-ignored all of the other words.  To fix this problem, a ``diversity"
-heuristic was introduced, to give special consideration to unlikely but
-unusual words.
-
-To prevent the search from running forever, it is
-temporarily abandoned after some number of steps, and re-done
-with twice as many steps every time the number of descendant boxes
-doubles.  This way, the search could run forever, but only if
-the subdivision process runs forever.
-This merged process of alternately searching and subdividing we
-call the {\textit decomposition algorithm}.
-
-The decomposition algorithm went through several revisions; at each stage
-of the revision process,
-the algorithm effectively increased the extent to which killerwords
-found for one region were used to kill other regions.  The first
-attempt---used to determine the feasibility of the whole effort---
-iterated over regions in depth-first order, performing the search as
-described above.
-At that stage, it became evident that the search process, as
-opposed to the subdivision process,
-was consuming nearly all of the computation time, and so the second
-version iterated over regions in breadth-first order, and, once it
-found a killerword, tried to use that word on all adjacent regions.
-
-The breadth-first version was used to analyze the entire parameter
-space, although it skipped some parts due to various bugs; the search
-heuristic was replaced once, and there was considerable human input
-to tell the search about particularly difficult killerwords, or to tweak
-its search parameters (length, and weightings in the heuristic).
-
-The third stage of the revision process reduced the number of boxes
-by attempting all found killerwords in a large region (about a thousand boxes)
-on all boxes in the region.
-It did not  do any searching,
-since it was provided with a kist of killerwords known to work.
-
-The final version was created when the bugs in evaluation were
-brought to light, and the existing killerword tree was found to be insufficient.
-It used the list of killerwords used for the entire tree, and some
-statistics about the number of subdivisions required in order for a
-given word to kill a particular box, and evaluated each word on each box.
-Whenever a word was evaluated,
-a kind of triage was used to determine
-whether that word was likely to kill the box in question, likely to kill
-any of its $n^{\mathrm th}$ generation descendants, or unlikely to kill any
-descendants of the box; the answer to that heuristic either allowed more
-detailed evaluation (with the error term included), deferred further
-evaluation until the box had been subdivided $n$ more times, or
-excluded that word from further consideration on any descendant of
-the box.  With these heuristics, this program wound up evaluating on
-average about 10 of the roughly 13200 words per box, and was able to
-construct the tree consisting of the decomposition into sub-boxes with associated conditions/killerwords.
-
-More recently, an updated version of the search program is in use
+More recently in \cite{GHMTY}, an updated version of the search program was used
 to solve a nearby problem, classification by enumeration of cusped hyperbolic
 3-manifolds.
 It's not far different from the final version of the search.
@@ -119,4 +41,4 @@ the search for new words that work is again mixed
 with the search for words for all boxes;
 the search for words combines pairs of words instead of appending a generator;
 the logic for use of words is specific to the context of cusped manifolds.
-The updated code is available at https://github.com/njt99/momsearch.
+An interim version of that code is available at https://github.com/njt99/momsearch.
