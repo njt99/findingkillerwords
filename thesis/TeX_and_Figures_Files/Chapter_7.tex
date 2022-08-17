@@ -1,44 +1,144 @@
-\chapter{Finding killer words and trees}\label{Ch.Crumbs}
-\section{Maxmizing volume of directly-killed regions}
-%TODO: intervals vs. 1-Jets vs. 2-Jets.
-%TODO: flattening parameter space
-%TODO: box shape
-\section{Reuse of effective killerwords}
-\section{Persistence of partial decomposition trees}
-\section{Heuristic killerword search}
-%TODO: combine word pairs or append generators?
-%TODO: priority queue
-%TODO: avoiding limitations of SL2ACJ
-%TODO: quasirelator issues
-\section{Separate programs for verification; decomposion; and statistics and control}
-%TODO: language choices
-\section{Parallelism}
-%TODO: killerwords
-%TODO: bounded subtrees
-\section{Understanding tree shape}
-%TODO: 1-, 2-, and 3- quasirelator fuzzy variety regions
-\section{Lower bounds on running time}
-%TODO: preliminary monte carlo
-%TODO: failed-subtree growth rate
-%TODO: time to complete breadth-first pass
-%TODO: regional analysis
-\section{Diagnostics}
-%TODO: quasi-parabolic words
-%TODO: discovering conjugation symmetry
-\section{Improvements to the math}
-%TODO: impossible words
-%TODO: corona technology
-\section{Evolution of decomposition algorithm}
-%TODO: ref 3.34
+\chapter{Hints from behind the curtain}\label{Ch.Crumbs}
+\section{Introduction}
+The goal of this thesis is
+to introduce new computational methods
+and use them to prove Theorem \ref{GMT 1.28}.
+As noted in \ref{GMT 5.3} to prove this theorem it sufficed
+to produce a data set which is then shown
+by relatively simple methods to satisfy the desired conclusion.
+However, constructing said data set required an enormous effort,
+both computationally and personally,
+that required us to develop efficient tools,
+organization and approaches to both
+recognize that the project is tractable
+and to carry it through completion.
+The goal of this chapter is to briefly state and discuss some of these elements.
+Some such as affine approximation, are central parts of the text,
+others are just casually used while others are totally suppressed.
 
-More recently in \cite{GHMTY}, an updated version of the search program was used
-to solve a nearby problem, classification by enumeration of cusped hyperbolic
-3-manifolds.
-It's not far different from the final version of the search.
-Indeed, its source code was edited from the final version.
-The main differences are:
-the search for new words that work is again mixed
-with the search for words for all boxes;
-the search for words combines pairs of words instead of appending a generator;
-the logic for use of words is specific to the context of cusped manifolds.
-An interim version of that code is available at https://github.com/njt99/momsearch.
+\section{Choosing the computational setup}
+It's all about controlling the error,
+i.e.  maximizing the impact of the boxes you kill.
+Note that if the error is increased by 10%,
+you need at least roughly $1.1^6$ as many boxes (about twice as many).
+Moreover, if an error component compounds faster than linearly
+when you compose isometries, the situation is much worse.
+We briefly describe some technique to control error.
+\begin{enumerate}
+	\item We discovered that standard interval arithmetic
+		has far greater error compared with $1$-jet arithmetic,
+		so we went with that.
+		We considered 2-jet arithmetic,
+		however the effort to set the foundations
+		seemed untenable,
+		especially considering that the $1$-jet material
+		comprises 30+ pages of this thesis.
+	\item We exponentiated the parameter space
+		to reduce the required arithmetic operations
+		to +, -, *, /, and square root.
+		In particular we eliminated the need to work
+		with functions such as cosh and arccosh from the formulas.
+	\item We worked with three complex parameters
+		rather than six real parameters.
+		Among other things when multiplying
+		two complex numbers using $1$-jets
+		the error does not grow exponentially under complex rotation.
+	\item We worked with box shapes that were as round as possible:
+		By coordinating box shape with cyclical subdivision,
+		and interleaving real and imaginary parts,
+		we arranged to make all boxes similar.
+		
+		In our early exploratory stage,
+		we tried adaptively adjusting the shape based on
+		the error corresponding to different parameters.
+		We ran into trouble, possibly due to a feedback loop,
+		and shelved the idea.
+\end{enumerate}
+
+\section{Getting Started}
+One must confront the question of whether or not a computer
+assisted project has any chance of succeeding.
+To address this we did a preliminary monte carlo probe:
+choosing a few (later a few hundred) points in the parameter space,
+finding a killerword for the point,
+finding the largest box containing the point that was killed,
+and finally measuring box volume.
+
+By examining the sampled distribution of volume of these killed boxes,
+it seemed likely that it had a long tail,
+suggesting that any data-driven estimate of run time for a complete search
+would likely be a lower bound.
+We had no idea how optimistic that lower bound was!
+Nonetheless, it took us a month to learn enough to get through that stage.
+
+\section{Engineering - Mathematics Feedback}
+The search was aided
+by mathematical and experimental results
+that were discovered by the search
+as well as previously known ones.
+Here are some examples.
+\begin{enumerate}
+	\item 
+		We ran into early trouble in our search, with many thousands
+		of problematic boxes present after
+		several cycles of six subdivisions, and the number growing
+		rapidly as we progressed deeper.
+		Investigation revealed a pattern:
+		most of these problem boxes had strange quasirelators
+		like $fwf^{-1}w^{-1}$.
+		
+		Happily, a relator of this form
+		implies that $f$ and $w$ share an axis
+		which is impossible in our setup.
+
+		After realizing this, it was easy to modify the search to
+		take advantage of the insight,
+		kill all the problem boxes,
+		and proceed deeper into the box tree.
+	\item
+		conjugation symmetry: See \ref{GMT 5.2}.
+		This was discovered by using Geomview and ndview
+		to visualize six-dimensional wireframes of unsolved boxes.
+		A bilateral symmetry in their arrangement caught our eye...
+		
+	\item
+		mathematical software:
+		Snappea, Heegaard and Poincare were essential tools.
+		For example Snappea gave us confidence that a result along the lines we hoped for might be true.
+		However, it wasn't perfect because the search discovered exceptional regions.
+		But then Heegaard and Poincare experimentally showed
+		that manifolds existed in our exceptional regions,
+		so giving further confidence
+		that we indeed found seven needles in
+		our five hundred million box haystack.
+
+	\item
+		The Shimizu-Leutbecher Theorem:
+		This theorem not used in this thesis is very useful
+		for finding buffer regions about varieties
+		defined by quasi-relators
+		and was successfully used in our paper \cite{GHMTY}
+		to eliminate regions. See Lemma 2.13 of that paper.
+
+\end{enumerate}
+
+\sectiion{The computational trilogy}
+We developed three separate programs to complete this
+project.
+\begin{enumerate}
+	\item Verify:
+		This clean and simple program written in CWEB
+		rigorously checks that
+		our parameter space subdivision with killer words functions.
+	\item Decomposition:
+		This program written in C++ finds the decomposition
+		parameter space into exceptional boxes and boxes with killer words.
+		It was frequently altered as the search progressed,
+		to take advantage of knowledge gained during the search.
+	\item Statistics and Control:
+		This collection of small programs written in Perl (later Python)
+		does everything else,
+		from estimating a lower bound on remaining search effort
+		to orchestrating multi-host parallelism
+		to validating tree structure to rebalancing the tree.
+\end{enumerate}
