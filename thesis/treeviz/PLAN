@@ -1,0 +1,20 @@
+ * treecat | treeviz | dot.
+ * output graph
+   * one circle per cc of grid at depth N
+   * circles r=n^{1/6}
+   * edges connect layers
+   * may need to have min_cc_size
+   * label with {X region name if contained}
+ * method
+   * online.
+   * accumulate grid as bitmap until memory trouble looms
+     * KISS: oom is the main issue, so don't preallocate (yet)
+   * loop:
+     * greedy search to target density
+     * [skimage.flood]
+     * if small number remain, connect all to parent
+   * cluster - boundary facet star graph
+   * csgraph connected
+ * rescue treecat from momsearch git history.
+   * adapt to old tree format
+
