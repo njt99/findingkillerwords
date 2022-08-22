@@ -12,4 +12,15 @@
    * [DONE] boundary connections between adjacent grids
  * rescue treecat from momsearch git history.
    * adapt to old tree format
-
+---
+how to connect parents
+```tst
+grid_to_clusters	needs to	set parent for new clusters
+	should use	special grid
+	should save	special grid
+merge_clusters	must alter	cluster parents
+	needs	child bbs
+	should act after	grid_to_clusters
+child bbs	should link to	parent bbs
+bb merge order	should be	deep to shallow
+```
