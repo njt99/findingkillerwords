@@ -67,6 +67,12 @@ class GraphBuilder:
         n = len(bbs1)
         glued = [None] * (n + 1)
         for i in reversed(range(n)):
+            if i > 0 and bbs0[i - 1] and bbs0[i - 1].clusters \
+                    and bbs1[i] and bbs1[i].clusters:
+                offset = len(bbs0[i - 1].clusters)
+                for c in bbs1[i].clusters:
+                    c.parent += offset
+
             glued[i] = self._glue(bbs0[i], bbs1[i], glued[i + 1])
         return glued[:-1]
 
