@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 import copy
-import gzip
 import itertools
+import logging
+import subprocess
+import sys
 
 import numpy as np
 import skimage
@@ -248,7 +250,7 @@ class GraphBuilder:
                 if bb.clusters[c.parent].size > new_clusters[labels[c.parent]].size:
                     pdb.set_trace()
                 if c.size > 2 * bb.clusters[c.parent].size:
-                    pdb.set_trace()
+                    logging.warning(f"c.size={c.size} bb.clusters[c.parent].size={bb.clusters[c.parent].size}")
                 c.parent = labels[c.parent]
                 if type(c.parent) != int and c.parent.shape != ():
                     pdb.set_trace()
@@ -308,6 +310,9 @@ def _guess_large_cluster(grid):
     return tuple(c)
 
 
-b = GraphBuilder("011001100110100110011110", [])
-with gzip.open("../x/verify/data/011001.d/100110.d/100110.d/011110.gz") as f:
-    b.make_graph(l.strip().decode("utf8") for l in f)
+data = sys.argv[1]
+root = sys.argv[2]
+b = GraphBuilder(root, [])
+cmd = ["./treecat", "-v", "-r", data, root]
+with subprocess.Popen(cmd, stdout=subprocess.PIPE, universal_newlines=True) as p:
+    b.make_graph(l.strip() for l in p.stdout)
