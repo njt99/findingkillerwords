@@ -18,7 +18,8 @@ flags.DEFINE_string("data_dir", "data", "")
 flags.DEFINE_string("root_boxcode", "", "")
 flags.DEFINE_bool("graphviz", True, "")
 flags.DEFINE_bool("sig", False, "")
-flags.DEFINE_bool("ckusters", False, "")
+flags.DEFINE_bool("clusters", False, "")
+flags.DEFINE_string("load", "", "")
 
 FLAGS = flags.FLAGS
 
@@ -261,8 +262,6 @@ class GraphBuilder:
                     pdb.set_trace()
                 if bb.clusters[c.parent].size > new_clusters[labels[c.parent]].size:
                     pdb.set_trace()
-                if c.size > 2 * bb.clusters[c.parent].size:
-                    logging.warning(f"c.size={c.size} bb.clusters[c.parent].size={bb.clusters[c.parent].size}")
                 c.parent = labels[c.parent]
                 if type(c.parent) != int and c.parent.shape != ():
                     pdb.set_trace()
@@ -312,6 +311,30 @@ class GraphBuilder:
                     print(f"  c{bb.depth - 1}_{c.parent} -> c{bb.depth}_{i}")
         print(f"}}")
 
+    def render_sig(self):
+        for l in self.layers:
+            cs = sorted((c.size for c in l.clusters), reverse=True)
+            print(cs)
+
+    def render_clusters(self):
+        print("[")
+        for bb in self.layers:
+            print(f"  BoundedBoxes(")
+            print(f'    location="{bb.location}",')
+            print(f"    grid={bb.grid},")
+            print(f"    depth={bb.depth},")
+            print(f"    clusters=[")
+            for c in bb.clusters:
+                print(f"      Cluster(")
+                print(f"        size={c.size},")
+                print(f"        labels={c.labels},")
+                print(f'        example="{c.example}",')
+                print(f"        parent={c.parent}")
+                print(f"      ),")
+            print(f"    ]")
+            print(f"  ),")
+        print("]")
+
 
 def _guess_large_cluster(grid):
     c = []
@@ -326,16 +349,20 @@ def main(argv):
     data = FLAGS.data_dir
     root = FLAGS.root_boxcode
     b = GraphBuilder(root, [])
-    cmd = ["./treecat", "-v", "-r", data, root]
-    with subprocess.Popen(cmd, stdout=subprocess.PIPE,
-            universal_newlines=True) as p:
-        b.build(l.strip() for l in p.stdout)
-        if FLAGS.graphviz:
-            b.render_graphviz()
-        if FLAGS.sig:
-            for l in b.layers:
-                cs = sorted((c.size for c in l.clusters), reverse=True)
-                print(cs)
+    if FLAGS.load:
+        with open(FLAGS.load) as f:
+            b.layers = eval(f.read())
+    else:
+        cmd = ["./treecat", "-v", "-r", data, root]
+        with subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                universal_newlines=True) as p:
+            b.build(l.strip() for l in p.stdout)
+    if FLAGS.graphviz:
+        b.render_graphviz()
+    if FLAGS.clusters:
+        b.render_clusters()
+    if FLAGS.sig:
+        b.render_sig()
 
 
 if __name__ == "__main__":
