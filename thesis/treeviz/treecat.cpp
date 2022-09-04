@@ -119,7 +119,7 @@ int main(int argc, char** argv)
 	strcat(fullboxcode, boxcode);
 	char buf[10000];
 	while (*boxcode && fgets(buf, sizeof(buf), fp)) {
-		if (buf[0] != 'X') {
+		if (buf[0] != '0') {
 			*boxcode = '\0';
 			fprintf(stderr, "box = %s\n", argv[2]);
 			fputs(buf, stdout);

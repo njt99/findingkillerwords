@@ -13,14 +13,17 @@
  * rescue treecat from momsearch git history.
    * adapt to old tree format
 ---
-how to connect parents
-```tst
-grid_to_clusters	needs to	set parent for new clusters
-	should use	special grid
-	should save	special grid
-merge_clusters	must alter	cluster parents
-	needs	child bbs
-	should act after	grid_to_clusters
-child bbs	should link to	parent bbs
-bb merge order	should be	deep to shallow
-```
+ * how to connect parents of clusters
+   * reasoning:
+     * grids have no clusters or parents
+       * therefore, shallowest clustered bb have clusters with no parents
+     * `grid_to_clusters` needs to set parents of `depth+1` clusters.
+       * use cluster.example.
+       * straightforward if `depth+1` clusters already glued and available.
+       * headache otherwise.
+     * `glue_clustered` needs to reindex parents of depth+1` clusters.
+       * straightforward if `depth+1` clusters already glued and available.
+       * headache otherwise.
+   * therefore:
+     * `for i in range(...) glue loop
+     

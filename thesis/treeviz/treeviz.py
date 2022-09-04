@@ -5,11 +5,22 @@ import logging
 import subprocess
 import sys
 
+from absl import app, flags
 import numpy as np
 import skimage
 import scipy.sparse
 
 import pdb
+
+
+flags.DEFINE_integer("max_grid_depth", 24, "")
+flags.DEFINE_string("data_dir", "data", "")
+flags.DEFINE_string("root_boxcode", "", "")
+flags.DEFINE_bool("graphviz", True, "")
+flags.DEFINE_bool("sig", False, "")
+flags.DEFINE_bool("ckusters", False, "")
+
+FLAGS = flags.FLAGS
 
 
 @dataclass
@@ -30,20 +41,21 @@ class BoundedBoxes:
 
 
 class GraphBuilder:
-    def __init__(self, root_boxcode, label_boxcodes, split_key="0"):
+    def __init__(self, root_boxcode, label_boxcodes, split_key="0",
+            max_grid_depth=24):
         self.root_boxcode = root_boxcode
         self.label_boxcodes = label_boxcodes
         self.split_key = split_key
 
-        self.max_grid_depth = 24
+        self.max_grid_depth = max_grid_depth
 
-    def make_graph(self, trace):
+    def build(self, trace):
         bbs = self._walk(iter(trace), self.root_boxcode)
         for i in reversed(range(len(bbs))):
             if bbs[i].clusters is None:
                 bbs[i] = self._cluster_gridded(bbs[i],
                         bbs[i+1] if i + 1 < len(bbs) else None)
-        self._render(bbs)
+        self.layers = bbs
 
     def _walk(self, trace, location):
         bbs = [self._single_box(location)]
@@ -290,9 +302,9 @@ class GraphBuilder:
             shape[(axis + i) % 6] *= 2
         return merge_axis, shape
 
-    def _render(self, layers):
+    def render_graphviz(self):
         print(f"digraph tree_{self.root_boxcode} {{")
-        for bb in layers:
+        for bb in self.layers:
             for i, c in enumerate(bb.clusters):
                 r = 0.2 * (c.size ** (1/6))
                 print(f'  c{bb.depth}_{i}  [shape=circle, width={r}, fixedsize=true label="{bb.depth}|{i}"]')
@@ -310,9 +322,21 @@ def _guess_large_cluster(grid):
     return tuple(c)
 
 
-data = sys.argv[1]
-root = sys.argv[2]
-b = GraphBuilder(root, [])
-cmd = ["./treecat", "-v", "-r", data, root]
-with subprocess.Popen(cmd, stdout=subprocess.PIPE, universal_newlines=True) as p:
-    b.make_graph(l.strip() for l in p.stdout)
+def main(argv):
+    data = FLAGS.data_dir
+    root = FLAGS.root_boxcode
+    b = GraphBuilder(root, [])
+    cmd = ["./treecat", "-v", "-r", data, root]
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE,
+            universal_newlines=True) as p:
+        b.build(l.strip() for l in p.stdout)
+        if FLAGS.graphviz:
+            b.render_graphviz()
+        if FLAGS.sig:
+            for l in b.layers:
+                cs = sorted((c.size for c in l.clusters), reverse=True)
+                print(cs)
+
+
+if __name__ == "__main__":
+    app.run(main)
