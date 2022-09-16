@@ -14,6 +14,7 @@ import pdb
 
 
 flags.DEFINE_integer("max_grid_depth", 24, "")
+flags.DEFINE_integer("min_total_size", 128, "")
 flags.DEFINE_string("data_dir", "data", "")
 flags.DEFINE_string("root_boxcode", "", "")
 flags.DEFINE_bool("graphviz", True, "")
@@ -30,6 +31,7 @@ class Cluster:
     labels: set
     example: str
     parent: int = None
+    total_size: int = 0
 
 
 @dataclass
@@ -301,14 +303,22 @@ class GraphBuilder:
             shape[(axis + i) % 6] *= 2
         return merge_axis, shape
 
-    def render_graphviz(self):
+    def compute_total_sizes(self):
+        for i, bb in reversed(list(enumerate(self.layers))):
+            for c in bb.clusters:
+                c.total_size += c.size
+                if c.parent is not None:
+                    self.layers[i - 1].clusters[c.parent].total_size += c.total_size 
+
+    def render_graphviz(self, min_total_size):
         print(f"digraph tree_{self.root_boxcode} {{")
         for bb in self.layers:
             for i, c in enumerate(bb.clusters):
                 r = 0.2 * (c.size ** (1/6))
-                print(f'  c{bb.depth}_{i}  [shape=circle, width={r}, fixedsize=true label="{bb.depth}|{i}"]')
-                if c.parent is not None:
-                    print(f"  c{bb.depth - 1}_{c.parent} -> c{bb.depth}_{i}")
+                if c.total_size >= min_total_size:
+                    print(f'  c{bb.depth}_{i}  [shape=circle, width={r}, fixedsize=true label="{bb.depth}|{i}"]')
+                    if c.parent is not None:
+                        print(f"  c{bb.depth - 1}_{c.parent} -> c{bb.depth}_{i}")
         print(f"}}")
 
     def render_sig(self):
@@ -357,8 +367,9 @@ def main(argv):
         with subprocess.Popen(cmd, stdout=subprocess.PIPE,
                 universal_newlines=True) as p:
             b.build(l.strip() for l in p.stdout)
+    b.compute_total_sizes()
     if FLAGS.graphviz:
-        b.render_graphviz()
+        b.render_graphviz(FLAGS.min_total_size)
     if FLAGS.clusters:
         b.render_clusters()
     if FLAGS.sig:
