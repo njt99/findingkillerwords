@@ -30,7 +30,7 @@ double xdist= size(x);
 double ydist= size(y);
 double ax= absUB(x.f),ay= absLB(y.f);
 double D= ay-(1+EPS)*(y.e+ydist);
-if(!(D>0))return ACJ(0,0,0,0,infinity());
+if(!(D> 0))return ACJ(0,0,0,0,infinity());
 AComplex den= (y.f*y.f);
 AComplex r_f= x.f/y.f;
 AComplex r_f0= (x.f0*y.f-x.f*y.f0)/den;
@@ -52,7 +52,7 @@ const ACJ operator/(double x,const ACJ&y)
 double ydist= size(y);
 double ax= fabs(x),ay= absLB(y.f);
 double D= ay-(1+EPS)*(y.e+ydist);
-if(!(D>0))return ACJ(0,0,0,0,infinity());
+if(!(D> 0))return ACJ(0,0,0,0,infinity());
 AComplex den= (y.f*y.f);
 AComplex r_f= x/y.f;
 AComplex r_f0= (-x*y.f0)/den;
@@ -73,7 +73,7 @@ const ACJ sqrt(const ACJ&x)
 double xdist= size(x);
 double ax= absUB(x.f);
 double D= ax-(1+EPS)*(xdist+x.e);
-if(!(D>0)){
+if(!(D> 0)){
 return ACJ(0,0,0,0,(1+2*EPS)*sqrt(ax+(xdist+x.e)));
 }else{
 AComplex r_f= sqrt(x.f);

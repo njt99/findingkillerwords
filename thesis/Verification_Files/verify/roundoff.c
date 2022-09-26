@@ -10,7 +10,7 @@ inline double infinity(){return 1.0/0.0;}
 #endif
 
 #ifdef sgi
-#include <sys/fpu.h>
+#include <sys/fpu.h> 
 
 void initialize_roundoff(){
 union fpc_csr csr;
@@ -20,7 +20,7 @@ set_fpc_csr(csr.fc_word);
 }
 #else
 #ifdef __sparc__
-#include <floatingpoint.h>
+#include <floatingpoint.h> 
 void initialize_roundoff(){
 ieee_handler("set","underflow",SIGFPE_ABORT);
 }

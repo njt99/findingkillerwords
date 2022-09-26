@@ -57,10 +57,10 @@ const int notIdentity(const SL2ACJ&x)
 {/*20:*/
 #line 65 "SL2ACJ.w"
 
-return absLB(x.b)>0
-||absLB(x.c)>0
-||(absLB(x.a-1)>0&&absLB(x.a+1)>0)
-||(absLB(x.d-1)>0&&absLB(x.d+1)>0);
+return absLB(x.b)> 0
+||absLB(x.c)> 0
+||(absLB(x.a-1)> 0&&absLB(x.a+1)> 0)
+||(absLB(x.d-1)> 0&&absLB(x.d+1)> 0);
 
 /*:20*/
 #line 169 "glue.w"
@@ -69,7 +69,7 @@ const int notFPower(const SL2ACJ&x)
 {/*21:*/
 #line 77 "SL2ACJ.w"
 
-return absLB(x.b)>0||absLB(x.c)>0;
+return absLB(x.b)> 0||absLB(x.c)> 0;
 
 /*:21*/
 #line 171 "glue.w"

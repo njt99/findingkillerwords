@@ -62,7 +62,7 @@ AComplex sqrt(const XComplex&x)
 double s= sqrt((fabs(x.re)+hypot(x.re,x.im))*0.5);
 double d= (x.im/s)*0.5;
 double e= EPS*((1+4*EPS)*(1.25*s+1.75*fabs(d)));
-if(x.re>0.0)
+if(x.re> 0.0)
 return AComplex(s,d,e);
 else
 return AComplex(d,s,e);

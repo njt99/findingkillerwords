@@ -23,18 +23,22 @@ int inequalityHolds(const char* code, const char* where, int depth)
   case 'W':      // whirle small :     $\abs{|whirle|} < 1$
     return absUB(whirle) < 1;
   case 'w':      // whirle big :    $\abs{|whirle|^2} > \abs{|along|}$
-    double wh = absLB(whirle);
-    return (1-EPS)*wh*wh > absUB(along);
+    {
+      double wh = absLB(whirle);
+      return (1-EPS)*wh*wh > absUB(along);
+    }
   default:
     {
       SL2ACJ g(evaluateWord(code+1, along,ortho,whirle));
       ACJ l = length(g);
       switch(code[0]) {
       case 'O': // ortho :         $\abs{|ortho|(g)} < \abs{|ortho|(w)}$ and $g$ not a power of $f$
-        ACJ o = orthodist(g);
-	return absUB(o / ortho) < 1
-	    && absLB(o * ortho) > 1
-	    && notFPower(g);
+        {
+          ACJ o = orthodist(g);
+	  return absUB(o / ortho) < 1
+	      && absLB(o * ortho) > 1
+	      && notFPower(g);
+        }
       case 'L': // length :       $\abs{|length|(g)} < \abs{|length|(w)}$ and $g$ nontrivial
 	return notIdentity(g)
 	    && absUB(l/along) < 1
@@ -68,7 +72,7 @@ the same values on all of the machines on which the program was run.
       assert(0);
     }
   }
-  for (i = 0; i < 6; i++) {
+  for (int i = 0; i < 6; i++) {
     pos[i] *= scale[i];
     size[i] = (1+2*EPS)*(size[i]*scale[i] + HALFEPS*fabs(pos[i]));
   }

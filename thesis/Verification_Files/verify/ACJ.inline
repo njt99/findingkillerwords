@@ -114,7 +114,7 @@ inline const double absLB(const ACJ&x)
 #line 216 "ACJ.w"
 
 double v= (1-EPS)*(absLB(x.f)-(1+EPS)*(size(x)+x.e));
-return(v>0)?v:0;
+return(v> 0)?v:0;
 
 /*:37*/
 #line 128 "glue.w"

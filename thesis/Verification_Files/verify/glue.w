@@ -152,7 +152,7 @@ const ACJ    length     (const SL2ACJ& x);
 const int    notIdentity(const SL2ACJ& x);
 const int    notFPower  (const SL2ACJ& x);
 const SL2ACJ shortGenerator(const ACJ& z);
-const SL2ACJ closeGenerator(const ACJ& x, const ACJ& x);
+const SL2ACJ closeGenerator(const ACJ& x, const ACJ& z);
 #endif
 
 @ @(SL2ACJ.C@>=
