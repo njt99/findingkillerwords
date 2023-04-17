@@ -10,8 +10,8 @@ consisting of four complex numbers $(x.f, x.f_0,x.f_1, x.f_2)$ and one real numb
 	Chapter \ref{Ch.AffApprox}
 , the
 real number was denoted $x.e,$ but it seems preferable to use $x.{\textrm err}$ here.  Recall (Definition \ref{GMT 6.4}
-that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1 \
-{\textrm for} \ k \in \{0,1,2\}\}$ to ${\mathbf C}$ that are $x.{\textrm err}$-well-approximated by the affine function
+that an AffApprox $x$ represents the set $S(x)$ of functions from $A = \{(z_0,z_1,z_2) \in \mathbf {C}^3 : |z_k| \le 1 \
+{\textrm for} \ k \in \{0,1,2\}\}$ to $\mathbf {C}$ that are $x.{\textrm err}$-well-approximated by the affine function
 $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f_2 z_2.$
 \end{conventions}
 
@@ -91,8 +91,7 @@ y.{\textrm err}) \\
 &&+\ (1+EPS/2)((r\_f.e \oplus r\_f_0.e) + (r\_f_1.e \oplus r\_f_2.e))\\
 &\le& (1+EPS/2)^3 ((x.{\textrm err} \oplus
 y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e)))\\
-&\le& (1 + 3EPS) \otimes ((x.{\mathrm
-err} \oplus y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
+&\le& (1 + 3EPS) \otimes ((x.\mathrm {err} \oplus y.{\textrm err}) \oplus ((r\_f.e \oplus r\_f_0.e) \oplus (r\_f_1.e \oplus r\_f_2.e))).
 \end{eqnarray*}
  To get the last line
 we used Lemma \ref{GMT lemma7.1}. \end{proof}
@@ -262,8 +261,7 @@ x.{\textrm err}))/
 The next term, being subtracted, requires opposite inequalities.
 \begin{eqnarray*}
 &&(ax/ay + {\textrm dist}(x)/ay) + {\textrm dist}(y) \times ax / (ay \times ay)\\
-&&\quad \ge (1-EPS/2)(ax \oslash ay + {\mathrm
-dist}(x)
+&&\quad \ge (1-EPS/2)(ax \oslash ay + \mathrm {dist}(x)
 \oslash ay) \\
 &&\qquad +  (1-EPS/2) ({\textrm dist}(y) \otimes ax )/ ({1 \over 1 - EPS/2})(ay \otimes ay)\\
 &&\quad \ge ((1-EPS/2)^4 ((ax

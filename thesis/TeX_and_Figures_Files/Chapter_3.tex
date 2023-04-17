@@ -5,37 +5,37 @@ In this section we expand on some topics mentioned briefly in
 Chapter \ref{Ch.WordsParams}
 .  As such, it would be useful to look again at
 Definitions \ref{GMT 1.8}, \ref{GMT 1.12}, and \ref{GMT 1.22}, and Remark \ref{GMT 1.9}),
-where ${\mathcal P}$, ${\mathcal T}$ and their partners (under exponentiation)
-${\mathcal W}$, ${\mathcal S}$ are introduced, and at
+where $\mathcal {P}$, $\mathcal {T}$ and their partners (under exponentiation)
+$\mathcal {W}$, $\mathcal {S}$ are introduced, and at
 Definition \ref{GMT 1.18}
  where the notion of a killerword is introduced (the
-definition is phrased in terms of ${\mathcal P}$, but the definition also makes sense for ${\mathcal W}$).  Note that working with
+definition is phrased in terms of $\mathcal {P}$, but the definition also makes sense for $\mathcal {W}$).  Note that working with
 the region
-${\mathcal P}$ is intuitively appealing, but working with the box ${\mathcal W}$ is vastly superior computationally (see
+$\mathcal {P}$ is intuitively appealing, but working with the box $\mathcal {W}$ is vastly superior computationally (see
 Remark \ref{GMT 1.21}
 ).
 
 The proof of Theorem \ref{GMT 1.28} amounts to decomposing
- ${\mathcal W}$ into a collection of sub-boxes of two types:
+ $\mathcal {W}$ into a collection of sub-boxes of two types:
 \begin{itemize}
 \item[1)]   The 11 sub-boxes which comprise the 
 exceptional boxes $X_0, X_1, \ldots, X_6.$ 
 
 \item[2)]   Sub-boxes each of which has an associated {\textit condition} that will describe how to kill that entire sub-box,
 perhaps with the help of a killerword.  To {\textit kill} a sub-box means to show that 
-${\mathcal S} - \bigcup_{n = 0,\dots, 6} X_n$ has no point in the sub-box. 
+$\mathcal {S} - \bigcup_{n = 0,\dots, 6} X_n$ has no point in the sub-box. 
 \end{itemize}
 \noindent The set-up for efficiently describing these sub-boxes will be given in Construction \ref{GMT 5.3}. 
  
 
 We now list the conditions used to kill the nonexceptional sub-boxes.  There are two types of conditions: the trivial and
-the interesting.  The trivial conditions kill sub-boxes in ${\mathcal W}$ since the sub-boxes in question miss 
-$\exp({\mathcal P}).$  The interesting conditions are where the real work is done, and they require a killerword in $f, w,
+the interesting.  The trivial conditions kill sub-boxes in $\mathcal {W}$ since the sub-boxes in question miss 
+$\exp(\mathcal {P}).$  The interesting conditions are where the real work is done, and they require a killerword in $f, w,
 f^{-1}, w^{-1}$ to work their magic (see
 Remark \ref{GMT 1.17}).
 
 To be consistent with the computer program {\textit verify} we use the following notation: $L^{\prime} = z_0 + i z_3$,
-$D^{\prime} = z_1 + i z_4,$ and $R^{\prime} = z_2 + i z_5.$  Here $(L^{\prime}, D^{\prime}, R^{\prime}) \in {\mathcal W}$ and
+$D^{\prime} = z_1 + i z_4,$ and $R^{\prime} = z_2 + i z_5.$  Here $(L^{\prime}, D^{\prime}, R^{\prime}) \in \mathcal {W}$ and
 $L^{\prime} = \exp(L) = \exp(l+it),\   D^{\prime} = \exp(D) = \exp(d+ib),\  
 R^{\prime} = \exp(R) = \exp(r+ia).$
 \vglue10pt
@@ -44,24 +44,24 @@ R^{\prime} = \exp(R) = \exp(r+ia).$
 $$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| < 1.10274 < \exp(0.0978),$$  and
 Definition \ref{GMT 1.12}
  tells us that we are
-outside of $\exp({\mathcal P}).$
+outside of $\exp(\mathcal {P}).$
 \vglue6pt
 {\textit Condition} `l' ({\textit long}): Tests that all points in the sub-box have $|z_0 + i z_3| > 3.63201.$  This ensures that  
-$$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| > 3.63201 > \exp(1.289785)$$ and we are outside of $\exp({\mathcal P}).$  
+$$\exp(l) = |\exp(L)| = |L^{\prime}| = |z_0 + i z_3| > 3.63201 > \exp(1.289785)$$ and we are outside of $\exp(\mathcal {P}).$  
 \vglue6pt
 {\textit Condition} `n' ({\textit near}): Tests that all points in the sub-box have $|z_1 + i z_4| < 1.$  This ensures that 
-$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4| <1= \exp(0)$$ and we are outside of $\exp({\mathcal P}).$
+$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4| <1= \exp(0)$$ and we are outside of $\exp(\mathcal {P}).$
 \vglue6pt
 {\textit Condition} `f' ({\textit far}): Tests that all points in the sub-box have $|z_1 + i z_4| > 3.$  This ensures that 
-$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4|  > 3= \exp(\ln 3)$$ and we are outside of $\exp({\mathcal P}).$  
+$$\exp(d) = |\exp(D)| = |D^{\prime}| = |z_1 + i z_4|  > 3= \exp(\ln 3)$$ and we are outside of $\exp(\mathcal {P}).$  
 %\eject
 \vskip 8pt
 {\textit Condition} `w' ({\textit whirle  big}): Tests that all points in the sub-box have $|z_2 + i z_5|^2 > |z_0 + i z_3| $  This
 ensures that $$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  > \sqrt{|z_0 + i z_3|} =  \sqrt {\exp(l)} = \exp(l/2)$$ and
-we are outside of $\exp({\mathcal P}).$  
+we are outside of $\exp(\mathcal {P}).$  
 \vglue6pt
 {\textit Condition} `W' ({\textit whirle  small}): Tests that all points in the sub-box have $|z_2 + i z_5| < 1. $  This ensures that
-$$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are outside of $\exp({\mathcal P}).$\end{the trivial conditions}
+$$\exp(r) = |\exp(R)| = |R^{\prime}| = |z_2 + i z_5|  < 1 = \exp(0)$$ and we are outside of $\exp(\mathcal {P}).$\end{the trivial conditions}
 
 \vglue12pt
 \begin{the interesting conditions}\label{GMT 5.2}
@@ -96,17 +96,17 @@ the identity $f$ and $w$ would have to have the same axis, which contradicts the
 greater than or equal to $l/4.$
 %\eject
 \vskip 8pt
-{\textit Condition}  `conjugate':  There is one other condition that is used to eliminate points in ${\mathcal W}.$  Following
+{\textit Condition}  `conjugate':  There is one other condition that is used to eliminate points in $\mathcal {W}.$  Following
 Definition \ref{GMT 1.12}
  (and 
 Lemma \ref{GMT 1.13}
 ) we eliminate all boxes with $0 < t \le \pi.$  Of course, after exponentiating $L = l+it,$
-this corresponds to eliminating all boxes with $z_3 > 0.$ Specifically, we toss all sub-boxes of ${\mathcal W}$ whose fourth
+this corresponds to eliminating all boxes with $z_3 > 0.$ Specifically, we toss all sub-boxes of $\mathcal {W}$ whose fourth
 entry is a 1. This condition does not appear in {\textit verify} because it is applied ``outside" of these
 programs, as described in Construction \ref{GMT 5.3}.\end{the interesting conditions}
 \vglue6pt
 \begin{construction} \label{GMT 5.3}: 
-We now give the method for describing the roughly 930 million sub-boxes that the initial box ${\mathcal W}$ is subdivided into.
+We now give the method for describing the roughly 930 million sub-boxes that the initial box $\mathcal {W}$ is subdivided into.
 
 All sub-boxes are obtained by subdivision of a previous sub-box along a real
 hyper-plane midway between parallel faces of the sub-box before
@@ -114,7 +114,7 @@ subdivision.  Of course, these midway planes are of the form $x_i = $ a
 constant.   We use $0$'s and $1$'s to describe which half of a subdivided
 sub-box to take ($0$ corresponds to lesser $x_i$ values).  For example, 0
 describes 
-the sub-box $${\mathcal W} \cap \{(x_0,x_1,x_2,x_3,x_4,x_5): x_0 \le 0 \},$$ 
+the sub-box $$\mathcal {W} \cap \{(x_0,x_1,x_2,x_3,x_4,x_5): x_0 \le 0 \},$$ 
 $010$ describes the sub-box 
 $$W \cap \{(x_0,x_1,x_2,x_3, x_4,x_5) : x_0 \le 0,\ x_1 \ge 0,\ x_2 \le 0 \},$$
 and so on.
@@ -123,17 +123,17 @@ In this way, we get a one-to-one correspondence
 between strings and sub-boxes.
 If $s$ is a string of $0$'s and $1$'s, then let $Z(s)$ denote
 the sub-box corresponding to $s$.
-The range of values for the $i^{\mathrm th}$ coordinate in the sub-box $Z(s)$ is related
+The range of values for the $i^\mathrm {th}$ coordinate in the sub-box $Z(s)$ is related
 to the binary fraction $0.s_{i}s_{i+6}\ldots s_{i+6k}$.
 The two sub-boxes gotten from
 subdividing $Z(s)$ are $Z(s0)$ and $Z(s1)$.
 
 The directions of subdivision cycle among the various coordinate axes:
-the $n^{\mathrm th}$ subdivision is across the $(n \bmod 6)^{\mathrm th}$ axis.
-The dimensions of the top-level box ${\mathcal W}$ were chosen so that subdivision
+the $n^\mathrm {th}$ subdivision is across the $(n \bmod 6)^\mathrm {th}$ axis.
+The dimensions of the top-level box $\mathcal {W}$ were chosen so that subdivision
 is always done across the longest dimension of the box,
 and so that all of the sub-boxes are similar.  
-The dimensions of ${\mathcal W}$ have the beneficial effect of making the sub-boxes as ``round" as possible, hence making the Taylor approximation calculations efficient and fast.
+The dimensions of $\mathcal {W}$ have the beneficial effect of making the sub-boxes as ``round" as possible, hence making the Taylor approximation calculations efficient and fast.
 This explains the factor of $2^{(5-i)/6}$ in Definition 
 \ref{GMT 1.22}
 
@@ -303,12 +303,12 @@ be gotten from the 53 binary digits used for the actual calculations).
 
 The sub-box $Z(s01011)$ is the region where 
 $$\left(\begin{array}{c} 
--1.381589027741\ldots  \le  {\mathrm Re}(L')  \le  -1.379848991182\ldots\cr
--1.378124546093\ldots  \le  {\mathrm Re}(D')  \le  -1.376574349753\ldots\cr
-0.999893182771\ldots  \le {\mathrm Re}(R')  \le  1.001274250703\ldots\cr
--2.535837191243\ldots  \le  {\mathrm Im}(L')  \le  -2.534606799593\ldots\cr
-\phantom{-}2.535404997792\ldots  \le  {\mathrm Im}(D')  \le  -2.534308843448\ldots\cr
--0.001953125000\ldots  \le  {\mathrm Im}(R')  \le  0.000000000000\ldots\phantom{-}\cr
+-1.381589027741\ldots  \le  \mathrm {Re}(L')  \le  -1.379848991182\ldots\cr
+-1.378124546093\ldots  \le  \mathrm {Re}(D')  \le  -1.376574349753\ldots\cr
+0.999893182771\ldots  \le \mathrm {Re}(R')  \le  1.001274250703\ldots\cr
+-2.535837191243\ldots  \le  \mathrm {Im}(L')  \le  -2.534606799593\ldots\cr
+\phantom{-}2.535404997792\ldots  \le  \mathrm {Im}(D')  \le  -2.534308843448\ldots\cr
+-0.001953125000\ldots  \le  \mathrm {Im}(R')  \le  0.000000000000\ldots\phantom{-}\cr
 \end{array}\right)$$
 
 

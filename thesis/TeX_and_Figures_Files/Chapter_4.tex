@@ -2,19 +2,19 @@
 
  
 \begin{remark} \label{GMT 6.1}
-To show that a sub-box of the parameter box ${\mathcal W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
+To show that a sub-box of the parameter box $\mathcal {W}$ is killed by one of the interesting conditions (plus associated killerword) we need to show that at each point in the sub-box, the killerword evaluated at that point satisfies the given condition (see
 	Chapter \ref{Ch.ConditionsTree}
-	).  That is, we are simply analyzing a certain function from the sub-box to ${\mathbf C}$.  
+	).  That is, we are simply analyzing a certain function from the sub-box to $\mathbf {C}$.  
 
 As described in Remark \ref{GMT 6.5}, this analysis can be pulled back from the sub-box in question to the closed polydisc 
-$A = \{(z_0,z_1,z_2) \in {\mathbf C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
+$A = \{(z_0,z_1,z_2) \in \mathbf {C}^3 : |z_k| \le 1$  for $k \in \{0,1,2\}\}.$  
 Loosely,  we will analyze such a function on $A$ by using  Taylor approximations consisting of an affine approximating
 function together with a bound on the ``error" in the approximation (this could also be described as a ``remainder bound").  This ``error" 
 is separate from round-off error,  which will be analyzed in Chapters \ref{Ch.XComplex} and \ref{Ch.AffWithEPS}.  \end{remark}
 
 \begin{problem} There are two immediate problems likely to arise from this Taylor approximation approach.
 The first problem is the appearance of unpleasant functions such as 
-Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space ${\mathcal P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on ${\mathcal W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
+Arccosh.  We have already taken care of this problem by ``exponentiating'' our preliminary parameter space $\mathcal {P}$.  This resulted in all functions under consideration being built up from the co-ordinate functions $ L^{\prime}, D^{\prime},$ and $ R^{\prime}$ on $\mathcal {W}$ by means of the elementary operations $+,\ -,\ \times,\ /,\ \sqrt.$ 
 
 Second,  for a given ``built-up function'' the computer needs to be able to compute the Taylor approximation, and the error term.  This will be handled 
 by developing combination formulas for elementary operations (see the propositions below).  Specifically, given two Taylor
@@ -33,9 +33,9 @@ used in {\textit verify}.\end{remark}
 \begin{definition} \label{GMT 6.4} An {\textit AffApprox}  $x$ is a five-tuple
 $(x.f;\ x.f_0,\ x.f_1,\ x.f_2;\ x.e),$
 consisting of four complex numbers $x.f,\ x.f_0,\ x.f_1,\ x.f_2$ and one real number $x.e,$  which represents all functions 
-$g: A \rightarrow {\mathbf C}$ such that
+$g: A \rightarrow \mathbf {C}$ such that
 $$|g(z_0,z_1,z_2) - (x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2)| \le x.e$$
-for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to ${\mathbf C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.\end{definition}
+for all $(z_0,z_1,z_2) \in A.$  That is, $x$ represents all functions from $A$ to $\mathbf {C}$ that are $x.e$-well-approximated by the affine function $x.f + x.f_0 z_0 + x.f_1 z_1 + x.f _2 z_2$.  We will denote this set of functions associated with $x$ by $S(x)$.\end{definition}
 \vglue6pt
 
 \begin{remark}\label{GMT 6.5}
@@ -310,8 +310,7 @@ The   left-hand numerator is
 The right-hand numerator is 
 \begin{eqnarray*}
 &&(|x.f| - {\textrm size}(x)/2)^2 - |x.f| (|x.f| - ({\textrm size}(x) + x.e))\\[4pt]
-&&\qquad = |x.f|^2 - |x.f| {\textrm size}(x) + {\textrm size}(x)^2/4 - |x.f|^2 + |x.f| {\mathrm
-size}(x) + |x.f| x.e\\[4pt]
+&&\qquad = |x.f|^2 - |x.f| {\textrm size}(x) + {\textrm size}(x)^2/4 - |x.f|^2 + |x.f| \mathrm {size}(x) + |x.f| x.e\\[4pt]
 &&\qquad = |x.f| x.e + {\textrm size}(x)^2/4.
 \end{eqnarray*}
 So the left-hand numerator is indeed less than or equal to the right-hand numerator.
@@ -354,12 +353,12 @@ $$s = 001000110001110111001111000101111111101111100111001111000001111011110111$$
 
 \noindent is the region where
 $$\left(\begin{array}{rll}
--1.381589027741\ldots &\hskip-6pt \le  {\mathrm Re}(L')&  \hskip-6pt\le  -1.379848991182\ldots\\[7pt]
--1.378124546093\ldots &\hskip-6pt \le  {\mathrm Re}(D')&\hskip-6pt  \le  -1.376574349753\ldots\\[7pt]
-0.999893182771\ldots  &\hskip-6pt\le {\mathrm Re}(R')& \hskip-6pt  \le  1.001274250703\ldots\\[7pt]
--2.535837191243\ldots &\hskip-6pt \le  {\mathrm Im}(L')&\hskip-6pt  \le  -2.534606799593\ldots\\[7pt]
-2.535404997792\ldots & \hskip-6pt\le  {\mathrm Im}(D') &\hskip-6pt \le  -2.534308843448\ldots\\[7pt]
--0.001953125000\ldots &\hskip-6pt \le {\mathrm  Im}(R')&\hskip-6pt  \le  0.000000000000\ldots
+-1.381589027741\ldots &\hskip-6pt \le  \mathrm {Re}(L')&  \hskip-6pt\le  -1.379848991182\ldots\\[7pt]
+-1.378124546093\ldots &\hskip-6pt \le  \mathrm {Re}(D')&\hskip-6pt  \le  -1.376574349753\ldots\\[7pt]
+0.999893182771\ldots  &\hskip-6pt\le \mathrm {Re}(R')& \hskip-6pt  \le  1.001274250703\ldots\\[7pt]
+-2.535837191243\ldots &\hskip-6pt \le  \mathrm {Im}(L')&\hskip-6pt  \le  -2.534606799593\ldots\\[7pt]
+2.535404997792\ldots & \hskip-6pt\le  \mathrm {Im}(D') &\hskip-6pt \le  -2.534308843448\ldots\\[7pt]
+-0.001953125000\ldots &\hskip-6pt \le \mathrm {Im}(R')&\hskip-6pt  \le  0.000000000000\ldots
 \end{array}\right).$$ 
 
 For this sub-box, we get (printing only 10 decimal places,
@@ -507,14 +506,14 @@ When we subdivide $Z(s01011)$, we have to analyze two sub-boxes,
 $Z(s010110)$ and $Z(s010111)$.
 For $Z(s010110)$, the same calculation on the region
 $$\begin{array}{rll}
--1.381589027741073400 &\hskip-6pt \leq {\mathrm Re}(L') &\hskip-6pt\leq -1.379848991182205200\\[4pt]
--1.378124546093485700 &\hskip-6pt\leq {\mathrm Re}(D')
+-1.381589027741073400 &\hskip-6pt \leq \mathrm {Re}(L') &\hskip-6pt\leq -1.379848991182205200\\[4pt]
+-1.378124546093485700 &\hskip-6pt\leq \mathrm {Re}(D')
 &\hskip-6pt\leq -1.376574349753672900\\[4pt]
-0.999893182771602220 &\hskip-6pt\leq {\mathrm Re}(R')&\hskip-6pt \leq 1.001274250703607400\\[4pt]
--2.535837191243490300&\hskip-6pt \leq {\mathrm Im}(L')&\hskip-6pt \leq
+0.999893182771602220 &\hskip-6pt\leq \mathrm {Re}(R')&\hskip-6pt \leq 1.001274250703607400\\[4pt]
+-2.535837191243490300&\hskip-6pt \leq \mathrm {Im}(L')&\hskip-6pt \leq
 -2.534606799593201600\\[4pt]
--2.535404997792558600 &\hskip-6pt\leq {\mathrm Im}(D') &\hskip-6pt\leq -2.534308843448505900\\[4pt]
--0.001953125000000000&\hskip-6pt \leq {\mathrm Im}(R')
+-2.535404997792558600 &\hskip-6pt\leq \mathrm {Im}(D') &\hskip-6pt\leq -2.534308843448505900\\[4pt]
+-0.001953125000000000&\hskip-6pt \leq \mathrm {Im}(R')
 &\hskip-6pt\leq -0.000976562500000000
 \end{array} 
 $$

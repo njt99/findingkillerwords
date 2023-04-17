@@ -19,13 +19,13 @@ In the next chapter we work with  AffApproxes.\end{remark}
 There are two types of complex numbers to consider: 
 
 \begin{itemize}
-\item[1)]  An {\textit XComplex} $x = (x.{\mathrm re}, x.{\mathrm im})$ corresponds to a complex number that is represented exactly; it
+\item[1)]  An {\textit XComplex} $x = (x.\mathrm {re}, x.\mathrm {im})$ corresponds to a complex number that is represented exactly; it
 simply consists of a real part and an imaginary part.
 
-\item[2)]  An {\textit AComplex} $x = (x.{\mathrm re}, x.{\mathrm im}; x.e)$ corresponds to an ``interval'' that contains the complex number in
+\item[2)]  An {\textit AComplex} $x = (x.\mathrm {re}, x.\mathrm {im}; x.e)$ corresponds to an ``interval'' that contains the complex number in
 question.  Thus, it consists of an XComplex and a floating-point number representing the error.  In particular, the AComplex
 $x$ represents the set $S(x)$ of complex numbers 
-$\{w\ :\ |w - (x.{\mathrm re} + i (x.{\mathrm im}))| \le x.e\}$.  Note that $S(x)$ is also defined
+$\{w\ :\ |w - (x.\mathrm {re} + i (x.\mathrm {im}))| \le x.e\}$.  Note that $S(x)$ is also defined
 for an XComplex if we conceptualize an XComplex as an AComplex with
 $x.e = 0.$
 \end{itemize}
@@ -153,36 +153,36 @@ ii) The propositions that follow include in their statements the definitions of 
 
 \begin{proposition}\label{GMT prop7.1}{$(-X)$}
 If $x$ is an {\textrm XComplex,} then 
-$$-x \equiv (-x.{\mathrm re},-x.{\mathrm im}).$$ 
+$$-x \equiv (-x.\mathrm {re},-x.\mathrm {im}).$$ 
 \end{proposition}
 
 \begin{proposition}\label{GMT prop7.2}{$(X + D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x + d) \supseteq S(x) + S(d)${\textrm ,} where 
- $$x + d \equiv (x.{\mathrm re} \oplus d, x.{\mathrm im};
-(EPS/2)\otimes |x.{\mathrm re} \oplus d|).$$
+ $$x + d \equiv (x.\mathrm {re} \oplus d, x.\mathrm {im};
+(EPS/2)\otimes |x.\mathrm {re} \oplus d|).$$
 \end{proposition}
 
 \begin{proof}{}
 The  error is bounded by  
 \vglue12pt
-\hfill ${\displaystyle |(x.{\mathrm re} + d) - (x.{\mathrm re} \oplus d)|
-\le (EPS/2) | x.{\mathrm re} \oplus d|
-  =  (EPS/2) \otimes | x.{\mathrm re} \oplus d|.}$ \end{proof}
+\hfill ${\displaystyle |(x.\mathrm {re} + d) - (x.\mathrm {re} \oplus d)|
+\le (EPS/2) | x.\mathrm {re} \oplus d|
+  =  (EPS/2) \otimes | x.\mathrm {re} \oplus d|.}$ \end{proof}
 
 \begin{proposition}\label{GMT prop7.3}{$(X - D)$}
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x - d) \supseteq S(x) - S(d)${\textrm ,} where 
- $$x - d \equiv (x.{\mathrm re} \ominus d, x.{\mathrm im};
-(EPS/2)\otimes |x.{\mathrm re} \ominus d|).$$ \end{proposition}
+ $$x - d \equiv (x.\mathrm {re} \ominus d, x.\mathrm {im};
+(EPS/2)\otimes |x.\mathrm {re} \ominus d|).$$ \end{proposition}
 
 \begin{proposition}\label{GMT prop7.4}{$(X + X)$}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
  \begin{eqnarray*}
-x + y &\equiv& (x.{\mathrm re} \oplus y.{\mathrm re}, x.{\mathrm im} \oplus y.{\mathrm im};
+x + y &\equiv& (x.\mathrm {re} \oplus y.\mathrm {re}, x.\mathrm {im} \oplus y.\mathrm {im};
 (EPS/2)\\
-&&  \otimes\ ((1 + EPS)  \otimes (|x.{\mathrm re} \oplus y.{\mathrm re}| \oplus |x.{\mathrm im} \oplus y.{\mathrm im}|))).
+&&  \otimes\ ((1 + EPS)  \otimes (|x.\mathrm {re} \oplus y.\mathrm {re}| \oplus |x.\mathrm {im} \oplus y.\mathrm {im}|))).
 \end{eqnarray*}
 \end{proposition}
   
@@ -190,14 +190,14 @@ x + y &\equiv& (x.{\mathrm re} \oplus y.{\mathrm re}, x.{\mathrm im} \oplus y.{\
 \begin{proof}{}
 The error is bounded by
 \begin{eqnarray*}
-&&|(x.{\mathrm re} + y.{\mathrm re}) - (x.{\mathrm re} \oplus y.{\mathrm re})| + 
-  |(x.{\mathrm im} + y.{\mathrm im}) - (x.{\mathrm im} \oplus y.{\mathrm im})|\\[4pt]
-&&\qquad \le (EPS/2)(| x.{\mathrm re} \oplus y.{\mathrm re}| + 
-   |x.{\mathrm im} \oplus y.{\mathrm im}|)\\[4pt]
-&&\qquad \le (EPS/2)((1 + EPS) \otimes (| x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
-   |x.{\mathrm im} \oplus y.{\mathrm im}|))\\[4pt]
-&&\qquad = (EPS/2) \otimes ((1 + EPS) \otimes (| x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
-   |x.{\mathrm im} \oplus y.{\mathrm im}|)).
+&&|(x.\mathrm {re} + y.\mathrm {re}) - (x.\mathrm {re} \oplus y.\mathrm {re})| + 
+  |(x.\mathrm {im} + y.\mathrm {im}) - (x.\mathrm {im} \oplus y.\mathrm {im})|\\[4pt]
+&&\qquad \le (EPS/2)(| x.\mathrm {re} \oplus y.\mathrm {re}| + 
+   |x.\mathrm {im} \oplus y.\mathrm {im}|)\\[4pt]
+&&\qquad \le (EPS/2)((1 + EPS) \otimes (| x.\mathrm {re} \oplus y.\mathrm {re}| \oplus 
+   |x.\mathrm {im} \oplus y.\mathrm {im}|))\\[4pt]
+&&\qquad = (EPS/2) \otimes ((1 + EPS) \otimes (| x.\mathrm {re} \oplus y.\mathrm {re}| \oplus 
+   |x.\mathrm {im} \oplus y.\mathrm {im}|)).
 \end{eqnarray*}
 To go from line 2 to line 3 we used Lemma \ref{GMT 7.0}. \end{proof}
 
@@ -205,9 +205,9 @@ To go from line 2 to line 3 we used Lemma \ref{GMT 7.0}. \end{proof}
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
-x - y &\equiv& (x.{\mathrm re} \ominus y.{\mathrm re}, x.{\mathrm im} \ominus y.{\mathrm im};\\[4pt]
+x - y &\equiv& (x.\mathrm {re} \ominus y.\mathrm {re}, x.\mathrm {im} \ominus y.\mathrm {im};\\[4pt]
 &&\quad 
-(EPS/2)\otimes ((1 + EPS) \otimes (|x.{\mathrm re} \ominus y.{\mathrm re}| \oplus |x.{\mathrm im} \ominus y.{\mathrm im}|))).
+(EPS/2)\otimes ((1 + EPS) \otimes (|x.\mathrm {re} \ominus y.\mathrm {re}| \oplus |x.\mathrm {im} \ominus y.\mathrm {im}|))).
 \end{eqnarray*} \end{proposition}
 
 
@@ -215,29 +215,29 @@ x - y &\equiv& (x.{\mathrm re} \ominus y.{\mathrm re}, x.{\mathrm im} \ominus y.
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x + y) \supseteq S(x) + S(y)${\textrm ,} where
 \begin{eqnarray*}
- x+y &\equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\[4pt]
-{\mathrm re}& =& x.{\mathrm re} \oplus y.{\mathrm re}\\[4pt]
-{\mathrm im}& =& x.{\mathrm im} \oplus y.{\mathrm im}\\[4pt]
-e& =& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|))
+ x+y &\equiv& (\mathrm {re},\mathrm {im};e) \hbox{ with }\\[4pt]
+\mathrm {re}& =& x.\mathrm {re} \oplus y.\mathrm {re}\\[4pt]
+\mathrm {im}& =& x.\mathrm {im} \oplus y.\mathrm {im}\\[4pt]
+e& =& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|\mathrm {re}| \oplus |\mathrm {im}|))
  \oplus (x.e \oplus y.e)). \end{eqnarray*}
 \end{proposition}
 
 \begin{proof}{}
 The error is bounded by the sum of the contributions from the real part, the imaginary part, and the two individual errors:
 \begin{eqnarray*}
- & &\hskip-20pt |(x.{\mathrm re} \oplus y.{\mathrm re}) -(x.{\mathrm re} + y.{\mathrm re})| + |(x.{\mathrm im} \oplus y.{\mathrm im}) -
-(x.{\mathrm im} + y.{\mathrm im})| + (x.e + y.e).\\[4pt]
-&&\hskip-12pt \le (EPS/2) |x.{\mathrm re} \oplus y.{\mathrm re}| + (EPS/2) |x.{\mathrm im} \oplus y.{\mathrm im}| + 
+ & &\hskip-20pt |(x.\mathrm {re} \oplus y.\mathrm {re}) -(x.\mathrm {re} + y.\mathrm {re})| + |(x.\mathrm {im} \oplus y.\mathrm {im}) -
+(x.\mathrm {im} + y.\mathrm {im})| + (x.e + y.e).\\[4pt]
+&&\hskip-12pt \le (EPS/2) |x.\mathrm {re} \oplus y.\mathrm {re}| + (EPS/2) |x.\mathrm {im} \oplus y.\mathrm {im}| + 
 (1 + EPS/2) (x.e \oplus y.e)\\[4pt]
-&&\hskip-12pt \le  (1 + EPS/2) (EPS/2)(|x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
- |x.{\mathrm im} \oplus y.{\mathrm im}| ) \\[4pt]
+&&\hskip-12pt \le  (1 + EPS/2) (EPS/2)(|x.\mathrm {re} \oplus y.\mathrm {re}| \oplus 
+ |x.\mathrm {im} \oplus y.\mathrm {im}| ) \\[4pt]
 &&\hskip-12pt \qquad + (1 + EPS/2) (x.e \oplus y.e)\\[4pt]
-&&\hskip-12pt = (1 + EPS/2) ((EPS/2)(|x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
- |x.{\mathrm im} \oplus y.{\mathrm im}| ) + (x.e \oplus y.e))\\[4pt]
-&&\hskip-12pt \le (1 + EPS/2)^2 (((EPS/2) (|x.{\mathrm re} \oplus y.{\mathrm re}| \oplus 
- |x.{\mathrm im} \oplus y.{\mathrm im}| )) \oplus  (x.e \oplus y.e))\\[4pt]
-&&\hskip-12pt \le   (1 + 2 EPS) \otimes (((EPS/2)\otimes (|x.{\mathrm re} \oplus
-y.{\mathrm re}| \oplus |x.{\mathrm im} \oplus y.{\mathrm im}| )) \oplus (x.e \oplus y.e)).\\[4pt]
+&&\hskip-12pt = (1 + EPS/2) ((EPS/2)(|x.\mathrm {re} \oplus y.\mathrm {re}| \oplus 
+ |x.\mathrm {im} \oplus y.\mathrm {im}| ) + (x.e \oplus y.e))\\[4pt]
+&&\hskip-12pt \le (1 + EPS/2)^2 (((EPS/2) (|x.\mathrm {re} \oplus y.\mathrm {re}| \oplus 
+ |x.\mathrm {im} \oplus y.\mathrm {im}| )) \oplus  (x.e \oplus y.e))\\[4pt]
+&&\hskip-12pt \le   (1 + 2 EPS) \otimes (((EPS/2)\otimes (|x.\mathrm {re} \oplus
+y.\mathrm {re}| \oplus |x.\mathrm {im} \oplus y.\mathrm {im}| )) \oplus (x.e \oplus y.e)).\\[4pt]
 \noalign{\vskip-24pt}
 \end{eqnarray*}
 \end{proof}
@@ -250,10 +250,10 @@ and will often be omitted in what
 If $x$ and $y$ are {\textrm AComplexes,} then 
 $S(x - y) \supseteq S(x) - S(y)${\textrm ,} where
 \begin{eqnarray*}
-x-y &\equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\
-{\mathrm re}& =& x.{\mathrm re} \ominus y.{\mathrm re}\\
-{\mathrm im}& =& x.{\mathrm im} \ominus y.{\mathrm im}\\
-e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|))
+x-y &\equiv& (\mathrm {re},\mathrm {im};e) \hbox{ with }\\
+\mathrm {re}& =& x.\mathrm {re} \ominus y.\mathrm {re}\\
+\mathrm {im}& =& x.\mathrm {im} \ominus y.\mathrm {im}\\
+e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|\mathrm {re}| \oplus |\mathrm {im}|))
  \oplus (x.e \oplus y.e)).
 \end{eqnarray*}
 \end{proposition}
@@ -263,14 +263,14 @@ e &=& (1 + 2 EPS) \otimes ( ((EPS/2) \otimes (|{\mathrm re}| \oplus |{\mathrm im
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x \times d) \supseteq S(x) \times S(d)${\textrm ,} where
 \begin{eqnarray*}
-x \times d &\equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with}\\[6pt] {\mathrm re} &= &x.{\mathrm re} \otimes d\\[6pt] {\mathrm im} &= &x.{\mathrm im} \otimes d\\[6pt] e &=& (EPS/2) \otimes ((1 + EPS) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|) ). \end{eqnarray*}
+x \times d &\equiv& (\mathrm {re},\mathrm {im};e) \hbox{ with}\\[6pt] \mathrm {re} &= &x.\mathrm {re} \otimes d\\[6pt] \mathrm {im} &= &x.\mathrm {im} \otimes d\\[6pt] e &=& (EPS/2) \otimes ((1 + EPS) \otimes (|\mathrm {re}| \oplus |\mathrm {im}|) ). \end{eqnarray*}
 \end{proposition}
 
 \begin{proposition}\label{GMT prop7.9}{$(X / D)$} 
 If $x$ is an {\textrm XComplex} and $d$ is a double{\textrm ,} then 
 $S(x / d) \supseteq S(x) / S(d)${\textrm ,} where
 \begin{eqnarray*}
-x / d& \equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\[6pt] {\mathrm re}& =& x.{\mathrm re} \oslash d\\[6pt] {\mathrm im} &= &x.{\mathrm im} \oslash d\\[6pt] e& = &(EPS/2) \otimes ((1 + EPS) \otimes (|{\mathrm re}| \oplus |{\mathrm im}|) ).
+x / d& \equiv& (\mathrm {re},\mathrm {im};e) \hbox{ with }\\[6pt] \mathrm {re}& =& x.\mathrm {re} \oslash d\\[6pt] \mathrm {im} &= &x.\mathrm {im} \oslash d\\[6pt] e& = &(EPS/2) \otimes ((1 + EPS) \otimes (|\mathrm {re}| \oplus |\mathrm {im}|) ).
 \end{eqnarray*}
 \end{proposition}
 
@@ -278,61 +278,59 @@ x / d& \equiv& ({\mathrm re},{\mathrm im};e) \hbox{ with }\\[6pt] {\mathrm re}& 
 If $x$ and $y$ are {\textrm XComplexes,} then 
 $S(x \times y) \supseteq S(x) \times S(y)${\textrm ,} where
 \begin{eqnarray*}
-x \times y &\equiv& ({\mathrm re},{\mathrm im};e)\hbox{ with}\\[6pt] {\mathrm re}& =&{\mathrm  re}1 \ominus {\mathrm re2}, \hbox{ with ${\mathrm re1} = x.{\mathrm re} \otimes y.{\mathrm re}$ and ${\mathrm re}2 =
-x.{\mathrm im} \otimes y.{\mathrm im}$} \\[6pt] {\mathrm im}& =& {\mathrm im}1 \oplus {\mathrm im}2, \hbox{ with ${\mathrm im}1 = x.{\mathrm re} \otimes y.{\mathrm im}$ and ${\mathrm im}2 = x.{\mathrm im} \otimes
-y.{\mathrm re}$}\\[6pt] e& =& EPS \otimes ((1 + 2EPS) \otimes  ((|{\mathrm re}1| \oplus |{\mathrm re}2|) \oplus  (|{\mathrm im}1| \oplus |{\mathrm im}2|))).
+x \times y &\equiv& (\mathrm {re},\mathrm {im};e)\hbox{ with}\\[6pt] \mathrm {re}& =&\mathrm {re}1 \ominus \mathrm {re2}, \hbox{ with $\mathrm {re1} = x.\mathrm {re} \otimes y.\mathrm {re}$ and $\mathrm {re}2 =
+x.\mathrm {im} \otimes y.\mathrm {im}$} \\[6pt] \mathrm {im}& =& \mathrm {im}1 \oplus \mathrm {im}2, \hbox{ with $\mathrm {im}1 = x.\mathrm {re} \otimes y.\mathrm {im}$ and $\mathrm {im}2 = x.\mathrm {im} \otimes
+y.\mathrm {re}$}\\[6pt] e& =& EPS \otimes ((1 + 2EPS) \otimes  ((|\mathrm {re}1| \oplus |\mathrm {re}2|) \oplus  (|\mathrm {im}1| \oplus |\mathrm {im}2|))).
 \end{eqnarray*}
 \end{proposition}
 
 \begin{proof}{}
 The error is bounded by the sum of the contributions from the real part and the imaginary part:
 \begin{eqnarray*}
-&&|(x.{\mathrm re} \times  y.{\mathrm re} - x.{\mathrm im} \times y.{\mathrm im}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \ominus
-(x.{\mathrm im}
-\otimes y.{\mathrm im}))| \\[6pt]
-&&\quad + |(x.{\mathrm re} \times  y.{\mathrm im} + x.{\mathrm im} \times y.{\mathrm re}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \oplus (x.{\mathrm im}
-\otimes y.{\mathrm im}))|.
+&&|(x.\mathrm {re} \times  y.\mathrm {re} - x.\mathrm {im} \times y.\mathrm {im}) - ((x.\mathrm {re} \otimes y.\mathrm {re}) \ominus
+(x.\mathrm {im}
+\otimes y.\mathrm {im}))| \\[6pt]
+&&\quad + |(x.\mathrm {re} \times  y.\mathrm {im} + x.\mathrm {im} \times y.\mathrm {re}) - ((x.\mathrm {re} \otimes y.\mathrm {re}) \oplus (x.\mathrm {im}
+\otimes y.\mathrm {im}))|.
 \end{eqnarray*}
    We want to bound this by a machine formula.  Let us begin by bounding 
-$$|(x.{\mathrm re} \times  y.{\mathrm re} - x.{\mathrm im} \times y.{\mathrm im}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \ominus (x.{\mathrm im}
- \otimes y.{\mathrm im}))| $$ 
+$$|(x.\mathrm {re} \times  y.\mathrm {re} - x.\mathrm {im} \times y.\mathrm {im}) - ((x.\mathrm {re} \otimes y.\mathrm {re}) \ominus (x.\mathrm {im}
+ \otimes y.\mathrm {im}))| $$ 
 by a machine formula:
 %\eject
 
 \centerline{
-${\displaystyle |(x.{\mathrm re} \times  y.{\mathrm re} - x.{\mathrm im} \times y.{\mathrm im}) - ((x.{\mathrm re} \otimes y.{\mathrm re}) \ominus
-(x.{\mathrm im}
-\otimes y.{\mathrm im}))| }$}
+${\displaystyle |(x.\mathrm {re} \times  y.\mathrm {re} - x.\mathrm {im} \times y.\mathrm {im}) - ((x.\mathrm {re} \otimes y.\mathrm {re}) \ominus
+(x.\mathrm {im}
+\otimes y.\mathrm {im}))| }$}
 \begin{eqnarray*}
 \noalign{\vskip-16pt}
-&&\le |((x.{\mathrm re} \times  y.{\mathrm re}) - (x.{\mathrm im} \times y.{\mathrm im})) - ((x.{\mathrm re} \otimes y.{\mathrm re}) -
-(x.{\mathrm im}
-\otimes y.{\mathrm im}))|\\
-&&\quad + |((x.{\mathrm re} \otimes y.{\mathrm re}) - (x.{\mathrm im} \otimes y.{\mathrm im}))-((x.{\mathrm re} \otimes y.{\mathrm re})
-\ominus (x.{\mathrm im} \otimes y.{\mathrm im}))| \\
-&&\le |(x.{\mathrm re} \times  y.{\mathrm re}) - (x.{\mathrm re} \otimes y.{\mathrm re})| + |(x.{\mathrm
-im} \times y.{\mathrm im})- (x.{\mathrm im} \otimes y.{\mathrm im})| \\
-&&\quad + (EPS/2)|(x.{\mathrm re} \otimes y.{\mathrm re}) - (x.{\mathrm im} \otimes
-y.{\mathrm im})|\\
-&&\le (EPS/2)|(x.{\mathrm re} \otimes y.{\mathrm re})| + (EPS/2)|(x.{\mathrm im} \otimes y.{\mathrm im})| \\
-&&\quad + (EPS/2)(|x.{\mathrm re} \otimes
-y.{\mathrm re}| + |x.{\mathrm im} \otimes y.{\mathrm im}|)\\
-&&= (EPS/2)(2) (|x.{\mathrm re} \otimes y.{\mathrm re}| + |x.{\mathrm im} \otimes y.{\mathrm
-im}|)\\
-&&\le EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm re}| \oplus |(x.{\mathrm im} \otimes y.{\mathrm im}|) .
+&&\le |((x.\mathrm {re} \times  y.\mathrm {re}) - (x.\mathrm {im} \times y.\mathrm {im})) - ((x.\mathrm {re} \otimes y.\mathrm {re}) -
+(x.\mathrm {im}
+\otimes y.\mathrm {im}))|\\
+&&\quad + |((x.\mathrm {re} \otimes y.\mathrm {re}) - (x.\mathrm {im} \otimes y.\mathrm {im}))-((x.\mathrm {re} \otimes y.\mathrm {re})
+\ominus (x.\mathrm {im} \otimes y.\mathrm {im}))| \\
+&&\le |(x.\mathrm {re} \times  y.\mathrm {re}) - (x.\mathrm {re} \otimes y.\mathrm {re})| + |(x.\mathrm {im} \times y.\mathrm {im})- (x.\mathrm {im} \otimes y.\mathrm {im})| \\
+&&\quad + (EPS/2)|(x.\mathrm {re} \otimes y.\mathrm {re}) - (x.\mathrm {im} \otimes
+y.\mathrm {im})|\\
+&&\le (EPS/2)|(x.\mathrm {re} \otimes y.\mathrm {re})| + (EPS/2)|(x.\mathrm {im} \otimes y.\mathrm {im})| \\
+&&\quad + (EPS/2)(|x.\mathrm {re} \otimes
+y.\mathrm {re}| + |x.\mathrm {im} \otimes y.\mathrm {im}|)\\
+&&= (EPS/2)(2) (|x.\mathrm {re} \otimes y.\mathrm {re}| + |x.\mathrm {im} \otimes y.\mathrm {im}|)\\
+&&\le EPS (1 + EPS/2) (|x.\mathrm {re} \otimes y.\mathrm {re}| \oplus |(x.\mathrm {im} \otimes y.\mathrm {im}|) .
 \end{eqnarray*}
 
 
 Almost the exact same calculation produces the analogous formula for the imaginary contribution, and we now combine the
 two to get a bound on the total error.  
 \begin{eqnarray*}
-&&\le EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm re}| \oplus |x.{\mathrm im} \otimes y.{\mathrm im}|) \\
+&&\le EPS (1 + EPS/2) (|x.\mathrm {re} \otimes y.\mathrm {re}| \oplus |x.\mathrm {im} \otimes y.\mathrm {im}|) \\
 &&\quad +
-EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm im}| \oplus |x.{\mathrm im} \otimes y.{\mathrm re}| )\\
+EPS (1 + EPS/2) (|x.\mathrm {re} \otimes y.\mathrm {im}| \oplus |x.\mathrm {im} \otimes y.\mathrm {re}| )\\
 &&\le EPS \otimes ((1 +
-2EPS)\otimes((|x.{\mathrm re} \otimes y.{\mathrm re}| \oplus |x.{\mathrm im} \otimes y.{\mathrm im}| ) \\
+2EPS)\otimes((|x.\mathrm {re} \otimes y.\mathrm {re}| \oplus |x.\mathrm {im} \otimes y.\mathrm {im}| ) \\
 &&\quad \oplus
-(|x.{\mathrm re} \otimes y.{\mathrm im}| \oplus |x.{\mathrm im} \otimes y.{\mathrm re}| ))).
+(|x.\mathrm {re} \otimes y.\mathrm {im}| \oplus |x.\mathrm {im} \otimes y.\mathrm {re}| ))).
 \\
 \noalign{\vskip-36pt}
 \end{eqnarray*}
@@ -342,34 +340,34 @@ EPS (1 + EPS/2) (|x.{\mathrm re} \otimes y.{\mathrm im}| \oplus |x.{\mathrm im} 
 If $x$ is a double and $y$ is an {\textrm XComplex,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
-x  / y & \equiv& ({\mathrm re},{\mathrm im};e)\hbox{ with }\\
-re& =& (x  \otimes y.{\mathrm re})\oslash nrm \hbox{ where $nrm = y.{\mathrm re} \otimes y.{\mathrm re} \oplus y.{\mathrm im} \otimes
-y.{\mathrm im}$}
+x  / y & \equiv& (\mathrm {re},\mathrm {im};e)\hbox{ with }\\
+re& =& (x  \otimes y.\mathrm {re})\oslash nrm \hbox{ where $nrm = y.\mathrm {re} \otimes y.\mathrm {re} \oplus y.\mathrm {im} \otimes
+y.\mathrm {im}$}
 \\
-{\mathrm im} &=& -(x  \otimes y.{\mathrm im}) \oslash nrm\\
-e& =& (2EPS) \otimes ((1 +  2EPS)\otimes(|{\mathrm re}| \oplus |{\mathrm im}|)).
+\mathrm {im} &=& -(x  \otimes y.\mathrm {im}) \oslash nrm\\
+e& =& (2EPS) \otimes ((1 +  2EPS)\otimes(|\mathrm {re}| \oplus |\mathrm {im}|)).
 \end{eqnarray*}
 \end{proposition}
 
 \noindent\emph{Proof.}
 The true version of $x/y$ is equal to  
-$$(x \times y.{\mathrm re} + i (-x \times y.{\mathrm im}))/ ((y.{\mathrm re})^2 + (y.{\mathrm im})^2)$$ and we need to compare this with the
+$$(x \times y.\mathrm {re} + i (-x \times y.\mathrm {im}))/ ((y.\mathrm {re})^2 + (y.\mathrm {im})^2)$$ and we need to compare this with the
 machine version to find the error.  Further, this error is less than or equal to the sum of the real error and the imaginary
 error. Thus, we start with the real calculation (as in the statement of the proposition, we use $nrm$ to represent the
-machine version of $(y.{\mathrm re})^2 + (y.{\mathrm im})^2$).
+machine version of $(y.\mathrm {re})^2 + (y.\mathrm {im})^2$).
 \begin{eqnarray*}
-&&\hskip-36pt \left|{x \times y.{\mathrm re}  \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2} - ((x \otimes y.{\mathrm re})\oslash
+&&\hskip-36pt \left|{x \times y.\mathrm {re}  \over (y.\mathrm {re})^2 + (y.\mathrm {im})^2} - ((x \otimes y.\mathrm {re})\oslash
 nrm)\right|\\
 &
 \le &\left|(x
-\otimes y.{\mathrm re}) \oslash nrm - {x \otimes y.{\mathrm re} \over nrm}\right|\\
-&& +\ \left|{x \otimes y.{\mathrm re} \over nrm} - {x
-\times y.{\mathrm re}
-\over nrm}\right| + \left|{x \times y.{\mathrm re} \over nrm} - 
-{x \times y.{\mathrm re}  \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2}\right|.
+\otimes y.\mathrm {re}) \oslash nrm - {x \otimes y.\mathrm {re} \over nrm}\right|\\
+&& +\ \left|{x \otimes y.\mathrm {re} \over nrm} - {x
+\times y.\mathrm {re}
+\over nrm}\right| + \left|{x \times y.\mathrm {re} \over nrm} - 
+{x \times y.\mathrm {re}  \over (y.\mathrm {re})^2 + (y.\mathrm {im})^2}\right|.
 \end{eqnarray*}
  
-Before continuing, let us compare ${1 \over nrm}$ and ${1 \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2}$ by developing a formula for
+Before continuing, let us compare ${1 \over nrm}$ and ${1 \over (y.\mathrm {re})^2 + (y.\mathrm {im})^2}$ by developing a formula for
 comparing ${1 \over a^2 + b^2}$ and its associated ${1 \over nrm}$:
 \begin{lemma}\label{GMT lemma7.2} $$\left|{1 \over nrm} - {1 \over a^2 + b^2}\right| \le   (EPS + (EPS/2)^2) {1 \over nrm}$$
 {\textit where} $nrm = a\otimes a \oplus b \otimes b.$
@@ -393,44 +391,40 @@ $${1 \over nrm} (1 - EPS/2)^2
 \end{proof}
 
 \phantom{someone}
-Getting back to our main calculation (with $nrm = y.{\mathrm re} \otimes y.{\mathrm re} \oplus y.{\mathrm im} \otimes y.{\mathrm im}$), we
+Getting back to our main calculation (with $nrm = y.\mathrm {re} \otimes y.\mathrm {re} \oplus y.\mathrm {im} \otimes y.\mathrm {im}$), we
 have
 \begin{eqnarray*}
-&&\hskip-16pt\left|(x \otimes y.{\mathrm re}) \oslash nrm - {x \otimes y.{\mathrm re} \over nrm}\right|\\
+&&\hskip-16pt\left|(x \otimes y.\mathrm {re}) \oslash nrm - {x \otimes y.\mathrm {re} \over nrm}\right|\\
 &&\quad +
-\left|{x \otimes y.{\mathrm re} \over nrm} - {x \times y.{\mathrm re} \over nrm}\right| +
-\left|{x \times y.{\mathrm re} \over nrm} - 
-{x \times y.{\mathrm re}  \over (y.{\mathrm re})^2 + (y.{\mathrm im})^2}\right|\\
-&&  \le(EPS/2){|x \otimes y.{\mathrm re}| \over nrm} +
-        (EPS/2){|x \otimes   y.{\mathrm re}| \over nrm} +
-(EPS + (EPS/2)^2) {|x \times   y.{\mathrm re}| \over nrm}\\
-&&  =(EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.{\mathrm re}| +
-(2 + EPS/2) \times |x \times y.{\mathrm re}| )\\
-&&  \le (EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.{\mathrm re}| +
-(2 + EPS/2)(1 + EPS/2) \times |x \otimes y.{\mathrm re}| )\\
-&&\quad = (EPS/2)\left({1 \over nrm}\right)(|x \otimes y.{\mathrm re}|)
+\left|{x \otimes y.\mathrm {re} \over nrm} - {x \times y.\mathrm {re} \over nrm}\right| +
+\left|{x \times y.\mathrm {re} \over nrm} - 
+{x \times y.\mathrm {re}  \over (y.\mathrm {re})^2 + (y.\mathrm {im})^2}\right|\\
+&&  \le(EPS/2){|x \otimes y.\mathrm {re}| \over nrm} +
+        (EPS/2){|x \otimes   y.\mathrm {re}| \over nrm} +
+(EPS + (EPS/2)^2) {|x \times   y.\mathrm {re}| \over nrm}\\
+&&  =(EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.\mathrm {re}| +
+(2 + EPS/2) \times |x \times y.\mathrm {re}| )\\
+&&  \le (EPS/2)\left({1 \over nrm}\right)(2 |x \otimes y.\mathrm {re}| +
+(2 + EPS/2)(1 + EPS/2) \times |x \otimes y.\mathrm {re}| )\\
+&&\quad = (EPS/2)\left({1 \over nrm}\right)(|x \otimes y.\mathrm {re}|)
 (2 + (2 + EPS/2)(1+EPS/2))\\
-&&  \le (EPS/2)(4 + 3EPS/2 + (EPS/2)^2)(|x \otimes y.{\mathrm re}|)\left({1 \over nrm}\right)\\
+&&  \le (EPS/2)(4 + 3EPS/2 + (EPS/2)^2)(|x \otimes y.\mathrm {re}|)\left({1 \over nrm}\right)\\
 && \le (EPS/2)(4 + 3EPS/2 +
-(EPS/2)^2)(1+EPS/2)(|x \otimes y.{\mathrm re}| \oslash nrm)\\
-&&  \le (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)(|(x \otimes y.{\mathrm
-re} \oslash nrm)|).
+(EPS/2)^2)(1+EPS/2)(|x \otimes y.\mathrm {re}| \oslash nrm)\\
+&&  \le (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)(|(x \otimes y.\mathrm {re} \oslash nrm)|).
 \end{eqnarray*}
  We also get the analogous formula for the imaginary contribution for the error, so our total error is
 bounded by
 \begin{eqnarray*}
-&&\hskip-24pt (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)((|(x \otimes y.{\mathrm re})\oslash nrm|)\\
-&&\quad+(|(x \otimes y.{\mathrm
-im})\oslash nrm|))\\
+&&\hskip-24pt (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)((|(x \otimes y.\mathrm {re})\oslash nrm|)\\
+&&\quad+(|(x \otimes y.\mathrm {im})\oslash nrm|))\\
 && \le (2EPS)(1 + 3EPS/8 + (EPS/4)^2)(1+EPS/2)^2\\
-&&\quad\cdot\ ((|(x \otimes y.{\mathrm re})\oslash nrm|)  \oplus (|(x \otimes
-y.{\mathrm im})\oslash nrm|))\\
+&&\quad\cdot\ ((|(x \otimes y.\mathrm {re})\oslash nrm|)  \oplus (|(x \otimes
+y.\mathrm {im})\oslash nrm|))\\
 &&  \le (2EPS)(1 - EPS/2)(1+ 2EPS)\\
-&&\quad\cdot\ ((|(x \otimes y.{\mathrm re})\oslash nrm|) \oplus (|(x \otimes y.{\mathrm
-im})\oslash nrm|))\\
-&&  \le (2EPS) \otimes ((1+ 2EPS) \otimes ((|(x \otimes y.{\mathrm re})\oslash nrm|)\\
-&&\quad  \oplus (|(x \otimes y.{\mathrm
-im})\oslash nrm|))).
+&&\quad\cdot\ ((|(x \otimes y.\mathrm {re})\oslash nrm|) \oplus (|(x \otimes y.\mathrm {im})\oslash nrm|))\\
+&&  \le (2EPS) \otimes ((1+ 2EPS) \otimes ((|(x \otimes y.\mathrm {re})\oslash nrm|)\\
+&&\quad  \oplus (|(x \otimes y.\mathrm {im})\oslash nrm|))).
 \end{eqnarray*}
 
 Here we used the fact that 
@@ -444,18 +438,17 @@ This should give the flavor of division proofs.  As such, we will skip the proof
 If $x$ and $y$ are {\textrm XComplexes,} then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
-x  / y  &\equiv& ({\mathrm re},{\mathrm im};e)\hbox{ with}\\
-{\mathrm re}& =& (x.{\mathrm re} \otimes y.{\mathrm re} \oplus x.{\mathrm im} \otimes y.{\mathrm im}) \oslash nrm\\
-&&\hbox{ where $nrm = y.{\mathrm
-re}
-\otimes y.{\mathrm re} \oplus y.{\mathrm im} \otimes y.{\mathrm im}$}\\
-{\mathrm im}& = &(x.{\mathrm im} \otimes y.{\mathrm re} \ominus x.{\mathrm re} \otimes y.{\mathrm im}) \oslash nrm\\
+x  / y  &\equiv& (\mathrm {re},\mathrm {im};e)\hbox{ with}\\
+\mathrm {re}& =& (x.\mathrm {re} \otimes y.\mathrm {re} \oplus x.\mathrm {im} \otimes y.\mathrm {im}) \oslash nrm\\
+&&\hbox{ where $nrm = y.\mathrm {re}
+\otimes y.\mathrm {re} \oplus y.\mathrm {im} \otimes y.\mathrm {im}$}\\
+\mathrm {im}& = &(x.\mathrm {im} \otimes y.\mathrm {re} \ominus x.\mathrm {re} \otimes y.\mathrm {im}) \oslash nrm\\
 e& =& (5EPS/2) \otimes ((1
 +  3EPS) \otimes A) \hbox{  where}\\
  A& =& 
-((|x.{\mathrm re} \otimes y.{\mathrm re}| \oplus |x.{\mathrm im} \otimes y.{\mathrm im}|)
+((|x.\mathrm {re} \otimes y.\mathrm {re}| \oplus |x.\mathrm {im} \otimes y.\mathrm {im}|)
  \oplus 
- (|x.{\mathrm im} \otimes y.{\mathrm re}| \oplus |x.{\mathrm re} \otimes y.{\mathrm im}|))
+ (|x.\mathrm {im} \otimes y.\mathrm {re}| \oplus |x.\mathrm {re} \otimes y.\mathrm {im}|))
 \oslash nrm
 .\end{eqnarray*}
 \end{proposition}
@@ -466,39 +459,37 @@ $y.e < 100 EPS \otimes |y|${\textrm ,} or{\textrm ,} more accurately{\textrm ,}
 $$(y.e)^2< ((10000 EPS) \otimes EPS)\otimes nrm$$ then
 $S(x / y) \supseteq S(x) / S(y)${\textrm ,} where
 \begin{eqnarray*}
-x  / y & \equiv& ({\mathrm re},{\mathrm im};e)\hbox{ with}\\
-{\mathrm re}& =& (x.{\mathrm re} \otimes y.{\mathrm re} \oplus x.{\mathrm im} \otimes y.{\mathrm im}) \oslash nrm\\
-&&\hbox{ where $nrm = y.{\mathrm
-re}
-\otimes y.{\mathrm re} \oplus y.{\mathrm im} \otimes y.{\mathrm im}$}\\
-{\mathrm im}& =& (x.{\mathrm im} \otimes y.{\mathrm re} \ominus x.{\mathrm re} \otimes y.{\mathrm im}) \oslash nrm\\
+x  / y & \equiv& (\mathrm {re},\mathrm {im};e)\hbox{ with}\\
+\mathrm {re}& =& (x.\mathrm {re} \otimes y.\mathrm {re} \oplus x.\mathrm {im} \otimes y.\mathrm {im}) \oslash nrm\\
+&&\hbox{ where $nrm = y.\mathrm {re}
+\otimes y.\mathrm {re} \oplus y.\mathrm {im} \otimes y.\mathrm {im}$}\\
+\mathrm {im}& =& (x.\mathrm {im} \otimes y.\mathrm {re} \ominus x.\mathrm {re} \otimes y.\mathrm {im}) \oslash nrm\\
 e& =& (1 + 4EPS)\otimes 
 (
 ((5 EPS/2) \otimes A \oplus (1+103EPS) \otimes B)
 \oslash nrm)\hbox{ where}\\
- A& =& (|x.{\mathrm re} \otimes y.{\mathrm re}| \oplus |x.{\mathrm im}\otimes y.{\mathrm im}|) 
+ A& =& (|x.\mathrm {re} \otimes y.\mathrm {re}| \oplus |x.\mathrm {im}\otimes y.\mathrm {im}|) 
  \oplus
-(|x.{\mathrm im} \otimes y.{\mathrm re}| \oplus | x.{\mathrm re} \otimes y.{\mathrm im}|)\\
-B& =& x.e\otimes(|y.{\mathrm re}|\oplus|y.{\mathrm im}|)
+(|x.\mathrm {im} \otimes y.\mathrm {re}| \oplus | x.\mathrm {re} \otimes y.\mathrm {im}|)\\
+B& =& x.e\otimes(|y.\mathrm {re}|\oplus|y.\mathrm {im}|)
 \oplus
-   (|x.{\mathrm re}|\oplus|x.{\mathrm im}|)\otimes y.e.
+   (|x.\mathrm {re}|\oplus|x.\mathrm {im}|)\otimes y.e.
 \end{eqnarray*}
 \end{proposition}
 
 In our last proposition we will construct the square-root function.  As a warm-up, ignoring round-off error, our
-construction is as follows.  If $x = x.{\mathrm re} + i x.{\mathrm im}$ then $\sqrt{x} = s + {\mathrm i d}$ where $s=\sqrt{(|x.{\mathrm
-re}| + h(x.{\mathrm re},x.{\mathrm im}))/2}$ and $d = x.{\mathrm im}/(2s)$ when $x.{\mathrm re} > 0.0$, and $\sqrt{x} = d + i s$ otherwise.  
+construction is as follows.  If $x = x.\mathrm {re} + i x.\mathrm {im}$ then $\sqrt{x} = s + \mathrm {i d}$ where $s=\sqrt{(|x.\mathrm {re}| + h(x.\mathrm {re},x.\mathrm {im}))/2}$ and $d = x.\mathrm {im}/(2s)$ when $x.\mathrm {re} > 0.0$, and $\sqrt{x} = d + i s$ otherwise.  
 Thus, we take our (no-round-off) square roots to be in the first and fourth quadrants.
 
 \begin{proposition}\label{GMT prop7.14}{($\sqrt{X}$)}
 If $x$ is an {\textrm XComplex,} then $S(\sqrt{x}) \supseteq \sqrt{S(x)}$
 where we
-let $s_o = \root o \of {(|x.{\mathrm re}| \oplus h_o (x.{\mathrm re},x.{\mathrm im})) \otimes 0.5}$
- and $d_o = (x.{\mathrm im} \oslash s) \otimes 0.5${\textrm ,} and define
+let $s_o = \root o \of {(|x.\mathrm {re}| \oplus h_o (x.\mathrm {re},x.\mathrm {im})) \otimes 0.5}$
+ and $d_o = (x.\mathrm {im} \oslash s) \otimes 0.5${\textrm ,} and define
 \begin{eqnarray*}
- \sqrt{x} & \equiv &({\mathrm re},{\mathrm im};e) \hbox{ where }\\
- {\mathrm re} &=& s_o \hbox{ if $x.{\mathrm re} > 0.0$ and $re = d_o$ otherwise},\\
-{\mathrm im}& =& d_o \hbox{ if $x.{\mathrm re} > 0.0$ and $im = s_o$ otherwise},
+ \sqrt{x} & \equiv &(\mathrm {re},\mathrm {im};e) \hbox{ where }\\
+ \mathrm {re} &=& s_o \hbox{ if $x.\mathrm {re} > 0.0$ and $re = d_o$ otherwise},\\
+\mathrm {im}& =& d_o \hbox{ if $x.\mathrm {re} > 0.0$ and $im = s_o$ otherwise},
 \\
 e& =& EPS \otimes ((1 + 4 EPS) \otimes (1.25 \otimes s_o \oplus 1.75 \otimes |d_o|)).
 \end{eqnarray*}
@@ -508,14 +499,14 @@ e& =& EPS \otimes ((1 + 4 EPS) \otimes (1.25 \otimes s_o \oplus 1.75 \otimes |d_
 This will be a little nasty.  Let us begin by analyzing $e_s$, which is the difference between the true calculation of $s$ and
 the machine calculation of~$s$, that is $e_s = |s - s_o|.$   First, we bound $s.$
 \begin{eqnarray*}
-s &=& \sqrt{(|x.{\mathrm re}| + h(x.{\mathrm re},x.{\mathrm im})) * 0.5}\\
-&\le& (1+EPS)^{1/2} \sqrt{(|x.{\mathrm re}| + h_o(x.{\mathrm re},x.{\mathrm im}))
+s &=& \sqrt{(|x.\mathrm {re}| + h(x.\mathrm {re},x.\mathrm {im})) * 0.5}\\
+&\le& (1+EPS)^{1/2} \sqrt{(|x.\mathrm {re}| + h_o(x.\mathrm {re},x.\mathrm {im}))
 * 0.5}\\
 &\le& (1+EPS)^{1/2} (1+EPS/2)^{1/2}
-\sqrt{(|x.{\mathrm re}| \oplus h_o(x.{\mathrm re},x.{\mathrm im})) * 0.5}\\
+\sqrt{(|x.\mathrm {re}| \oplus h_o(x.\mathrm {re},x.\mathrm {im})) * 0.5}\\
 &\le& (1+EPS)^{1/2} (1+EPS/2)^{1/2}\\
 &&\cdot\ (1+EPS/2)
-\root o \of {(|x.{\mathrm re}| \oplus h_o(x.{\mathrm re},x.{\mathrm im})) * 0.5}\\
+\root o \of {(|x.\mathrm {re}| \oplus h_o(x.\mathrm {re},x.\mathrm {im})) * 0.5}\\
 &=& (1+EPS)^{1/2} (1+EPS/2)^{3/2} s_o.
 \end{eqnarray*}
 By a power series expansion, we see that
@@ -539,22 +530,21 @@ e_s = |s - s_o|&\le&\left(\left(1 + {5 \over 4} EPS + {11 \over 32} EPS^2 +\cdot
 
 Next, we analyze $e_d$, which is the absolute value of the difference between the true calculation of $d$ and the machine calculation of $d$.  That is, $e_d = |d - d_o|.$
 \begin{eqnarray*}
-e_d &=& |x.{\mathrm im}/(2s) - x.{\mathrm im} \oslash (2 s_o)|\\
-&\le& |x.{\mathrm im} \oslash (2 s_o) - x.{\mathrm im} / (2 s_o)| + 
-|x.{\mathrm im}/(2s_o) - x.{\mathrm im}/(2s) |\\
-&\le& (EPS/2) |x.{\mathrm im} / (2 s_o)| + \left|{x.{\mathrm im} \over 2} {s - s_o \over s s_o} \right|\\
-&\le& (EPS/2) |x .{\mathrm im}/ (2
-s_o)| +\left|{x.{\mathrm im} \over 2} {1 \over s s_o} ((5/4)EPS + (11/32)EPS^2+\cdots) s_o\right|\\
-&\le& (EPS/2) |x.{\mathrm im} / (2
+e_d &=& |x.\mathrm {im}/(2s) - x.\mathrm {im} \oslash (2 s_o)|\\
+&\le& |x.\mathrm {im} \oslash (2 s_o) - x.\mathrm {im} / (2 s_o)| + 
+|x.\mathrm {im}/(2s_o) - x.\mathrm {im}/(2s) |\\
+&\le& (EPS/2) |x.\mathrm {im} / (2 s_o)| + \left|{x.\mathrm {im} \over 2} {s - s_o \over s s_o} \right|\\
+&\le& (EPS/2) |x .\mathrm {im}/ (2
+s_o)| +\left|{x.\mathrm {im} \over 2} {1 \over s s_o} ((5/4)EPS + (11/32)EPS^2+\cdots) s_o\right|\\
+&\le& (EPS/2) |x.\mathrm {im} / (2
 s_o)| \\
-&&+ \left|{x.{\mathrm im} \over 2} {1 \over s_o (1 - (5/4)EPS)}((5/4)EPS + (11/32)EPS^2+\cdots)\right|\\
-&= &(EPS/2) |x .{\mathrm
-im}/ (2 s_o)| \left(1 + {(5/2) + (11/16)EPS+\cdots) \over (1 - (5/4)EPS)}\right)\\
+&&+ \left|{x.\mathrm {im} \over 2} {1 \over s_o (1 - (5/4)EPS)}((5/4)EPS + (11/32)EPS^2+\cdots)\right|\\
+&= &(EPS/2) |x .\mathrm {im}/ (2 s_o)| \left(1 + {(5/2) + (11/16)EPS+\cdots) \over (1 - (5/4)EPS)}\right)\\
 &= &(EPS/2) {(7/2) + (-9/16) EPS +\cdots\over
-(1 - (5/4)EPS)} |x .{\mathrm im}/ (2 s_o)|\\
+(1 - (5/4)EPS)} |x .\mathrm {im}/ (2 s_o)|\\
 &\le& (EPS/2) (1+EPS/2)
  {7/2 \over (1 - (5/4)EPS)}
-|x .{\mathrm im} \oslash (2 s_o)|\\
+|x .\mathrm {im} \oslash (2 s_o)|\\
 &= &(EPS/2) (1+EPS/2)
  {7/2 \over (1 - (5/4)EPS)}
 |d_o|.
@@ -596,25 +586,24 @@ Now, we develop two formulas for the absolute value of an XComplex.
 If $x$ is an XComplex, then
 there is an upper bound on the absolute value of $x$ as follows:
 \begin{eqnarray*}
-|x| &=& h(x.{\mathrm re},x.{\mathrm im}) \le (1 + EPS) h_{\circ} (x.{\mathrm re},x.{\mathrm im})\\
-&\le& (1 - EPS/2) (1 + 2EPS)h_{\circ} (x.{\mathrm re},x.{\mathrm im}) \\
-&\le& (1 + 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).
+|x| &=& h(x.\mathrm {re},x.\mathrm {im}) \le (1 + EPS) h_{\circ} (x.\mathrm {re},x.\mathrm {im})\\
+&\le& (1 - EPS/2) (1 + 2EPS)h_{\circ} (x.\mathrm {re},x.\mathrm {im}) \\
+&\le& (1 + 2EPS) \otimes h_{\circ} (x.\mathrm {re},x.\mathrm {im}).
 \end{eqnarray*}
 Thus, we define 
-$${\textrm absUB}(x) = (1 + 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ 
+$${\textrm absUB}(x) = (1 + 2EPS) \otimes h_{\circ} (x.\mathrm {re},x.\mathrm {im}).$$ 
 \end{formula}
 
 \begin{formula} \label{GMT formula7.1}(${\textrm absLB}(X)$).
 If $x$ is an XComplex, then
 we get a lower bound on the absolute value of $x$ as follows.
 \begin{eqnarray*}
-|x|& =& h(x.{\mathrm re},x.{\mathrm im}) \ge (1 - EPS) h_{\circ} (x.{\mathrm re},x.{\mathrm im})\\
-&\ge& (1 + EPS/2) (1 - 2EPS) h_{\circ} (x.{\mathrm
-re},x.{\mathrm im})\\
-&\ge& (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).
+|x|& =& h(x.\mathrm {re},x.\mathrm {im}) \ge (1 - EPS) h_{\circ} (x.\mathrm {re},x.\mathrm {im})\\
+&\ge& (1 + EPS/2) (1 - 2EPS) h_{\circ} (x.\mathrm {re},x.\mathrm {im})\\
+&\ge& (1 - 2EPS) \otimes h_{\circ} (x.\mathrm {re},x.\mathrm {im}).
 \end{eqnarray*}
 Thus, we define 
-$${\textrm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.{\mathrm re},x.{\mathrm im}).$$ \end{formula}
+$${\textrm absLB}(x) = (1 - 2EPS) \otimes h_{\circ} (x.\mathrm {re},x.\mathrm {im}).$$ \end{formula}
 \vglue12pt
 
 Finally, in several places in the {\textit verify} program we perform a standard operation on a pair of doubles and must take into account round-off error.  This is easy if we use Lemma \ref{GMT 7.0}.
