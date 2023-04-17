@@ -1,3 +1,4 @@
+##Summer/Fall 2022
  * treecat | treeviz | dot.
  * output graph
    * one circle per cc of grid at depth N
@@ -26,4 +27,6 @@
        * headache otherwise.
    * therefore:
      * `for i in range(...) glue loop
-     
+##Spring/Summer 2023
+ * I haven't finished coding `grep -n label ./`.
+ * No current plans for changes.

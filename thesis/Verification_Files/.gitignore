@@ -1,3 +1,4 @@
 *.zip
+*.o
 verify/data
 corona/data
